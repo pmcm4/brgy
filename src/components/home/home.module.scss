@@ -8,7 +8,7 @@
     height: 800px;
     background-color: rgba(255, 255, 255, 0);
     background-repeat: no-repeat;
-    background-image: url('https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706027318/photo-1594621544535-1373ff8388b0_copy_mzkjtu.png');
+    background-image: url('https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706070970/Marikina_-_San_Roque__view_from_Sta._Lucia___Marcos_Highway__Marikina_2017-08-22_copy1_3_nsqqds.png');
     background-position: 50% 50%;
     background-size: cover;
     background-attachment: scroll;
@@ -24,20 +24,228 @@
 
 .heading-text {
     line-height: normal;
-    font-size: 80px;
+    font-size: 100px;
     font-weight: 700;
-    margin-left: 5%;
-    color: white;
+    margin-left: 4.7%;
+    color: black;
+    text-align: start;
+    font-style: normal;
 }
 
 .subheading {
-    font-size: 24px;
+    font-size: 36px;
     line-height: normal;
     margin-left: 5%;
-    color: white;
+    width: 700px;
+    color: black;
+    font-weight: 500;
+    text-align: start;
 }
 
 .cards-container {
     width: 100%;
     height: 525px;
+    position: absolute;
+    top: 650px;
+    background-color: rgba(227, 15, 15, 0);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    padding-right: 0%;
+    justify-content: center;
+    gap: 40px;
+}
+
+.card {
+    height: 100%;
+    width: 394px;
+    border-radius: 20px;
+    background-color: transparent;
+    background-image: linear-gradient(180deg, #90c052 0%, #1db36b 100%);
+    background-position: 0% 0%;
+    background-size: auto auto;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-origin: padding-box;
+    background-clip: border-box;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    flex-direction: column;
+
+}
+
+.about-sec-home {
+    width: 100%;
+    height: 1500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: end;
+    row-gap: 90px;
+}
+
+.left-image {
+    height: 500px;
+    width: 828px;
+    background-color: rgba(121, 28, 28, 0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: space-evenly;
+    text-align: start;
+}
+
+.right-about-info {
+    width: 828px;
+    height: 400px;
+    background-color: #2fad6e;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+    border-radius: 20px;
+}
+
+.header-home-about {
+    color: black;
+    font-size: 21px;
+    line-height: normal;
+    font-weight: 700;
+}
+
+.header-about-main {
+    font-size: 50px;
+    line-height: NORMAL;
+    font-weight: 800;
+    text-align: center;
+}
+
+.subhead-home-about {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: normal;
+    text-align: center;
+}
+
+.about-btn {
+    background-color: #2fad6e;
+    color: white;
+    width: 142px;
+    height: 60px;
+}
+
+.brgy-info-mem {
+    background-repeat: no-repeat;
+    background-image: url(https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706070752/czM6Ly9tZWRpYS1wcml2YXRlLmNhbnZhLmNvbS9HWUVEVS9NQUYxMVVHWUVEVS8xL3AuanBn_copy_soaq8u.png);
+    background-position: 55% 21%;
+    background-size: cover;
+    background-attachment: scroll;
+    background-origin: padding-box;
+    background-clip: border-box;
+    background-color: transparent;
+}
+
+.top {
+    height: 150px;
+    margin-right: 5%;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: space-between;
+}
+
+.officials {}
+
+.top-card {
+    height: 100%;
+    width: 400px;
+    border-radius: 10px;
+}
+
+.cert-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    z-index: 0;
+
+}
+
+.id-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+.faq-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+.gradient-card {
+    position: absolute;
+    width: 394px;
+    height: 525px;
+    bottom: 1px;
+    background-repeat: repeat;
+    background-image: linear-gradient(180deg, rgba(255, 0, 0, 0.0) 0%, rgba(29, 179, 107, 0.8) 100%);
+    background-position: 0% 0%;
+    background-size: auto auto;
+    background-attachment: scroll;
+    background-origin: padding-box;
+    background-clip: border-box;
+    background-color: transparent;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    justify-items: start;
+    align-items: start;
+    align-content: start;
+}
+
+.explore-more {
+    font-size: 40px;
+    font-weight: 700;
+    color: white;
+}
+
+.card-text {
+    font-weight: 700;
+    color: white;
+    text-align: start;
+    font-size: 40px;
+    bottom: 80px;
+    display: flex;
+    direction: ltr;
+    margin-left: 20px;
+}
+
+.card-subtext {
+    bottom: 25px;
+    color: white;
+    font-weight: 600;
+    text-align: start;
+    margin-left: 20px;
+    width: 300px;
+    line-height: normal;
+    font-size: 18px;
+    margin-bottom: 20px;
+    height: 48px;
+
 }

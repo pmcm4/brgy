@@ -12,13 +12,14 @@ export interface HeaderProps {
 export const Header = ({ className }: HeaderProps) => {
     return <div className={classNames(styles.root, className)}>
         <div className={styles.left}>
-            <img src="https://wixplosives.github.io/codux-assets-storage/add-panel/image-placeholder.jpg" alt="" className={styles.logo} />
+            <img src="https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706070751/logo_sln6bp.png" alt="" className={styles.logo} />
         </div>
         <div className={styles.right}>
             <span className={styles['menu-items']}>Home</span>
             <span className={styles['menu-items']}>About</span>
             <span className={styles['menu-items']}>Services</span>
             <span className={styles['menu-items']}>FAQ</span>
+            <span className={styles['menu-items']}>Get in Touch →</span>
         </div>
     </div>;
 };
