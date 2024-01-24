@@ -1,5 +1,8 @@
 import classNames from 'classnames';
 import styles from './home.module.scss';
+import PeopleIcon from '@mui/icons-material/People';
+import FoundationIcon from '@mui/icons-material/Foundation';
+import LandscapeIcon from '@mui/icons-material/Landscape';
 
 export interface HomeProps {
     className?: string;
@@ -24,10 +27,10 @@ export const Home = ({ className }: HomeProps) => {
                 </div></div>
             <div className={styles.card}>
                 <img src="https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706074448/id_sample_cl3weq.png" alt="" className={styles['id-image']} />
-                <div className={styles['gradient-card']}> 
-                                    <span className={styles['card-text']}>I.D. Card</span>
+                <div className={styles['gradient-card']}>
+                    <span className={styles['card-text']}>I.D. Card</span>
                     <span className={styles['card-subtext']}>Request Barangay I.D. through our online services.</span></div>
-                </div>
+            </div>
             <div className={styles.card}>
                 <img src="https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706074449/photo-1531379410502-63bfe8cdaf6f_npnnrt.webp" alt="" className={styles['faq-img']} />
                 <div className={styles['gradient-card']} ><span className={styles['card-text']}>FAQ</span>
@@ -50,12 +53,47 @@ export const Home = ({ className }: HomeProps) => {
         </div>
         <div className={styles['brgy-info-mem']}>
             <div className={styles.top}>
-                <div className={styles['top-card']} />
-                <div className={styles['top-card']} />
-                <div className={styles['top-card']} />
-                <div className={styles['top-card']} />
+                <div className={styles['top-card']}>
+                    <span className={styles['icon-1']}><PeopleIcon sx={{ fontSize: "100px", color: "white" }} /></span>
+                    <div className={styles['card-info-brgy']}>
+                        <span className={styles['head1-info']}>40k+</span>
+                        <span className={styles['subhead1-info']}>Residents</span>
+                    </div>
+                </div>
+                <div className={styles['top-card']}>
+                    <span className={styles['icon-1']}><LandscapeIcon sx={{ fontSize: "100px", color: "white" }} /></span>
+                    <div className={styles['card-info-brgy']}>
+                        <span className={styles['head1-info']}>1.1 km²</span>
+                        <span className={styles['subhead1-info']}>Area</span>
+                    </div>
+                </div>
+                <div className={styles['top-card']}>
+                    <span className={styles['icon-1']}><FoundationIcon sx={{ fontSize: "100px", color: "white" }} /></span>
+                    <div className={styles['card-info-brgy']}>
+                        <span className={styles['head1-info']}>30+</span>
+                        <span className={styles['subhead1-info']}>Years of Foundation</span>
+                    </div>
+                </div></div>
+            <div className={styles.officials}>
+                <span className={styles['officials-header']}>Barangay Officials</span>
+                <div className={styles['brgy-cpt']}>
+                    <img src="https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706083237/408500257_122117065472102454_6962691213519753276_n_copy_ongujc.png" alt="" className={styles['cpt-img']} />
+                    <div className={styles['cpt-info']}>
+                        <span className={styles['cpt-title']}>Punong Barangay</span>
+                        <span className={styles['cpt-name']}>Tadeo Allan M. Aramil</span>
+                        <span className={styles['cpt-desc']}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+
+                        <div className={styles['ctncus-container']}><button className={styles['cntc-us-boff']}>Contact Us  →</button></div>
+                    </div>
+
+
+                </div>
+                <div className={styles.carousell}>
+                    <div className={styles['carousell-cards']} />
+                    <div className={styles['carousell-cards']} />
+                    <div className={styles['carousell-cards']} />
+                </div>
             </div>
-            <div className={styles.officials} />
         </div>
     </div>;
 };

@@ -1,6 +1,6 @@
 .root {
     width: 1920px;
-    height: 100vh;
+    height: 200vh;
 }
 
 .image-bg {
@@ -89,7 +89,14 @@
     justify-items: center;
     align-content: center;
     justify-content: end;
-    row-gap: 90px;
+    gap: 50px;
+    background-repeat: no-repeat;
+    background-position: 20% 29%;
+    background-size: 30%;
+    background-attachment: scroll;
+    background-origin: padding-box;
+    background-clip: border-box;
+    background-color: transparent;
 }
 
 .left-image {
@@ -109,7 +116,7 @@
     width: 828px;
     height: 400px;
     background-color: #2fad6e;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
     display: flex;
     align-items: center;
     justify-items: center;
@@ -147,34 +154,58 @@
 }
 
 .brgy-info-mem {
-    background-repeat: no-repeat;
-    background-image: url(https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706070752/czM6Ly9tZWRpYS1wcml2YXRlLmNhbnZhLmNvbS9HWUVEVS9NQUYxMVVHWUVEVS8xL3AuanBn_copy_soaq8u.png);
-    background-position: 55% 21%;
-    background-size: cover;
-    background-attachment: scroll;
-    background-origin: padding-box;
-    background-clip: border-box;
-    background-color: transparent;
+    margin-top: 50px;
+    height: 1500px;
 }
 
 .top {
     height: 150px;
-    margin-right: 5%;
-    margin-left: 5%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-items: center;
     align-content: center;
-    justify-content: space-between;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-image: url(https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706070886/Marikina_-_San_Roque__view_from_Sta._Lucia___Marcos_Highway__Marikina_2017-08-22_copy_1_vvxmq8.png);
+    background-position: 49% 51%;
+    background-size: cover;
+    background-attachment: scroll;
+    background-origin: padding-box;
+    background-clip: border-box;
+    background-color: transparent;
+    border-radius: 10px;
+    column-gap: 20px;
 }
 
-.officials {}
+.officials {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    margin-top: 40px;
+    background-repeat: no-repeat;
+    background-image: url(https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706070751/logo_sln6bp.png);
+    background-position: 23% 18%;
+    background-size: 20%;
+    background-attachment: scroll;
+    background-origin: padding-box;
+    background-clip: border-box;
+    background-color: transparent;
+    height: 1500px;
+}
 
 .top-card {
     height: 100%;
-    width: 400px;
+    width: 394px;
     border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+    column-gap: 20px;
 }
 
 .cert-image {
@@ -248,4 +279,128 @@
     margin-bottom: 20px;
     height: 48px;
 
+}
+
+.card-info-brgy {
+    height: 100%;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    align-content: center;
+    justify-content: center;
+    text-align: start;
+}
+
+.icon-1 {}
+
+.head1-info {
+    font-size: 60px;
+    line-height: normal;
+    font-weight: 700;
+    color: white;
+}
+
+.subhead1-info {
+    font-size: 24px;
+    line-height: normal;
+    font-weight: 600;
+    color: white;
+}
+
+.officials-header {
+    font-size: 40px;
+    line-height: normal;
+    font-weight: 700;
+    margin-bottom: 50px;
+}
+
+.brgy-cpt {
+    width: 1000px;
+    height: 650px;
+    background-color: rgba(255, 255, 255, 0);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.cpt-img {
+    height: 100%;
+}
+
+.cpt-title {
+    font-size: 18px;
+    line-height: normal;
+    font-weight: 600;
+    width: 160px;
+    height: 40px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    border-radius: 10px;
+    border: 1px solid #2fad6e;
+}
+
+.cpt-name {
+    font-size: 40px;
+    line-height: normal;
+    font-weight: 900;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.cpt-desc {
+    width: 450px;
+    font-size: 24px;
+    font-weight: 400;
+    text-align: start;
+    margin-bottom: 30px;
+}
+
+.cpt-info {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-items: start;
+    align-content: start;
+    justify-content: start;
+    width: 450px;
+    height: 400px;
+}
+
+.cntc-us-boff {
+    background-color: #2fad6e;
+    color: white;
+    width: 150px;
+    height: 60px;
+    float: right;
+}
+
+.ctncus-container {
+    width: 100%;
+    display: flex;
+}
+
+.carousell {
+    height: 400px;
+    display: flex;
+    overflow: auto;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.carousell-cards {
+    width: 400px;
+    height: 400px;
+    background-color: #BE2323;
 }
