@@ -3,16 +3,25 @@ import styles from './home.module.scss';
 import PeopleIcon from '@mui/icons-material/People';
 import FoundationIcon from '@mui/icons-material/Foundation';
 import LandscapeIcon from '@mui/icons-material/Landscape';
+import Carousel from 'react-elastic-carousel';
 
 export interface HomeProps {
     className?: string;
 }
+
+const breakPoints = [
+    { width: 1, itemsToShow: 1 },
+    { width: 550, itemsToShow: 2 },
+    { width: 768, itemsToShow: 3 },
+    { width: 1200, itemsToShow: 4 },
+]
 
 /**
  * This component was created using Codux's Default new component template.
  * To create custom component templates, see https://help.codux.com/kb/en/article/kb16522
  */
 export const Home = ({ className }: HomeProps) => {
+
     return <div className={classNames(styles.root, className)}>
         <div className={styles['image-bg']}>
             <span className={styles['heading-text']}>Barangay San Roque</span>
@@ -89,11 +98,51 @@ export const Home = ({ className }: HomeProps) => {
 
                 </div>
                 <div className={styles.carousell}>
-                    <div className={styles['carousell-cards']} />
-                    <div className={styles['carousell-cards']} />
-                    <div className={styles['carousell-cards']} />
+                    <div className={styles['carousell-cards']}>
+                        <img src="" alt="" className={styles.kgwd} />
+                        <span className={styles['kgwd-title']}>Kagawad</span>
+                        <span className={styles['kgwd-name']}>Tadeo Allan M. Aramil</span>
+                        <span className={styles['kgwd-desc']}>Committee Chairman - Budget and Appropriations, Ways and Means, Livelihood, Trade and Industry and People’s Participation</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>;
 };
+/*                 <Carousel breakPoints={breakPoints}>
+                   <div className={styles['carousell-cards']}>
+                        <img src="https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706083237/408500257_122117065472102454_6962691213519753276_n_copy_ongujc.png" alt="" className={styles.kgwd} />
+                        <span className={styles['kgwd-title']}>Kagawad</span>
+                        <span className={styles['kgwd-name']}>Tadeo Allan M. Aramil</span>
+                        <span className={styles['kgwd-desc']}>Kagawad Chair on Peace &amp; Order Kagawad Chair on Peace &amp; Order Kagawad Chair on Peace &amp; Order</span>
+                    </div>
+
+                   <div className={styles['carousell-cards']}>
+                        <img src="https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706083237/408500257_122117065472102454_6962691213519753276_n_copy_ongujc.png" alt="" className={styles.kgwd} />
+                        <span className={styles['kgwd-title']}>Kagawad</span>
+                        <span className={styles['kgwd-name']}>Tadeo Allan M. Aramil</span>
+                        <span className={styles['kgwd-desc']}>Kagawad Chair on Peace &amp; Order Kagawad Chair on Peace &amp; Order Kagawad Chair on Peace &amp; Order</span>
+                    </div>
+
+                   <div className={styles['carousell-cards']}>
+                        <img src="https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706083237/408500257_122117065472102454_6962691213519753276_n_copy_ongujc.png" alt="" className={styles.kgwd} />
+                        <span className={styles['kgwd-title']}>Kagawad</span>
+                        <span className={styles['kgwd-name']}>Tadeo Allan M. Aramil</span>
+                        <span className={styles['kgwd-desc']}>Kagawad Chair on Peace &amp; Order Kagawad Chair on Peace &amp; Order Kagawad Chair on Peace &amp; Order</span>
+                    </div>
+
+                   <div className={styles['carousell-cards']}>
+                        <img src="https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706083237/408500257_122117065472102454_6962691213519753276_n_copy_ongujc.png" alt="" className={styles.kgwd} />
+                        <span className={styles['kgwd-title']}>Kagawad</span>
+                        <span className={styles['kgwd-name']}>Tadeo Allan M. Aramil</span>
+                        <span className={styles['kgwd-desc']}>Kagawad Chair on Peace &amp; Order Kagawad Chair on Peace &amp; Order Kagawad Chair on Peace &amp; Order</span>
+                    </div>
+                    <div className={styles['carousell-cards']}>
+                        <img src="https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706083237/408500257_122117065472102454_6962691213519753276_n_copy_ongujc.png" alt="" className={styles.kgwd} />
+                        <span className={styles['kgwd-title']}>Kagawad</span>
+                        <span className={styles['kgwd-name']}>Tadeo Allan M. Aramil</span>
+                        <span className={styles['kgwd-desc']}>Kagawad Chair on Peace &amp; Order Kagawad Chair on Peace &amp; Order Kagawad Chair on Peace &amp; Order</span>
+                    </div>
+                </Carousel>
+                
+                */

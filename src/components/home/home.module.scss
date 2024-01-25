@@ -388,7 +388,7 @@
 }
 
 .carousell {
-    height: 400px;
+    height: 600px;
     display: flex;
     overflow: auto;
     flex-direction: row;
@@ -401,6 +401,62 @@
 
 .carousell-cards {
     width: 400px;
+    background-color: rgba(190, 35, 35, 0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    row-gap: 10px;
+    border-radius: 20px;
+    border: 1px solid black;
+    height: 450px;
+    align-content: center;
+    justify-content: center;
+}
+
+.kgwd {
+    width: 250px;
+    height: 250px;
+}
+
+
+.kgwd-title {
+    font-size: 12px;
+    line-height: normal;
+    font-weight: 600;
+    width: 80px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    border-radius: 10px;
+    border: 1px solid #2fad6e;
+    height: 30px;
+}
+
+.kgwd-name {
+    font-size: 24px;
+    line-height: normal;
+    font-weight: 900;
+}
+
+.kgwd-desc {
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    line-height: normal;
+    width: 350px;
+}
+
+.kgwd-info {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-items: start;
+    align-content: start;
+    justify-content: start;
+    width: 450px;
     height: 400px;
-    background-color: #BE2323;
 }
