@@ -4,6 +4,7 @@ import PeopleIcon from '@mui/icons-material/People';
 import FoundationIcon from '@mui/icons-material/Foundation';
 import LandscapeIcon from '@mui/icons-material/Landscape';
 import Carousel from 'react-elastic-carousel';
+import { Footer } from '../footer/footer';
 
 export interface HomeProps {
     className?: string;
@@ -107,6 +108,11 @@ export const Home = ({ className }: HomeProps) => {
                 </div>
             </div>
         </div>
+        <div className={styles.contact}>
+            <div className={styles['contact-form']} />
+            <div className={styles.logos} />
+        </div>
+        <Footer />
     </div>;
 };
 /*                 <Carousel breakPoints={breakPoints}>

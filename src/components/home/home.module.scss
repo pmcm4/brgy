@@ -460,3 +460,34 @@
     width: 450px;
     height: 400px;
 }
+
+.contact {
+    height: 800px;
+    background-color: transparent;
+    display: flex;
+    background-repeat: no-repeat;
+    background-image: url(https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706070752/czM6Ly9tZWRpYS1wcml2YXRlLmNhbnZhLmNvbS9HWUVEVS9NQUYxMVVHWUVEVS8xL3AuanBn_copy_soaq8u.png);
+    background-position: 51% 22%;
+    background-size: cover;
+    background-attachment: scroll;
+    background-origin: padding-box;
+    background-clip: border-box;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+    column-gap: 30px;
+}
+
+.contact-form {
+    height: 80%;
+    background-color: white;
+    border-radius: 20px;
+    width: 450px;
+}
+
+.logos {
+    height: 100%;
+    width: 45%;
+}
