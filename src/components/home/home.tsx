@@ -5,6 +5,7 @@ import FoundationIcon from '@mui/icons-material/Foundation';
 import LandscapeIcon from '@mui/icons-material/Landscape';
 import Carousel from 'react-elastic-carousel';
 import { Footer } from '../footer/footer';
+import { GoogleMap, useLoadScript } from '@react-google-maps/api';
 
 export interface HomeProps {
     className?: string;
@@ -17,11 +18,342 @@ const breakPoints = [
     { width: 1200, itemsToShow: 4 },
 ]
 
+const center = {
+    lat: 14.629162807169603,
+    lng: 121.09842114576219, 
+};
+
+const customMapStyle = [
+    {
+        featureType: 'all',
+        elementType: 'geometry.fill',
+        stylers: [
+            {
+                visibility: 'on',
+            },
+        ],
+    },
+    {
+        featureType: 'all',
+        elementType: 'labels.text',
+        stylers: [
+            {
+                visibility: 'off',
+            },
+        ],
+    },
+    {
+        featureType: 'administrative',
+        elementType: 'all',
+        stylers: [
+            {
+                visibility: 'off',
+            },
+        ],
+    },
+    {
+        featureType: 'administrative.country',
+        elementType: 'labels.text',
+        stylers: [
+            {
+                visibility: 'on',
+            },
+        ],
+    },
+    {
+        featureType: 'administrative.province',
+        elementType: 'labels.text',
+        stylers: [
+            {
+                visibility: 'on',
+            },
+        ],
+    },
+    {
+        featureType: 'administrative.locality',
+        elementType: 'labels.text',
+        stylers: [
+            {
+                visibility: 'on',
+            },
+        ],
+    },
+    {
+        featureType: 'administrative.neighborhood',
+        elementType: 'labels.text',
+        stylers: [
+            {
+                visibility: 'on',
+            },
+        ],
+    },
+    {
+        featureType: 'administrative.land_parcel',
+        elementType: 'labels.text',
+        stylers: [
+            {
+                visibility: 'on',
+            },
+        ],
+    },
+    {
+        featureType: 'landscape',
+        elementType: 'all',
+        stylers: [
+            {
+                color: '#e9e0da',
+            },
+            {
+                visibility: 'off',
+            },
+        ],
+    },
+    {
+        featureType: 'landscape.man_made',
+        elementType: 'geometry.fill',
+        stylers: [
+            {
+                color: '#e9e0da',
+            },
+            {
+                visibility: 'on',
+            },
+        ],
+    },
+    {
+        featureType: 'landscape.natural',
+        elementType: 'geometry.fill',
+        stylers: [
+            {
+                color: '#e9e0da',
+            },
+            {
+                visibility: 'on',
+            },
+        ],
+    },
+    {
+        featureType: 'poi',
+        elementType: 'labels.icon',
+        stylers: [
+            {
+                visibility: 'off',
+            },
+        ],
+    },
+    {
+        featureType: 'poi.attraction',
+        elementType: 'all',
+        stylers: [
+            {
+                visibility: 'off',
+            },
+        ],
+    },
+    {
+        featureType: 'poi.business',
+        elementType: 'all',
+        stylers: [
+            {
+                visibility: 'off',
+            },
+        ],
+    },
+    {
+        featureType: 'poi.government',
+        elementType: 'geometry',
+        stylers: [
+            {
+                visibility: 'off',
+            },
+        ],
+    },
+    {
+        featureType: 'poi.medical',
+        elementType: 'all',
+        stylers: [
+            {
+                visibility: 'off',
+            },
+        ],
+    },
+    {
+        featureType: 'poi.park',
+        elementType: 'all',
+        stylers: [
+            {
+                color: '#b8cf78',
+            },
+            {
+                saturation: '19',
+            },
+            {
+                lightness: '-16',
+            },
+        ],
+    },
+    {
+        featureType: 'poi.park',
+        elementType: 'labels.icon',
+        stylers: [
+            {
+                visibility: 'off',
+            },
+        ],
+    },
+    {
+        featureType: 'poi.place_of_worship',
+        elementType: 'all',
+        stylers: [
+            {
+                visibility: 'off',
+            },
+        ],
+    },
+    {
+        featureType: 'poi.school',
+        elementType: 'all',
+        stylers: [
+            {
+                visibility: 'off',
+            },
+        ],
+    },
+    {
+        featureType: 'poi.sports_complex',
+        elementType: 'all',
+        stylers: [
+            {
+                visibility: 'off',
+            },
+        ],
+    },
+    {
+        featureType: 'poi.sports_complex',
+        elementType: 'geometry',
+        stylers: [
+            {
+                color: '#c7c7c7',
+            },
+            {
+                visibility: 'off',
+            },
+        ],
+    },
+    {
+        featureType: 'road',
+        elementType: 'all',
+        stylers: [
+            {
+                color: '#ffffff',
+            },
+        ],
+    },
+    {
+        featureType: 'road',
+        elementType: 'labels',
+        stylers: [
+            {
+                visibility: 'off',
+            },
+        ],
+    },
+    {
+        featureType: 'road.highway',
+        elementType: 'geometry',
+        stylers: [
+            {
+                color: '#ffffff',
+            },
+            {
+                visibility: 'simplified',
+            },
+        ],
+    },
+    {
+        featureType: 'road.highway',
+        elementType: 'labels.icon',
+        stylers: [
+            {
+                color: '#ffffff',
+            },
+            {
+                visibility: 'off',
+            },
+        ],
+    },
+    {
+        featureType: 'road.arterial',
+        elementType: 'all',
+        stylers: [
+            {
+                visibility: 'simplified',
+            },
+            {
+                color: '#ffffff',
+            },
+        ],
+    },
+    {
+        featureType: 'road.arterial',
+        elementType: 'geometry',
+        stylers: [
+            {
+                visibility: 'simplified',
+            },
+        ],
+    },
+    {
+        featureType: 'road.local',
+        elementType: 'all',
+        stylers: [
+            {
+                color: '#ffffff',
+            },
+            {
+                visibility: 'simplified',
+            },
+        ],
+    },
+    {
+        featureType: 'road.local',
+        elementType: 'geometry',
+        stylers: [
+            {
+                visibility: 'on',
+            },
+        ],
+    },
+    {
+        featureType: 'transit',
+        elementType: 'all',
+        stylers: [
+            {
+                visibility: 'off',
+            },
+        ],
+    },
+    {
+        featureType: 'water',
+        elementType: 'all',
+        stylers: [
+            {
+                color: '#84bde9',
+            },
+        ],
+    },
+];
+
+
 /**
  * This component was created using Codux's Default new component template.
  * To create custom component templates, see https://help.codux.com/kb/en/article/kb16522
  */
-export const Home = ({ className }: HomeProps) => {
+export const Home = ({ className }: HomeProps) => { 
+    const { isLoaded } = useLoadScript({
+        googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAP_API_KEY,
+    });
+
 
     return <div className={classNames(styles.root, className)}>
         <div className={styles['image-bg']}>
@@ -109,8 +441,55 @@ export const Home = ({ className }: HomeProps) => {
             </div>
         </div>
         <div className={styles.contact}>
-            <div className={styles['contact-form']} />
-            <div className={styles.logos} />
+            <div className={styles['contact-form']}>
+                <span className={styles['contact-us-title']}>Contact Us</span>
+                <span className={styles['contact-us-desc']}>text</span>
+                <div className={styles['names-container']}>
+                    <div className={styles['fname-container']}>
+                        <span className={styles['name-span']}>First Name*</span>
+                        <input className={styles['fname-input']} />
+                    </div>
+                    <div className={styles['lname-container']}>
+                        <span className={styles['name-span']}>Last Name*</span>
+                        <input className={styles['lname-input']} />
+                    </div>
+                </div>
+                <div className={styles['email-container']}>
+                    <span className={styles['email-title-contact']}>Email * </span>
+                    <input className={styles['email-input']} />
+                </div>
+                <div className={styles['message-container']}>
+                    <span className={styles['leave-a-msg']}>Leave us a message...</span>
+                    <textarea className={styles['message-input']} />
+                </div>
+                <button className={styles['contact-submit-btn']}>Submit</button>
+            </div>
+            <div className={styles.logos}>
+                <div className={styles['logo-container']}>
+                    <img src="https://www.geocities.ws/jkandres/portfolio/marikina/190.seal.gif" alt="" className={styles['logo-contact']} />
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Sangguniang_Kabataan_logo.svg" alt="" className={styles['logo-contact']} />
+                    <img src="https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706070751/logo_sln6bp.png" alt="" className={styles['logo-contact']} />
+                </div>
+                <div className={styles['map-container']}>
+                {isLoaded ? (
+                        <GoogleMap
+                            center={center}
+                            zoom={13}
+                            mapContainerStyle={{
+                                width: '100%',
+                                height: '100%',
+                                borderRadius: '10px',
+                            }}
+                            options={{
+                                styles: customMapStyle,
+                            }}
+                        >
+                            {/* Markers Here */}
+                        </GoogleMap>
+                    ) : null}
+
+                </div>
+                </div>
         </div>
         <Footer />
     </div>;
