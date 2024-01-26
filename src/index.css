@@ -49,3 +49,35 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+
+/* square buttons */
+.rec.rec-arrow {
+  border-radius: 0;
+}
+
+.rec.rec-arrow {
+  background-color: white;
+}
+
+.rec.rec-arrow:hover {
+  background-color: #2fad6e !important; 
+}
+
+.rec.rec-arrow:focus:enabled {
+  background-color: #2fad6e !important; 
+}
+
+.rec.rec-arrow:disabled {
+  visibility: hidden;
+}
+
+.rec.rec-dot {
+  background-color: white;
+}
+
+.rec.rec-dot:focus:enabled {
+  background-color: #2fad6e !important; 
+}
+.hFlVyB {
+  box-shadow: 0 0 1px 3px #2fad6e !important;
+}

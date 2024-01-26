@@ -14,8 +14,8 @@ export interface HomeProps {
 const breakPoints = [
     { width: 1, itemsToShow: 1 },
     { width: 550, itemsToShow: 2 },
-    { width: 768, itemsToShow: 3 },
-    { width: 1200, itemsToShow: 4 },
+    { width: 768, itemsToShow: 2 },
+    { width: 1200, itemsToShow: 3 },
 ]
 
 const center = {
@@ -431,12 +431,41 @@ export const Home = ({ className }: HomeProps) => {
 
                 </div>
                 <div className={styles.carousell}>
-                    <div className={styles['carousell-cards']}>
-                        <img src="" alt="" className={styles.kgwd} />
+                <Carousel breakPoints={breakPoints}>
+                   <div className={styles['carousell-cards']}>
+                        <img src="https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706083237/408500257_122117065472102454_6962691213519753276_n_copy_ongujc.png" alt="" className={styles.kgwd} />
                         <span className={styles['kgwd-title']}>Kagawad</span>
                         <span className={styles['kgwd-name']}>Tadeo Allan M. Aramil</span>
-                        <span className={styles['kgwd-desc']}>Committee Chairman - Budget and Appropriations, Ways and Means, Livelihood, Trade and Industry and People’s Participation</span>
+                        <span className={styles['kgwd-desc']}>Kagawad Chair on Peace &amp; Order Kagawad Chair on Peace &amp; Order Kagawad Chair on Peace &amp; Order</span>
                     </div>
+
+                   <div className={styles['carousell-cards']}>
+                        <img src="https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706083237/408500257_122117065472102454_6962691213519753276_n_copy_ongujc.png" alt="" className={styles.kgwd} />
+                        <span className={styles['kgwd-title']}>Kagawad</span>
+                        <span className={styles['kgwd-name']}>Tadeo Allan M. Aramil</span>
+                        <span className={styles['kgwd-desc']}>Kagawad Chair on Peace &amp; Order Kagawad Chair on Peace &amp; Order Kagawad Chair on Peace &amp; Order</span>
+                    </div>
+
+                   <div className={styles['carousell-cards']}>
+                        <img src="https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706083237/408500257_122117065472102454_6962691213519753276_n_copy_ongujc.png" alt="" className={styles.kgwd} />
+                        <span className={styles['kgwd-title']}>Kagawad</span>
+                        <span className={styles['kgwd-name']}>Tadeo Allan M. Aramil</span>
+                        <span className={styles['kgwd-desc']}>Kagawad Chair on Peace &amp; Order Kagawad Chair on Peace &amp; Order Kagawad Chair on Peace &amp; Order</span>
+                    </div>
+
+                   <div className={styles['carousell-cards']}>
+                        <img src="https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706083237/408500257_122117065472102454_6962691213519753276_n_copy_ongujc.png" alt="" className={styles.kgwd} />
+                        <span className={styles['kgwd-title']}>Kagawad</span>
+                        <span className={styles['kgwd-name']}>Tadeo Allan M. Aramil</span>
+                        <span className={styles['kgwd-desc']}>Kagawad Chair on Peace &amp; Order Kagawad Chair on Peace &amp; Order Kagawad Chair on Peace &amp; Order</span>
+                    </div>
+                    <div className={styles['carousell-cards']}>
+                        <img src="https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706083237/408500257_122117065472102454_6962691213519753276_n_copy_ongujc.png" alt="" className={styles.kgwd} />
+                        <span className={styles['kgwd-title']}>Kagawad</span>
+                        <span className={styles['kgwd-name']}>Tadeo Allan M. Aramil</span>
+                        <span className={styles['kgwd-desc']}>Kagawad Chair on Peace &amp; Order Kagawad Chair on Peace &amp; Order Kagawad Chair on Peace &amp; Order</span>
+                    </div>
+                </Carousel>
                 </div>
             </div>
         </div>
