@@ -1,0 +1,133 @@
+.root {
+    width: 1920px;
+    display: flex;
+    flex-direction: column;
+}
+
+.header-faq {
+    width: 100%;
+    background-repeat: no-repeat;
+    background-image: url('https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706070752/czM6Ly9tZWRpYS1wcml2YXRlLmNhbnZhLmNvbS9HWUVEVS9NQUYxMVVHWUVEVS8xL3AuanBn_copy_soaq8u.png');
+    background-position: 52% 18%;
+    background-size: 100%;
+    background-attachment: scroll;
+    background-origin: padding-box;
+    background-clip: border-box;
+    background-color: transparent;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.faq-body {
+    width: 100%;
+    display: flex;
+    grid-auto-flow: row;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: space-between;
+    height: 600px;
+}
+
+.heading-text {
+    line-height: normal;
+    font-size: 70px;
+    font-weight: 700;
+    margin-left: 4.7%;
+    color: black;
+    text-align: start;
+    font-style: normal;
+}
+
+.subheading {
+    font-size: 24px;
+    line-height: normal;
+    margin-left: 5%;
+    width: 700px;
+    color: black;
+    font-weight: 500;
+    text-align: start;
+}
+
+.menu-faq {
+    position: relative !important;
+}
+
+.accordion-div {
+    margin-bottom: 20px;
+}
+
+.accordion {
+    width: 600px;
+    height: 80px;
+    font-size: 28px;
+    transition: 0.4s;
+    text-align: left;
+}
+
+.panel {
+    width: 600px;
+    font-size: 24px;
+    display: none;
+    overflow: hidden;
+
+}
+
+.active,
+.accordion:hover {
+    background-color: #ccc;
+}
+
+.left {
+
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    align-content: center;
+    justify-content: center;
+    justify-items: end;
+    width: 48%;
+    row-gap: 0px;
+    height: 600px;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    align-content: center;
+    justify-content: center;
+    justify-items: start;
+    width: 48%;
+    row-gap: 0px;
+}
+
+.faq-breaker {
+    height: 300px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-image: url('https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706072251/Marikina_-_San_Roque__view_from_Sta._Lucia___Marcos_Highway__Marikina_2017-08-22_green_dps6kt.jpg');
+    background-position: 50%;
+    background-size: cover;
+    background-attachment: scroll;
+    background-origin: padding-box;
+    background-clip: border-box;
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: space-evenly;
+}
+
+.faq-breaker-logo {
+    width: 250px;
+    height: 250px;
+}
