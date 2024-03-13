@@ -1,0 +1,121 @@
+.root {
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header-perso {
+    text-align: center;
+    font-size: 2em;
+}
+
+.perso-subhead {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.existing-profile {
+    margin-top: 30px;
+}
+
+.input-form {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.input-names {
+    width: 100%;
+    height: 30px;
+    border-radius: 10px;
+}
+
+.label-forms {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.gender-drop-down {
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+}
+
+.next-btn {}
+
+.left-sign {
+    width: 50%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.right-sign {
+    width: 50%;
+    height: 400px;
+}
+
+.upload-div {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+}
+
+.first-id {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.second-id {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.signatures-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.nav-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+    gap: 50px;
+}
+

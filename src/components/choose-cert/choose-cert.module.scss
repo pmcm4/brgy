@@ -1,0 +1,100 @@
+.root {
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header-perso {
+    text-align: center;
+    font-size: 2em;
+}
+
+.perso-subhead {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.existing-profile {
+    margin-top: 30px;
+}
+
+.input-form {
+    width: 100%;
+    height: 100%;
+}
+
+.input-names {
+    height: 30px;
+    border-radius: 10px;
+    width: 99%;
+}
+
+.label-forms {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.gender-drop-down {
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+}
+
+
+.solo-parent {
+    width: 100%;
+    display: none;
+}
+
+
+.cohabitation {
+    width: 100%;
+    display: none;
+}
+
+.good-moral {
+    width: 100%;
+    display: none;
+}
+
+.no-income {
+    width: 100%;
+    display: none;
+}
+
+.first-time-job-seeker {
+    width: 100%;
+    display: none;
+}
+
+.residency {
+    width: 100%;
+    display: none;
+}
+
+.transfer-of-residency{
+    width: 100%;
+    display: none;
+}
+
+.living-still{
+    width: 100%;
+    display: none;
+}
+
+.birth-fact{
+    width: 100%;
+    display: none;
+}
+
+.nav-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+    gap: 50px;
+}

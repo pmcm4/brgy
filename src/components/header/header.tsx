@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import styles from './header.module.scss';
+import { Link } from 'react-router-dom';
 
 export interface HeaderProps {
     className?: string;
@@ -15,10 +16,16 @@ export const Header = ({ className }: HeaderProps) => {
             <img src="https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706070751/logo_sln6bp.png" alt="" className={styles.logo} />
         </div>
         <div className={styles.right}>
+            <Link to="/" style={{ textDecoration: 'none' }}>
             <span className={styles['menu-items']}>Home</span>
+            </Link>
             <span className={styles['menu-items']}>About</span>
+            <Link to="/certificates" style={{ textDecoration: 'none' }}>
             <span className={styles['menu-items']}>Services</span>
+            </Link>
+            <Link to="/faq" style={{ textDecoration: 'none' }}>
             <span className={styles['menu-items']}>FAQ</span>
+            </Link>
             <span className={styles['menu-items']}>Get in Touch →</span>
         </div>
     </div>;

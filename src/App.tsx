@@ -9,16 +9,25 @@ import { Header } from './components/header/header';
 import { Home } from './components/home/home';
 import { FAQ } from './components/faq/faq';
 import { Footer } from './components/footer/footer';
+import { Certificates } from './components/certificates/certificates';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
-    const [count, setCount] = useState(0);
 
-    return (
-        <div>
-            <FAQ />
+    return (        
+        <BrowserRouter>
+        <Header/>
+        <Routes>
+           <Route path='/' Component={Home}/>
+         </Routes>
+         <Routes>
+           <Route path='/faq' Component={FAQ}/>
+         </Routes>
+         <Routes>
+           <Route path='/certificates' Component={Certificates}/>
+         </Routes>
 
-           </div>
-
+       </BrowserRouter>   
     );
 }
 

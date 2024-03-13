@@ -1,0 +1,60 @@
+.root {
+    width: 1920px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.header-certs {
+    height: 400px;
+    background-repeat: no-repeat;
+    background-image: url(https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706070752/czM6Ly9tZWRpYS1wcml2YXRlLmNhbnZhLmNvbS9HWUVEVS9NQUYxMVVHWUVEVS8xL3AuanBn_copy_soaq8u.png);
+    background-position: 49% 18%;
+    background-size: cover;
+    background-attachment: scroll;
+    background-origin: padding-box;
+    background-clip: border-box;
+    background-color: transparent;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.heading-text {
+    line-height: normal;
+    font-size: 70px;
+    font-weight: 700;
+    color: black;
+    text-align: start;
+    font-style: normal;
+}
+
+.subheading {
+    font-size: 24px;
+    line-height: normal;
+    width: 700px;
+    color: black;
+    font-weight: 500;
+    text-align: center;
+}
+
+.personal-form{
+    display: none;
+}
+
+.pfaddress{
+    display: none;
+}
+.certs{
+    display: none;
+}
+.identity-proof{
+    display: none;
+}

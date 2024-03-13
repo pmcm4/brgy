@@ -32,17 +32,18 @@ export const FAQ = ({ className }: FAQProps) => {
         return () => {
             // Cleanup event listeners when the component unmounts
             accordionRef.current.forEach((accordion, index) => {
-                accordion.removeEventListener("click", () => handleAccordionClick(index));
+                accordion?.removeEventListener("click", () => handleAccordionClick(index));
             });
         };
     }, []);
 
 
     return <div className={classNames(styles.root, className)}>
-        <Header className={styles['menu-faq']} />
+        
         <div className={styles['header-faq']} >
             <span className={styles['heading-text']}>Frequently Asked Questions</span>
-            <span className={styles.subheading}>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</span></div>
+            <span className={styles.subheading}>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</span>
+            </div>
         <div className={styles['faq-body']}>
             <div className={styles['left']}>
 
@@ -88,7 +89,7 @@ export const FAQ = ({ className }: FAQProps) => {
 
                 <div className={styles['accordion-div']}>
                     <button ref={(el) => (accordionRef.current[4] = el)} className={styles.accordion}>
-                        FAQ 5 ▼
+                        FAQ 5
                     </button>
                     <div className={styles.panel}>
                         <span>text</span>
