@@ -21,9 +21,6 @@ function App() {
            <Route path='/' Component={Home}/>
          </Routes>
          <Routes>
-           <Route path='/faq' Component={FAQ}/>
-         </Routes>
-         <Routes>
            <Route path='/certificates' Component={Certificates}/>
          </Routes>
 

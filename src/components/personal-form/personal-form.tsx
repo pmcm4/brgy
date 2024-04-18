@@ -33,7 +33,7 @@ export const PersonalForm = ({ className }: PersonalFormProps) => {
             <br />
             <label className={styles['label-forms']}>Gender:</label>
             <br />
-            <select className={styles['gender-drop-down']}><option disabled selected>Select Gender</option>
+            <select defaultValue={"Select Gender"} className={styles['gender-drop-down']}><option disabled>Select Gender</option>
                 <option>Male</option>
                 <option>Female</option></select>
             <br />
@@ -55,13 +55,13 @@ export const PersonalForm = ({ className }: PersonalFormProps) => {
             <br />
             <label className={styles['label-forms']}>Status:</label>
             <br />
-            <select className={styles['gender-drop-down']}><option disabled selected>Select Civil Status</option>
+            <select defaultValue={"Select Civil Status"} className={styles['gender-drop-down']}><option disabled>Select Civil Status</option>
                 <option>Married</option>
                 <option>Single</option></select>
             <br />
             <label className={styles['label-forms']}>Sector:</label>
             <br />
-            <select className={styles['gender-drop-down']}><option disabled selected>Select Sector</option>
+            <select defaultValue={"Select Sector"} className={styles['gender-drop-down']}><option disabled>Select Sector</option>
                 <option>PWD</option>
                 <option>Senior Citizen</option></select>
             <br />

@@ -8,11 +8,6 @@ export interface FAQProps {
     className?: string;
 }
 
-/**
- * This component was created using Codux's Default new component template.
- * To create custom component templates, see https://help.codux.com/kb/en/article/kb16522
- */
-
 export const FAQ = ({ className }: FAQProps) => {
 
     const accordionRef = useRef<HTMLButtonElement[]>([]);
@@ -20,10 +15,11 @@ export const FAQ = ({ className }: FAQProps) => {
     useEffect(() => {
         const handleAccordionClick = (index: number) => {
             const accordion = accordionRef.current[index];
-            const panel = accordion.nextElementSibling;
-
+            const panel = accordion.nextElementSibling!;
+            
             accordion.classList.toggle("active");
             panel.style.display = panel.style.display === "block" ? "none" : "block";
+            console.log()
         }
         accordionRef.current.forEach((accordion, index) => {
             accordion.addEventListener("click", () => handleAccordionClick(index));
@@ -48,7 +44,7 @@ export const FAQ = ({ className }: FAQProps) => {
             <div className={styles['left']}>
 
                 <div className={styles['accordion-div']}>
-                    <button ref={(el) => (accordionRef.current[0] = el)} className={styles.accordion}>
+                    <button ref={(el) => (accordionRef.current[0] = el!)} className={styles.accordion}>
                         FAQ 1
                     </button>
                     <div className={styles.panel}>
@@ -57,7 +53,7 @@ export const FAQ = ({ className }: FAQProps) => {
                 </div>
 
                 <div className={styles['accordion-div']}>
-                    <button ref={(el) => (accordionRef.current[1] = el)} className={styles.accordion}>
+                    <button ref={(el) => (accordionRef.current[1] = el!)} className={styles.accordion}>
                     FAQ 2
                     </button>
                     <div className={styles.panel}>
@@ -66,7 +62,7 @@ export const FAQ = ({ className }: FAQProps) => {
                 </div>
 
                 <div className={styles['accordion-div']}>
-                    <button ref={(el) => (accordionRef.current[2] = el)} className={styles.accordion}>
+                    <button ref={(el) => (accordionRef.current[2] = el!)} className={styles.accordion}>
                         FAQ 3
                     </button>
                     <div className={styles.panel}>
@@ -79,7 +75,7 @@ export const FAQ = ({ className }: FAQProps) => {
             <div className={styles['right']}>
 
                 <div className={styles['accordion-div']}>
-                    <button ref={(el) => (accordionRef.current[3] = el)} className={styles.accordion}>
+                    <button ref={(el) => (accordionRef.current[3] = el!)} className={styles.accordion}>
                         FAQ 4
                     </button>
                     <div className={styles.panel}>
@@ -88,7 +84,7 @@ export const FAQ = ({ className }: FAQProps) => {
                 </div>
 
                 <div className={styles['accordion-div']}>
-                    <button ref={(el) => (accordionRef.current[4] = el)} className={styles.accordion}>
+                    <button ref={(el) => (accordionRef.current[4] = el!)} className={styles.accordion}>
                         FAQ 5
                     </button>
                     <div className={styles.panel}>
@@ -97,7 +93,7 @@ export const FAQ = ({ className }: FAQProps) => {
                 </div>
 
                 <div className={styles['accordion-div']}>
-                    <button ref={(el) => (accordionRef.current[5] = el)} className={styles.accordion}>
+                    <button ref={(el) => (accordionRef.current[5] = el!)} className={styles.accordion}>
                         FAQ 6 
                     </button>
                     <div className={styles.panel}>
