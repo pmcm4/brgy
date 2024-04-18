@@ -12,22 +12,34 @@
 
 .perso-subhead {
     text-align: center;
-    margin-top: 20px;
+    font-size: 30px;
+    margin: 10px 0 0 0;
 }
 
 .existing-profile {
     margin-top: 30px;
 }
 
+.existing-profile:hover{
+    background-color: #2fad6e;
+    color: white;
+    border: solid 1px #2fad6e;
+}
+
 .input-form {
     width: 100%;
     height: 100%;
+    margin-bottom: 30px;
 }
 
 .input-names {
     width: 100%;
-    height: 30px;
+    height: 50px;
     border-radius: 10px;
+    border: solid 1px;
+    margin: 10px 0 10px 0;
+    font-size: 18px;
+    text-indent: 10px;
 }
 
 .label-forms {
@@ -35,21 +47,31 @@
     font-weight: 400;
 }
 
-.gender-drop-down {
+.input-drop-down {
     width: 100%;
     height: 50px;
     border-radius: 10px;
+    margin: 10px 0 10px 0;
+    font-size: 18px;
+    text-indent: 10px;
+    border: solid 1px;
 }
 
-.next-btn {}
 
-.nav-buttons {
-    width: 100%;
+.nav-buttons{
+    height: auto;
+    width: 300px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-items: center;
-    align-content: center;
-    justify-content: center;
-    gap: 50px;
+    justify-content: space-around;
+}
+.next-btn:hover{
+    background-color: #2fad6e;
+    color: white;
+    border: solid 1px #2fad6e;
+}
+.notice {
+    font-size: 10px;
+    color: rgb(141, 16, 16);
 }
