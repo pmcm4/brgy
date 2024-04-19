@@ -10,7 +10,19 @@
     flex-direction: column;
     align-items: center;
 }
+.pfaddress{
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+.certs{
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .header-certs {
     height: 400px;
@@ -68,11 +80,13 @@
 
 .nav-buttons-container{
     height: auto;
-    width: 300px;
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+    column-gap: 100px;
+    margin-top: 30px;
 }
 .nav-btn:hover{
     background-color: #2fad6e;
@@ -92,7 +106,6 @@
 .input-form {
     width: 100%;
     height: 100%;
-    margin-bottom: 30px;
 }
 
 .input-names {
@@ -120,3 +133,50 @@
     border: solid 1px;
 }
 
+.barangay-clearance{
+    width: 100%;
+}
+
+.solo-parent {
+    width: 100%;
+}
+
+
+.cohabitation {
+    width: 100%;
+}
+
+.good-moral {
+    width: 100%;
+    
+}
+
+.no-income {
+    width: 100%;
+    
+}
+
+.first-time-job-seeker {
+    width: 100%;
+    
+}
+
+.residency {
+    width: 100%;
+    
+}
+
+.transfer-of-residency{
+    width: 100%;
+    
+}
+
+.living-still{
+    width: 100%;
+    
+}
+
+.birth-fact{
+    width: 100%;
+    
+}

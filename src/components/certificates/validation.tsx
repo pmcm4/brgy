@@ -1,29 +1,44 @@
-export default function Validation({ inputs }) {
+export default function Validation({}) {
     const errors = {};
-
+    /* USE FOR LOGIN CREDENTIALS VALIDATION */
+    /*
     if (inputs.firstName === '') {
         errors.name = 'Name is required';
-    } else if (inputs.lastName === '') {
+    }
+    if (inputs.lastName === '') {
         errors.lastName = 'Last Name is required';
-    } else if (inputs.gender === '') {
+    }
+    if (inputs.gender === '') {
         errors.gender = 'Please select your gender';
-    } else if (inputs.emailAddress === '') {
+    }
+    if (inputs.emailAddress === '') {
         errors.email = 'Email Address is required';
-    } else if (inputs.contactNum === '') {
+    }
+    if (inputs.contactNum === '') {
         errors.contact = 'Contact Number is required';
-    } else if (inputs.birthDate === '') {
+    }
+    if (inputs.birthDate === '') {
         errors.birthday = 'Birth Date is required';
-    } else if (inputs.religion === '') {
+    }
+    if (inputs.religion === '') {
         errors.religion = 'Religion is required';
-    } else if (inputs.status === '') {
+    }
+    if (inputs.status === '') {
         errors.status = 'Religion is required';
-    } else if (inputs.sector === '') {
+    }
+    if (inputs.sector === '') {
         errors.sector = 'Sector is required';
-    } else if (inputs.emergName === '') {
+    }
+    if (inputs.emergName === '') {
         errors.emergName = 'Emergency Contact Name is required';
-    } else if (inputs.emerContact === '') {
+    }
+    if (inputs.emerContact === '') {
         errors.emerContact = 'Emergency Contact Number is required';
-    } else if (inputs.emerAddress === '') {
+    }
+    if (inputs.emerAddress === '') {
         errors.emerAddress = 'Emergency Address is required';
     }
+    */
+
+    return errors;
 }
