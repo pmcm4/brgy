@@ -1,3 +1,4 @@
+/* eslint-disable */
 import classNames from 'classnames';
 import styles from './home.module.scss';
 import PeopleIcon from '@mui/icons-material/People';
@@ -7,12 +8,17 @@ import Carousel from 'react-elastic-carousel';
 import { Footer } from '../footer/footer';
 import { GoogleMap, useLoadScript } from '@react-google-maps/api';
 import PersonCard from './personCard';
+import MenuCard from './menuCard';
+import Contactform from './cotactform';
 
 export interface HomeProps {
     className?: string;
 }
 
-const breakPoints = [
+const breakPoints: {
+    width: number;
+    itemsToShow: number;
+}[] = [
     { width: 1, itemsToShow: 1 },
     { width: 550, itemsToShow: 2 },
     { width: 768, itemsToShow: 2 },
@@ -394,46 +400,23 @@ export const Home = ({ className }: HomeProps) => {
                 </span>
             </div>
             <div className={styles['cards-container']}>
-                <div className={styles.card}>
-                    <img
-                        src="https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706074450/photo-1562240020-ce31ccb0fa7d_jlk0ds.webp"
-                        alt=""
-                        className={styles['cert-image']}
-                    />
-                    <div className={styles['gradient-card']}>
-                        <span className={styles['card-text']}>Certifications</span>
-                        <span className={styles['card-subtext']}>
-                            Request all of available certifications through our online services.
-                        </span>
-                    </div>
-                </div>
-                <div className={styles.card}>
-                    <img
-                        src="https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706074448/id_sample_cl3weq.png"
-                        alt=""
-                        className={styles['id-image']}
-                    />
-                    <div className={styles['gradient-card']}>
-                        <span className={styles['card-text']}>I.D. Card</span>
-                        <span className={styles['card-subtext']}>
-                            Request Barangay I.D. through our online services.
-                        </span>
-                    </div>
-                </div>
-                <div className={styles.card}>
-                    <img
-                        src="https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706074449/photo-1531379410502-63bfe8cdaf6f_npnnrt.webp"
-                        alt=""
-                        className={styles['faq-img']}
-                    />
-                    <div className={styles['gradient-card']}>
-                        <span className={styles['card-text']}>FAQ</span>
-                        <span className={styles['card-subtext']}>
-                            Explore Frequently Asked Questions
-                        </span>
-                    </div>
-                </div>
-                <div className={styles.card}>
+                <MenuCard
+                    cardTitle="Certifications"
+                    cardSubText="Request all of available certifications through our online services."
+                    cardImg="https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706074450/photo-1562240020-ce31ccb0fa7d_jlk0ds.webp"
+                />
+                <MenuCard
+                    cardTitle="I.D. Card"
+                    cardSubText="Request Barangay I.D. through our online services."
+                    cardImg="https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706074448/id_sample_cl3weq.png"
+                />
+                <MenuCard
+                    cardTitle="FAQ"
+                    cardSubText="Explore Frequently Asked Questions"
+                    cardImg="https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706074449/photo-1531379410502-63bfe8cdaf6f_npnnrt.webp"
+                />
+                <div className={styles.cardExplore}>
+                    <div className={styles['gradient-card-explore']}></div>
                     <span className={styles['explore-more']}>Explore More ↓</span>
                 </div>
             </div>
@@ -521,29 +504,7 @@ export const Home = ({ className }: HomeProps) => {
                 </div>
             </div>
             <div className={styles.contact}>
-                <div className={styles['contact-form']}>
-                    <span className={styles['contact-us-title']}>Contact Us</span>
-                    <span className={styles['contact-us-desc']}>text</span>
-                    <div className={styles['names-container']}>
-                        <div className={styles['fname-container']}>
-                            <span className={styles['name-span']}>First Name*</span>
-                            <input className={styles['fname-input']} />
-                        </div>
-                        <div className={styles['lname-container']}>
-                            <span className={styles['name-span']}>Last Name*</span>
-                            <input className={styles['lname-input']} />
-                        </div>
-                    </div>
-                    <div className={styles['email-container']}>
-                        <span className={styles['email-title-contact']}>Email * </span>
-                        <input className={styles['email-input']} />
-                    </div>
-                    <div className={styles['message-container']}>
-                        <span className={styles['leave-a-msg']}>Leave us a message...</span>
-                        <textarea className={styles['message-input']} />
-                    </div>
-                    <button className={styles['contact-submit-btn']}>Submit</button>
-                </div>
+                <Contactform />
                 <div className={styles.logos}>
                     <div className={styles['logo-container']}>
                         <img

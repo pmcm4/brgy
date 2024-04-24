@@ -1,24 +1,19 @@
 import classNames from 'classnames';
 import styles from './certificates.module.scss';
-import { Header } from '../header/header';
-import { PersonalForm } from '../personal-form/personal-form';
-import { PFAddress } from '../pf-address/pf-address';
 import { Footer } from '../footer/footer';
-import { Identity_Proof } from '../identity-proof/identity-proof';
-import { ChooseCert } from '../choose-cert/choose-cert';
-import React, { ChangeEvent, forwardRef, useImperativeHandle, useState } from 'react';
-import Validation from './validation';
+import React, { ChangeEvent, useRef, useState } from 'react';
+import { ReactSketchCanvas, type ReactSketchCanvasRef } from 'react-sketch-canvas';
 
 export interface CertificatesProps {
     className?: string;
 }
+const styleSketchCanvas = {
+    border: '0.0625rem solid #9c9c9c',
+    borderRadius: '1px',
+};
 
 export const Certificates = ({ className }: CertificatesProps) => {
-    // Define a generic type for the state object
-    type StateObj = {
-        purpose: string;
-        [key: string]: string; // Additional properties can have string values
-    };
+    const canvasRef = useRef<ReactSketchCanvasRef>(null);
 
     const [inputs, setInputs] = useState({
         firstName: '',
@@ -133,6 +128,24 @@ export const Certificates = ({ className }: CertificatesProps) => {
     const [transferOfResidency, unhideTransferOfResidency] = useState(false);
     const [livingStill, unhideLivingStill] = useState(false);
     const [birthFact, unhideBirthFact] = useState(false);
+
+    //sketch image
+    const [sketchImg, setSketchImg] = useState('');
+
+    const handleClearClick = () => {
+        setSketchImg('');
+        canvasRef.current?.clearCanvas();
+    };
+    const exportSketch = () => {
+        canvasRef.current
+            ?.exportImage('png')
+            .then((data) => {
+                setSketchImg(data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
 
     const toggleDisplayClass = () => {
         if (personalFormActive === true) {
@@ -1400,12 +1413,40 @@ export const Certificates = ({ className }: CertificatesProps) => {
                 <div className={styles['input-form-proof']}>
                     <div className={styles['left-sign']}>
                         <div className={styles['signatures-buttons']}>
-                            <canvas></canvas>
-                            <button className={styles['nav-btn']}>Clear</button>
-                            <button className={styles['nav-btn']}>Check Signature</button>
+                            {' '}
+                            <ReactSketchCanvas
+                                style={styleSketchCanvas}
+                                className={styles['sketchCanvas']}
+                                width="100%"
+                                height="100%"
+                                strokeWidth={4}
+                                strokeColor="black"
+                                ref={canvasRef}
+                            />
+                            <div className={styles['sketchBtn']}>
+                                <button className={styles['nav-btn']} onClick={handleClearClick}>
+                                    Clear
+                                </button>
+                                <button className={styles['nav-btn']} onClick={exportSketch}>
+                                    Check Signature
+                                </button>
+                            </div>
                         </div>
                     </div>
-                    <div className={styles['right-sign']} />
+                    <div className={styles['right-sign']}>
+                        <div className={styles['signatures-buttons']}>
+                            <div className={styles['checkSignature']}>
+                                {sketchImg !== '' && (
+                                    <img src={sketchImg} className={styles['sketchImgPreview']} />
+                                )}
+                            </div>
+                            <div className={styles['sketchBtn']}>
+                                <span className={styles['checkSignatureMessage']}>
+                                    Check your signature!
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div className={styles['upload-div']}>
                     <div className={styles['first-id']}>

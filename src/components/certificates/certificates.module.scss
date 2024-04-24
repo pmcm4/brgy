@@ -196,11 +196,11 @@
     align-items: center;
     justify-items: center;
     align-content: center;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .left-sign {
-    width: 50%;
+    width: 45%;
     height: 400px;
     display: flex;
     flex-direction: column;
@@ -211,8 +211,21 @@
 }
 
 .right-sign {
-    width: 50%;
+    width: 45%;
     height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+    
+}
+.checkSignature{
+    width: 100%;
+    height: 80%;
+    border: solid 1px gray;
+    display: flex;
 }
 
 .upload-div {
@@ -249,8 +262,9 @@
 
 .signatures-buttons {
     width: 100%;
+    height: 80%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-items: center;
     align-content: center;
@@ -269,3 +283,27 @@
     gap: 50px;
 }
 
+
+
+.sketchBtn{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
+
+}
+
+.sketchCanvas{
+    width: 100%;
+    height: 100%;
+}
+
+.checkSignatureMessage{
+    color: black;
+    height: 42px;
+}
+
+.sketchImgPreview{
+    width: 100%;
+    height: 245px;
+}
