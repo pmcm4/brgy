@@ -1389,11 +1389,49 @@ export const Certificates = ({ className }: CertificatesProps) => {
                         </div>
                     </form>
                 </div>
-                4
             </div>
 
             <div className={identityProofActive ? styles['identity-proof'] : styles.hide}>
-                <Identity_Proof />
+                <h1 className={styles['header-perso']}>Address</h1>
+                <span className={styles['perso-subhead']}>
+                    * Please Provide Two(2) Valid ID&apos;s and Two(2) Photo of you holding the
+                    ID&apos;s.
+                </span>
+                <div className={styles['input-form-proof']}>
+                    <div className={styles['left-sign']}>
+                        <div className={styles['signatures-buttons']}>
+                            <canvas></canvas>
+                            <button className={styles['nav-btn']}>Clear</button>
+                            <button className={styles['nav-btn']}>Check Signature</button>
+                        </div>
+                    </div>
+                    <div className={styles['right-sign']} />
+                </div>
+                <div className={styles['upload-div']}>
+                    <div className={styles['first-id']}>
+                        <span>Max file size: 5mb, accepted: jpg|gif|png</span>
+                        <button className={styles['nav-btn']}>Upload 1st Valid ID</button>{' '}
+                    </div>
+
+                    <div className={styles['second-id']}>
+                        <span>Max file size: 5mb, accepted: jpg|gif|png</span>
+                        <button className={styles['nav-btn']}>Upload 2nd Valid ID</button>{' '}
+                    </div>
+                </div>
+                <div className={styles['nav-buttons-container']}>
+                    <button
+                        className={backActive ? styles['nav-btn'] : styles.hide}
+                        onClick={backButton}
+                    >
+                        Back
+                    </button>
+                    <button
+                        className={hideNext ? styles['nav-btn'] : styles.hide}
+                        onSubmit={handleSubmitCert3}
+                    >
+                        Next
+                    </button>
+                </div>
             </div>
 
             <Footer />

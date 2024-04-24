@@ -28,6 +28,9 @@ export const Header = ({ className }: HeaderProps) => {
                 <Link to="/certificates" style={{ textDecoration: 'none' }}>
                     <span className={styles['menu-items']}>Services</span>
                 </Link>
+                <Link to="/faq" style={{ textDecoration: 'none' }}>
+                    <span className={styles['menu-items']}>FAQ</span>
+                </Link>
 
                 <span className={styles['menu-items']}>Get in Touch →</span>
             </div>

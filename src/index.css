@@ -23,6 +23,8 @@ body {
   justify-content: center;
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden;
+
 }
 
 h1 {
@@ -40,8 +42,10 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
-  border-color: #646cff;
+button:hover{
+  background-color: #2fad6e;
+  color: white;
+  border: solid 1px #2fad6e;
 }
 button:focus,
 button:focus-visible {

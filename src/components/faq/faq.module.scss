@@ -26,38 +26,59 @@
 .faq-body {
     width: 100%;
     display: flex;
-    grid-auto-flow: row;
     flex-direction: row;
     align-items: center;
     justify-items: center;
-    align-content: center;
-    justify-content: space-between;
+    justify-content: center;
+    min-height: 600px;
+    column-gap: 50px;
+}
+
+.left {
+    width: auto;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 50px 0 50px 0;
+}
+
+.right {
+    width: auto;
     height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 50px 0 50px 0;
 }
 
 .heading-text {
     line-height: normal;
     font-size: 70px;
     font-weight: 700;
-    margin-left: 4.7%;
     color: black;
-    text-align: start;
     font-style: normal;
 }
 
 .subheading {
     font-size: 24px;
     line-height: normal;
-    margin-left: 5%;
-    width: 700px;
     color: black;
     font-weight: 500;
-    text-align: start;
+    width: 90%;
+    text-align: center;
 }
 
-.menu-faq {
-    position: relative !important;
+.header-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1000px;
+    height: 130px;
 }
+
 
 .accordion-div {
     margin-bottom: 20px;
@@ -75,38 +96,24 @@
     width: 600px;
     font-size: 24px;
     display: none;
-    overflow: hidden;
-
 }
 
-.active,
+.active {
+    width: 600px;
+    font-size: 24px;
+    display:block;
+}
+
+.hide{
+    display: none;
+}
+
 .accordion:hover {
     background-color: #ccc;
 }
 
-.left {
 
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-    align-content: center;
-    justify-content: center;
-    justify-items: end;
-    width: 48%;
-    row-gap: 0px;
-    height: 600px;
-}
 
-.right {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    align-content: center;
-    justify-content: center;
-    justify-items: start;
-    width: 48%;
-    row-gap: 0px;
-}
 
 .faq-breaker {
     height: 300px;
@@ -128,6 +135,14 @@
 }
 
 .faq-breaker-logo {
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
+}
+
+.answer{
+    display: inline-block;
+    width: 100%;
+    inline-size: 600px;
+    overflow-wrap: break-word;
+    
 }
