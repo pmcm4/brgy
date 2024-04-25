@@ -2,36 +2,44 @@ import React, { useState } from 'react';
 import ReactSimplyCarousel from 'react-simply-carousel';
 import styles from './home.module.scss';
 import PersonCard from './personCard';
+import PersonIcon from '@mui/icons-material/Person';
 
 function carouselComponent() {
     const personObject = [
         {
             personID: 1,
-            title: 'Barangay Captain',
-            personName: 'Coach Allan Aramil',
-            desc: 'lorem lorem lorem',
-            img: 'https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706083237/408500257_122117065472102454_6962691213519753276_n_copy_ongujc.png',
+            title: 'Kagawad',
+            personName: 'Name',
+            desc: 'Description',
+            img: 'https://cdn-icons-png.freepik.com/512/1077/1077114.png',
         },
         {
             personID: 2,
-            title: 'Barangay Captain',
-            personName: 'Coach Allan Aramil',
-            desc: 'lorem lorem lorem',
-            img: 'https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706083237/408500257_122117065472102454_6962691213519753276_n_copy_ongujc.png',
+            title: 'Kagawad',
+            personName: 'Name',
+            desc: 'Description',
+            img: 'https://cdn-icons-png.freepik.com/512/1077/1077114.png',
         },
         {
             personID: 3,
-            title: 'Barangay Captain',
-            personName: 'Coach Allan Aramil',
-            desc: 'lorem lorem lorem',
-            img: 'https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706083237/408500257_122117065472102454_6962691213519753276_n_copy_ongujc.png',
+            title: 'Kagawad',
+            personName: 'Name',
+            desc: 'Description',
+            img: 'https://cdn-icons-png.freepik.com/512/1077/1077114.png',
         },
         {
             personID: 4,
-            title: 'Barangay Captain',
-            personName: 'Coach Allan Aramil',
-            desc: 'lorem lorem lorem',
-            img: 'https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706083237/408500257_122117065472102454_6962691213519753276_n_copy_ongujc.png',
+            title: 'Kagawad',
+            personName: 'Name',
+            desc: 'Description',
+            img: 'https://cdn-icons-png.freepik.com/512/1077/1077114.png',
+        },
+        {
+            personID: 5,
+            title: 'Kagawad',
+            personName: 'Name',
+            desc: 'Description',
+            img: 'https://cdn-icons-png.freepik.com/512/1077/1077114.png',
         },
     ];
     const [activeSlideIndex, setActiveSlideIndex] = useState(0);
