@@ -4,26 +4,16 @@ import styles from './home.module.scss';
 import PeopleIcon from '@mui/icons-material/People';
 import FoundationIcon from '@mui/icons-material/Foundation';
 import LandscapeIcon from '@mui/icons-material/Landscape';
-import Carousel from 'react-elastic-carousel';
 import { Footer } from '../footer/footer';
 import { GoogleMap, useLoadScript } from '@react-google-maps/api';
-import PersonCard from './personCard';
+import CarouselComponent from './carouselComponent';
+
 import MenuCard from './menuCard';
 import Contactform from './cotactform';
 
 export interface HomeProps {
     className?: string;
 }
-
-const breakPoints: {
-    width: number;
-    itemsToShow: number;
-}[] = [
-    { width: 1, itemsToShow: 1 },
-    { width: 550, itemsToShow: 2 },
-    { width: 768, itemsToShow: 2 },
-    { width: 1200, itemsToShow: 3 },
-];
 
 const center = {
     lat: 14.629162807169603,
@@ -360,37 +350,6 @@ export const Home = ({ className }: HomeProps) => {
         googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAP_API_KEY,
     });
 
-    const personObject = [
-        {
-            personID: 1,
-            title: 'Barangay Captain',
-            personName: 'Coach Allan Aramil',
-            desc: 'lorem lorem lorem',
-            img: 'https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706083237/408500257_122117065472102454_6962691213519753276_n_copy_ongujc.png',
-        },
-        {
-            personID: 2,
-            title: 'Barangay Captain',
-            personName: 'Coach Allan Aramil',
-            desc: 'lorem lorem lorem',
-            img: 'https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706083237/408500257_122117065472102454_6962691213519753276_n_copy_ongujc.png',
-        },
-        {
-            personID: 3,
-            title: 'Barangay Captain',
-            personName: 'Coach Allan Aramil',
-            desc: 'lorem lorem lorem',
-            img: 'https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706083237/408500257_122117065472102454_6962691213519753276_n_copy_ongujc.png',
-        },
-        {
-            personID: 4,
-            title: 'Barangay Captain',
-            personName: 'Coach Allan Aramil',
-            desc: 'lorem lorem lorem',
-            img: 'https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706083237/408500257_122117065472102454_6962691213519753276_n_copy_ongujc.png',
-        },
-    ];
-
     return (
         <div className={classNames(styles.root, className)}>
             <div className={styles['image-bg']}>
@@ -489,17 +448,7 @@ export const Home = ({ className }: HomeProps) => {
                         </div>
                     </div>
                     <div className={styles.carousell}>
-                        <Carousel breakPoints={breakPoints}>
-                            {personObject.map((obj) => (
-                                <PersonCard
-                                    key={obj.personID}
-                                    title={obj.title}
-                                    name={obj.personName}
-                                    desc={obj.desc}
-                                    img={obj.img}
-                                />
-                            ))}
-                        </Carousel>
+                        <CarouselComponent />
                     </div>
                 </div>
             </div>
