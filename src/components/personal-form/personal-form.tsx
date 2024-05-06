@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import styles from './personal-form.module.scss';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useContext, useState } from 'react';
+import { NavigationCertificateContext } from '../context/certificate-nav-context';
 export interface PersonalFormProps {
     className?: string;
 }
@@ -32,10 +33,20 @@ export const PersonalForm = ({ className }: PersonalFormProps) => {
         });
     };
 
-    console.log(inputs);
+    const NavigationContext = useContext(NavigationCertificateContext);
+
+    const handleOnSubmit = (e: React.FormEvent<HTMLFormElement | HTMLButtonElement>) => {
+        e.preventDefault();
+        NavigationContext?.setCertBool({
+            pfStatus: true,
+            addStatus: false,
+            certStatus: false,
+        });
+        console.log(NavigationContext);
+    };
 
     return (
-        <div className={classNames(styles.root, className)}>
+        <form className={classNames(styles.root, className)} onSubmit={handleOnSubmit}>
             <h1 className={styles['header-perso']}>Personal Information</h1>
             <span className={styles['perso-subhead']}>
                 Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
@@ -51,7 +62,9 @@ export const PersonalForm = ({ className }: PersonalFormProps) => {
                     placeholder="Juan"
                     name="firstName"
                     onChange={handleOnChange}
+                    required
                 />
+
                 <br />
                 <label className={styles['label-forms']}>Middle Name:</label>
                 <br />
@@ -69,7 +82,9 @@ export const PersonalForm = ({ className }: PersonalFormProps) => {
                     placeholder="Dela Cruz"
                     name="lastName"
                     onChange={handleOnChange}
+                    required
                 />
+
                 <br />
                 <label className={styles['label-forms']}>Name Extension: </label>
                 <br />
@@ -83,12 +98,14 @@ export const PersonalForm = ({ className }: PersonalFormProps) => {
                 <label className={styles['label-forms']}>Gender:</label>
                 <br />
                 <select
-                    defaultValue={'Select Gender'}
                     className={styles['input-drop-down']}
                     name="gender"
                     onChange={handleOnChange}
+                    required
                 >
-                    <option disabled>Select Gender</option>
+                    <option disabled selected value={''}>
+                        Select Gender
+                    </option>
                     <option>Male</option>
                     <option>Female</option>
                 </select>
@@ -101,6 +118,7 @@ export const PersonalForm = ({ className }: PersonalFormProps) => {
                     name="emailAddress"
                     type="email"
                     onChange={handleOnChange}
+                    required
                 />
                 <br />
                 <label className={styles['label-forms']}>Contact Number:</label>
@@ -110,6 +128,7 @@ export const PersonalForm = ({ className }: PersonalFormProps) => {
                     placeholder="09XXXXXXXXX"
                     type="number"
                     onChange={handleOnChange}
+                    required
                 />
                 <br />
                 <label className={styles['label-forms']}>Birth Date:</label>
@@ -119,6 +138,7 @@ export const PersonalForm = ({ className }: PersonalFormProps) => {
                     name="birthDate"
                     type="date"
                     onChange={handleOnChange}
+                    required
                 />
                 <br />
                 <label className={styles['label-forms']}>Religion:</label>
@@ -128,17 +148,20 @@ export const PersonalForm = ({ className }: PersonalFormProps) => {
                     placeholder="Catholic"
                     name="religion"
                     onChange={handleOnChange}
+                    required
                 />
                 <br />
                 <label className={styles['label-forms']}>Status:</label>
                 <br />
                 <select
-                    defaultValue={'Select Civil Status'}
                     className={styles['input-drop-down']}
                     name="status"
                     onChange={handleOnChange}
+                    required
                 >
-                    <option disabled>Select Civil Status</option>
+                    <option disabled selected value={''}>
+                        Select Civil Status
+                    </option>
                     <option>Married</option>
                     <option>Single</option>
                 </select>
@@ -146,12 +169,13 @@ export const PersonalForm = ({ className }: PersonalFormProps) => {
                 <label className={styles['label-forms']}>Sector:</label>
                 <br />
                 <select
-                    defaultValue={'Select Sector'}
                     className={styles['input-drop-down']}
                     name="sector"
                     onChange={handleOnChange}
                 >
-                    <option disabled>Select Sector</option>
+                    <option disabled selected value={''}>
+                        Select Sector
+                    </option>
                     <option>PWD</option>
                     <option>Senior Citizen</option>
                 </select>
@@ -165,6 +189,7 @@ export const PersonalForm = ({ className }: PersonalFormProps) => {
                     placeholder="Juan S. Dela Cruz"
                     name="emergName"
                     onChange={handleOnChange}
+                    required
                 />
                 <br />
                 <label className={styles['label-forms']}>Emergency Relationship:</label>
@@ -174,6 +199,7 @@ export const PersonalForm = ({ className }: PersonalFormProps) => {
                     placeholder="Mother"
                     name="emergRel"
                     onChange={handleOnChange}
+                    required
                 />
                 <br />
                 <label className={styles['label-forms']}>Emergency Contact Number:</label>
@@ -184,6 +210,7 @@ export const PersonalForm = ({ className }: PersonalFormProps) => {
                     name="emergContact"
                     type="number"
                     onChange={handleOnChange}
+                    required
                 />
                 <br />
                 <label className={styles['label-forms']}>Emergency Address:</label>
@@ -195,6 +222,12 @@ export const PersonalForm = ({ className }: PersonalFormProps) => {
                     onChange={handleOnChange}
                 />
             </div>
-        </div>
+            <div className={styles['nav-buttons-container']}>
+                <button className={styles['nav-btn']}>Back</button>
+                <button className={styles['nav-btn']} onSubmit={handleOnSubmit}>
+                    Next
+                </button>
+            </div>
+        </form>
     );
 };
