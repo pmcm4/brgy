@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import styles from './certificates.module.scss';
 import { Footer } from '../footer/footer';
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useContext, useState } from 'react';
 import { PersonalForm } from '../personal-form/personal-form';
 import { PFAddress } from '../pf-address/pf-address';
 import {
@@ -18,6 +18,7 @@ import {
     TransferResidencyForm,
 } from './DropDownForms';
 import { Identity_Proof } from '../identity-proof/identity-proof';
+import { ReviewContext } from '../context/ReviewContext';
 
 export interface CertificatesProps {
     className?: string;
@@ -29,15 +30,19 @@ export const Certificates = ({ className }: CertificatesProps) => {
     const [renderChoose, setRenderChoose] = useState(false);
     const [renderVerify, setRenderVerify] = useState(false);
 
+    const reviewContext = useContext(ReviewContext);
+
     //next button
     const handlePersonalFormNext = (e: React.FormEvent<HTMLFormElement | HTMLButtonElement>) => {
         e.preventDefault();
+        console.log(reviewContext?.personalForm);
         setRenderPF(false); //set inital render state to false
         setRenderAdd(true); //set next state to true
     };
 
     const handleAddressFormNext = (e: React.FormEvent<HTMLFormElement | HTMLButtonElement>) => {
         e.preventDefault();
+        console.log(reviewContext?.addressForm);
         setRenderAdd(false); //set current state to false
         setRenderChoose(true); // set next state to true
     };
@@ -81,6 +86,10 @@ export const Certificates = ({ className }: CertificatesProps) => {
         birthFact: false,
     });
 
+    const [selectedCertificate, setSelectedCertificate] = useState({
+        selectedCert: '',
+    });
+
     const handleOnChange = (
         e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
     ) => {
@@ -100,6 +109,10 @@ export const Certificates = ({ className }: CertificatesProps) => {
                 [e.target.value]: true,
             };
         });
+
+        setSelectedCertificate({ selectedCert: e.target.value });
+
+        console.log(selectedCertificate);
     };
 
     return (
@@ -110,13 +123,15 @@ export const Certificates = ({ className }: CertificatesProps) => {
                     Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
                 </span>
             </div>
-            {renderPF === true && <PersonalForm handleSubmit={handlePersonalFormNext} />}
+            <div className={renderPF === true ? styles['unhide'] : styles['hide']}>
+                <PersonalForm handleSubmit={handlePersonalFormNext} />
+            </div>
 
-            {renderAdd === true && (
+            <div className={renderAdd === true ? styles['unhide'] : styles['hide']}>
                 <PFAddress handleSubmit={handleAddressFormNext} onBack={handleBackAddress} />
-            )}
+            </div>
 
-            {renderChoose === true && (
+            <div className={renderChoose === true ? styles['unhide'] : styles['hide']}>
                 <div className={styles['certs-container']}>
                     <h1 className={styles['header-perso']}>Address</h1>
                     <span className={styles['perso-subhead']}>
@@ -214,9 +229,11 @@ export const Certificates = ({ className }: CertificatesProps) => {
                         )}
                     </div>
                 </div>
-            )}
+            </div>
 
-            {renderVerify === true && <Identity_Proof onBack={handleBackVerify} />}
+            <div className={renderVerify === true ? styles['unhide'] : styles['hide']}>
+                <Identity_Proof onBack={handleBackVerify} />
+            </div>
 
             <Footer />
         </div>

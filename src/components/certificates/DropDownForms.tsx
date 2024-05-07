@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import styles from './certificates.module.scss';
+import { ReviewContext } from '../context/ReviewContext';
 
 interface DropDownFormProps {
     onNext: (e: React.FormEvent<HTMLFormElement | HTMLButtonElement>) => void;
     onBack: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
+
+const reviewContext = useContext(ReviewContext);
 
 export function BarangayClearanceForm({ onNext, onBack }: DropDownFormProps) {
     const [barangayClearanceRequestObj, setBarangayClearanceRequestObj] = useState({
@@ -14,6 +17,28 @@ export function BarangayClearanceForm({ onNext, onBack }: DropDownFormProps) {
     const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setBarangayClearanceRequestObj((prev) => {
             return { ...prev, [e.target.name]: e.target.value };
+        });
+    };
+
+    const handleOnClick = () => {
+        reviewContext?.setCertificateForm({
+            selectedCert: 'barangayClearance',
+            purpose: barangayClearanceRequestObj.purpose,
+            childName: '',
+            soloParentSince: '',
+            presentedBy: '',
+            registryNumber: '',
+            nameOfRequestor: '',
+            birthAddress: '',
+            spouseName: '',
+            DateOfMarriage: '',
+            noIncomeSince: '',
+            DateOfResidency: '',
+            newAddress: '',
+            DateOfTabloid: '',
+            DateBorn: '',
+            witnessName: '',
+            witnessType: '',
         });
     };
 
@@ -33,7 +58,7 @@ export function BarangayClearanceForm({ onNext, onBack }: DropDownFormProps) {
                 <button className={styles['nav-btn']} onClick={onBack}>
                     Back
                 </button>
-                <button className={styles['nav-btn']} onSubmit={onNext}>
+                <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
                     Next
                 </button>
             </div>
@@ -45,6 +70,28 @@ export function BarangayIDForm({ onNext, onBack }: DropDownFormProps) {
     const [barangayIDRequestObj, setBarangayIDRequestObj] = useState({
         purpose: '',
     });
+
+    const handleOnClick = () => {
+        reviewContext?.setCertificateForm({
+            selectedCert: 'barangayID',
+            purpose: barangayIDRequestObj.purpose,
+            childName: '',
+            soloParentSince: '',
+            presentedBy: '',
+            registryNumber: '',
+            nameOfRequestor: '',
+            birthAddress: '',
+            spouseName: '',
+            DateOfMarriage: '',
+            noIncomeSince: '',
+            DateOfResidency: '',
+            newAddress: '',
+            DateOfTabloid: '',
+            DateBorn: '',
+            witnessName: '',
+            witnessType: '',
+        });
+    };
 
     const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setBarangayIDRequestObj((prev) => {
@@ -66,7 +113,7 @@ export function BarangayIDForm({ onNext, onBack }: DropDownFormProps) {
                 <button className={styles['nav-btn']} onClick={onBack}>
                     Back
                 </button>
-                <button className={styles['nav-btn']} onSubmit={onNext}>
+                <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
                     Next
                 </button>
             </div>
@@ -83,6 +130,28 @@ export function SoloParentForm({ onNext, onBack }: DropDownFormProps) {
         registryNumber: '',
         nameOfRequestor: '',
     });
+
+    const handleOnClick = () => {
+        reviewContext?.setCertificateForm({
+            selectedCert: 'barangayClearance',
+            purpose: soloParentRequestObj.purpose,
+            childName: soloParentRequestObj.childName,
+            soloParentSince: soloParentRequestObj.soloParentSince,
+            presentedBy: soloParentRequestObj.presentedBy,
+            registryNumber: soloParentRequestObj.registryNumber,
+            nameOfRequestor: soloParentRequestObj.nameOfRequestor,
+            birthAddress: '',
+            spouseName: '',
+            DateOfMarriage: '',
+            noIncomeSince: '',
+            DateOfResidency: '',
+            newAddress: '',
+            DateOfTabloid: '',
+            DateBorn: '',
+            witnessName: '',
+            witnessType: '',
+        });
+    };
 
     const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSoloParentRequestObj((prev) => {
@@ -159,7 +228,7 @@ export function SoloParentForm({ onNext, onBack }: DropDownFormProps) {
                 <button className={styles['nav-btn']} onClick={onBack}>
                     Back
                 </button>
-                <button className={styles['nav-btn']} onSubmit={onNext}>
+                <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
                     Next
                 </button>
             </div>
@@ -175,6 +244,28 @@ export function CohabitationForm({ onNext, onBack }: DropDownFormProps) {
         DateOfMarriage: '',
         nameOfRequestor: '',
     });
+
+    const handleOnClick = () => {
+        reviewContext?.setCertificateForm({
+            selectedCert: 'cohabitation',
+            purpose: cohabitationRequestObj.purpose,
+            childName: '',
+            soloParentSince: '',
+            presentedBy: '',
+            registryNumber: '',
+            nameOfRequestor: cohabitationRequestObj.nameOfRequestor,
+            birthAddress: cohabitationRequestObj.birthAddress,
+            spouseName: cohabitationRequestObj.spouseName,
+            DateOfMarriage: cohabitationRequestObj.DateOfMarriage,
+            noIncomeSince: '',
+            DateOfResidency: '',
+            newAddress: '',
+            DateOfTabloid: '',
+            DateBorn: '',
+            witnessName: '',
+            witnessType: '',
+        });
+    };
 
     const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setCohabitationRequestObj((prev) => {
@@ -240,7 +331,7 @@ export function CohabitationForm({ onNext, onBack }: DropDownFormProps) {
                 <button className={styles['nav-btn']} onClick={onBack}>
                     Back
                 </button>
-                <button className={styles['nav-btn']} onSubmit={onNext}>
+                <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
                     Next
                 </button>
             </div>
@@ -259,6 +350,28 @@ export function GoodMoralForm({ onNext, onBack }: DropDownFormProps) {
             return { ...prev, [e.target.name]: e.target.value };
         });
         console.log(goodMoralRequestObj);
+    };
+
+    const handleOnClick = () => {
+        reviewContext?.setCertificateForm({
+            selectedCert: 'cohabitation',
+            purpose: goodMoralRequestObj.purpose,
+            childName: '',
+            soloParentSince: '',
+            presentedBy: '',
+            registryNumber: '',
+            nameOfRequestor: '',
+            birthAddress: '',
+            spouseName: '',
+            DateOfMarriage: '',
+            noIncomeSince: '',
+            DateOfResidency: '',
+            newAddress: '',
+            DateOfTabloid: '',
+            DateBorn: '',
+            witnessName: '',
+            witnessType: '',
+        });
     };
 
     return (

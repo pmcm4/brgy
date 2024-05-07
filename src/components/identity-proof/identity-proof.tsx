@@ -1,7 +1,8 @@
 import classNames from 'classnames';
 import styles from './identity-proof.module.scss';
 import { ReactSketchCanvas, ReactSketchCanvasRef } from 'react-sketch-canvas';
-import { useRef, useState } from 'react';
+import { MouseEventHandler, useRef, useState } from 'react';
+import ReviewModal from '../certificates/ReviewModal';
 
 export interface Identity_ProofProps {
     className?: string;
@@ -19,7 +20,7 @@ const styleSketchCanvas = {
  */
 export const Identity_Proof = ({ className, onBack }: Identity_ProofProps) => {
     const canvasRef = useRef<ReactSketchCanvasRef>(null);
-
+    const [showReviewModal, setShowReviewModal] = useState(false);
     //sketch image
     const [sketchImg, setSketchImg] = useState('');
 
@@ -36,6 +37,10 @@ export const Identity_Proof = ({ className, onBack }: Identity_ProofProps) => {
             .catch((err) => {
                 console.log(err);
             });
+    };
+
+    const handleReview = () => {
+        setShowReviewModal(!showReviewModal);
     };
 
     return (
@@ -98,8 +103,16 @@ export const Identity_Proof = ({ className, onBack }: Identity_ProofProps) => {
                 <button className={styles['nav-btn']} onClick={onBack}>
                     Back
                 </button>
-                <button className={styles['nav-btn']}>Review</button>
+                <button className={styles['nav-btn']} onClick={handleReview}>
+                    Review
+                </button>
             </div>
+            {showReviewModal === true && (
+                <>
+                    <div className={styles['modal-background']} onClick={handleReview}></div>
+                    <ReviewModal />
+                </>
+            )}
         </div>
     );
 };

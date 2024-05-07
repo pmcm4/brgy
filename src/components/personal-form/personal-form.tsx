@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import styles from './personal-form.module.scss';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useContext, useState } from 'react';
+import { ReviewContext } from '../context/ReviewContext';
 export interface PersonalFormProps {
     className?: string;
     handleSubmit: (e: React.FormEvent<HTMLFormElement | HTMLButtonElement>) => void;
@@ -25,12 +26,35 @@ export const PersonalForm = ({ className, handleSubmit }: PersonalFormProps) => 
         emerAddress: '',
     });
 
+    const reviewContext = useContext(ReviewContext);
+
     const handleOnChange = (
         e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
     ) => {
         setInputs((prev) => {
             return { ...prev, [e.target.name]: e.target.value };
         });
+    };
+
+    const handleOnClick = () => {
+        reviewContext?.setPersonalFormReview({
+            firstName: inputs.firstName,
+            middleName: inputs.middleName,
+            lastName: inputs.lastName,
+            nameExt: inputs.nameExt,
+            gender: inputs.gender,
+            emailAddress: inputs.emailAddress,
+            contactNum: inputs.contactNum,
+            birthDate: inputs.birthDate,
+            religion: inputs.religion,
+            status: inputs.status,
+            sector: inputs.sector,
+            emergName: inputs.emergName,
+            emergRel: inputs.emergRel,
+            emerContact: inputs.emerContact,
+            emerAddress: inputs.emerAddress,
+        });
+        console.log(reviewContext?.personalForm);
     };
 
     return (
@@ -115,6 +139,7 @@ export const PersonalForm = ({ className, handleSubmit }: PersonalFormProps) => 
                     className={styles['input-names']}
                     placeholder="09XXXXXXXXX"
                     type="number"
+                    name="contactNum"
                     onChange={handleOnChange}
                     required
                 />
@@ -195,7 +220,7 @@ export const PersonalForm = ({ className, handleSubmit }: PersonalFormProps) => 
                 <input
                     className={styles['input-names']}
                     placeholder="09XXXXXXXXX"
-                    name="emergContact"
+                    name="emerContact"
                     type="number"
                     onChange={handleOnChange}
                     required
@@ -206,12 +231,16 @@ export const PersonalForm = ({ className, handleSubmit }: PersonalFormProps) => 
                 <textarea
                     className={styles['input-names']}
                     placeholder=""
-                    name="emergAddress"
+                    name="emerAddress"
                     onChange={handleOnChange}
                 />
             </div>
             <div className={styles['nav-buttons-container']}>
-                <button className={styles['nav-btn']} onSubmit={handleSubmit}>
+                <button
+                    className={styles['nav-btn']}
+                    onClick={handleOnClick}
+                    onSubmit={handleSubmit}
+                >
                     Next
                 </button>
             </div>
