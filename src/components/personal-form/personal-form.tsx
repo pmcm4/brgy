@@ -1,12 +1,12 @@
 import classNames from 'classnames';
 import styles from './personal-form.module.scss';
-import { ChangeEvent, useContext, useState } from 'react';
-import { NavigationCertificateContext } from '../context/certificate-nav-context';
+import { ChangeEvent, useState } from 'react';
 export interface PersonalFormProps {
     className?: string;
+    handleSubmit: (e: React.FormEvent<HTMLFormElement | HTMLButtonElement>) => void;
 }
 
-export const PersonalForm = ({ className }: PersonalFormProps) => {
+export const PersonalForm = ({ className, handleSubmit }: PersonalFormProps) => {
     const [inputs, setInputs] = useState({
         firstName: '',
         middleName: '',
@@ -33,20 +33,8 @@ export const PersonalForm = ({ className }: PersonalFormProps) => {
         });
     };
 
-    const NavigationContext = useContext(NavigationCertificateContext);
-
-    const handleOnSubmit = (e: React.FormEvent<HTMLFormElement | HTMLButtonElement>) => {
-        e.preventDefault();
-        NavigationContext?.setCertBool({
-            pfStatus: true,
-            addStatus: false,
-            certStatus: false,
-        });
-        console.log(NavigationContext);
-    };
-
     return (
-        <form className={classNames(styles.root, className)} onSubmit={handleOnSubmit}>
+        <form className={classNames(styles.root, className)} onSubmit={handleSubmit}>
             <h1 className={styles['header-perso']}>Personal Information</h1>
             <span className={styles['perso-subhead']}>
                 Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
@@ -223,8 +211,7 @@ export const PersonalForm = ({ className }: PersonalFormProps) => {
                 />
             </div>
             <div className={styles['nav-buttons-container']}>
-                <button className={styles['nav-btn']}>Back</button>
-                <button className={styles['nav-btn']} onSubmit={handleOnSubmit}>
+                <button className={styles['nav-btn']} onSubmit={handleSubmit}>
                     Next
                 </button>
             </div>

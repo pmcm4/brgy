@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { createContext, useContext } from 'react';
 
 export type CertBooleans = {
-    pfStatus: true;
-    addStatus: false;
-    certStatus: false;
+    pfStatus: boolean;
+    addStatus: boolean;
+    certStatus: boolean;
 };
 
 type CertBooleansType = {
@@ -16,15 +16,23 @@ type NavigationCertificateContextProps = {
     children: React.ReactNode;
 };
 
-export const NavigationCertificateContext = createContext<CertBooleansType | null>(null);
+export const NavigationCertificateContext = createContext({
+    pfStatus: true,
+    addStatus: false,
+    certStatus: false,
+});
 
 export const NavigationCertificateContextProvider = ({
     children,
 }: NavigationCertificateContextProps) => {
-    const [certBool, setCertBool] = useState<CertBooleans | null>(null);
-
     return (
-        <NavigationCertificateContext.Provider value={{ certBool, setCertBool }}>
+        <NavigationCertificateContext.Provider
+            value={{
+                pfStatus: true,
+                addStatus: false,
+                certStatus: false,
+            }}
+        >
             {children}
         </NavigationCertificateContext.Provider>
     );

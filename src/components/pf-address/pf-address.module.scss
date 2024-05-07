@@ -75,3 +75,14 @@
     font-size: 10px;
     color: rgb(141, 16, 16);
 }
+
+.nav-buttons-container{
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    column-gap: 100px;
+    margin-top: 30px;
+}

@@ -64,48 +64,13 @@
     color: rgb(141, 16, 16);
 }
 
-.solo-parent {
+.nav-buttons-container{
+    height: auto;
     width: 100%;
-    display: none;
-}
-
-
-.cohabitation {
-    width: 100%;
-    display: none;
-}
-
-.good-moral {
-    width: 100%;
-    display: none;
-}
-
-.no-income {
-    width: 100%;
-    display: none;
-}
-
-.first-time-job-seeker {
-    width: 100%;
-    display: none;
-}
-
-.residency {
-    width: 100%;
-    display: none;
-}
-
-.transfer-of-residency{
-    width: 100%;
-    display: none;
-}
-
-.living-still{
-    width: 100%;
-    display: none;
-}
-
-.birth-fact{
-    width: 100%;
-    display: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    column-gap: 100px;
+    margin-top: 30px;
 }

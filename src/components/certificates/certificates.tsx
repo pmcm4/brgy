@@ -1,161 +1,106 @@
 import classNames from 'classnames';
 import styles from './certificates.module.scss';
 import { Footer } from '../footer/footer';
-import React, { ChangeEvent, useContext, useEffect, useRef, useState } from 'react';
-import { ReactSketchCanvas, type ReactSketchCanvasRef } from 'react-sketch-canvas';
+import React, { ChangeEvent, useState } from 'react';
 import { PersonalForm } from '../personal-form/personal-form';
 import { PFAddress } from '../pf-address/pf-address';
-import { ChooseCert } from '../choose-cert/choose-cert';
-import { NavigationCertificateContext } from '../context/certificate-nav-context';
+import {
+    BarangayClearanceForm,
+    BarangayIDForm,
+    BirthFactForm,
+    CohabitationForm,
+    FirstTimeJobSeekerForm,
+    GoodMoralForm,
+    LivingStillForm,
+    NoIncomeForm,
+    ResidencyForm,
+    SoloParentForm,
+    TransferResidencyForm,
+} from './DropDownForms';
+import { Identity_Proof } from '../identity-proof/identity-proof';
 
 export interface CertificatesProps {
     className?: string;
 }
-const styleSketchCanvas = {
-    border: '0.0625rem solid #9c9c9c',
-    borderRadius: '1px',
-};
 
 export const Certificates = ({ className }: CertificatesProps) => {
-    const canvasRef = useRef<ReactSketchCanvasRef>(null);
+    const [renderPF, setRenderPF] = useState(true); //initial render state
+    const [renderAdd, setRenderAdd] = useState(false);
+    const [renderChoose, setRenderChoose] = useState(false);
+    const [renderVerify, setRenderVerify] = useState(false);
 
-    const [inputs, setInputs] = useState({
-        firstName: '',
-        middleName: '',
-        lastName: '',
-        nameExt: '',
-        gender: '',
-        emailAddress: '',
-        contactNum: '',
-        birthDate: '',
-        religion: '',
-        status: '',
-        sector: '',
-        emergName: '',
-        emergRel: '',
-        emerContact: '',
-        emerAddress: '',
-        residency: '',
-        yearsInSanRoque: '',
-        blockLot: '',
-        street: '',
-        certType: '',
-    });
-
-    const [barangayClearanceRequestObj, setBarangayClearanceRequestObj] = useState({
-        purpose: '',
-    });
-
-    const [barangayIDRequestObj, setBarangayIDRequestObj] = useState({
-        purpose: '',
-    });
-
-    const [soloParentRequestObj, setSoloParentRequestObj] = useState({
-        purpose: '',
-        childName: '',
-        soloParentSince: '',
-        presentedBy: '',
-        registryNumber: '',
-        nameOfRequestor: '',
-    });
-
-    const [cohabitationRequestObj, setCohabitationRequestObj] = useState({
-        purpose: '',
-        birthAddress: '',
-        spouseName: '',
-        DateOfMarriage: '',
-        nameOfRequestor: '',
-    });
-
-    const [goodMoralRequestObj, setGoodMoralRequestObj] = useState({
-        purpose: '',
-        nameOfRequestor: '',
-    });
-
-    const [noIncomeRequestObj, setNoIncomeRequestObj] = useState({
-        purpose: '',
-        noIncomeSince: '',
-        nameOfRequestor: '',
-    });
-
-    const [firstTimeJobSeekerRequestObj, setFirstTimeJobSeekerRequestObj] = useState({
-        purpose: '',
-        DateOfResidency: '',
-    });
-
-    const [residencyRequestObj, setResidencyRequestObj] = useState({
-        purpose: '',
-        birthAddress: '',
-        DateOfResidency: '',
-        nameOfRequestor: '',
-    });
-
-    const [transferOfResidencyRequestObj, setTransferOfResidencyRequestObj] = useState({
-        purpose: '',
-        newAddress: '',
-        nameOfRequestor: '',
-    });
-
-    const [livingStillRequestObj, setLivingStillRequestObj] = useState({
-        purpose: '',
-        DateOfTabloid: '',
-        nameOfRequestor: '',
-    });
-
-    const [birthFactRequestObj, setBirthFactRequestObj] = useState({
-        purpose: '',
-        DateBorn: '',
-        childName: '',
-        birthAddress: '',
-        witnessName: '',
-        witnessType: '',
-        nameOfRequestor: '',
-    });
-
-    //Forms
-    const [personalFormActive, setPersonalFormActive] = useState(true);
-    const [pfaddressActive, setPfaddressActive] = useState(false);
-    const [certsActive, setCerts] = useState(false);
-    const [identityProofActive, setIdentityProofActive] = useState(false);
-    const [backActive, setBackActive] = useState(false);
-    const [hideNext, setHideNext] = useState(true);
-
-    //Certificates
-    const [barangayClearance, unhideBarangayClearance] = useState(false);
-    const [barangayID, unhideBarangayID] = useState(false);
-    const [soloParent, unhideSoloParent] = useState(false);
-    const [cohabitation, unhideCohabitation] = useState(false);
-    const [goodMoral, unhideGoodMoral] = useState(false);
-    const [noIncome, unhideNoIncome] = useState(false);
-    const [firstTimeJobSeeker, unhideFirstTimeJobSeeker] = useState(false);
-    const [residency, unhideResidency] = useState(false);
-    const [transferOfResidency, unhideTransferOfResidency] = useState(false);
-    const [livingStill, unhideLivingStill] = useState(false);
-    const [birthFact, unhideBirthFact] = useState(false);
-
-    //sketch image
-    const [sketchImg, setSketchImg] = useState('');
-
-    const handleClearClick = () => {
-        setSketchImg('');
-        canvasRef.current?.clearCanvas();
-    };
-    const exportSketch = () => {
-        canvasRef.current
-            ?.exportImage('png')
-            .then((data) => {
-                setSketchImg(data);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+    //next button
+    const handlePersonalFormNext = (e: React.FormEvent<HTMLFormElement | HTMLButtonElement>) => {
+        e.preventDefault();
+        setRenderPF(false); //set inital render state to false
+        setRenderAdd(true); //set next state to true
     };
 
-    const NavigationContext = useContext(NavigationCertificateContext);
+    const handleAddressFormNext = (e: React.FormEvent<HTMLFormElement | HTMLButtonElement>) => {
+        e.preventDefault();
+        setRenderAdd(false); //set current state to false
+        setRenderChoose(true); // set next state to true
+    };
 
-    const [renderPF, setRenderPF] = useState(); //change me
-    const [renderAdd, setRenderAdd] = useState();
-    const [renderChoose, setrenderChoose] = useState();
+    const handleCertFormNext = (e: React.FormEvent<HTMLFormElement | HTMLButtonElement>) => {
+        e.preventDefault();
+        setRenderChoose(false);
+        setRenderVerify(true);
+    };
+
+    // back button
+    const handleBackVerify = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        e.preventDefault();
+        setRenderVerify(false);
+        setRenderChoose(true);
+    };
+
+    const handleBackCertChoose = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        e.preventDefault();
+        setRenderChoose(false);
+        setRenderAdd(true);
+    };
+
+    const handleBackAddress = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        e.preventDefault();
+        setRenderAdd(false);
+        setRenderPF(true);
+    };
+
+    const [renderForm, setRenderForm] = useState({
+        barangayClearance: false,
+        barangayID: false,
+        soloParent: false,
+        cohabitation: false,
+        goodMoral: false,
+        noIncome: false,
+        firstTimeJobSeeker: false,
+        residency: false,
+        transferResidency: false,
+        livingStill: false,
+        birthFact: false,
+    });
+
+    const handleOnChange = (
+        e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    ) => {
+        setRenderForm(() => {
+            return {
+                barangayClearance: false,
+                barangayID: false,
+                soloParent: false,
+                cohabitation: false,
+                goodMoral: false,
+                noIncome: false,
+                firstTimeJobSeeker: false,
+                residency: false,
+                transferResidency: false,
+                livingStill: false,
+                birthFact: false,
+                [e.target.value]: true,
+            };
+        });
+    };
 
     return (
         <div className={classNames(styles.root, className)}>
@@ -165,72 +110,113 @@ export const Certificates = ({ className }: CertificatesProps) => {
                     Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
                 </span>
             </div>
-            {renderPF === true && <PersonalForm />}
+            {renderPF === true && <PersonalForm handleSubmit={handlePersonalFormNext} />}
 
-            {renderAdd === true && <PFAddress />}
+            {renderAdd === true && (
+                <PFAddress handleSubmit={handleAddressFormNext} onBack={handleBackAddress} />
+            )}
 
-            {renderChoose === true && <ChooseCert />}
+            {renderChoose === true && (
+                <div className={styles['certs-container']}>
+                    <h1 className={styles['header-perso']}>Address</h1>
+                    <span className={styles['perso-subhead']}>
+                        Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
+                        Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
+                    </span>
+                    <button className={styles['existing-profile']}>Existing Profile</button>
+                    <div className={styles['input-form']}>
+                        <label className={styles['label-forms']}>Residency:</label>
+                        <br />
+                        <select
+                            defaultValue={'Select Certificate'}
+                            className={styles['input-drop-down']}
+                            onChange={handleOnChange}
+                        >
+                            <option disabled>Select Certificate</option>
+                            <option value={'barangayClearance'}>Barangay Clearance</option>
+                            <option value={'barangayID'}>Barangay ID</option>
+                            <option value={'soloParent'}>Solo Parent</option>
+                            <option value={'cohabitation'}>Cohabitation</option>
+                            <option value={'goodMoral'}>Good Moral</option>
+                            <option value={'noIncome'}>No Income</option>
+                            <option value={'firstTimeJobSeeker'}>First Time Job Seeker</option>
+                            <option value={'residency'}>Residency</option>
+                            <option value={'transferResidency'}>Transfer of Residency</option>
+                            <option value={'livingStill'}>Living Still</option>
+                            <option value={'birthFact'}>Birth Fact</option>
+                        </select>
 
-            <div className={identityProofActive ? styles['identity-proof'] : styles.hide}>
-                <h1 className={styles['header-perso']}>Address</h1>
-                <span className={styles['perso-subhead']}>
-                    * Please Provide Two(2) Valid ID&apos;s and Two(2) Photo of you holding the
-                    ID&apos;s.
-                </span>
-                <div className={styles['input-form-proof']}>
-                    <div className={styles['left-sign']}>
-                        <div className={styles['signatures-buttons']}>
-                            {' '}
-                            <ReactSketchCanvas
-                                style={styleSketchCanvas}
-                                className={styles['sketchCanvas']}
-                                width="100%"
-                                height="100%"
-                                strokeWidth={4}
-                                strokeColor="black"
-                                ref={canvasRef}
+                        {renderForm.barangayClearance === true && (
+                            <BarangayClearanceForm
+                                onNext={handleCertFormNext}
+                                onBack={handleBackCertChoose}
                             />
-                            <div className={styles['sketchBtn']}>
-                                <button className={styles['nav-btn']} onClick={handleClearClick}>
-                                    Clear
-                                </button>
-                                <button className={styles['nav-btn']} onClick={exportSketch}>
-                                    Check Signature
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles['right-sign']}>
-                        <div className={styles['signatures-buttons']}>
-                            <div className={styles['checkSignature']}>
-                                {sketchImg !== '' && (
-                                    <img src={sketchImg} className={styles['sketchImgPreview']} />
-                                )}
-                            </div>
-                            <div className={styles['sketchBtn']}>
-                                <span className={styles['checkSignatureMessage']}>
-                                    Check your signature!
-                                </span>
-                            </div>
-                        </div>
+                        )}
+                        {renderForm.barangayID === true && (
+                            <BarangayIDForm
+                                onNext={handleCertFormNext}
+                                onBack={handleBackCertChoose}
+                            />
+                        )}
+                        {renderForm.soloParent === true && (
+                            <SoloParentForm
+                                onNext={handleCertFormNext}
+                                onBack={handleBackCertChoose}
+                            />
+                        )}
+                        {renderForm.cohabitation === true && (
+                            <CohabitationForm
+                                onNext={handleCertFormNext}
+                                onBack={handleBackCertChoose}
+                            />
+                        )}
+                        {renderForm.goodMoral === true && (
+                            <GoodMoralForm
+                                onNext={handleCertFormNext}
+                                onBack={handleBackCertChoose}
+                            />
+                        )}
+                        {renderForm.noIncome === true && (
+                            <NoIncomeForm
+                                onNext={handleCertFormNext}
+                                onBack={handleBackCertChoose}
+                            />
+                        )}
+                        {renderForm.firstTimeJobSeeker === true && (
+                            <FirstTimeJobSeekerForm
+                                onNext={handleCertFormNext}
+                                onBack={handleBackCertChoose}
+                            />
+                        )}
+                        {renderForm.residency === true && (
+                            <ResidencyForm
+                                onNext={handleCertFormNext}
+                                onBack={handleBackCertChoose}
+                            />
+                        )}
+                        {renderForm.transferResidency === true && (
+                            <TransferResidencyForm
+                                onNext={handleCertFormNext}
+                                onBack={handleBackCertChoose}
+                            />
+                        )}
+                        {renderForm.livingStill === true && (
+                            <LivingStillForm
+                                onNext={handleCertFormNext}
+                                onBack={handleBackCertChoose}
+                            />
+                        )}
+                        {renderForm.birthFact === true && (
+                            <BirthFactForm
+                                onNext={handleCertFormNext}
+                                onBack={handleBackCertChoose}
+                            />
+                        )}
                     </div>
                 </div>
-                <div className={styles['upload-div']}>
-                    <div className={styles['first-id']}>
-                        <span>Max file size: 5mb, accepted: jpg|gif|png</span>
-                        <button className={styles['nav-btn']}>Upload 1st Valid ID</button>{' '}
-                    </div>
+            )}
 
-                    <div className={styles['second-id']}>
-                        <span>Max file size: 5mb, accepted: jpg|gif|png</span>
-                        <button className={styles['nav-btn']}>Upload 2nd Valid ID</button>{' '}
-                    </div>
-                </div>
-                <div className={styles['nav-buttons-container']}>
-                    <button className={backActive ? styles['nav-btn'] : styles.hide}>Back</button>
-                    <button className={hideNext ? styles['nav-btn'] : styles.hide}>Next</button>
-                </div>
-            </div>
+            {renderVerify === true && <Identity_Proof onBack={handleBackVerify} />}
 
             <Footer />
         </div>
