@@ -7,9 +7,9 @@ interface DropDownFormProps {
     onBack: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
-const reviewContext = useContext(ReviewContext);
-
 export function BarangayClearanceForm({ onNext, onBack }: DropDownFormProps) {
+    const reviewContext = useContext(ReviewContext);
+
     const [barangayClearanceRequestObj, setBarangayClearanceRequestObj] = useState({
         purpose: '',
     });
@@ -67,6 +67,7 @@ export function BarangayClearanceForm({ onNext, onBack }: DropDownFormProps) {
 }
 
 export function BarangayIDForm({ onNext, onBack }: DropDownFormProps) {
+    const reviewContext = useContext(ReviewContext);
     const [barangayIDRequestObj, setBarangayIDRequestObj] = useState({
         purpose: '',
     });
@@ -122,6 +123,7 @@ export function BarangayIDForm({ onNext, onBack }: DropDownFormProps) {
 }
 
 export function SoloParentForm({ onNext, onBack }: DropDownFormProps) {
+    const reviewContext = useContext(ReviewContext);
     const [soloParentRequestObj, setSoloParentRequestObj] = useState({
         purpose: '',
         childName: '',
@@ -237,6 +239,7 @@ export function SoloParentForm({ onNext, onBack }: DropDownFormProps) {
 }
 
 export function CohabitationForm({ onNext, onBack }: DropDownFormProps) {
+    const reviewContext = useContext(ReviewContext);
     const [cohabitationRequestObj, setCohabitationRequestObj] = useState({
         purpose: '',
         birthAddress: '',
@@ -352,6 +355,7 @@ export function GoodMoralForm({ onNext, onBack }: DropDownFormProps) {
         console.log(goodMoralRequestObj);
     };
 
+    const reviewContext = useContext(ReviewContext);
     const handleOnClick = () => {
         reviewContext?.setCertificateForm({
             selectedCert: 'cohabitation',
@@ -360,7 +364,7 @@ export function GoodMoralForm({ onNext, onBack }: DropDownFormProps) {
             soloParentSince: '',
             presentedBy: '',
             registryNumber: '',
-            nameOfRequestor: '',
+            nameOfRequestor: goodMoralRequestObj.nameOfRequestor,
             birthAddress: '',
             spouseName: '',
             DateOfMarriage: '',
@@ -399,7 +403,7 @@ export function GoodMoralForm({ onNext, onBack }: DropDownFormProps) {
                 <button className={styles['nav-btn']} onClick={onBack}>
                     Back
                 </button>
-                <button className={styles['nav-btn']} onSubmit={onNext}>
+                <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
                     Next
                 </button>
             </div>
@@ -417,6 +421,29 @@ export function NoIncomeForm({ onNext, onBack }: DropDownFormProps) {
     const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setNoIncomeRequestObj((prev) => {
             return { ...prev, [e.target.name]: e.target.value };
+        });
+    };
+
+    const reviewContext = useContext(ReviewContext);
+    const handleOnClick = () => {
+        reviewContext?.setCertificateForm({
+            selectedCert: 'cohabitation',
+            purpose: noIncomeRequestObj.purpose,
+            childName: '',
+            soloParentSince: '',
+            presentedBy: '',
+            registryNumber: '',
+            nameOfRequestor: noIncomeRequestObj.nameOfRequestor,
+            birthAddress: '',
+            spouseName: '',
+            DateOfMarriage: '',
+            noIncomeSince: noIncomeRequestObj.noIncomeSince,
+            DateOfResidency: '',
+            newAddress: '',
+            DateOfTabloid: '',
+            DateBorn: '',
+            witnessName: '',
+            witnessType: '',
         });
     };
 
@@ -457,7 +484,7 @@ export function NoIncomeForm({ onNext, onBack }: DropDownFormProps) {
                 <button className={styles['nav-btn']} onClick={onBack}>
                     Back
                 </button>
-                <button className={styles['nav-btn']} onSubmit={onNext}>
+                <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
                     Next
                 </button>
             </div>
@@ -474,6 +501,29 @@ export function FirstTimeJobSeekerForm({ onNext, onBack }: DropDownFormProps) {
     const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFirstTimeJobSeekerRequestObj((prev) => {
             return { ...prev, [e.target.name]: e.target.value };
+        });
+    };
+
+    const reviewContext = useContext(ReviewContext);
+    const handleOnClick = () => {
+        reviewContext?.setCertificateForm({
+            selectedCert: 'cohabitation',
+            purpose: firstTimeJobSeekerRequestObj.purpose,
+            childName: '',
+            soloParentSince: '',
+            presentedBy: '',
+            registryNumber: '',
+            nameOfRequestor: '',
+            birthAddress: '',
+            spouseName: '',
+            DateOfMarriage: '',
+            noIncomeSince: '',
+            DateOfResidency: firstTimeJobSeekerRequestObj.DateOfResidency,
+            newAddress: '',
+            DateOfTabloid: '',
+            DateBorn: '',
+            witnessName: '',
+            witnessType: '',
         });
     };
 
@@ -503,7 +553,7 @@ export function FirstTimeJobSeekerForm({ onNext, onBack }: DropDownFormProps) {
                 <button className={styles['nav-btn']} onClick={onBack}>
                     Back
                 </button>
-                <button className={styles['nav-btn']} onSubmit={onNext}>
+                <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
                     Next
                 </button>
             </div>
@@ -522,6 +572,29 @@ export function ResidencyForm({ onNext, onBack }: DropDownFormProps) {
     const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setResidencyRequestObj((prev) => {
             return { ...prev, [e.target.name]: e.target.value };
+        });
+    };
+
+    const reviewContext = useContext(ReviewContext);
+    const handleOnClick = () => {
+        reviewContext?.setCertificateForm({
+            selectedCert: 'cohabitation',
+            purpose: residencyRequestObj.purpose,
+            childName: '',
+            soloParentSince: '',
+            presentedBy: '',
+            registryNumber: '',
+            nameOfRequestor: residencyRequestObj.nameOfRequestor,
+            birthAddress: residencyRequestObj.birthAddress,
+            spouseName: '',
+            DateOfMarriage: '',
+            noIncomeSince: '',
+            DateOfResidency: residencyRequestObj.DateOfResidency,
+            newAddress: '',
+            DateOfTabloid: '',
+            DateBorn: '',
+            witnessName: '',
+            witnessType: '',
         });
     };
 
@@ -572,7 +645,7 @@ export function ResidencyForm({ onNext, onBack }: DropDownFormProps) {
                 <button className={styles['nav-btn']} onClick={onBack}>
                     Back
                 </button>
-                <button className={styles['nav-btn']} onSubmit={onNext}>
+                <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
                     Next
                 </button>
             </div>
@@ -590,6 +663,29 @@ export function TransferResidencyForm({ onNext, onBack }: DropDownFormProps) {
     const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setTransferOfResidencyRequestObj((prev) => {
             return { ...prev, [e.target.name]: e.target.value };
+        });
+    };
+
+    const reviewContext = useContext(ReviewContext);
+    const handleOnClick = () => {
+        reviewContext?.setCertificateForm({
+            selectedCert: 'cohabitation',
+            purpose: transferOfResidencyRequestObj.purpose,
+            childName: '',
+            soloParentSince: '',
+            presentedBy: '',
+            registryNumber: '',
+            nameOfRequestor: transferOfResidencyRequestObj.nameOfRequestor,
+            birthAddress: '',
+            spouseName: '',
+            DateOfMarriage: '',
+            noIncomeSince: '',
+            DateOfResidency: '',
+            newAddress: transferOfResidencyRequestObj.newAddress,
+            DateOfTabloid: '',
+            DateBorn: '',
+            witnessName: '',
+            witnessType: '',
         });
     };
 
@@ -629,7 +725,7 @@ export function TransferResidencyForm({ onNext, onBack }: DropDownFormProps) {
                 <button className={styles['nav-btn']} onClick={onBack}>
                     Back
                 </button>
-                <button className={styles['nav-btn']} onSubmit={onNext}>
+                <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
                     Next
                 </button>
             </div>
@@ -649,6 +745,30 @@ export function LivingStillForm({ onNext, onBack }: DropDownFormProps) {
             return { ...prev, [e.target.name]: e.target.value };
         });
     };
+
+    const reviewContext = useContext(ReviewContext);
+    const handleOnClick = () => {
+        reviewContext?.setCertificateForm({
+            selectedCert: 'cohabitation',
+            purpose: livingStillRequestObj.purpose,
+            childName: '',
+            soloParentSince: '',
+            presentedBy: '',
+            registryNumber: '',
+            nameOfRequestor: livingStillRequestObj.nameOfRequestor,
+            birthAddress: '',
+            spouseName: '',
+            DateOfMarriage: '',
+            noIncomeSince: '',
+            DateOfResidency: '',
+            newAddress: '',
+            DateOfTabloid: livingStillRequestObj.DateOfTabloid,
+            DateBorn: '',
+            witnessName: '',
+            witnessType: '',
+        });
+    };
+
     return (
         <form onSubmit={onNext} className={styles['living-still']}>
             <label className={styles['label-forms']}>Purpose:</label>
@@ -686,7 +806,7 @@ export function LivingStillForm({ onNext, onBack }: DropDownFormProps) {
                 <button className={styles['nav-btn']} onClick={onBack}>
                     Back
                 </button>
-                <button className={styles['nav-btn']} onSubmit={onNext}>
+                <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
                     Next
                 </button>
             </div>
@@ -708,6 +828,29 @@ export function BirthFactForm({ onNext, onBack }: DropDownFormProps) {
     const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setBirthFactRequestObj((prev) => {
             return { ...prev, [e.target.name]: e.target.value };
+        });
+    };
+
+    const reviewContext = useContext(ReviewContext);
+    const handleOnClick = () => {
+        reviewContext?.setCertificateForm({
+            selectedCert: 'cohabitation',
+            purpose: birthFactRequestObj.purpose,
+            childName: birthFactRequestObj.childName,
+            soloParentSince: '',
+            presentedBy: '',
+            registryNumber: '',
+            nameOfRequestor: birthFactRequestObj.nameOfRequestor,
+            birthAddress: birthFactRequestObj.birthAddress,
+            spouseName: '',
+            DateOfMarriage: '',
+            noIncomeSince: '',
+            DateOfResidency: '',
+            newAddress: '',
+            DateOfTabloid: '',
+            DateBorn: birthFactRequestObj.DateBorn,
+            witnessName: birthFactRequestObj.witnessName,
+            witnessType: birthFactRequestObj.witnessType,
         });
     };
     return (
@@ -791,7 +934,7 @@ export function BirthFactForm({ onNext, onBack }: DropDownFormProps) {
                 <button className={styles['nav-btn']} onClick={onBack}>
                     Back
                 </button>
-                <button className={styles['nav-btn']} onSubmit={onNext}>
+                <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
                     Next
                 </button>
             </div>
