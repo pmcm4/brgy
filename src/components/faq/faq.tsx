@@ -1,8 +1,6 @@
 import classNames from 'classnames';
 import styles from './faq.module.scss';
-import { Header } from '../header/header';
-import { MouseEventHandler, useEffect, useRef, useState } from 'react';
-import { Footer } from '../footer/footer';
+import { useState } from 'react';
 
 export interface FAQProps {
     className?: string;
@@ -95,7 +93,6 @@ export const FAQ = ({ questions, heading, subheading, className }: FAQProps) => 
                     className={styles['faq-breaker-logo']}
                 />
             </div>
-            <Footer />
         </div>
     );
 };

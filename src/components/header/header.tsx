@@ -21,7 +21,7 @@ export const Header = ({ className }: HeaderProps) => {
                 />
             </div>
             <div className={styles.right}>
-                <Link to="/" style={{ textDecoration: 'none' }}>
+                <Link to="/home" style={{ textDecoration: 'none' }}>
                     <span className={styles['menu-items']}>Home</span>
                 </Link>
                 <span className={styles['menu-items']}>About</span>

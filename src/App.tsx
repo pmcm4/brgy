@@ -5,12 +5,13 @@ import { ReactComponent as ViteLogo } from './assets/vite.svg';
 import { ReactComponent as TypescriptLogo } from './assets/typescript.svg';
 import { ReactComponent as ScssLogo } from './assets/scss.svg';
 import styles from './App.module.scss';
-import { Header } from './components/header/header';
 import { Home } from './components/home/home';
 import { FAQ } from './components/faq/faq';
-import { Footer } from './components/footer/footer';
 import { Certificates } from './components/certificates/certificates';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import Login from './components/login/Login';
+import Layout from './components/layout/Layout';
+import Register from './components/register/Register';
 
 function App() {
     const questions: { faqid: number; faqTitle: string; answer: string }[] = [
@@ -29,30 +30,30 @@ function App() {
         { faqid: 9, faqTitle: 'FAQ9', answer: 'hello' },
         { faqid: 10, faqTitle: 'FAQ10', answer: 'hello' },
     ];
-
-    return (
-        <BrowserRouter>
-            <Header />
-            <Routes>
-                <Route path="/" Component={Home} />
-            </Routes>
-            <Routes>
-                <Route path="/certificates" Component={Certificates} />
-            </Routes>
-            <Routes>
-                <Route
-                    path="/faq"
-                    Component={() => (
+    const router = createBrowserRouter([
+        {
+            path: '/',
+            element: <Layout />,
+            children: [
+                { path: '/home', element: <Home /> },
+                { path: '/certificates', element: <Certificates /> },
+                {
+                    path: '/faq',
+                    element: (
                         <FAQ
                             questions={questions}
                             heading="Frequently Asked Questions"
-                            subheading="Frequently Asked Questions Frequently Asked Questions Frequently Asked Questions Frequently Asked Questions"
+                            subheading="lorem ipsum"
                         />
-                    )}
-                />
-            </Routes>
-        </BrowserRouter>
-    );
+                    ),
+                },
+            ],
+        },
+        { path: '/login', element: <Login /> },
+        { path: '/register', element: <Register /> },
+    ]);
+
+    return <RouterProvider router={router} />;
 }
 
 export default App;

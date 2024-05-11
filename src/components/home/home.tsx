@@ -4,7 +4,6 @@ import styles from './home.module.scss';
 import PeopleIcon from '@mui/icons-material/People';
 import FoundationIcon from '@mui/icons-material/Foundation';
 import LandscapeIcon from '@mui/icons-material/Landscape';
-import { Footer } from '../footer/footer';
 import { GoogleMap, useLoadScript } from '@react-google-maps/api';
 import CarouselComponent from './carouselComponent';
 
@@ -492,7 +491,6 @@ export const Home = ({ className }: HomeProps) => {
                     </div>
                 </div>
             </div>
-            <Footer />
         </div>
     );
 };
