@@ -57,21 +57,7 @@
     cursor: pointer;
 }
 
-.right .menu-items:nth-child(1):hover {
-    color: #2fad6e;
-}
-
-.right .menu-items:nth-child(2):hover {
-    color: #2fad6e;
-}
-
-
-.right .menu-items:nth-child(3):hover {
-    color: #2fad6e;
-}
-
-
-.right .menu-items:nth-child(4):hover {
+.right .menu-items:hover {
     color: #2fad6e;
 }
 
@@ -79,11 +65,11 @@
 
 
 
-.right .menu-items:nth-child(5) {
+.right .menu-items:nth-child(6) {
     border: 2px solid #2fad6e;
 }
 
-.right .menu-items:nth-child(5):hover {
+.right .menu-items:nth-child(6):hover {
     color: white;
     background-color: #2fad6e;
 }

@@ -12,6 +12,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Login from './components/login/Login';
 import Layout from './components/layout/Layout';
 import Register from './components/register/Register';
+import Profile from './components/profile-page/Profile';
 
 function App() {
     const questions: { faqid: number; faqTitle: string; answer: string }[] = [
@@ -46,6 +47,10 @@ function App() {
                             subheading="lorem ipsum"
                         />
                     ),
+                },
+                {
+                    path: '/profile/:username',
+                    element: <Profile />,
                 },
             ],
         },

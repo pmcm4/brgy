@@ -5,6 +5,8 @@ import { ReviewContext } from '../context/ReviewContext';
 import axios from 'axios';
 import { defaultApi } from '../../api';
 import DoneAllOutlinedIcon from '@mui/icons-material/DoneAllOutlined';
+import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined';
+import { Link } from 'react-router-dom';
 
 export interface RegistrationFormProps {
     className?: string;
@@ -38,26 +40,61 @@ function RegistrationForm({ className }: RegistrationFormProps) {
         province: 'Metro Manila',
     });
 
+    const [successMsg, setSuccessMsg] = useState(false);
+    const [failedMsg, setFailedMsg] = useState(false);
+
+    //username errors
+    const [usernameTooShort, setusernameTooShort] = useState(false);
+    const [usernameTaken, setusernameTaken] = useState(false);
+    const [usernameAvail, setusernameAvail] = useState(false);
+
     const handleRegistration = async (
         e: React.FormEvent<HTMLButtonElement> | FormEvent<HTMLFormElement>
     ) => {
         try {
             e.preventDefault();
-            const sendData = await axios.post(`${defaultApi}/api/requestData/register`, inputs);
+            const request = await axios.post(`${defaultApi}/api/requestData/register`, inputs);
 
-            console.log(sendData.data);
-        } catch (error) {
-            console.log(error);
+            if (request.status === 200) {
+                setSuccessMsg(true);
+            }
+        } catch (error: any) {
+            setFailedMsg(true);
+            console.log(error.response.data);
         }
     };
 
-    const handleOnChange = (
+    const handleOnChange = async (
         e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
     ) => {
         setInputs((prev) => {
             return { ...prev, [e.target.name]: e.target.value };
         });
-        console.log(inputs);
+
+        if (e.target.name === 'username' && e.target.value.length <= 8) {
+            setusernameTooShort(true);
+            setusernameAvail(false);
+            setusernameTaken(false);
+        }
+
+        try {
+            if (e.target.name === 'username' && e.target.value.length >= 8) {
+                setusernameTooShort(false);
+                const usernameObj = {
+                    username: e.target.value,
+                };
+
+                const checkDuplicate = await axios.post(
+                    `${defaultApi}/api/requestData/duplicateCheck`,
+                    usernameObj
+                );
+                setusernameTaken(false);
+                setusernameAvail(true);
+            }
+        } catch (error: any) {
+            setusernameAvail(false);
+            setusernameTaken(true);
+        }
     };
 
     return (
@@ -125,7 +162,25 @@ function RegistrationForm({ className }: RegistrationFormProps) {
                             name="username"
                             onChange={handleOnChange}
                             required
+                            minLength={8}
                         />
+                        {usernameTooShort === true && (
+                            <span className={styles['username-error']}>
+                                Username should be atleast 8 characters.
+                            </span>
+                        )}
+
+                        {usernameTaken && (
+                            <span className={styles['username-error']}>
+                                Username is already taken.
+                            </span>
+                        )}
+
+                        {usernameAvail && (
+                            <span className={styles['username-success']}>
+                                Username is available.
+                            </span>
+                        )}
                     </div>
 
                     <div className={styles['input-div']}>
@@ -137,6 +192,7 @@ function RegistrationForm({ className }: RegistrationFormProps) {
                             placeholder="************"
                             type="password"
                             name="password"
+                            minLength={8}
                             onChange={handleOnChange}
                             required
                         />
@@ -179,8 +235,8 @@ function RegistrationForm({ className }: RegistrationFormProps) {
                         <input
                             className={styles['input-names']}
                             placeholder="09XXXXXXXXX"
-                            type="number"
                             name="contactNum"
+                            type="number"
                             onChange={handleOnChange}
                             required
                         />
@@ -395,30 +451,69 @@ function RegistrationForm({ className }: RegistrationFormProps) {
                     Register
                 </button>
             </form>
-            <div className={styles['success-modal-container']}>
-                <div className={styles['success-modal-box']}>
-                    <div className={styles['success-message-inner-box']}>
-                        <DoneAllOutlinedIcon className={styles['mui-success-icon']} />{' '}
-                        <span style={{ width: '200px', textAlign: 'center' }}>
-                            Registration Success!
-                        </span>
-                    </div>
+            {successMsg === true && (
+                <div className={styles['success-modal-container']}>
+                    <div className={styles['success-modal-box']}>
+                        <div className={styles['success-message-inner-box']}>
+                            <DoneAllOutlinedIcon className={styles['mui-success-icon']} />{' '}
+                            <span style={{ width: '200px', textAlign: 'center' }}>
+                                Registration Success!
+                            </span>
+                        </div>
 
-                    <div className={styles['inner-modal-message-with-btn']}>
-                        <span
-                            style={{
-                                width: '280px',
-                                textAlign: 'center',
-                                fontWeight: '500',
-                                fontSize: '18px',
-                            }}
-                        >
-                            Your account has been successfully created!
-                        </span>
-                        <button>Login now!</button>
+                        <div className={styles['inner-modal-message-with-btn']}>
+                            <span
+                                style={{
+                                    width: '280px',
+                                    textAlign: 'center',
+                                    fontWeight: '500',
+                                    fontSize: '18px',
+                                }}
+                            >
+                                Your account has been successfully created!
+                            </span>
+                            <Link to={'/login'}>
+                                <button style={{ marginTop: '10px' }}>Login now!</button>
+                            </Link>
+                        </div>
                     </div>
                 </div>
-            </div>
+            )}
+            {failedMsg === true && (
+                <div className={styles['failed-modal-container']}>
+                    <div className={styles['failed-modal-box']}>
+                        <div className={styles['failed-message-inner-box']}>
+                            <ErrorOutlineOutlinedIcon className={styles['mui-failed-icon']} />{' '}
+                            <span style={{ width: '200px', textAlign: 'center' }}>
+                                Registration failed
+                            </span>
+                        </div>
+
+                        <div className={styles['inner-modal-message-with-btn']}>
+                            <span
+                                style={{
+                                    width: '280px',
+                                    textAlign: 'center',
+                                    fontWeight: '500',
+                                    fontSize: '18px',
+                                }}
+                            >
+                                Oops! Something went wrong...
+                            </span>
+                            <Link to={'/register'}>
+                                <button
+                                    style={{ marginTop: '10px' }}
+                                    onClick={() => {
+                                        setFailedMsg(false);
+                                    }}
+                                >
+                                    Try again
+                                </button>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            )}
         </>
     );
 }

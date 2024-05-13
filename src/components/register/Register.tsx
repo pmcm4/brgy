@@ -4,6 +4,7 @@ import RegistrationForm from '../personal-form/RegistrationForm';
 import { PFAddress } from '../pf-address/pf-address';
 import axios from 'axios';
 import { defaultApi } from '../../api';
+import { Link } from 'react-router-dom';
 
 function Register() {
     return (
@@ -23,14 +24,15 @@ function Register() {
 
                 <span className={styles['reg-span']}>Register here!</span>
                 <p className={styles['reg-p']}>
-                    Please double check your information as this will serve as your residency
-                    details in our Database.
+                    Join now to have access in certification and ID requests!
                 </p>
 
                 <RegistrationForm />
 
                 <hr className={styles['reg-divider-foot']} />
-                <p className={styles['reg-p-foot']}>Already have an account? Login here!</p>
+                <Link to={'/login'} className={styles['reg-p-foot']}>
+                    <p>Already have an account? Login here!</p>
+                </Link>
             </div>
         </div>
     );
