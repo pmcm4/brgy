@@ -5,9 +5,10 @@ import { ReviewContext } from '../context/ReviewContext';
 interface DropDownFormProps {
     onNext: (e: React.FormEvent<HTMLFormElement | HTMLButtonElement>) => void;
     onBack: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+    disableBack: boolean;
 }
 
-export function BarangayClearanceForm({ onNext, onBack }: DropDownFormProps) {
+export function BarangayClearanceForm({ onNext, onBack, disableBack }: DropDownFormProps) {
     const reviewContext = useContext(ReviewContext);
 
     const [barangayClearanceRequestObj, setBarangayClearanceRequestObj] = useState({
@@ -55,9 +56,12 @@ export function BarangayClearanceForm({ onNext, onBack }: DropDownFormProps) {
                 required
             />
             <div className={styles['nav-buttons-container']}>
-                <button className={styles['nav-btn']} onClick={onBack}>
-                    Back
-                </button>
+                {disableBack === false && (
+                    <button className={styles['nav-btn']} onClick={onBack}>
+                        Back
+                    </button>
+                )}
+
                 <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
                     Next
                 </button>
@@ -66,7 +70,7 @@ export function BarangayClearanceForm({ onNext, onBack }: DropDownFormProps) {
     );
 }
 
-export function BarangayIDForm({ onNext, onBack }: DropDownFormProps) {
+export function BarangayIDForm({ onNext, onBack, disableBack }: DropDownFormProps) {
     const reviewContext = useContext(ReviewContext);
     const [barangayIDRequestObj, setBarangayIDRequestObj] = useState({
         purpose: '',
@@ -111,9 +115,11 @@ export function BarangayIDForm({ onNext, onBack }: DropDownFormProps) {
                 name="purpose"
             />
             <div className={styles['nav-buttons-container']}>
-                <button className={styles['nav-btn']} onClick={onBack}>
-                    Back
-                </button>
+                {disableBack === false && (
+                    <button className={styles['nav-btn']} onClick={onBack}>
+                        Back
+                    </button>
+                )}
                 <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
                     Next
                 </button>
@@ -122,7 +128,7 @@ export function BarangayIDForm({ onNext, onBack }: DropDownFormProps) {
     );
 }
 
-export function SoloParentForm({ onNext, onBack }: DropDownFormProps) {
+export function SoloParentForm({ onNext, onBack, disableBack }: DropDownFormProps) {
     const reviewContext = useContext(ReviewContext);
     const [soloParentRequestObj, setSoloParentRequestObj] = useState({
         purpose: '',
@@ -227,9 +233,11 @@ export function SoloParentForm({ onNext, onBack }: DropDownFormProps) {
             />
             <br />
             <div className={styles['nav-buttons-container']}>
-                <button className={styles['nav-btn']} onClick={onBack}>
-                    Back
-                </button>
+                {disableBack === false && (
+                    <button className={styles['nav-btn']} onClick={onBack}>
+                        Back
+                    </button>
+                )}
                 <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
                     Next
                 </button>
@@ -238,7 +246,7 @@ export function SoloParentForm({ onNext, onBack }: DropDownFormProps) {
     );
 }
 
-export function CohabitationForm({ onNext, onBack }: DropDownFormProps) {
+export function CohabitationForm({ onNext, onBack, disableBack }: DropDownFormProps) {
     const reviewContext = useContext(ReviewContext);
     const [cohabitationRequestObj, setCohabitationRequestObj] = useState({
         purpose: '',
@@ -331,9 +339,11 @@ export function CohabitationForm({ onNext, onBack }: DropDownFormProps) {
             />
             <br />
             <div className={styles['nav-buttons-container']}>
-                <button className={styles['nav-btn']} onClick={onBack}>
-                    Back
-                </button>
+                {disableBack === false && (
+                    <button className={styles['nav-btn']} onClick={onBack}>
+                        Back
+                    </button>
+                )}
                 <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
                     Next
                 </button>
@@ -342,7 +352,7 @@ export function CohabitationForm({ onNext, onBack }: DropDownFormProps) {
     );
 }
 
-export function GoodMoralForm({ onNext, onBack }: DropDownFormProps) {
+export function GoodMoralForm({ onNext, onBack, disableBack }: DropDownFormProps) {
     const [goodMoralRequestObj, setGoodMoralRequestObj] = useState({
         purpose: '',
         nameOfRequestor: '',
@@ -400,9 +410,11 @@ export function GoodMoralForm({ onNext, onBack }: DropDownFormProps) {
             />
             <br />
             <div className={styles['nav-buttons-container']}>
-                <button className={styles['nav-btn']} onClick={onBack}>
-                    Back
-                </button>
+                {disableBack === false && (
+                    <button className={styles['nav-btn']} onClick={onBack}>
+                        Back
+                    </button>
+                )}
                 <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
                     Next
                 </button>
@@ -411,7 +423,7 @@ export function GoodMoralForm({ onNext, onBack }: DropDownFormProps) {
     );
 }
 
-export function NoIncomeForm({ onNext, onBack }: DropDownFormProps) {
+export function NoIncomeForm({ onNext, onBack, disableBack }: DropDownFormProps) {
     const [noIncomeRequestObj, setNoIncomeRequestObj] = useState({
         purpose: '',
         noIncomeSince: '',
@@ -481,9 +493,11 @@ export function NoIncomeForm({ onNext, onBack }: DropDownFormProps) {
             />
             <br />
             <div className={styles['nav-buttons-container']}>
-                <button className={styles['nav-btn']} onClick={onBack}>
-                    Back
-                </button>
+                {disableBack === false && (
+                    <button className={styles['nav-btn']} onClick={onBack}>
+                        Back
+                    </button>
+                )}
                 <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
                     Next
                 </button>
@@ -492,7 +506,7 @@ export function NoIncomeForm({ onNext, onBack }: DropDownFormProps) {
     );
 }
 
-export function FirstTimeJobSeekerForm({ onNext, onBack }: DropDownFormProps) {
+export function FirstTimeJobSeekerForm({ onNext, onBack, disableBack }: DropDownFormProps) {
     const [firstTimeJobSeekerRequestObj, setFirstTimeJobSeekerRequestObj] = useState({
         purpose: '',
         DateOfResidency: '',
@@ -550,9 +564,11 @@ export function FirstTimeJobSeekerForm({ onNext, onBack }: DropDownFormProps) {
             />
             <br />
             <div className={styles['nav-buttons-container']}>
-                <button className={styles['nav-btn']} onClick={onBack}>
-                    Back
-                </button>
+                {disableBack === false && (
+                    <button className={styles['nav-btn']} onClick={onBack}>
+                        Back
+                    </button>
+                )}
                 <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
                     Next
                 </button>
@@ -561,7 +577,7 @@ export function FirstTimeJobSeekerForm({ onNext, onBack }: DropDownFormProps) {
     );
 }
 
-export function ResidencyForm({ onNext, onBack }: DropDownFormProps) {
+export function ResidencyForm({ onNext, onBack, disableBack }: DropDownFormProps) {
     const [residencyRequestObj, setResidencyRequestObj] = useState({
         purpose: '',
         birthAddress: '',
@@ -642,9 +658,11 @@ export function ResidencyForm({ onNext, onBack }: DropDownFormProps) {
             />
             <br />
             <div className={styles['nav-buttons-container']}>
-                <button className={styles['nav-btn']} onClick={onBack}>
-                    Back
-                </button>
+                {disableBack === false && (
+                    <button className={styles['nav-btn']} onClick={onBack}>
+                        Back
+                    </button>
+                )}
                 <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
                     Next
                 </button>
@@ -653,7 +671,7 @@ export function ResidencyForm({ onNext, onBack }: DropDownFormProps) {
     );
 }
 
-export function TransferResidencyForm({ onNext, onBack }: DropDownFormProps) {
+export function TransferResidencyForm({ onNext, onBack, disableBack }: DropDownFormProps) {
     const [transferOfResidencyRequestObj, setTransferOfResidencyRequestObj] = useState({
         purpose: '',
         newAddress: '',
@@ -722,9 +740,11 @@ export function TransferResidencyForm({ onNext, onBack }: DropDownFormProps) {
             />
             <br />
             <div className={styles['nav-buttons-container']}>
-                <button className={styles['nav-btn']} onClick={onBack}>
-                    Back
-                </button>
+                {disableBack === false && (
+                    <button className={styles['nav-btn']} onClick={onBack}>
+                        Back
+                    </button>
+                )}
                 <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
                     Next
                 </button>
@@ -733,7 +753,7 @@ export function TransferResidencyForm({ onNext, onBack }: DropDownFormProps) {
     );
 }
 
-export function LivingStillForm({ onNext, onBack }: DropDownFormProps) {
+export function LivingStillForm({ onNext, onBack, disableBack }: DropDownFormProps) {
     const [livingStillRequestObj, setLivingStillRequestObj] = useState({
         purpose: '',
         DateOfTabloid: '',
@@ -803,9 +823,11 @@ export function LivingStillForm({ onNext, onBack }: DropDownFormProps) {
             />
             <br />
             <div className={styles['nav-buttons-container']}>
-                <button className={styles['nav-btn']} onClick={onBack}>
-                    Back
-                </button>
+                {disableBack === false && (
+                    <button className={styles['nav-btn']} onClick={onBack}>
+                        Back
+                    </button>
+                )}
                 <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
                     Next
                 </button>
@@ -814,7 +836,7 @@ export function LivingStillForm({ onNext, onBack }: DropDownFormProps) {
     );
 }
 
-export function BirthFactForm({ onNext, onBack }: DropDownFormProps) {
+export function BirthFactForm({ onNext, onBack, disableBack }: DropDownFormProps) {
     const [birthFactRequestObj, setBirthFactRequestObj] = useState({
         purpose: '',
         DateBorn: '',
@@ -931,9 +953,11 @@ export function BirthFactForm({ onNext, onBack }: DropDownFormProps) {
             />
             <br />
             <div className={styles['nav-buttons-container']}>
-                <button className={styles['nav-btn']} onClick={onBack}>
-                    Back
-                </button>
+                {disableBack === false && (
+                    <button className={styles['nav-btn']} onClick={onBack}>
+                        Back
+                    </button>
+                )}
                 <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
                     Next
                 </button>

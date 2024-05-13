@@ -15,6 +15,7 @@ import {
 import axios from 'axios';
 import { defaultApi } from '../../api';
 import { useLocation, useNavigate } from 'react-router-dom';
+import TablePaginationActions from './TablePaginationActions';
 
 function Profile() {
     const [userDetails, setUserDetails] = useState({
@@ -41,7 +42,21 @@ function Profile() {
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
     // Avoid a layout jump when reaching the last page with empty rows.
-    //const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
+    const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - requestRows.length) : 0;
+
+    const handleChangePage = (
+        event: React.MouseEvent<HTMLButtonElement> | null,
+        newPage: number
+    ) => {
+        setPage(newPage);
+    };
+
+    const handleChangeRowsPerPage = (
+        event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => {
+        setRowsPerPage(parseInt(event.target.value, 10));
+        setPage(0);
+    };
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -168,7 +183,7 @@ function Profile() {
                                       )
                                     : requestRows
                                 ).map((row) => (
-                                    <TableRow key={row.request_id}>
+                                    <TableRow key={row.request_id} style={{ height: '70px' }}>
                                         <TableCell
                                             component="th"
                                             scope="row"
@@ -191,12 +206,31 @@ function Profile() {
                                         </TableCell>
                                     </TableRow>
                                 ))}
-                                {/* {emptyRows > 0 && (
-                                    <TableRow style={{ height: 53 * emptyRows }}>
-                                        <TableCell colSpan={6} />
-                                    </TableRow>
-                                )} */}
-                                <TableRow></TableRow>
+                            </TableBody>
+                        </Table>
+                        <Table>
+                            <TableBody>
+                                <TableRow>
+                                    <TablePagination
+                                        rowsPerPageOptions={[5, 10]}
+                                        sx={{ borderTop: ' 1px solid rgba(224, 224, 224, 1)' }}
+                                        colSpan={6}
+                                        count={requestRows.length}
+                                        rowsPerPage={rowsPerPage}
+                                        page={page}
+                                        slotProps={{
+                                            select: {
+                                                inputProps: {
+                                                    'aria-label': 'rows per page',
+                                                },
+                                                native: true,
+                                            },
+                                        }}
+                                        onPageChange={handleChangePage}
+                                        onRowsPerPageChange={handleChangeRowsPerPage}
+                                        ActionsComponent={TablePaginationActions}
+                                    />
+                                </TableRow>
                             </TableBody>
                         </Table>
                     </div>

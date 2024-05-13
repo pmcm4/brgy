@@ -20,6 +20,7 @@ export type PersonalReviewTypes = {
 };
 
 export type AddressReviewTypes = {
+    residency: string;
     yearsInSanRoque: string;
     block: string;
     street: string;

@@ -38,6 +38,7 @@ function RegistrationForm({ className }: RegistrationFormProps) {
         barangay: 'San Roque',
         city: 'Marikina City',
         province: 'Metro Manila',
+        registered: true,
     });
 
     const [successMsg, setSuccessMsg] = useState(false);
@@ -47,22 +48,6 @@ function RegistrationForm({ className }: RegistrationFormProps) {
     const [usernameTooShort, setusernameTooShort] = useState(false);
     const [usernameTaken, setusernameTaken] = useState(false);
     const [usernameAvail, setusernameAvail] = useState(false);
-
-    const handleRegistration = async (
-        e: React.FormEvent<HTMLButtonElement> | FormEvent<HTMLFormElement>
-    ) => {
-        try {
-            e.preventDefault();
-            const request = await axios.post(`${defaultApi}/api/requestData/register`, inputs);
-
-            if (request.status === 200) {
-                setSuccessMsg(true);
-            }
-        } catch (error: any) {
-            setFailedMsg(true);
-            console.log(error.response.data);
-        }
-    };
 
     const handleOnChange = async (
         e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -84,16 +69,29 @@ function RegistrationForm({ className }: RegistrationFormProps) {
                     username: e.target.value,
                 };
 
-                const checkDuplicate = await axios.post(
-                    `${defaultApi}/api/requestData/duplicateCheck`,
-                    usernameObj
-                );
+                await axios.post(`${defaultApi}/api/requestData/duplicateCheck`, usernameObj);
                 setusernameTaken(false);
                 setusernameAvail(true);
             }
         } catch (error: any) {
             setusernameAvail(false);
             setusernameTaken(true);
+        }
+    };
+
+    const handleRegistration = async (
+        e: React.FormEvent<HTMLButtonElement> | FormEvent<HTMLFormElement>
+    ) => {
+        try {
+            e.preventDefault();
+            const request = await axios.post(`${defaultApi}/api/requestData/register`, inputs);
+
+            if (request.status === 200) {
+                setSuccessMsg(true);
+            }
+        } catch (error: any) {
+            setFailedMsg(true);
+            console.log(error.response.data);
         }
     };
 

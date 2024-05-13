@@ -9,6 +9,9 @@ import CarouselComponent from './carouselComponent';
 
 import MenuCard from './menuCard';
 import Contactform from './cotactform';
+import { Link } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../context/authContext';
 
 export interface HomeProps {
     className?: string;
@@ -348,6 +351,16 @@ export const Home = ({ className }: HomeProps) => {
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAP_API_KEY,
     });
+    const [username, setUsername] = useState('');
+
+    const authContext = useContext(AuthContext);
+
+    useEffect(() => {
+        if (authContext?.currentUser !== null) {
+            const getUsername = JSON.parse(String(localStorage.getItem('currentUser')));
+            setUsername(getUsername.username);
+        }
+    });
 
     return (
         <div className={classNames(styles.root, className)}>
@@ -358,21 +371,27 @@ export const Home = ({ className }: HomeProps) => {
                 </span>
             </div>
             <div className={styles['cards-container']}>
-                <MenuCard
-                    cardTitle="Certifications"
-                    cardSubText="Request all of available certifications through our online services."
-                    cardImg="https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706074450/photo-1562240020-ce31ccb0fa7d_jlk0ds.webp"
-                />
-                <MenuCard
-                    cardTitle="I.D. Card"
-                    cardSubText="Request Barangay I.D. through our online services."
-                    cardImg="https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706074448/id_sample_cl3weq.png"
-                />
-                <MenuCard
-                    cardTitle="FAQ"
-                    cardSubText="Explore Frequently Asked Questions"
-                    cardImg="https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706074449/photo-1531379410502-63bfe8cdaf6f_npnnrt.webp"
-                />
+                <Link to={`/profile/${username}`}>
+                    <MenuCard
+                        cardTitle="Profile"
+                        cardSubText="View and edit your personal information here."
+                        cardImg="https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706074448/id_sample_cl3weq.png"
+                    />
+                </Link>
+                <Link to={'/certificates'}>
+                    <MenuCard
+                        cardTitle="Certifications"
+                        cardSubText="Request all of available certifications through our online services."
+                        cardImg="https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706074450/photo-1562240020-ce31ccb0fa7d_jlk0ds.webp"
+                    />
+                </Link>
+                <Link to={`/faq`}>
+                    <MenuCard
+                        cardTitle="FAQ"
+                        cardSubText="Explore Frequently Asked Questions"
+                        cardImg="https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706074449/photo-1531379410502-63bfe8cdaf6f_npnnrt.webp"
+                    />
+                </Link>
                 <div className={styles.cardExplore}>
                     <div className={styles['gradient-card-explore']}></div>
                     <span className={styles['explore-more']}>Explore More ↓</span>

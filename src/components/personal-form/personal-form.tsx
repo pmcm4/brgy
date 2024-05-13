@@ -1,13 +1,30 @@
 import classNames from 'classnames';
 import styles from './personal-form.module.scss';
-import { ChangeEvent, useContext, useState } from 'react';
+import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import { ReviewContext } from '../context/ReviewContext';
 export interface PersonalFormProps {
     className?: string;
     handleSubmit: (e: React.FormEvent<HTMLFormElement | HTMLButtonElement>) => void;
+    selfInput?: {
+        firstName: string;
+        middleName: string;
+        lastName: string;
+        nameExt: string;
+        gender: string;
+        emailAddress: string;
+        contactNum: string;
+        birthDate: string;
+        religion: string;
+        status: string;
+        sector: string;
+        emergName: string;
+        emergRel: string;
+        emerContact: string;
+        emerAddress: string;
+    };
 }
 
-export const PersonalForm = ({ className, handleSubmit }: PersonalFormProps) => {
+export const PersonalForm = ({ className, handleSubmit, selfInput }: PersonalFormProps) => {
     const [inputs, setInputs] = useState({
         firstName: '',
         middleName: '',
@@ -54,7 +71,6 @@ export const PersonalForm = ({ className, handleSubmit }: PersonalFormProps) => 
             emerContact: inputs.emerContact,
             emerAddress: inputs.emerAddress,
         });
-        console.log(reviewContext?.personalForm);
     };
 
     return (
@@ -74,6 +90,7 @@ export const PersonalForm = ({ className, handleSubmit }: PersonalFormProps) => 
                     placeholder="Juan"
                     name="firstName"
                     onChange={handleOnChange}
+                    value={selfInput?.firstName}
                     required
                 />
 
@@ -84,6 +101,7 @@ export const PersonalForm = ({ className, handleSubmit }: PersonalFormProps) => 
                     className={styles['input-names']}
                     placeholder="Santos"
                     name="middleName"
+                    value={selfInput?.middleName}
                     onChange={handleOnChange}
                 />
                 <br />
@@ -93,6 +111,7 @@ export const PersonalForm = ({ className, handleSubmit }: PersonalFormProps) => 
                     className={styles['input-names']}
                     placeholder="Dela Cruz"
                     name="lastName"
+                    value={selfInput?.lastName}
                     onChange={handleOnChange}
                     required
                 />
@@ -104,6 +123,7 @@ export const PersonalForm = ({ className, handleSubmit }: PersonalFormProps) => 
                     className={styles['input-names']}
                     placeholder="Jr."
                     name="nameExt"
+                    value={selfInput?.nameExt}
                     onChange={handleOnChange}
                 />
                 <br />
@@ -112,6 +132,7 @@ export const PersonalForm = ({ className, handleSubmit }: PersonalFormProps) => 
                 <select
                     className={styles['input-drop-down']}
                     name="gender"
+                    value={selfInput?.gender}
                     onChange={handleOnChange}
                     required
                 >
@@ -129,6 +150,7 @@ export const PersonalForm = ({ className, handleSubmit }: PersonalFormProps) => 
                     placeholder="juandelacruz@gmail.com"
                     name="emailAddress"
                     type="email"
+                    value={selfInput?.emailAddress}
                     onChange={handleOnChange}
                     required
                 />
@@ -140,6 +162,7 @@ export const PersonalForm = ({ className, handleSubmit }: PersonalFormProps) => 
                     placeholder="09XXXXXXXXX"
                     type="number"
                     name="contactNum"
+                    value={selfInput?.contactNum}
                     onChange={handleOnChange}
                     required
                 />
@@ -150,6 +173,7 @@ export const PersonalForm = ({ className, handleSubmit }: PersonalFormProps) => 
                     className={styles['input-names']}
                     name="birthDate"
                     type="date"
+                    value={selfInput?.birthDate}
                     onChange={handleOnChange}
                     required
                 />
@@ -160,6 +184,7 @@ export const PersonalForm = ({ className, handleSubmit }: PersonalFormProps) => 
                     className={styles['input-names']}
                     placeholder="Catholic"
                     name="religion"
+                    value={selfInput?.religion}
                     onChange={handleOnChange}
                     required
                 />
@@ -169,6 +194,7 @@ export const PersonalForm = ({ className, handleSubmit }: PersonalFormProps) => 
                 <select
                     className={styles['input-drop-down']}
                     name="status"
+                    value={selfInput?.status}
                     onChange={handleOnChange}
                     required
                 >
@@ -184,6 +210,7 @@ export const PersonalForm = ({ className, handleSubmit }: PersonalFormProps) => 
                 <select
                     className={styles['input-drop-down']}
                     name="sector"
+                    value={selfInput?.sector}
                     onChange={handleOnChange}
                 >
                     <option disabled selected value={''}>
@@ -201,6 +228,7 @@ export const PersonalForm = ({ className, handleSubmit }: PersonalFormProps) => 
                     className={styles['input-names']}
                     placeholder="Juan S. Dela Cruz"
                     name="emergName"
+                    value={selfInput?.emergName}
                     onChange={handleOnChange}
                     required
                 />
@@ -211,6 +239,7 @@ export const PersonalForm = ({ className, handleSubmit }: PersonalFormProps) => 
                     className={styles['input-names']}
                     placeholder="Mother"
                     name="emergRel"
+                    value={selfInput?.emergRel}
                     onChange={handleOnChange}
                     required
                 />
@@ -222,6 +251,7 @@ export const PersonalForm = ({ className, handleSubmit }: PersonalFormProps) => 
                     placeholder="09XXXXXXXXX"
                     name="emerContact"
                     type="number"
+                    value={selfInput?.emerContact}
                     onChange={handleOnChange}
                     required
                 />
@@ -232,6 +262,7 @@ export const PersonalForm = ({ className, handleSubmit }: PersonalFormProps) => 
                     className={styles['input-names']}
                     placeholder=""
                     name="emerAddress"
+                    value={selfInput?.emerAddress}
                     onChange={handleOnChange}
                 />
             </div>

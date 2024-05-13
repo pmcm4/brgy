@@ -46,10 +46,7 @@ button:hover{
   color: white;
   border: solid 1px #2fad6e;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
+
 
 /* square buttons */
 .rec.rec-arrow {

@@ -7,14 +7,24 @@ export interface PFAddressProps {
     className?: string;
     handleSubmit: (e: React.FormEvent<HTMLFormElement | HTMLButtonElement>) => void;
     onBack: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+    selfInput?: {
+        residency: string;
+        yearsInSanRoque: string;
+        block: string;
+        street: string;
+        barangay: string;
+        city: string;
+        province: string;
+    };
 }
 
 /**
  * This component was created using Codux's Default new component template.
  * To create custom component templates, see https://help.codux.com/kb/en/article/kb16522
  */
-export const PFAddress = ({ className, handleSubmit, onBack }: PFAddressProps) => {
+export const PFAddress = ({ className, handleSubmit, onBack, selfInput }: PFAddressProps) => {
     const [inputs, setInputs] = useState({
+        residency: '',
         yearsInSanRoque: '',
         block: '',
         street: '',
@@ -36,6 +46,7 @@ export const PFAddress = ({ className, handleSubmit, onBack }: PFAddressProps) =
 
     const handleOnClick = () => {
         reviewContext?.setAddressForm({
+            residency: inputs.residency,
             yearsInSanRoque: inputs.yearsInSanRoque,
             block: inputs.block,
             street: inputs.street,
@@ -56,7 +67,7 @@ export const PFAddress = ({ className, handleSubmit, onBack }: PFAddressProps) =
             <form className={styles['input-form']} onSubmit={handleSubmit}>
                 <label className={styles['label-forms']}>Residency:</label>
                 <br />
-                <select className={styles['input-drop-down']} required>
+                <select className={styles['input-drop-down']} value={selfInput?.residency} required>
                     <option disabled selected value={''}>
                         Select Residency
                     </option>
@@ -69,6 +80,7 @@ export const PFAddress = ({ className, handleSubmit, onBack }: PFAddressProps) =
                 <input
                     className={styles['input-names']}
                     placeholder="1 year"
+                    value={selfInput?.yearsInSanRoque}
                     required
                     name="yearsInSanRoque"
                     onChange={handleOnChange}
@@ -79,6 +91,7 @@ export const PFAddress = ({ className, handleSubmit, onBack }: PFAddressProps) =
                 <input
                     className={styles['input-names']}
                     placeholder="blk 1 / lot 1"
+                    value={selfInput?.block}
                     required
                     name="block"
                     onChange={handleOnChange}
@@ -89,6 +102,7 @@ export const PFAddress = ({ className, handleSubmit, onBack }: PFAddressProps) =
                 <input
                     className={styles['input-names']}
                     placeholder="Shoe Avenue"
+                    value={selfInput?.street}
                     required
                     name="street"
                     onChange={handleOnChange}
