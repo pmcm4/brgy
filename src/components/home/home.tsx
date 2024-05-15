@@ -355,10 +355,18 @@ export const Home = ({ className }: HomeProps) => {
 
     const authContext = useContext(AuthContext);
 
+    const [checkExistUser, setCheckExistUser] = useState(false);
+
+    useEffect(() => {
+        if (authContext?.currentUser) {
+            setCheckExistUser(true);
+        }
+    });
+
     useEffect(() => {
         if (authContext?.currentUser !== null) {
             const getUsername = JSON.parse(String(localStorage.getItem('currentUser')));
-            setUsername(getUsername.username);
+            setUsername(getUsername?.username);
         }
     });
 
@@ -371,7 +379,7 @@ export const Home = ({ className }: HomeProps) => {
                 </span>
             </div>
             <div className={styles['cards-container']}>
-                <Link to={`/profile/${username}`}>
+                <Link to={checkExistUser === true ? `/profile/${username}` : `/login`}>
                     <MenuCard
                         cardTitle="Profile"
                         cardSubText="View and edit your personal information here."

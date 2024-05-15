@@ -62,6 +62,15 @@ type ReviewContextType = {
 
     certificateForm: CertificateReviewTypes | null;
     setCertificateForm: React.Dispatch<React.SetStateAction<CertificateReviewTypes | null>>;
+
+    selfRequest: boolean;
+    setSelfRequest: React.Dispatch<React.SetStateAction<boolean>>;
+
+    forSomeoneElseRequest: boolean;
+    setForSomeoneElseRequest: React.Dispatch<React.SetStateAction<boolean>>;
+
+    unregisteredAccountRequest: boolean;
+    setUregisteredAccountRequest: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const ReviewContext = createContext<ReviewContextType | null>(null);
@@ -70,6 +79,10 @@ export const ReviewContextProvider = ({ children }: ReviewContextProviderProps) 
     const [personalForm, setPersonalFormReview] = useState<PersonalReviewTypes | null>(null);
     const [addressForm, setAddressForm] = useState<AddressReviewTypes | null>(null);
     const [certificateForm, setCertificateForm] = useState<CertificateReviewTypes | null>(null);
+
+    const [selfRequest, setSelfRequest] = useState(false);
+    const [forSomeoneElseRequest, setForSomeoneElseRequest] = useState(false);
+    const [unregisteredAccountRequest, setUregisteredAccountRequest] = useState(false);
 
     return (
         <ReviewContext.Provider
@@ -80,6 +93,12 @@ export const ReviewContextProvider = ({ children }: ReviewContextProviderProps) 
                 setAddressForm,
                 certificateForm,
                 setCertificateForm,
+                selfRequest,
+                setSelfRequest,
+                forSomeoneElseRequest,
+                setForSomeoneElseRequest,
+                unregisteredAccountRequest,
+                setUregisteredAccountRequest,
             }}
         >
             {children}

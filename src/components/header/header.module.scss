@@ -62,9 +62,6 @@
 }
 
 
-
-
-
 .right .menu-items:nth-child(6) {
     border: 2px solid #2fad6e;
 }
@@ -72,4 +69,56 @@
 .right .menu-items:nth-child(6):hover {
     color: white;
     background-color: #2fad6e;
+}
+
+
+// profile drop down
+
+.profile-drop-down{
+
+}
+
+.profile-drop-down-items{
+    position: absolute;
+    background-color: white;
+    border-radius: 10px;
+    height: 120px;
+    overflow: hidden;
+    transition: height 0.3s;
+    box-shadow: 0px 4px 8px -4px rgba(58, 53, 65, 0.42);
+}
+
+.hide-drop-down{
+    height: 0;
+    position: absolute;
+    background-color: white;
+    border-radius: 10px;
+    transition: height 0.3s;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px -4px rgba(58, 53, 65, 0.42);
+}
+
+.profile-drop-down .menu-items{
+    margin-right: 10px;
+}
+
+
+.drop-down-item{
+    font-size: 18px;
+    color: black;
+    height: 60px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    width: 150px;
+    font-weight: 600;
+    line-height: normal;
+    cursor: pointer;
+ }
+
+ .drop-down-item:hover {
+    color: #2fad6e;
 }

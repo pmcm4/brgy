@@ -66,6 +66,12 @@ function Profile() {
     const usernameFromStorage = JSON.parse(String(localStorage.getItem('currentUser')));
 
     useEffect(() => {
+        if (usernameFromStorage === null) {
+            navigate('/home');
+        }
+    });
+
+    useEffect(() => {
         try {
             if (usernameFromURL !== usernameFromStorage.username) {
                 navigate('/error');

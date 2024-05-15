@@ -141,7 +141,7 @@ export function SoloParentForm({ onNext, onBack, disableBack }: DropDownFormProp
 
     const handleOnClick = () => {
         reviewContext?.setCertificateForm({
-            selectedCert: 'barangayClearance',
+            selectedCert: 'soloParent',
             purpose: soloParentRequestObj.purpose,
             childName: soloParentRequestObj.childName,
             soloParentSince: soloParentRequestObj.soloParentSince,
@@ -368,7 +368,7 @@ export function GoodMoralForm({ onNext, onBack, disableBack }: DropDownFormProps
     const reviewContext = useContext(ReviewContext);
     const handleOnClick = () => {
         reviewContext?.setCertificateForm({
-            selectedCert: 'cohabitation',
+            selectedCert: 'goodMoral',
             purpose: goodMoralRequestObj.purpose,
             childName: '',
             soloParentSince: '',
@@ -439,7 +439,7 @@ export function NoIncomeForm({ onNext, onBack, disableBack }: DropDownFormProps)
     const reviewContext = useContext(ReviewContext);
     const handleOnClick = () => {
         reviewContext?.setCertificateForm({
-            selectedCert: 'cohabitation',
+            selectedCert: 'noIncome',
             purpose: noIncomeRequestObj.purpose,
             childName: '',
             soloParentSince: '',
@@ -521,7 +521,7 @@ export function FirstTimeJobSeekerForm({ onNext, onBack, disableBack }: DropDown
     const reviewContext = useContext(ReviewContext);
     const handleOnClick = () => {
         reviewContext?.setCertificateForm({
-            selectedCert: 'cohabitation',
+            selectedCert: 'firstTimeJobSeeker',
             purpose: firstTimeJobSeekerRequestObj.purpose,
             childName: '',
             soloParentSince: '',
@@ -594,7 +594,7 @@ export function ResidencyForm({ onNext, onBack, disableBack }: DropDownFormProps
     const reviewContext = useContext(ReviewContext);
     const handleOnClick = () => {
         reviewContext?.setCertificateForm({
-            selectedCert: 'cohabitation',
+            selectedCert: 'residency',
             purpose: residencyRequestObj.purpose,
             childName: '',
             soloParentSince: '',
@@ -687,7 +687,7 @@ export function TransferResidencyForm({ onNext, onBack, disableBack }: DropDownF
     const reviewContext = useContext(ReviewContext);
     const handleOnClick = () => {
         reviewContext?.setCertificateForm({
-            selectedCert: 'cohabitation',
+            selectedCert: 'transferOfResidency',
             purpose: transferOfResidencyRequestObj.purpose,
             childName: '',
             soloParentSince: '',
@@ -769,7 +769,7 @@ export function LivingStillForm({ onNext, onBack, disableBack }: DropDownFormPro
     const reviewContext = useContext(ReviewContext);
     const handleOnClick = () => {
         reviewContext?.setCertificateForm({
-            selectedCert: 'cohabitation',
+            selectedCert: 'livingStill',
             purpose: livingStillRequestObj.purpose,
             childName: '',
             soloParentSince: '',
@@ -856,7 +856,7 @@ export function BirthFactForm({ onNext, onBack, disableBack }: DropDownFormProps
     const reviewContext = useContext(ReviewContext);
     const handleOnClick = () => {
         reviewContext?.setCertificateForm({
-            selectedCert: 'cohabitation',
+            selectedCert: 'birthFact',
             purpose: birthFactRequestObj.purpose,
             childName: birthFactRequestObj.childName,
             soloParentSince: '',

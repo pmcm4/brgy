@@ -67,7 +67,13 @@ export const PFAddress = ({ className, handleSubmit, onBack, selfInput }: PFAddr
             <form className={styles['input-form']} onSubmit={handleSubmit}>
                 <label className={styles['label-forms']}>Residency:</label>
                 <br />
-                <select className={styles['input-drop-down']} value={selfInput?.residency} required>
+                <select
+                    className={styles['input-drop-down']}
+                    name="residency"
+                    value={selfInput?.residency}
+                    onChange={handleOnChange}
+                    required
+                >
                     <option disabled selected value={''}>
                         Select Residency
                     </option>

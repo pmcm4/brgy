@@ -3,6 +3,7 @@ import styles from './login.module.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/authContext';
 import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined';
+import FailedModal from '../message-modals/FailedModal';
 
 function Login() {
     const authContext = useContext(AuthContext);
@@ -44,6 +45,10 @@ function Login() {
             navigate('/home');
         }
     });
+
+    const handleFailedModal = () => {
+        setFailModal(false);
+    };
 
     return (
         <div className={styles['login-main-container']}>
@@ -97,38 +102,13 @@ function Login() {
                 <p className={styles['login-p-foot']}>Forgot password?</p>
             </form>
             {failModal === true && (
-                <div className={styles['failed-modal-container']}>
-                    <div className={styles['failed-modal-box']}>
-                        <div className={styles['failed-message-inner-box']}>
-                            <ErrorOutlineOutlinedIcon className={styles['mui-failed-icon']} />{' '}
-                            <span style={{ width: '200px', textAlign: 'center' }}>
-                                Login failed
-                            </span>
-                        </div>
-
-                        <div className={styles['inner-modal-message-with-btn']}>
-                            <span
-                                style={{
-                                    width: '280px',
-                                    textAlign: 'center',
-                                    fontWeight: '500',
-                                    fontSize: '18px',
-                                }}
-                            >
-                                {failedMsg}
-                            </span>
-
-                            <button
-                                style={{ marginTop: '10px' }}
-                                onClick={() => {
-                                    setFailModal(false);
-                                }}
-                            >
-                                Try again
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                <FailedModal
+                    title="Login"
+                    message={failedMsg}
+                    buttonTitle="Try Again"
+                    buttonLink="/login"
+                    tryAgainBtn={handleFailedModal}
+                />
             )}
         </div>
     );

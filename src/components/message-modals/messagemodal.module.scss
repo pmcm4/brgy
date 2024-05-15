@@ -1,0 +1,98 @@
+// success modal
+
+.success-modal-container{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(161, 161, 161, 0.39);
+
+}
+.success-modal-box{
+    width: 350px;
+    height: auto;
+    position: fixed;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px -4px rgba(58, 53, 65, 0.42);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0 0 30px 0;
+}
+
+.success-message-inner-box{
+    padding: 20px;
+    height: 60%;
+    border-radius: 10px 10px 0 0;
+    background-color: #2fad6e;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.mui-success-icon{
+    color: white;
+    font-size: 80px !important;
+   
+}
+
+.inner-modal-message-with-btn{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 40%;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 20px;
+}
+
+//failed modal
+
+.failed-modal-container{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(161, 161, 161, 0.39);
+
+}
+.failed-modal-box{
+    width: 350px;
+    height: auto;
+    position: fixed;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px -4px rgba(58, 53, 65, 0.42);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0 0 30px 0;
+}
+
+.failed-message-inner-box{
+    padding: 20px;
+    height: 60%;
+    border-radius: 10px 10px 0 0;
+    background-color: #d64747;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.mui-failed-icon{
+    color: white;
+    font-size: 80px !important;
+    
+}

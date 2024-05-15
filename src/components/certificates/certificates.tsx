@@ -133,6 +133,10 @@ export const Certificates = ({ className }: CertificatesProps) => {
                     province: sendRequest.data[0].province,
                 });
 
+                reviewContext?.setSelfRequest(true);
+                reviewContext?.setForSomeoneElseRequest(false);
+                reviewContext?.setUregisteredAccountRequest(false);
+
                 setRenderRequestor(false);
                 setRenderChoose(true);
                 setForMyselfSelected(true);
@@ -140,6 +144,22 @@ export const Certificates = ({ className }: CertificatesProps) => {
         } catch (error) {
             console.log(error);
         }
+    };
+
+    const ForSomeoneElseSelected = () => {
+        reviewContext?.setSelfRequest(false);
+        reviewContext?.setForSomeoneElseRequest(true);
+        reviewContext?.setUregisteredAccountRequest(false);
+        setRenderRequestor(false);
+        setRenderPF(true);
+    };
+
+    const unregisteredRequestSelected = () => {
+        reviewContext?.setSelfRequest(false);
+        reviewContext?.setForSomeoneElseRequest(false);
+        reviewContext?.setUregisteredAccountRequest(true);
+        setRenderRequestor(false);
+        setRenderPF(true);
     };
 
     //next button
@@ -252,10 +272,7 @@ export const Certificates = ({ className }: CertificatesProps) => {
                         </Link>
                         <button
                             style={{ fontSize: '18px', fontWeight: '600', width: '200px' }}
-                            onClick={(e) => {
-                                setRenderRequestor(false);
-                                setRenderPF(true);
-                            }}
+                            onClick={unregisteredRequestSelected}
                         >
                             Continue without registration
                         </button>
@@ -281,10 +298,7 @@ export const Certificates = ({ className }: CertificatesProps) => {
                         </button>
                         <button
                             style={{ fontSize: '18px', fontWeight: '600', width: '200px' }}
-                            onClick={(e) => {
-                                setRenderRequestor(false);
-                                setRenderPF(true);
-                            }}
+                            onClick={ForSomeoneElseSelected}
                         >
                             For someone else
                         </button>
