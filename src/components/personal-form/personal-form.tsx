@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import styles from './personal-form.module.scss';
-import { ChangeEvent, useContext, useEffect, useState } from 'react';
+import { ChangeEvent, useContext, useState } from 'react';
 import { ReviewContext } from '../context/ReviewContext';
 export interface PersonalFormProps {
     className?: string;

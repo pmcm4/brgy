@@ -10,8 +10,9 @@ import CarouselComponent from './carouselComponent';
 import MenuCard from './menuCard';
 import Contactform from './cotactform';
 import { Link } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
+import { forwardRef, useContext, useEffect, useRef, useState } from 'react';
 import { AuthContext } from '../context/authContext';
+import { ScrollEffectContext } from '../context/scrollEffectContext';
 
 export interface HomeProps {
     className?: string;
@@ -347,13 +348,14 @@ const customMapStyle = [
  * This component was created using Codux's Default new component template.
  * To create custom component templates, see https://help.codux.com/kb/en/article/kb16522
  */
-export const Home = ({ className }: HomeProps) => {
+const Home = ({ className }: HomeProps) => {
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAP_API_KEY,
     });
     const [username, setUsername] = useState('');
 
     const authContext = useContext(AuthContext);
+    const scrollEffectContext = useContext(ScrollEffectContext);
 
     const [checkExistUser, setCheckExistUser] = useState(false);
 
@@ -361,14 +363,20 @@ export const Home = ({ className }: HomeProps) => {
         if (authContext?.currentUser) {
             setCheckExistUser(true);
         }
-    });
 
-    useEffect(() => {
         if (authContext?.currentUser !== null) {
             const getUsername = JSON.parse(String(localStorage.getItem('currentUser')));
             setUsername(getUsername?.username);
         }
-    });
+    }, [authContext?.currentUser]);
+
+    const handleScrollAbout = () => {
+        scrollEffectContext?.aboutRef.current?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+            inline: 'nearest',
+        });
+    };
 
     return (
         <div className={classNames(styles.root, className)}>
@@ -400,14 +408,19 @@ export const Home = ({ className }: HomeProps) => {
                         cardImg="https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706074449/photo-1531379410502-63bfe8cdaf6f_npnnrt.webp"
                     />
                 </Link>
-                <div className={styles.cardExplore}>
+                <div className={styles.cardExplore} onClick={handleScrollAbout}>
                     <div className={styles['gradient-card-explore']}></div>
                     <span className={styles['explore-more']}>Explore More ↓</span>
                 </div>
             </div>
             <div className={styles['about-sec-home']}>
                 <div className={styles['left-image']}>
-                    <span className={styles['header-home-about']}>ABOUT US</span>
+                    <span
+                        ref={scrollEffectContext?.aboutRef}
+                        className={styles['header-home-about']}
+                    >
+                        ABOUT US
+                    </span>
                     <span className={styles['header-about-main']}>
                         LOREM IPSUM LOREM IPSUMLOREM IPSUM
                     </span>
@@ -521,6 +534,8 @@ export const Home = ({ className }: HomeProps) => {
         </div>
     );
 };
+
+export default Home;
 /*                 <Carousel breakPoints={breakPoints}>
                    <div className={styles['carousell-cards']}>
                         <img src="https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706083237/408500257_122117065472102454_6962691213519753276_n_copy_ongujc.png" alt="" className={styles.kgwd} />

@@ -79,7 +79,7 @@ function ReviewModal() {
     });
     const [livingStillRows, setLivingStillRows] = useState({
         purpose: reviewContext?.certificateForm?.purpose || '',
-        new_address: reviewContext?.certificateForm?.newAddress || '',
+        date_of_tabloid: reviewContext?.certificateForm?.DateOfTabloid || '',
         request_of: reviewContext?.certificateForm?.nameOfRequestor || '',
     });
     const [birthFactRows, setBirthFactRows] = useState({

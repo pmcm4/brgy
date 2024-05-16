@@ -288,7 +288,7 @@ export function TransferOfResidencyForm({ TransferOfResidencyRows }: TransferOfR
 interface LivingStillFormProps {
     LivingStillRows?: {
         purpose: string;
-        new_address: string;
+        date_of_tabloid: string;
         request_of: string;
     };
 }
@@ -306,8 +306,8 @@ export function LivingStillForm({ LivingStillRows }: LivingStillFormProps) {
                 <textarea disabled value={LivingStillRows?.purpose} />
             </div>
             <div className={styles['row-review-input-data']}>
-                <span>New Address: </span>
-                <input disabled value={LivingStillRows?.new_address} />
+                <span>Date of Tabloid: </span>
+                <input disabled value={LivingStillRows?.date_of_tabloid} />
             </div>
             <div className={styles['row-review-input-data']}>
                 <span>Request Of: </span>

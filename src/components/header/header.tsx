@@ -1,12 +1,14 @@
 import classNames from 'classnames';
 import styles from './header.module.scss';
-import { Link, useNavigate } from 'react-router-dom';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { forwardRef, useContext, useEffect, useRef, useState } from 'react';
 import { AuthContext } from '../context/authContext';
 import axios from 'axios';
 import { defaultApi } from '../../api';
 import { paperClasses } from '@mui/material';
 import { jwtDecode } from 'jwt-decode';
+import { ScrollEffectContext } from '../context/scrollEffectContext';
+import { useAxios, useLogoutAxios } from '../utils/useAxios';
 
 export interface HeaderProps {
     className?: string;
@@ -16,8 +18,9 @@ export interface HeaderProps {
  * This component was created using Codux's Default new component template.
  * To create custom component templates, see https://help.codux.com/kb/en/article/kb16522
  */
-export const Header = ({ className }: HeaderProps) => {
+const Header = ({ className }: HeaderProps) => {
     const authContext = useContext(AuthContext);
+    const scrollEffectContext = useContext(ScrollEffectContext);
     const [checkExistUser, setCheckExistUser] = useState(false);
     const [userName, setUsername] = useState('');
 
@@ -32,65 +35,8 @@ export const Header = ({ className }: HeaderProps) => {
         setShowDropDown(false);
     };
 
-    const axiosJWT = axios.create();
+    let useJWTAxios = useLogoutAxios();
 
-    const parsedObj = JSON.parse(String(localStorage.getItem('currentUser')));
-
-    axiosJWT.interceptors.request.use(
-        async (config) => {
-            const parse = parsedObj.accessToken;
-            let currentDate = new Date();
-
-            const decodedToken = jwtDecode(String(parse));
-
-            if (decodedToken.exp! * 1000 < currentDate.getTime()) {
-                const data = await handleRefreshToken();
-                config.headers['authorization'] = 'Bearer ' + data.accessToken;
-            }
-            return config;
-        },
-        (err) => {
-            return Promise.reject(err);
-        }
-    );
-
-    const handleLogout = async () => {
-        try {
-            const token = {
-                token: parsedObj.accessToken,
-            };
-
-            await axiosJWT.post(`${defaultApi}/api/auth/logout`, token, {
-                headers: { authorization: 'Bearer ' + parsedObj.accessToken },
-            });
-            localStorage.clear();
-            window.location.reload();
-        } catch (error: any) {
-            console.log(error.meesage);
-        }
-    };
-
-    const handleRefreshToken = async () => {
-        try {
-            const parse = JSON.parse(String(localStorage?.getItem('currentUser')));
-            const token = {
-                token: parse.refreshToken,
-            };
-            const res = await axios.post(`${defaultApi}/api/auth/refreshToken`, token);
-            const refreshedToken = {
-                username: parse.username,
-                isAdmin: parse.isAdmin,
-                accessToken: res.data.accessToken,
-                refreshToken: res.data.refreshToken,
-            };
-
-            localStorage.setItem('currentUser', JSON.stringify(refreshedToken));
-
-            return res.data;
-        } catch (error) {
-            console.log(error);
-        }
-    };
     useEffect(() => {
         if (authContext?.currentUser) {
             setCheckExistUser(true);
@@ -98,7 +44,34 @@ export const Header = ({ className }: HeaderProps) => {
 
             setUsername(username?.username);
         }
-    });
+    }, [authContext?.currentUser]);
+
+    const handleLogout = async () => {
+        try {
+            const token = {
+                token: authContext?.refreshToken,
+            };
+
+            await useJWTAxios.post(`${defaultApi}/api/auth/logout`, token, {
+                headers: { authorization: 'Bearer ' + authContext?.accessToken },
+            });
+
+            localStorage.clear();
+            window.location.reload();
+        } catch (error: any) {
+            console.log(error);
+        }
+    };
+
+    const handleScrollAbout = async () => {
+        await navigate('/home');
+        scrollEffectContext?.aboutRef.current?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+            inline: 'nearest',
+        });
+    };
+
     return (
         <div className={classNames(styles.root, className)}>
             <div className={styles.left}>
@@ -113,7 +86,11 @@ export const Header = ({ className }: HeaderProps) => {
                 <Link to="/home" style={{ textDecoration: 'none' }}>
                     <span className={styles['menu-items']}>Home</span>
                 </Link>
-                <span className={styles['menu-items']}>About</span>
+
+                <span className={styles['menu-items']} onClick={handleScrollAbout}>
+                    About
+                </span>
+
                 <Link to="/certificates" style={{ textDecoration: 'none' }}>
                     <span className={styles['menu-items']}>Services</span>
                 </Link>
@@ -158,3 +135,5 @@ export const Header = ({ className }: HeaderProps) => {
         </div>
     );
 };
+
+export default Header;

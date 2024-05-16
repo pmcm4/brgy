@@ -44,7 +44,7 @@ function Login() {
         if (authContext?.currentUser) {
             navigate('/home');
         }
-    });
+    }, [authContext?.currentUser]);
 
     const handleFailedModal = () => {
         setFailModal(false);

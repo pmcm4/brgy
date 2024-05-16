@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styles from './profile.module.scss';
 import RequestPageOutlinedIcon from '@mui/icons-material/RequestPageOutlined';
 import QuizOutlinedIcon from '@mui/icons-material/QuizOutlined';
@@ -16,6 +16,8 @@ import axios from 'axios';
 import { defaultApi } from '../../api';
 import { useLocation, useNavigate } from 'react-router-dom';
 import TablePaginationActions from './TablePaginationActions';
+import { useAxios } from '../utils/useAxios';
+import { AuthContext } from '../context/authContext';
 
 function Profile() {
     const [userDetails, setUserDetails] = useState({
@@ -66,13 +68,11 @@ function Profile() {
     const usernameFromStorage = JSON.parse(String(localStorage.getItem('currentUser')));
 
     useEffect(() => {
-        if (usernameFromStorage === null) {
-            navigate('/home');
-        }
-    });
-
-    useEffect(() => {
         try {
+            if (usernameFromStorage === null) {
+                navigate('/home');
+            }
+
             if (usernameFromURL !== usernameFromStorage.username) {
                 navigate('/error');
             }
@@ -112,6 +112,20 @@ function Profile() {
             console.log(error);
         }
     }, []);
+
+    const authContext = useContext(AuthContext);
+
+    let axiosJWT = useAxios();
+
+    const handleDelete = async () => {
+        try {
+            await axiosJWT.delete(`${defaultApi}/api/auth/delete`, {
+                headers: { authorization: 'Bearer ' + authContext?.accessToken },
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     return (
         <div className={styles['profile-main-body']}>
@@ -208,7 +222,7 @@ function Profile() {
                                             {row.request_status}
                                         </TableCell>
                                         <TableCell style={{ width: 'auto' }} align="center">
-                                            <button>View</button>
+                                            <button onClick={handleDelete}>View</button>
                                         </TableCell>
                                     </TableRow>
                                 ))}

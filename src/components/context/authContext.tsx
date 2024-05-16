@@ -12,6 +12,12 @@ type AuthContextProviderType = {
     logout: (token: object) => Promise<void>;
     currentUser: object | null;
     setCurrentUser: React.Dispatch<React.SetStateAction<string | null>>;
+    accessToken: string | null;
+    setAccessToken: React.Dispatch<any>;
+    refreshToken: string | null;
+    setRefreshToken: React.Dispatch<any>;
+    logoutSignal: boolean;
+    setLogoutSignal: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const AuthContext = createContext<AuthContextProviderType | null>(null);
@@ -19,6 +25,9 @@ export const AuthContext = createContext<AuthContextProviderType | null>(null);
 export const AuthContextProvider = ({ children }: AuthContextProps) => {
     const currentUserString = JSON.parse(String(localStorage.getItem('currentUser')));
     const [currentUser, setCurrentUser] = useState(currentUserString || null);
+    const [accessToken, setAccessToken] = useState(currentUserString?.accessToken || null);
+    const [refreshToken, setRefreshToken] = useState(currentUserString?.refreshToken || null);
+    const [logoutSignal, setLogoutSignal] = useState(false);
 
     const login = async (loginInput: object) => {
         const res = await axios.post(`${defaultApi}/api/auth/loginUser`, loginInput);
@@ -36,11 +45,27 @@ export const AuthContextProvider = ({ children }: AuthContextProps) => {
     useEffect(() => {
         if (currentUserString === null && currentUser !== null) {
             localStorage.setItem('currentUser', JSON.stringify(currentUser));
+
+            setAccessToken(currentUser.accessToken);
+            setRefreshToken(currentUser.refreshToken);
         }
-    });
+    }, [currentUserString, currentUser]);
 
     return (
-        <AuthContext.Provider value={{ currentUser, login, logout, setCurrentUser }}>
+        <AuthContext.Provider
+            value={{
+                currentUser,
+                login,
+                logout,
+                setCurrentUser,
+                accessToken,
+                setAccessToken,
+                refreshToken,
+                setRefreshToken,
+                logoutSignal,
+                setLogoutSignal,
+            }}
+        >
             {children}
         </AuthContext.Provider>
     );
