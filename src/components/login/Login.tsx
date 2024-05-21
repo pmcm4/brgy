@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import styles from './login.module.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/authContext';
-import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined';
 import FailedModal from '../message-modals/FailedModal';
 
 function Login() {

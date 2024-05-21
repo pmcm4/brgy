@@ -1,10 +1,3 @@
-import { useRef, useState } from 'react';
-import classNames from 'classnames';
-import { ReactComponent as ReactLogo } from './assets/react.svg';
-import { ReactComponent as ViteLogo } from './assets/vite.svg';
-import { ReactComponent as TypescriptLogo } from './assets/typescript.svg';
-import { ReactComponent as ScssLogo } from './assets/scss.svg';
-import styles from './App.module.scss';
 import Home from './components/home/home';
 import { FAQ } from './components/faq/faq';
 import { Certificates } from './components/certificates/certificates';
