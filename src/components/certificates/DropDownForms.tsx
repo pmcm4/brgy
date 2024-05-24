@@ -26,6 +26,7 @@ export function BarangayClearanceForm({ onNext, onBack, disableBack }: DropDownF
             selectedCert: 'barangayClearance',
             purpose: barangayClearanceRequestObj.purpose,
             childName: '',
+            childGender: '',
             soloParentSince: '',
             presentedBy: '',
             registryNumber: '',
@@ -70,6 +71,69 @@ export function BarangayClearanceForm({ onNext, onBack, disableBack }: DropDownF
     );
 }
 
+export function Indigency({ onNext, onBack, disableBack }: DropDownFormProps) {
+    const reviewContext = useContext(ReviewContext);
+
+    const [indigencyRequestObj, setIndigencyRequestObj] = useState({
+        purpose: '',
+    });
+
+    const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setIndigencyRequestObj((prev) => {
+            return { ...prev, [e.target.name]: e.target.value };
+        });
+    };
+
+    const handleOnClick = () => {
+        reviewContext?.setCertificateForm({
+            selectedCert: 'indigency',
+            purpose: indigencyRequestObj.purpose,
+            childName: '',
+            childGender: '',
+            soloParentSince: '',
+            presentedBy: '',
+            registryNumber: '',
+            nameOfRequestor: '',
+            birthAddress: '',
+            spouseName: '',
+            DateOfMarriage: '',
+            noIncomeSince: '',
+            DateOfResidency: '',
+            newAddress: '',
+            DateOfTabloid: '',
+            DateBorn: '',
+            witnessName: '',
+            witnessType: '',
+        });
+    };
+
+    return (
+        <form onSubmit={onNext} className={styles['indigency']}>
+            <br />
+            <label className={styles['label-forms']}>Purpose:</label>
+            <br />
+            <input
+                onChange={handleOnChange}
+                className={styles['input-names']}
+                placeholder="state your purpose here in English or Tagalog."
+                name="purpose"
+                required
+            />
+            <div className={styles['nav-buttons-container']}>
+                {disableBack === false && (
+                    <button className={styles['nav-btn']} onClick={onBack}>
+                        Back
+                    </button>
+                )}
+
+                <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
+                    Next
+                </button>
+            </div>
+        </form>
+    );
+}
+
 export function BarangayIDForm({ onNext, onBack, disableBack }: DropDownFormProps) {
     const reviewContext = useContext(ReviewContext);
     const [barangayIDRequestObj, setBarangayIDRequestObj] = useState({
@@ -81,6 +145,7 @@ export function BarangayIDForm({ onNext, onBack, disableBack }: DropDownFormProp
             selectedCert: 'barangayID',
             purpose: barangayIDRequestObj.purpose,
             childName: '',
+            childGender: '',
             soloParentSince: '',
             presentedBy: '',
             registryNumber: '',
@@ -133,6 +198,7 @@ export function SoloParentForm({ onNext, onBack, disableBack }: DropDownFormProp
     const [soloParentRequestObj, setSoloParentRequestObj] = useState({
         purpose: '',
         childName: '',
+        childGender: '',
         soloParentSince: '',
         presentedBy: '',
         registryNumber: '',
@@ -144,6 +210,7 @@ export function SoloParentForm({ onNext, onBack, disableBack }: DropDownFormProp
             selectedCert: 'soloParent',
             purpose: soloParentRequestObj.purpose,
             childName: soloParentRequestObj.childName,
+            childGender: soloParentRequestObj.childGender,
             soloParentSince: soloParentRequestObj.soloParentSince,
             presentedBy: soloParentRequestObj.presentedBy,
             registryNumber: soloParentRequestObj.registryNumber,
@@ -161,7 +228,9 @@ export function SoloParentForm({ onNext, onBack, disableBack }: DropDownFormProp
         });
     };
 
-    const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleOnChange = (
+        e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>
+    ) => {
         setSoloParentRequestObj((prev) => {
             return { ...prev, [e.target.name]: e.target.value };
         });
@@ -186,6 +255,22 @@ export function SoloParentForm({ onNext, onBack, disableBack }: DropDownFormProp
                 required
                 name="childName"
             />
+            <br />
+
+            <label className={styles['label-forms']}>Child Gender:</label>
+            <br />
+            <select
+                className={styles['input-drop-down']}
+                name="childGender"
+                onChange={handleOnChange}
+                required
+            >
+                <option disabled selected value={''}>
+                    Select Gender
+                </option>
+                <option>Male</option>
+                <option>Female</option>
+            </select>
             <br />
 
             <label className={styles['label-forms']}>Solo Parent Since:</label>
@@ -261,6 +346,7 @@ export function CohabitationForm({ onNext, onBack, disableBack }: DropDownFormPr
             selectedCert: 'cohabitation',
             purpose: cohabitationRequestObj.purpose,
             childName: '',
+            childGender: '',
             soloParentSince: '',
             presentedBy: '',
             registryNumber: '',
@@ -371,6 +457,7 @@ export function GoodMoralForm({ onNext, onBack, disableBack }: DropDownFormProps
             selectedCert: 'goodMoral',
             purpose: goodMoralRequestObj.purpose,
             childName: '',
+            childGender: '',
             soloParentSince: '',
             presentedBy: '',
             registryNumber: '',
@@ -442,6 +529,7 @@ export function NoIncomeForm({ onNext, onBack, disableBack }: DropDownFormProps)
             selectedCert: 'noIncome',
             purpose: noIncomeRequestObj.purpose,
             childName: '',
+            childGender: '',
             soloParentSince: '',
             presentedBy: '',
             registryNumber: '',
@@ -524,6 +612,7 @@ export function FirstTimeJobSeekerForm({ onNext, onBack, disableBack }: DropDown
             selectedCert: 'firstTimeJobSeeker',
             purpose: firstTimeJobSeekerRequestObj.purpose,
             childName: '',
+            childGender: '',
             soloParentSince: '',
             presentedBy: '',
             registryNumber: '',
@@ -597,6 +686,7 @@ export function ResidencyForm({ onNext, onBack, disableBack }: DropDownFormProps
             selectedCert: 'residency',
             purpose: residencyRequestObj.purpose,
             childName: '',
+            childGender: '',
             soloParentSince: '',
             presentedBy: '',
             registryNumber: '',
@@ -690,6 +780,7 @@ export function TransferResidencyForm({ onNext, onBack, disableBack }: DropDownF
             selectedCert: 'transferOfResidency',
             purpose: transferOfResidencyRequestObj.purpose,
             childName: '',
+            childGender: '',
             soloParentSince: '',
             presentedBy: '',
             registryNumber: '',
@@ -772,6 +863,7 @@ export function LivingStillForm({ onNext, onBack, disableBack }: DropDownFormPro
             selectedCert: 'livingStill',
             purpose: livingStillRequestObj.purpose,
             childName: '',
+            childGender: '',
             soloParentSince: '',
             presentedBy: '',
             registryNumber: '',
@@ -841,13 +933,16 @@ export function BirthFactForm({ onNext, onBack, disableBack }: DropDownFormProps
         purpose: '',
         DateBorn: '',
         childName: '',
+        childGender: '',
         birthAddress: '',
         witnessName: '',
         witnessType: '',
         nameOfRequestor: '',
     });
 
-    const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleOnChange = (
+        e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>
+    ) => {
         setBirthFactRequestObj((prev) => {
             return { ...prev, [e.target.name]: e.target.value };
         });
@@ -859,6 +954,7 @@ export function BirthFactForm({ onNext, onBack, disableBack }: DropDownFormProps
             selectedCert: 'birthFact',
             purpose: birthFactRequestObj.purpose,
             childName: birthFactRequestObj.childName,
+            childGender: birthFactRequestObj.childGender,
             soloParentSince: '',
             presentedBy: '',
             registryNumber: '',
@@ -907,6 +1003,22 @@ export function BirthFactForm({ onNext, onBack, disableBack }: DropDownFormProps
                 name="childName"
                 required
             />
+            <br />
+
+            <label className={styles['label-forms']}>Child Gender:</label>
+            <br />
+            <select
+                className={styles['input-drop-down']}
+                name="childGender"
+                onChange={handleOnChange}
+                required
+            >
+                <option disabled selected value={''}>
+                    Select Gender
+                </option>
+                <option>Male</option>
+                <option>Female</option>
+            </select>
             <br />
 
             <label className={styles['label-forms']}> Birth Address:</label>

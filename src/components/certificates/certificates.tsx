@@ -11,6 +11,7 @@ import {
     CohabitationForm,
     FirstTimeJobSeekerForm,
     GoodMoralForm,
+    Indigency,
     LivingStillForm,
     NoIncomeForm,
     ResidencyForm,
@@ -204,6 +205,7 @@ export const Certificates = ({ className }: CertificatesProps) => {
 
     const [renderForm, setRenderForm] = useState({
         barangayClearance: false,
+        indigency: false,
         barangayID: false,
         soloParent: false,
         cohabitation: false,
@@ -226,6 +228,7 @@ export const Certificates = ({ className }: CertificatesProps) => {
         setRenderForm(() => {
             return {
                 barangayClearance: false,
+                indigency: false,
                 barangayID: false,
                 soloParent: false,
                 cohabitation: false,
@@ -328,14 +331,14 @@ export const Certificates = ({ className }: CertificatesProps) => {
 
             <div className={renderChoose === true ? styles['unhide'] : styles['hide']}>
                 <div className={styles['certs-container']}>
-                    <h1 className={styles['header-perso']}>Address</h1>
+                    <h1 className={styles['header-perso']}>Certificates</h1>
                     <span className={styles['perso-subhead']}>
                         Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
                         Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
                     </span>
                     <button className={styles['existing-profile']}>Existing Profile</button>
                     <div className={styles['input-form']}>
-                        <label className={styles['label-forms']}>Residency:</label>
+                        <label className={styles['label-forms']}>Select Certificate Type:</label>
                         <br />
                         <select
                             defaultValue={'Select Certificate'}
@@ -344,6 +347,7 @@ export const Certificates = ({ className }: CertificatesProps) => {
                         >
                             <option disabled>Select Certificate</option>
                             <option value={'barangayClearance'}>Barangay Clearance</option>
+                            <option value={'indigency'}>Indigency</option>
                             <option value={'barangayID'}>Barangay ID</option>
                             <option value={'soloParent'}>Solo Parent</option>
                             <option value={'cohabitation'}>Cohabitation</option>
@@ -428,6 +432,13 @@ export const Certificates = ({ className }: CertificatesProps) => {
                         )}
                         {renderForm.birthFact === true && (
                             <BirthFactForm
+                                disableBack={forMyselfSelected === true && true}
+                                onNext={handleCertFormNext}
+                                onBack={handleBackCertChoose}
+                            />
+                        )}
+                        {renderForm.indigency === true && (
+                            <Indigency
                                 disableBack={forMyselfSelected === true && true}
                                 onNext={handleCertFormNext}
                                 onBack={handleBackCertChoose}

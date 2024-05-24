@@ -8,6 +8,7 @@ import {
     CohabitationForm,
     FirstTimeJobSeekerForm,
     GoodMoralForm,
+    IndigencyForm,
     LivingStillForm,
     NoIncomeForm,
     ResidencyForm,
@@ -25,72 +26,8 @@ import SuccessModal from '../message-modals/SuccessModal';
 function ReviewModal() {
     const reviewContext = useContext(ReviewContext);
 
-    console.log(reviewContext?.forSomeoneElseRequest);
-    console.log(reviewContext?.selfRequest);
-    console.log(reviewContext?.unregisteredAccountRequest);
-
     const [successMsg, setSuccessMsg] = useState(false);
     const [failedMsg, setFailedMsg] = useState(false);
-
-    const [barangayClearanceRows, setBarangayClearanceRows] = useState({
-        purpose: reviewContext?.certificateForm?.purpose || '',
-    });
-    const [barangayIDRows, setbarangayIDRows] = useState({
-        purpose: reviewContext?.certificateForm?.purpose || '',
-    });
-    const [soloParentRows, setSoloParentRows] = useState({
-        purpose: reviewContext?.certificateForm?.purpose || '',
-        child_name: reviewContext?.certificateForm?.childName || '',
-        solo_parent_since: reviewContext?.certificateForm?.soloParentSince || '',
-        presented_by: reviewContext?.certificateForm?.presentedBy || '',
-        registry_number: reviewContext?.certificateForm?.registryNumber || '',
-        request_of: reviewContext?.certificateForm?.nameOfRequestor || '',
-    });
-    const [cohabitationRows, setCohabitationRows] = useState({
-        purpose: reviewContext?.certificateForm?.purpose || '',
-        birth_address: reviewContext?.certificateForm?.birthAddress || '',
-        spouse_name: reviewContext?.certificateForm?.spouseName || '',
-        date_of_marriage: reviewContext?.certificateForm?.DateOfMarriage || '',
-        request_of: reviewContext?.certificateForm?.nameOfRequestor || '',
-    });
-    const [goodMoralRows, setGoodMoralRows] = useState({
-        purpose: reviewContext?.certificateForm?.purpose || '',
-        request_of: reviewContext?.certificateForm?.nameOfRequestor || '',
-    });
-    const [noIncomeRows, setNoIncomeRows] = useState({
-        purpose: reviewContext?.certificateForm?.purpose || '',
-        no_income_since: reviewContext?.certificateForm?.noIncomeSince || '',
-        request_of: reviewContext?.certificateForm?.nameOfRequestor || '',
-    });
-    const [firstTimeJobSeekerRows, setFirstTimeJobSeekerRows] = useState({
-        purpose: reviewContext?.certificateForm?.purpose || '',
-        date_of_residency: reviewContext?.certificateForm?.DateOfResidency || '',
-    });
-    const [residencyRows, setResidencyRows] = useState({
-        purpose: reviewContext?.certificateForm?.purpose || '',
-        birth_address: reviewContext?.certificateForm?.birthAddress || '',
-        date_of_residency: reviewContext?.certificateForm?.DateOfResidency || '',
-        request_of: reviewContext?.certificateForm?.nameOfRequestor || '',
-    });
-    const [transferOfResidencyRows, setTransferOfResidencyRows] = useState({
-        purpose: reviewContext?.certificateForm?.purpose || '',
-        new_address: reviewContext?.certificateForm?.newAddress || '',
-        request_of: reviewContext?.certificateForm?.nameOfRequestor || '',
-    });
-    const [livingStillRows, setLivingStillRows] = useState({
-        purpose: reviewContext?.certificateForm?.purpose || '',
-        date_of_tabloid: reviewContext?.certificateForm?.DateOfTabloid || '',
-        request_of: reviewContext?.certificateForm?.nameOfRequestor || '',
-    });
-    const [birthFactRows, setBirthFactRows] = useState({
-        purpose: reviewContext?.certificateForm?.purpose || '',
-        date_born: reviewContext?.certificateForm?.DateBorn || '',
-        child_name: reviewContext?.certificateForm?.childName || '',
-        birth_address: reviewContext?.certificateForm?.birthAddress || '',
-        witness_name: reviewContext?.certificateForm?.witnessName || '',
-        witness_type: reviewContext?.certificateForm?.witnessType || '',
-        request_of: reviewContext?.certificateForm?.nameOfRequestor || '',
-    });
 
     const handleSubmitForMyself = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         try {
@@ -103,6 +40,7 @@ function ReviewModal() {
                 request_date: date,
                 purpose: reviewContext?.certificateForm?.purpose,
                 childName: reviewContext?.certificateForm?.childName,
+                childGender: reviewContext?.certificateForm?.childGender,
                 soloParentSince: reviewContext?.certificateForm?.soloParentSince,
                 presentedBy: reviewContext?.certificateForm?.presentedBy,
                 registryNumber: reviewContext?.certificateForm?.registryNumber,
@@ -172,6 +110,7 @@ function ReviewModal() {
 
                 purpose: reviewContext?.certificateForm?.purpose,
                 childName: reviewContext?.certificateForm?.childName,
+                childGender: reviewContext?.certificateForm?.childGender,
                 soloParentSince: reviewContext?.certificateForm?.soloParentSince,
                 presentedBy: reviewContext?.certificateForm?.presentedBy,
                 registryNumber: reviewContext?.certificateForm?.registryNumber,
@@ -243,6 +182,7 @@ function ReviewModal() {
                 //certificate request details
                 purpose: reviewContext?.certificateForm?.purpose,
                 childName: reviewContext?.certificateForm?.childName,
+                childGender: reviewContext?.certificateForm?.childGender,
                 soloParentSince: reviewContext?.certificateForm?.soloParentSince,
                 presentedBy: reviewContext?.certificateForm?.presentedBy,
                 registryNumber: reviewContext?.certificateForm?.registryNumber,
@@ -458,39 +398,40 @@ function ReviewModal() {
                 <hr />
                 <div className={styles['request-text-details-inner']}>
                     {reviewContext?.certificateForm?.selectedCert === 'barangayClearance' && (
-                        <BarangayClearanceForm BarangayClearanceRows={barangayClearanceRows} />
+                        <BarangayClearanceForm />
+                    )}
+                    {reviewContext?.certificateForm?.selectedCert === 'indigency' && (
+                        <IndigencyForm />
                     )}
                     {reviewContext?.certificateForm?.selectedCert === 'barangayID' && (
-                        <BarangayIDForm BarangayIDRows={barangayIDRows} />
+                        <BarangayIDForm />
                     )}
                     {reviewContext?.certificateForm?.selectedCert === 'soloParent' && (
-                        <SoloParentForm SoloParentRows={soloParentRows} />
+                        <SoloParentForm />
                     )}
                     {reviewContext?.certificateForm?.selectedCert === 'cohabitation' && (
-                        <CohabitationForm CohabitationRows={cohabitationRows} />
+                        <CohabitationForm />
                     )}
                     {reviewContext?.certificateForm?.selectedCert === 'goodMoral' && (
-                        <GoodMoralForm GoodMoralRows={goodMoralRows} />
+                        <GoodMoralForm />
                     )}
                     {reviewContext?.certificateForm?.selectedCert === 'noIncome' && (
-                        <NoIncomeForm NoIncomeRows={noIncomeRows} />
+                        <NoIncomeForm />
                     )}
                     {reviewContext?.certificateForm?.selectedCert === 'firstTimeJobSeeker' && (
-                        <FirstTimeJobSeekerForm FirstTimeJobSeekerRows={firstTimeJobSeekerRows} />
+                        <FirstTimeJobSeekerForm />
                     )}
                     {reviewContext?.certificateForm?.selectedCert === 'residency' && (
-                        <ResidencyForm ResidencyRows={residencyRows} />
+                        <ResidencyForm />
                     )}
                     {reviewContext?.certificateForm?.selectedCert === 'transferOfResidency' && (
-                        <TransferOfResidencyForm
-                            TransferOfResidencyRows={transferOfResidencyRows}
-                        />
+                        <TransferOfResidencyForm />
                     )}
                     {reviewContext?.certificateForm?.selectedCert === 'livingStill' && (
-                        <LivingStillForm LivingStillRows={livingStillRows} />
+                        <LivingStillForm />
                     )}
                     {reviewContext?.certificateForm?.selectedCert === 'birthFact' && (
-                        <BirthFactForm BirthFactRows={birthFactRows} />
+                        <BirthFactForm />
                     )}
                 </div>
             </div>

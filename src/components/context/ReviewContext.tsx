@@ -33,6 +33,7 @@ export type CertificateReviewTypes = {
     selectedCert: string;
     purpose: string;
     childName: string;
+    childGender: string;
     soloParentSince: string;
     presentedBy: string;
     registryNumber: string;

@@ -1,12 +1,9 @@
+import { useContext } from 'react';
 import styles from './certificates.module.scss';
+import { ReviewContext } from '../context/ReviewContext';
 
-interface BarangayClearanceFormProps {
-    BarangayClearanceRows?: {
-        purpose: string;
-    };
-}
-
-export function BarangayClearanceForm({ BarangayClearanceRows }: BarangayClearanceFormProps) {
+export function BarangayClearanceForm() {
+    const reviewContext = useContext(ReviewContext);
     return (
         <>
             <div className={styles['row-review-input-data']}>
@@ -16,19 +13,31 @@ export function BarangayClearanceForm({ BarangayClearanceRows }: BarangayClearan
 
             <div className={styles['row-review-input-data']}>
                 <span>Purpose: </span>
-                <textarea disabled value={BarangayClearanceRows?.purpose} />
+                <textarea disabled value={reviewContext?.certificateForm?.purpose} />
             </div>
         </>
     );
 }
 
-interface BarangayIDFormFormProps {
-    BarangayIDRows?: {
-        purpose: string;
-    };
+export function IndigencyForm() {
+    const reviewContext = useContext(ReviewContext);
+    return (
+        <>
+            <div className={styles['row-review-input-data']}>
+                <span>Type of Request: </span>
+                <p>Indigency</p>
+            </div>
+
+            <div className={styles['row-review-input-data']}>
+                <span>Purpose: </span>
+                <textarea disabled value={reviewContext?.certificateForm?.purpose} />
+            </div>
+        </>
+    );
 }
 
-export function BarangayIDForm({ BarangayIDRows }: BarangayIDFormFormProps) {
+export function BarangayIDForm() {
+    const reviewContext = useContext(ReviewContext);
     return (
         <>
             <div className={styles['row-review-input-data']}>
@@ -38,24 +47,14 @@ export function BarangayIDForm({ BarangayIDRows }: BarangayIDFormFormProps) {
 
             <div className={styles['row-review-input-data']}>
                 <span>Purpose: </span>
-                <textarea disabled value={BarangayIDRows?.purpose} />
+                <textarea disabled value={reviewContext?.certificateForm?.purpose} />
             </div>
         </>
     );
 }
 
-interface SoloParentFormProps {
-    SoloParentRows?: {
-        purpose: string;
-        child_name: string;
-        solo_parent_since: string;
-        presented_by: string;
-        registry_number: string;
-        request_of: string;
-    };
-}
-
-export function SoloParentForm({ SoloParentRows }: SoloParentFormProps) {
+export function SoloParentForm() {
+    const reviewContext = useContext(ReviewContext);
     return (
         <>
             <div className={styles['row-review-input-data']}>
@@ -65,43 +64,38 @@ export function SoloParentForm({ SoloParentRows }: SoloParentFormProps) {
 
             <div className={styles['row-review-input-data']}>
                 <span>Purpose: </span>
-                <textarea disabled value={SoloParentRows?.purpose} />
+                <textarea disabled value={reviewContext?.certificateForm?.purpose} />
             </div>
             <div className={styles['row-review-input-data']}>
                 <span>Child Name: </span>
-                <input disabled value={SoloParentRows?.child_name} />
+                <input disabled value={reviewContext?.certificateForm?.childName} />
+            </div>
+            <div className={styles['row-review-input-data']}>
+                <span>Child Gender: </span>
+                <input disabled value={reviewContext?.certificateForm?.childGender} />
             </div>
             <div className={styles['row-review-input-data']}>
                 <span>Solo Parent Since: </span>
-                <input disabled value={SoloParentRows?.solo_parent_since} />
+                <input disabled value={reviewContext?.certificateForm?.soloParentSince} />
             </div>
             <div className={styles['row-review-input-data']}>
                 <span>Presented By: </span>
-                <input disabled value={SoloParentRows?.presented_by} />
+                <input disabled value={reviewContext?.certificateForm?.presentedBy} />
             </div>
             <div className={styles['row-review-input-data']}>
                 <span>Registry Number: </span>
-                <input disabled value={SoloParentRows?.registry_number} />
+                <input disabled value={reviewContext?.certificateForm?.registryNumber} />
             </div>
             <div className={styles['row-review-input-data']}>
                 <span>Request Of: </span>
-                <input disabled value={SoloParentRows?.request_of} />
+                <input disabled value={reviewContext?.certificateForm?.nameOfRequestor} />
             </div>
         </>
     );
 }
 
-interface CohabitationFormProps {
-    CohabitationRows?: {
-        purpose: string;
-        birth_address: string;
-        spouse_name: string;
-        date_of_marriage: string;
-        request_of: string;
-    };
-}
-
-export function CohabitationForm({ CohabitationRows }: CohabitationFormProps) {
+export function CohabitationForm() {
+    const reviewContext = useContext(ReviewContext);
     return (
         <>
             <div className={styles['row-review-input-data']}>
@@ -111,36 +105,30 @@ export function CohabitationForm({ CohabitationRows }: CohabitationFormProps) {
 
             <div className={styles['row-review-input-data']}>
                 <span>Purpose: </span>
-                <textarea disabled value={CohabitationRows?.purpose} />
+                <textarea disabled value={reviewContext?.certificateForm?.purpose} />
             </div>
             <div className={styles['row-review-input-data']}>
                 <span>Birth Address: </span>
-                <input disabled value={CohabitationRows?.birth_address} />
+                <input disabled value={reviewContext?.certificateForm?.birthAddress} />
             </div>
             <div className={styles['row-review-input-data']}>
                 <span>Spouse Name: </span>
-                <input disabled value={CohabitationRows?.spouse_name} />
+                <input disabled value={reviewContext?.certificateForm?.spouseName} />
             </div>
             <div className={styles['row-review-input-data']}>
                 <span>Date of Marriage: </span>
-                <input disabled value={CohabitationRows?.date_of_marriage} />
+                <input disabled value={reviewContext?.certificateForm?.DateOfMarriage} />
             </div>
             <div className={styles['row-review-input-data']}>
                 <span>Request Of: </span>
-                <input disabled value={CohabitationRows?.request_of} />
+                <input disabled value={reviewContext?.certificateForm?.nameOfRequestor} />
             </div>
         </>
     );
 }
 
-interface GoodMoralFormProps {
-    GoodMoralRows?: {
-        purpose: string;
-        request_of: string;
-    };
-}
-
-export function GoodMoralForm({ GoodMoralRows }: GoodMoralFormProps) {
+export function GoodMoralForm() {
+    const reviewContext = useContext(ReviewContext);
     return (
         <>
             <div className={styles['row-review-input-data']}>
@@ -150,25 +138,18 @@ export function GoodMoralForm({ GoodMoralRows }: GoodMoralFormProps) {
 
             <div className={styles['row-review-input-data']}>
                 <span>Purpose: </span>
-                <textarea disabled value={GoodMoralRows?.purpose} />
+                <textarea disabled value={reviewContext?.certificateForm?.purpose} />
             </div>
             <div className={styles['row-review-input-data']}>
                 <span>Request Of: </span>
-                <input disabled value={GoodMoralRows?.request_of} />
+                <input disabled value={reviewContext?.certificateForm?.nameOfRequestor} />
             </div>
         </>
     );
 }
 
-interface NoIncomeFormProps {
-    NoIncomeRows?: {
-        purpose: string;
-        no_income_since: string;
-        request_of: string;
-    };
-}
-
-export function NoIncomeForm({ NoIncomeRows }: NoIncomeFormProps) {
+export function NoIncomeForm() {
+    const reviewContext = useContext(ReviewContext);
     return (
         <>
             <div className={styles['row-review-input-data']}>
@@ -177,28 +158,22 @@ export function NoIncomeForm({ NoIncomeRows }: NoIncomeFormProps) {
             </div>
             <div className={styles['row-review-input-data']}>
                 <span>Purpose: </span>
-                <textarea disabled value={NoIncomeRows?.purpose} />
+                <textarea disabled value={reviewContext?.certificateForm?.purpose} />
             </div>
             <div className={styles['row-review-input-data']}>
                 <span>No Income Since: </span>
-                <input disabled value={NoIncomeRows?.no_income_since} />
+                <input disabled value={reviewContext?.certificateForm?.noIncomeSince} />
             </div>
             <div className={styles['row-review-input-data']}>
                 <span>Request Of: </span>
-                <input disabled value={NoIncomeRows?.request_of} />
+                <input disabled value={reviewContext?.certificateForm?.nameOfRequestor} />
             </div>
         </>
     );
 }
 
-interface FirstTimeJobSeekerFormProps {
-    FirstTimeJobSeekerRows?: {
-        purpose: string;
-        date_of_residency: string;
-    };
-}
-
-export function FirstTimeJobSeekerForm({ FirstTimeJobSeekerRows }: FirstTimeJobSeekerFormProps) {
+export function FirstTimeJobSeekerForm() {
+    const reviewContext = useContext(ReviewContext);
     return (
         <>
             {' '}
@@ -208,26 +183,18 @@ export function FirstTimeJobSeekerForm({ FirstTimeJobSeekerRows }: FirstTimeJobS
             </div>
             <div className={styles['row-review-input-data']}>
                 <span>Purpose: </span>
-                <textarea disabled value={FirstTimeJobSeekerRows?.purpose} />
+                <textarea disabled value={reviewContext?.certificateForm?.purpose} />
             </div>
             <div className={styles['row-review-input-data']}>
                 <span>Date of Residency: </span>
-                <input disabled value={FirstTimeJobSeekerRows?.date_of_residency} />
+                <input disabled value={reviewContext?.certificateForm?.DateOfResidency} />
             </div>
         </>
     );
 }
 
-interface ResidencyFormProps {
-    ResidencyRows?: {
-        purpose: string;
-        birth_address: string;
-        date_of_residency: string;
-        request_of: string;
-    };
-}
-
-export function ResidencyForm({ ResidencyRows }: ResidencyFormProps) {
+export function ResidencyForm() {
+    const reviewContext = useContext(ReviewContext);
     return (
         <>
             <div className={styles['row-review-input-data']}>
@@ -236,33 +203,26 @@ export function ResidencyForm({ ResidencyRows }: ResidencyFormProps) {
             </div>
             <div className={styles['row-review-input-data']}>
                 <span>Purpose: </span>
-                <textarea disabled value={ResidencyRows?.purpose} />
+                <textarea disabled value={reviewContext?.certificateForm?.purpose} />
             </div>
             <div className={styles['row-review-input-data']}>
                 <span>Birth Address: </span>
-                <input disabled value={ResidencyRows?.birth_address} />
+                <input disabled value={reviewContext?.certificateForm?.birthAddress} />
             </div>
             <div className={styles['row-review-input-data']}>
                 <span>Date of Residency: </span>
-                <input disabled value={ResidencyRows?.date_of_residency} />
+                <input disabled value={reviewContext?.certificateForm?.DateOfResidency} />
             </div>
             <div className={styles['row-review-input-data']}>
                 <span>Request Of: </span>
-                <input disabled value={ResidencyRows?.request_of} />
+                <input disabled value={reviewContext?.certificateForm?.nameOfRequestor} />
             </div>
         </>
     );
 }
 
-interface TransferOfResidencyFormProps {
-    TransferOfResidencyRows?: {
-        purpose: string;
-        new_address: string;
-        request_of: string;
-    };
-}
-
-export function TransferOfResidencyForm({ TransferOfResidencyRows }: TransferOfResidencyFormProps) {
+export function TransferOfResidencyForm() {
+    const reviewContext = useContext(ReviewContext);
     return (
         <>
             <div className={styles['row-review-input-data']}>
@@ -271,29 +231,22 @@ export function TransferOfResidencyForm({ TransferOfResidencyRows }: TransferOfR
             </div>
             <div className={styles['row-review-input-data']}>
                 <span>Purpose: </span>
-                <textarea disabled value={TransferOfResidencyRows?.purpose} />
+                <textarea disabled value={reviewContext?.certificateForm?.purpose} />
             </div>
             <div className={styles['row-review-input-data']}>
                 <span>New Address: </span>
-                <input disabled value={TransferOfResidencyRows?.new_address} />
+                <input disabled value={reviewContext?.certificateForm?.newAddress} />
             </div>
             <div className={styles['row-review-input-data']}>
                 <span>Request Of: </span>
-                <input disabled value={TransferOfResidencyRows?.request_of} />
+                <input disabled value={reviewContext?.certificateForm?.nameOfRequestor} />
             </div>
         </>
     );
 }
 
-interface LivingStillFormProps {
-    LivingStillRows?: {
-        purpose: string;
-        date_of_tabloid: string;
-        request_of: string;
-    };
-}
-
-export function LivingStillForm({ LivingStillRows }: LivingStillFormProps) {
+export function LivingStillForm() {
+    const reviewContext = useContext(ReviewContext);
     return (
         <>
             {' '}
@@ -303,33 +256,22 @@ export function LivingStillForm({ LivingStillRows }: LivingStillFormProps) {
             </div>
             <div className={styles['row-review-input-data']}>
                 <span>Purpose: </span>
-                <textarea disabled value={LivingStillRows?.purpose} />
+                <textarea disabled value={reviewContext?.certificateForm?.purpose} />
             </div>
             <div className={styles['row-review-input-data']}>
                 <span>Date of Tabloid: </span>
-                <input disabled value={LivingStillRows?.date_of_tabloid} />
+                <input disabled value={reviewContext?.certificateForm?.DateOfTabloid} />
             </div>
             <div className={styles['row-review-input-data']}>
                 <span>Request Of: </span>
-                <input disabled value={LivingStillRows?.request_of} />
+                <input disabled value={reviewContext?.certificateForm?.nameOfRequestor} />
             </div>
         </>
     );
 }
 
-interface BirthFactFormProps {
-    BirthFactRows?: {
-        purpose: string;
-        date_born: string;
-        child_name: string;
-        birth_address: string;
-        witness_name: string;
-        witness_type: string;
-        request_of: string;
-    };
-}
-
-export function BirthFactForm({ BirthFactRows }: BirthFactFormProps) {
+export function BirthFactForm() {
+    const reviewContext = useContext(ReviewContext);
     return (
         <>
             <div className={styles['row-review-input-data']}>
@@ -338,31 +280,35 @@ export function BirthFactForm({ BirthFactRows }: BirthFactFormProps) {
             </div>
             <div className={styles['row-review-input-data']}>
                 <span>Purpose: </span>
-                <textarea disabled value={BirthFactRows?.purpose} />
+                <textarea disabled value={reviewContext?.certificateForm?.purpose} />
             </div>
             <div className={styles['row-review-input-data']}>
                 <span>Date Born: </span>
-                <input disabled value={BirthFactRows?.date_born} />
+                <input disabled value={reviewContext?.certificateForm?.DateBorn} />
             </div>
             <div className={styles['row-review-input-data']}>
                 <span>Child's Name: </span>
-                <input disabled value={BirthFactRows?.child_name} />
+                <input disabled value={reviewContext?.certificateForm?.childName} />
+            </div>
+            <div className={styles['row-review-input-data']}>
+                <span>Child's Gender: </span>
+                <input disabled value={reviewContext?.certificateForm?.childGender} />
             </div>
             <div className={styles['row-review-input-data']}>
                 <span>Birth Address: </span>
-                <input disabled value={BirthFactRows?.birth_address} />
+                <input disabled value={reviewContext?.certificateForm?.birthAddress} />
             </div>
             <div className={styles['row-review-input-data']}>
                 <span>Witness Name: </span>
-                <input disabled value={BirthFactRows?.witness_name} />
+                <input disabled value={reviewContext?.certificateForm?.witnessName} />
             </div>
             <div className={styles['row-review-input-data']}>
                 <span>Witness Type: </span>
-                <input disabled value={BirthFactRows?.witness_type} />
+                <input disabled value={reviewContext?.certificateForm?.witnessType} />
             </div>
             <div className={styles['row-review-input-data']}>
                 <span>Request Of: </span>
-                <input disabled value={BirthFactRows?.request_of} />
+                <input disabled value={reviewContext?.certificateForm?.nameOfRequestor} />
             </div>
         </>
     );
