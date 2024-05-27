@@ -12,13 +12,8 @@
 
 .perso-subhead {
     text-align: center;
-    margin-top: 20px;
+    width: auto;
 }
-
-.existing-profile {
-    margin-top: 30px;
-}
-
 
 .input-form {
     width: 100%;
@@ -96,6 +91,14 @@
     justify-items: center;
     align-content: center;
     justify-content: center;
+}
+
+.first-id, .second-id{
+    row-gap: 15px;
+    color: rgb(97, 97, 97);
+    font-size: 14px;
+    font-weight: 450;
+    text-align: center;
 }
 
 .signatures-buttons {
@@ -208,4 +211,30 @@
     top: 0;
     left: 0;
     background: rgba(88, 88, 88, 0.5);
+}
+
+
+// styling input type file 
+
+input[type="file"] {
+    display: none;
+  }
+
+.file-btn{
+    width: 200px;
+    height: 45px;
+    background-color: rgb(245, 245, 245);
+    display: flex;
+    font-size: 18px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 7px;
+    color: black;
+    cursor: pointer;
+}
+.file-btn:hover{
+    background-color: #2fad6e;
+    color: white;
+    
 }

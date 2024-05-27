@@ -23,7 +23,14 @@ import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined';
 import FailedModal from '../message-modals/FailedModal';
 import SuccessModal from '../message-modals/SuccessModal';
 
-function ReviewModal() {
+interface ReviewModalProps {
+    imageObj: {
+        name: string;
+        file: object;
+    } | null;
+}
+
+function ReviewModal({ imageObj }: ReviewModalProps) {
     const reviewContext = useContext(ReviewContext);
 
     const [successMsg, setSuccessMsg] = useState(false);
@@ -68,6 +75,12 @@ function ReviewModal() {
                 setSuccessMsg(false);
                 setFailedMsg(true);
             }
+
+            const data = new FormData();
+
+            data.append('image', imageObj?.file as Blob);
+
+            const imageUp = await axios.post(`${defaultApi}/api/requestData/uploadIDtoCloud`, data); //inital set up for uploading images
         } catch (error) {
             console.log(error);
         }

@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import styles from './identity-proof.module.scss';
 import { ReactSketchCanvas, ReactSketchCanvasRef } from 'react-sketch-canvas';
-import { MouseEventHandler, useRef, useState } from 'react';
+import { MouseEventHandler, useEffect, useRef, useState } from 'react';
 import ReviewModal from '../certificates/ReviewModal';
 
 export interface Identity_ProofProps {
@@ -23,6 +23,7 @@ export const Identity_Proof = ({ className, onBack }: Identity_ProofProps) => {
     const [showReviewModal, setShowReviewModal] = useState(false);
     //sketch image
     const [sketchImg, setSketchImg] = useState('');
+    const [imgFile, setImgFile] = useState({ name: '', file: {} });
 
     const handleClearClick = () => {
         setSketchImg('');
@@ -43,12 +44,24 @@ export const Identity_Proof = ({ className, onBack }: Identity_ProofProps) => {
         setShowReviewModal(!showReviewModal);
     };
 
+    const handleIDupload = (e: React.ChangeEvent<HTMLInputElement>) => {
+        //inital set up for uploading images
+        setImgFile({
+            name: e.target.files![0].name,
+            file: e.target.files![0],
+        });
+        console.log(imgFile);
+    };
+
+    const handlePicUpload = (e: React.ChangeEvent<HTMLInputElement>) => {};
+
     return (
         <div className={classNames(styles.root, className)}>
-            <h1 className={styles['header-perso']}>Address</h1>
+            <h1 className={styles['header-perso']}>Proof of Identity</h1>
             <span className={styles['perso-subhead']}>
-                * Please Provide Two(2) Valid ID&apos;s and Two(2) Photo of you holding the
-                ID&apos;s.
+                Please provide the Following:
+                <br /> Signature (use the sketch canvas below), Government ID, and latest 2x2
+                picture with white background
             </span>
             <div className={styles['input-form-proof']}>
                 <div className={styles['left-sign']}>
@@ -90,13 +103,20 @@ export const Identity_Proof = ({ className, onBack }: Identity_ProofProps) => {
             </div>
             <div className={styles['upload-div']}>
                 <div className={styles['first-id']}>
-                    <span>Max file size: 5mb, accepted: jpg|gif|png</span>
-                    <button className={styles['nav-btn']}>Upload 1st Valid ID</button>{' '}
+                    <label className={styles['file-btn']}>
+                        <input type="file" onChange={handleIDupload} />
+                        Upload Valid ID
+                    </label>
+                    Valid ID should be any Government ID
                 </div>
 
                 <div className={styles['second-id']}>
-                    <span>Max file size: 5mb, accepted: jpg|gif|png</span>
-                    <button className={styles['nav-btn']}>Upload 2nd Valid ID</button>{' '}
+                    <label className={styles['file-btn']}>
+                        <input type="file" onChange={handlePicUpload} />
+                        Upload 2x2 Picture
+                    </label>
+                    2x2 ID Picture should have white background and no accessories (glasses, mask,
+                    hat etc.)
                 </div>
             </div>
             <div className={styles['nav-buttons-container']}>
@@ -110,7 +130,7 @@ export const Identity_Proof = ({ className, onBack }: Identity_ProofProps) => {
             {showReviewModal === true && (
                 <>
                     <div className={styles['modal-background']} onClick={handleReview}></div>
-                    <ReviewModal />
+                    <ReviewModal imageObj={imgFile} />
                 </>
             )}
         </div>

@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+#json google service api
+gsc-pao-fc083991a5ec.json
