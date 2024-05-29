@@ -15,7 +15,7 @@ export const Footer = ({ className }: FooterProps) => {
             <div className={styles['footer-top']}>
                 <div className={styles['footer-left']}>
                     <img
-                        src="https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706070751/logo_sln6bp.png"
+                        src="https://storage.googleapis.com/brgysrbucket/logo_sln6bp.png"
                         alt=""
                         className={styles['footer-logo']}
                     />

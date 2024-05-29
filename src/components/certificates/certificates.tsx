@@ -449,7 +449,7 @@ export const Certificates = ({ className }: CertificatesProps) => {
             </div>
 
             <div className={renderVerify === true ? styles['unhide'] : styles['hide']}>
-                <Identity_Proof onBack={handleBackVerify} />
+                <Identity_Proof onBack={handleBackVerify} isBarangayID={renderForm.barangayID} />
             </div>
         </div>
     );

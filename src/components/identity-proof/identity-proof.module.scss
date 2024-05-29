@@ -5,6 +5,8 @@
     align-items: center;
 }
 
+
+
 .header-perso {
     text-align: center;
     font-size: 2em;
@@ -56,19 +58,16 @@
     justify-content: center;
 }
 
-.right-sign {
-    width: 50%;
-    height: 400px;
-}
 
 .upload-div {
     width: 100%;
-    height: 150px;
+    height: auto;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-items: center;
     align-content: center;
+    margin-top: 15px;
 }
 
 .first-id {
@@ -80,6 +79,7 @@
     justify-items: center;
     align-content: center;
     justify-content: center;
+    
 }
 
 .second-id {
@@ -99,6 +99,14 @@
     font-size: 14px;
     font-weight: 450;
     text-align: center;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.first-id span, .second-id span{
+    width: 80%;
 }
 
 .signatures-buttons {
@@ -237,4 +245,12 @@ input[type="file"] {
     background-color: #2fad6e;
     color: white;
     
+}
+
+//iframe
+
+.img-container{
+    width: 80%;
+    height: auto;
+    border-radius: 20px;
 }

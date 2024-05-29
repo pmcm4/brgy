@@ -1,12 +1,14 @@
 import classNames from 'classnames';
 import styles from './identity-proof.module.scss';
 import { ReactSketchCanvas, ReactSketchCanvasRef } from 'react-sketch-canvas';
-import { MouseEventHandler, useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import ReviewModal from '../certificates/ReviewModal';
+import { createURI } from '@google-cloud/storage/build/cjs/src/resumable-upload';
 
 export interface Identity_ProofProps {
     className?: string;
     onBack: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+    isBarangayID: boolean;
 }
 
 const styleSketchCanvas = {
@@ -18,12 +20,16 @@ const styleSketchCanvas = {
  * This component was created using Codux's Default new component template.
  * To create custom component templates, see https://help.codux.com/kb/en/article/kb16522
  */
-export const Identity_Proof = ({ className, onBack }: Identity_ProofProps) => {
+export const Identity_Proof = ({ className, onBack, isBarangayID }: Identity_ProofProps) => {
     const canvasRef = useRef<ReactSketchCanvasRef>(null);
     const [showReviewModal, setShowReviewModal] = useState(false);
     //sketch image
     const [sketchImg, setSketchImg] = useState('');
-    const [imgFile, setImgFile] = useState({ name: '', file: {} });
+    const [validIDImg, setValidIDImg] = useState({ name: '', file: {} });
+    const [selfPicImg, setSelfPicImg] = useState({ name: '', file: {} });
+
+    const [displayValidID, setDisplayValidID] = useState<Blob | MediaSource | null>(null);
+    const [displaySelfImage, setDisplaySelfImage] = useState<Blob | MediaSource | null>(null);
 
     const handleClearClick = () => {
         setSketchImg('');
@@ -46,14 +52,29 @@ export const Identity_Proof = ({ className, onBack }: Identity_ProofProps) => {
 
     const handleIDupload = (e: React.ChangeEvent<HTMLInputElement>) => {
         //inital set up for uploading images
-        setImgFile({
+        setValidIDImg({
             name: e.target.files![0].name,
             file: e.target.files![0],
         });
-        console.log(imgFile);
+
+        const validIdBlob = new Blob([e.target.files![0]], { type: 'image/jpeg' || 'image/png' });
+
+        setDisplayValidID(validIdBlob);
+
+        console.log(validIDImg);
     };
 
-    const handlePicUpload = (e: React.ChangeEvent<HTMLInputElement>) => {};
+    const handlePicUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+        //inital set up for uploading images
+        setSelfPicImg({
+            name: e.target.files![0].name,
+            file: e.target.files![0],
+        });
+        const selfImageBlob = new Blob([e.target.files![0]], { type: 'image/jpeg' || 'image/png' });
+
+        setDisplaySelfImage(selfImageBlob);
+        console.log(selfPicImg);
+    };
 
     return (
         <div className={classNames(styles.root, className)}>
@@ -63,60 +84,99 @@ export const Identity_Proof = ({ className, onBack }: Identity_ProofProps) => {
                 <br /> Signature (use the sketch canvas below), Government ID, and latest 2x2
                 picture with white background
             </span>
-            <div className={styles['input-form-proof']}>
-                <div className={styles['left-sign']}>
-                    <div className={styles['signatures-buttons']}>
-                        {' '}
-                        <ReactSketchCanvas
-                            style={styleSketchCanvas}
-                            className={styles['sketchCanvas']}
-                            width="100%"
-                            height="100%"
-                            strokeWidth={4}
-                            strokeColor="black"
-                            ref={canvasRef}
-                        />
-                        <div className={styles['sketchBtn']}>
-                            <button className={styles['nav-btn']} onClick={handleClearClick}>
-                                Clear
-                            </button>
-                            <button className={styles['nav-btn']} onClick={exportSketch}>
-                                Check Signature
-                            </button>
+
+            {isBarangayID && (
+                <div className={styles['input-form-proof']}>
+                    <div className={styles['left-sign']}>
+                        <div className={styles['signatures-buttons']}>
+                            {' '}
+                            <ReactSketchCanvas
+                                style={styleSketchCanvas}
+                                className={styles['sketchCanvas']}
+                                width="100%"
+                                height="100%"
+                                strokeWidth={4}
+                                strokeColor="black"
+                                ref={canvasRef}
+                            />
+                            <div className={styles['sketchBtn']}>
+                                <button className={styles['nav-btn']} onClick={handleClearClick}>
+                                    Clear
+                                </button>
+                                <button className={styles['nav-btn']} onClick={exportSketch}>
+                                    Check Signature
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles['right-sign']}>
+                        <div className={styles['signatures-buttons']}>
+                            <div className={styles['checkSignature']}>
+                                {sketchImg !== '' && (
+                                    <img src={sketchImg} className={styles['sketchImgPreview']} />
+                                )}
+                            </div>
+                            <div className={styles['sketchBtn']}>
+                                <span className={styles['checkSignatureMessage']}>
+                                    Check your signature!
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div className={styles['right-sign']}>
-                    <div className={styles['signatures-buttons']}>
-                        <div className={styles['checkSignature']}>
-                            {sketchImg !== '' && (
-                                <img src={sketchImg} className={styles['sketchImgPreview']} />
-                            )}
-                        </div>
-                        <div className={styles['sketchBtn']}>
-                            <span className={styles['checkSignatureMessage']}>
-                                Check your signature!
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            )}
+            <hr style={{ width: '90%' }} />
             <div className={styles['upload-div']}>
                 <div className={styles['first-id']}>
                     <label className={styles['file-btn']}>
-                        <input type="file" onChange={handleIDupload} />
+                        <input
+                            type="file"
+                            accept="image/png, image/jpeg"
+                            onChange={handleIDupload}
+                        />
                         Upload Valid ID
                     </label>
-                    Valid ID should be any Government ID
+                    <span>
+                        Valid ID should be any Government ID such as Driver's License, UMID, SSS,
+                        PhilSys etc.
+                    </span>
+                    {displayValidID !== null ? (
+                        <img
+                            src={URL.createObjectURL(displayValidID)}
+                            className={styles['img-container']}
+                        />
+                    ) : (
+                        <img
+                            src="https://storage.googleapis.com/brgysrbucket/govt-id-guide.jpg"
+                            className={styles['img-container']}
+                        />
+                    )}
                 </div>
 
                 <div className={styles['second-id']}>
                     <label className={styles['file-btn']}>
-                        <input type="file" onChange={handlePicUpload} />
+                        <input
+                            type="file"
+                            accept="image/png, image/jpeg"
+                            onChange={handlePicUpload}
+                        />
                         Upload 2x2 Picture
                     </label>
-                    2x2 ID Picture should have white background and no accessories (glasses, mask,
-                    hat etc.)
+                    <span>
+                        2x2 ID Picture should have white background and no accessories (glasses,
+                        mask, hat etc.)
+                    </span>
+                    {displaySelfImage !== null ? (
+                        <img
+                            src={URL.createObjectURL(displaySelfImage)}
+                            className={styles['img-container']}
+                        />
+                    ) : (
+                        <img
+                            src="https://storage.googleapis.com/brgysrbucket/self-image.jpg"
+                            className={styles['img-container']}
+                        />
+                    )}
                 </div>
             </div>
             <div className={styles['nav-buttons-container']}>
@@ -130,7 +190,7 @@ export const Identity_Proof = ({ className, onBack }: Identity_ProofProps) => {
             {showReviewModal === true && (
                 <>
                     <div className={styles['modal-background']} onClick={handleReview}></div>
-                    <ReviewModal imageObj={imgFile} />
+                    <ReviewModal imgID={validIDImg} imgSelf={selfPicImg} />
                 </>
             )}
         </div>

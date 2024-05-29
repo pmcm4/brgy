@@ -24,13 +24,17 @@ import FailedModal from '../message-modals/FailedModal';
 import SuccessModal from '../message-modals/SuccessModal';
 
 interface ReviewModalProps {
-    imageObj: {
+    imgID: {
+        name: string;
+        file: object;
+    } | null;
+    imgSelf: {
         name: string;
         file: object;
     } | null;
 }
 
-function ReviewModal({ imageObj }: ReviewModalProps) {
+function ReviewModal({ imgID, imgSelf }: ReviewModalProps) {
     const reviewContext = useContext(ReviewContext);
 
     const [successMsg, setSuccessMsg] = useState(false);
@@ -41,6 +45,8 @@ function ReviewModal({ imageObj }: ReviewModalProps) {
             e.preventDefault();
             const date = new Date().toLocaleDateString();
             const username = JSON.parse(String(localStorage.getItem('currentUser')));
+            const id_img = new FormData();
+
             const DataToSend = {
                 username: username.username,
                 selected_cert_type: reviewContext?.certificateForm?.selectedCert,
@@ -64,23 +70,27 @@ function ReviewModal({ imageObj }: ReviewModalProps) {
                 witnessType: reviewContext?.certificateForm?.witnessType,
             };
 
-            const sendData = await axios.post(
-                `${defaultApi}/api/requestData/submitRequest`,
-                DataToSend
-            );
+            await axios
+                .post(`${defaultApi}/api/requestData/submitRequest`, DataToSend)
+                .then(async (data) => {
+                    const request_id_number = data.data;
+                    console.log(request_id_number);
+                    id_img.append('valid_id_image', imgID?.file as Blob);
+                    id_img.append('self_image', imgSelf?.file as Blob);
+                    id_img.append('id', request_id_number);
 
-            if (sendData.status === 200) {
-                setSuccessMsg(true);
-            } else {
-                setSuccessMsg(false);
-                setFailedMsg(true);
-            }
+                    const uploadImage = await axios.post(
+                        `${defaultApi}/api/requestData/uploadIDtoCloud`,
+                        id_img
+                    );
 
-            const data = new FormData();
-
-            data.append('image', imageObj?.file as Blob);
-
-            const imageUp = await axios.post(`${defaultApi}/api/requestData/uploadIDtoCloud`, data); //inital set up for uploading images
+                    if (uploadImage.status === 200 && data.status === 200) {
+                        setSuccessMsg(true);
+                    } else {
+                        setSuccessMsg(false);
+                        setFailedMsg(true);
+                    }
+                });
         } catch (error) {
             console.log(error);
         }
@@ -93,6 +103,8 @@ function ReviewModal({ imageObj }: ReviewModalProps) {
             e.preventDefault();
             const date = new Date().toLocaleDateString();
             const username = JSON.parse(String(localStorage.getItem('currentUser')));
+            const id_img = new FormData();
+
             const DataToSend = {
                 username: username.username,
                 selected_cert_type: reviewContext?.certificateForm?.selectedCert,
@@ -140,17 +152,27 @@ function ReviewModal({ imageObj }: ReviewModalProps) {
                 witnessType: reviewContext?.certificateForm?.witnessType,
             };
 
-            const sendData = await axios.post(
-                `${defaultApi}/api/requestData/submitForSomeoneElseRequest`,
-                DataToSend
-            );
+            await axios
+                .post(`${defaultApi}/api/requestData/submitForSomeoneElseRequest`, DataToSend)
+                .then(async (data) => {
+                    const request_id_number = data.data;
+                    console.log(request_id_number);
+                    id_img.append('valid_id_image', imgID?.file as Blob);
+                    id_img.append('self_image', imgSelf?.file as Blob);
+                    id_img.append('id', request_id_number);
 
-            if (sendData.status === 200) {
-                setSuccessMsg(true);
-            } else {
-                setSuccessMsg(false);
-                setFailedMsg(true);
-            }
+                    const uploadImage = await axios.post(
+                        `${defaultApi}/api/requestData/uploadIDtoCloud`,
+                        id_img
+                    );
+
+                    if (uploadImage.status === 200 && data.status === 200) {
+                        setSuccessMsg(true);
+                    } else {
+                        setSuccessMsg(false);
+                        setFailedMsg(true);
+                    }
+                });
         } catch (error) {
             console.log(error);
         }
@@ -162,6 +184,8 @@ function ReviewModal({ imageObj }: ReviewModalProps) {
         try {
             e.preventDefault();
             const date = new Date().toLocaleDateString();
+            const id_img = new FormData();
+
             const DataToSend = {
                 //certificate request details
                 selected_cert_type: reviewContext?.certificateForm?.selectedCert,
@@ -212,17 +236,27 @@ function ReviewModal({ imageObj }: ReviewModalProps) {
                 witnessType: reviewContext?.certificateForm?.witnessType,
             };
 
-            const sendData = await axios.post(
-                `${defaultApi}/api/requestData/unregisteredUserRequest`,
-                DataToSend
-            );
+            await axios
+                .post(`${defaultApi}/api/requestData/unregisteredUserRequest`, DataToSend)
+                .then(async (data) => {
+                    const request_id_number = data.data;
+                    console.log(request_id_number);
+                    id_img.append('valid_id_image', imgID?.file as Blob);
+                    id_img.append('self_image', imgSelf?.file as Blob);
+                    id_img.append('id', request_id_number);
 
-            if (sendData.status === 200) {
-                setSuccessMsg(true);
-            } else {
-                setSuccessMsg(false);
-                setFailedMsg(true);
-            }
+                    const uploadImage = await axios.post(
+                        `${defaultApi}/api/requestData/uploadIDtoCloud`,
+                        id_img
+                    );
+
+                    if (uploadImage.status === 200 && data.status === 200) {
+                        setSuccessMsg(true);
+                    } else {
+                        setSuccessMsg(false);
+                        setFailedMsg(true);
+                    }
+                });
         } catch (error) {
             console.log(error);
         }
