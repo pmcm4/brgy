@@ -390,7 +390,7 @@ const Home = ({ className }: HomeProps) => {
                 <Link to={checkExistUser === true ? `/profile/${username}` : `/login`}>
                     <MenuCard
                         cardTitle="Profile"
-                        cardSubText="View and edit your personal information here."
+                        cardSubText="View and edit your personal information."
                         cardImg="https://storage.googleapis.com/brgysrbucket/id_sample_cl3weq.jpg"
                     />
                 </Link>

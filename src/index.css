@@ -41,7 +41,7 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover{
+button:hover:not([disabled]){
   background-color: #2fad6e;
   color: white;
   border: solid 1px #2fad6e;

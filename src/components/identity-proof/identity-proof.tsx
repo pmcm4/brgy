@@ -24,15 +24,19 @@ export const Identity_Proof = ({ className, onBack, isBarangayID }: Identity_Pro
     const canvasRef = useRef<ReactSketchCanvasRef>(null);
     const [showReviewModal, setShowReviewModal] = useState(false);
     //sketch image
-    const [sketchImg, setSketchImg] = useState('');
+    const [sketchImg, setSketchImg] = useState<string | null>(null);
+    const [isCanvasEmtpy, setIsCanvasEmpty] = useState(true);
     const [validIDImg, setValidIDImg] = useState({ name: '', file: {} });
     const [selfPicImg, setSelfPicImg] = useState({ name: '', file: {} });
 
     const [displayValidID, setDisplayValidID] = useState<Blob | MediaSource | null>(null);
     const [displaySelfImage, setDisplaySelfImage] = useState<Blob | MediaSource | null>(null);
 
+    const [missingUplaod, setMissingUpload] = useState(false);
+
     const handleClearClick = () => {
         setSketchImg('');
+        setIsCanvasEmpty(true);
         canvasRef.current?.clearCanvas();
     };
     const exportSketch = () => {
@@ -40,6 +44,7 @@ export const Identity_Proof = ({ className, onBack, isBarangayID }: Identity_Pro
             ?.exportImage('png')
             .then((data) => {
                 setSketchImg(data);
+                console.log(data);
             })
             .catch((err) => {
                 console.log(err);
@@ -47,7 +52,15 @@ export const Identity_Proof = ({ className, onBack, isBarangayID }: Identity_Pro
     };
 
     const handleReview = () => {
-        setShowReviewModal(!showReviewModal);
+        if (
+            displayValidID === null ||
+            displaySelfImage === null ||
+            (isBarangayID === true && (sketchImg === null || sketchImg === ''))
+        ) {
+            setMissingUpload(true);
+        } else {
+            setShowReviewModal(!showReviewModal);
+        }
     };
 
     const handleIDupload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -60,8 +73,6 @@ export const Identity_Proof = ({ className, onBack, isBarangayID }: Identity_Pro
         const validIdBlob = new Blob([e.target.files![0]], { type: 'image/jpeg' || 'image/png' });
 
         setDisplayValidID(validIdBlob);
-
-        console.log(validIDImg);
     };
 
     const handlePicUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -73,7 +84,6 @@ export const Identity_Proof = ({ className, onBack, isBarangayID }: Identity_Pro
         const selfImageBlob = new Blob([e.target.files![0]], { type: 'image/jpeg' || 'image/png' });
 
         setDisplaySelfImage(selfImageBlob);
-        console.log(selfPicImg);
     };
 
     return (
@@ -84,7 +94,6 @@ export const Identity_Proof = ({ className, onBack, isBarangayID }: Identity_Pro
                 <br /> Signature (use the sketch canvas below), Government ID, and latest 2x2
                 picture with white background
             </span>
-
             {isBarangayID && (
                 <div className={styles['input-form-proof']}>
                     <div className={styles['left-sign']}>
@@ -98,14 +107,21 @@ export const Identity_Proof = ({ className, onBack, isBarangayID }: Identity_Pro
                                 strokeWidth={4}
                                 strokeColor="black"
                                 ref={canvasRef}
+                                onStroke={() => {
+                                    setIsCanvasEmpty(false);
+                                }}
                             />
                             <div className={styles['sketchBtn']}>
                                 <button className={styles['nav-btn']} onClick={handleClearClick}>
                                     Clear
                                 </button>
-                                <button className={styles['nav-btn']} onClick={exportSketch}>
-                                    Check Signature
-                                </button>
+                                {isCanvasEmtpy === true ? (
+                                    <button disabled>Save Signature</button>
+                                ) : (
+                                    <button className={styles['nav-btn']} onClick={exportSketch}>
+                                        Save Signature
+                                    </button>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -113,7 +129,7 @@ export const Identity_Proof = ({ className, onBack, isBarangayID }: Identity_Pro
                         <div className={styles['signatures-buttons']}>
                             <div className={styles['checkSignature']}>
                                 {sketchImg !== '' && (
-                                    <img src={sketchImg} className={styles['sketchImgPreview']} />
+                                    <img src={sketchImg!} className={styles['sketchImgPreview']} />
                                 )}
                             </div>
                             <div className={styles['sketchBtn']}>
@@ -137,8 +153,8 @@ export const Identity_Proof = ({ className, onBack, isBarangayID }: Identity_Pro
                         Upload Valid ID
                     </label>
                     <span>
-                        Valid ID should be any Government ID such as Driver's License, UMID, SSS,
-                        PhilSys etc.
+                        Valid ID should be addressed in Barangay San Roque only. Accepted Government
+                        ID's: Driver's License, UMID, SSS, PhilSys etc.
                     </span>
                     {displayValidID !== null ? (
                         <img
@@ -187,10 +203,36 @@ export const Identity_Proof = ({ className, onBack, isBarangayID }: Identity_Pro
                     Review
                 </button>
             </div>
+            {missingUplaod === true && (
+                <div className={styles['error-modal-background']}>
+                    <div
+                        className={styles['error-modal-container']}
+                        style={{ color: 'red', fontSize: '18px', fontWeight: '450' }}
+                    >
+                        <br />
+                        {isBarangayID === true && (sketchImg === null || sketchImg === '') && (
+                            <span>
+                                *Please provide a signature then select "Save Signature" <br />
+                            </span>
+                        )}
+                        {displayValidID === null && (
+                            <span>
+                                *Please upload a Valid ID. <br />
+                            </span>
+                        )}
+                        {displaySelfImage === null && (
+                            <span>
+                                *Please upload your 2x2 picture. <br />
+                            </span>
+                        )}
+                    </div>
+                </div>
+            )}
+
             {showReviewModal === true && (
                 <>
                     <div className={styles['modal-background']} onClick={handleReview}></div>
-                    <ReviewModal imgID={validIDImg} imgSelf={selfPicImg} />
+                    <ReviewModal imgID={validIDImg} imgSelf={selfPicImg} signatureImg={sketchImg} />
                 </>
             )}
         </div>
