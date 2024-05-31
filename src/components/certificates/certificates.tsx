@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import styles from './certificates.module.scss';
 import { Footer } from '../footer/footer';
-import React, { ChangeEvent, useContext, useState } from 'react';
+import React, { ChangeEvent, useContext, useEffect, useState } from 'react';
 import { PersonalForm } from '../personal-form/personal-form';
 import { PFAddress } from '../pf-address/pf-address';
 import {
@@ -449,7 +449,7 @@ export const Certificates = ({ className }: CertificatesProps) => {
             </div>
 
             <div className={renderVerify === true ? styles['unhide'] : styles['hide']}>
-                <Identity_Proof onBack={handleBackVerify} isBarangayID={renderForm.barangayID} />
+                <Identity_Proof onBack={handleBackVerify} />
             </div>
         </div>
     );

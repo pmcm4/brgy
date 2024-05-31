@@ -1,14 +1,14 @@
 import classNames from 'classnames';
 import styles from './identity-proof.module.scss';
 import { ReactSketchCanvas, ReactSketchCanvasRef } from 'react-sketch-canvas';
-import { useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import ReviewModal from '../certificates/ReviewModal';
-import { createURI } from '@google-cloud/storage/build/cjs/src/resumable-upload';
+import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
+import { ReviewContext } from '../context/ReviewContext';
 
 export interface Identity_ProofProps {
     className?: string;
     onBack: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-    isBarangayID: boolean;
 }
 
 const styleSketchCanvas = {
@@ -20,19 +20,24 @@ const styleSketchCanvas = {
  * This component was created using Codux's Default new component template.
  * To create custom component templates, see https://help.codux.com/kb/en/article/kb16522
  */
-export const Identity_Proof = ({ className, onBack, isBarangayID }: Identity_ProofProps) => {
+export const Identity_Proof = ({ className, onBack }: Identity_ProofProps) => {
     const canvasRef = useRef<ReactSketchCanvasRef>(null);
+    const reviewContext = useContext(ReviewContext);
     const [showReviewModal, setShowReviewModal] = useState(false);
     //sketch image
     const [sketchImg, setSketchImg] = useState<string | null>(null);
     const [isCanvasEmtpy, setIsCanvasEmpty] = useState(true);
     const [validIDImg, setValidIDImg] = useState({ name: '', file: {} });
     const [selfPicImg, setSelfPicImg] = useState({ name: '', file: {} });
+    const [letterFile, setLetterFile] = useState({ name: '', file: {} });
 
     const [displayValidID, setDisplayValidID] = useState<Blob | MediaSource | null>(null);
     const [displaySelfImage, setDisplaySelfImage] = useState<Blob | MediaSource | null>(null);
+    const [displayLetterFileName, setDisplayLetterFileName] = useState<string | null>(null);
 
     const [missingUplaod, setMissingUpload] = useState(false);
+
+    const residencyType = reviewContext?.addressForm?.residency;
 
     const handleClearClick = () => {
         setSketchImg('');
@@ -55,7 +60,8 @@ export const Identity_Proof = ({ className, onBack, isBarangayID }: Identity_Pro
         if (
             displayValidID === null ||
             displaySelfImage === null ||
-            (isBarangayID === true && (sketchImg === null || sketchImg === ''))
+            sketchImg === null ||
+            sketchImg === ''
         ) {
             setMissingUpload(true);
         } else {
@@ -86,6 +92,18 @@ export const Identity_Proof = ({ className, onBack, isBarangayID }: Identity_Pro
         setDisplaySelfImage(selfImageBlob);
     };
 
+    //, ,
+
+    const handleLetterUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+        //inital set up for uploading images
+        setLetterFile({
+            name: e.target.files![0].name,
+            file: e.target.files![0],
+        });
+
+        setDisplayLetterFileName(e.target.files![0].name);
+    };
+
     return (
         <div className={classNames(styles.root, className)}>
             <h1 className={styles['header-perso']}>Proof of Identity</h1>
@@ -94,54 +112,92 @@ export const Identity_Proof = ({ className, onBack, isBarangayID }: Identity_Pro
                 <br /> Signature (use the sketch canvas below), Government ID, and latest 2x2
                 picture with white background
             </span>
-            {isBarangayID && (
-                <div className={styles['input-form-proof']}>
-                    <div className={styles['left-sign']}>
-                        <div className={styles['signatures-buttons']}>
-                            {' '}
-                            <ReactSketchCanvas
-                                style={styleSketchCanvas}
-                                className={styles['sketchCanvas']}
-                                width="100%"
-                                height="100%"
-                                strokeWidth={4}
-                                strokeColor="black"
-                                ref={canvasRef}
-                                onStroke={() => {
-                                    setIsCanvasEmpty(false);
-                                }}
-                            />
-                            <div className={styles['sketchBtn']}>
-                                <button className={styles['nav-btn']} onClick={handleClearClick}>
-                                    Clear
+
+            <div className={styles['input-form-proof']}>
+                <div className={styles['left-sign']}>
+                    <div className={styles['signatures-buttons']}>
+                        {' '}
+                        <ReactSketchCanvas
+                            style={styleSketchCanvas}
+                            className={styles['sketchCanvas']}
+                            width="100%"
+                            height="100%"
+                            strokeWidth={4}
+                            strokeColor="black"
+                            ref={canvasRef}
+                            onStroke={() => {
+                                setIsCanvasEmpty(false);
+                            }}
+                        />
+                        <div className={styles['sketchBtn']}>
+                            <button className={styles['nav-btn']} onClick={handleClearClick}>
+                                Clear
+                            </button>
+                            {isCanvasEmtpy === true ? (
+                                <button disabled>Save Signature</button>
+                            ) : (
+                                <button className={styles['nav-btn']} onClick={exportSketch}>
+                                    Save Signature
                                 </button>
-                                {isCanvasEmtpy === true ? (
-                                    <button disabled>Save Signature</button>
-                                ) : (
-                                    <button className={styles['nav-btn']} onClick={exportSketch}>
-                                        Save Signature
-                                    </button>
-                                )}
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles['right-sign']}>
-                        <div className={styles['signatures-buttons']}>
-                            <div className={styles['checkSignature']}>
-                                {sketchImg !== '' && (
-                                    <img src={sketchImg!} className={styles['sketchImgPreview']} />
-                                )}
-                            </div>
-                            <div className={styles['sketchBtn']}>
-                                <span className={styles['checkSignatureMessage']}>
-                                    Check your signature!
-                                </span>
-                            </div>
+                            )}
                         </div>
                     </div>
                 </div>
-            )}
+                <div className={styles['right-sign']}>
+                    <div className={styles['signatures-buttons']}>
+                        <div className={styles['checkSignature']}>
+                            {sketchImg !== '' && (
+                                <img src={sketchImg!} className={styles['sketchImgPreview']} />
+                            )}
+                        </div>
+                        <div className={styles['sketchBtn']}>
+                            <span className={styles['checkSignatureMessage']}>
+                                Check your signature!
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <hr style={{ width: '90%' }} />
+
+            {residencyType === 'Tenant' && (
+                <>
+                    {' '}
+                    <label className={styles['file-div-doc']}>
+                        <label className={styles['file-btn-doc']}>
+                            <input
+                                id="upload"
+                                type="file"
+                                accept="application/msword, application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                                onChange={handleLetterUpload}
+                            />
+                            <FileUploadOutlinedIcon />
+                        </label>
+                        {displayLetterFileName !== null ? (
+                            <span className={styles['display-letter-span']}>
+                                {displayLetterFileName}
+                            </span>
+                        ) : (
+                            <span> Upload letter here</span>
+                        )}
+                    </label>
+                    <span
+                        style={{
+                            margin: '14px 0 14px 0',
+                            width: '350px',
+                            textAlign: 'center',
+                            color: 'rgb(97, 97, 97)',
+                            fontSize: '14px',
+                        }}
+                    >
+                        Provide a letter from your landlord certifying that you are an active
+                        resident of his/her property, the letter should posses a signature from the
+                        landlord and the requestor.
+                    </span>
+                </>
+            )}
+
             <div className={styles['upload-div']}>
                 <div className={styles['first-id']}>
                     <label className={styles['file-btn']}>
@@ -152,10 +208,16 @@ export const Identity_Proof = ({ className, onBack, isBarangayID }: Identity_Pro
                         />
                         Upload Valid ID
                     </label>
-                    <span>
-                        Valid ID should be addressed in Barangay San Roque only. Accepted Government
-                        ID's: Driver's License, UMID, SSS, PhilSys etc.
-                    </span>
+                    {residencyType === 'Home Owner' ? (
+                        <span>
+                            Valid ID should be addressed in Barangay San Roque only. Accepted
+                            Government ID's: Driver's License, UMID, SSS, PhilSys etc.
+                        </span>
+                    ) : (
+                        <span>
+                            Accepted Government ID's: Driver's License, UMID, SSS, PhilSys etc.
+                        </span>
+                    )}
                     {displayValidID !== null ? (
                         <img
                             src={URL.createObjectURL(displayValidID)}
@@ -210,11 +272,17 @@ export const Identity_Proof = ({ className, onBack, isBarangayID }: Identity_Pro
                         style={{ color: 'red', fontSize: '18px', fontWeight: '450' }}
                     >
                         <br />
-                        {isBarangayID === true && (sketchImg === null || sketchImg === '') && (
+                        {(sketchImg === null || sketchImg === '') && (
                             <span>
                                 *Please provide a signature then select "Save Signature" <br />
                             </span>
                         )}
+                        {residencyType === 'Tenant' &&
+                            (displayLetterFileName === null || displayLetterFileName === '') && (
+                                <span>
+                                    *Please provide a letter from your landlord <br />
+                                </span>
+                            )}
                         {displayValidID === null && (
                             <span>
                                 *Please upload a Valid ID. <br />
@@ -228,11 +296,15 @@ export const Identity_Proof = ({ className, onBack, isBarangayID }: Identity_Pro
                     </div>
                 </div>
             )}
-
             {showReviewModal === true && (
                 <>
                     <div className={styles['modal-background']} onClick={handleReview}></div>
-                    <ReviewModal imgID={validIDImg} imgSelf={selfPicImg} signatureImg={sketchImg} />
+                    <ReviewModal
+                        imgID={validIDImg}
+                        imgSelf={selfPicImg}
+                        signatureImg={sketchImg}
+                        letterDoc={letterFile}
+                    />
                 </>
             )}
         </div>

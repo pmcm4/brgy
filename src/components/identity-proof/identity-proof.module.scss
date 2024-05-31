@@ -241,12 +241,57 @@ input[type="file"] {
     border-radius: 7px;
     color: black;
     cursor: pointer;
+    
 }
 .file-btn:hover{
     background-color: #2fad6e;
     color: white;
     
 }
+
+.file-div-doc{
+    width: 300px;
+    height: 45px;
+    background-color: rgb(245, 245, 245);
+    border-radius: 10px;
+    border: 1px solid #e4e4e4;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    margin-top: 20px
+
+}
+
+.file-btn-doc{
+    width: 100px;
+    height: 45px;
+    background-color: rgb(245, 245, 245);
+    display: flex;
+    font-size: 18px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 7px;
+    color: black;
+    cursor: pointer;
+    border-right: 1px solid #e4e4e4;;
+}
+.file-div-doc:hover .file-btn-doc {
+    background-color: #2fad6e;
+    color: white;
+    
+}
+
+.display-letter-span{
+    width: 100%;
+    text-wrap: nowrap;
+    overflow: hidden;
+    text-overflow:ellipsis;
+}
+
 
 //iframe
 

@@ -17,9 +17,6 @@ import {
 } from './RequestForms';
 import axios from 'axios';
 import { defaultApi } from '../../api';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import DoneAllOutlinedIcon from '@mui/icons-material/DoneAllOutlined';
-import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined';
 import FailedModal from '../message-modals/FailedModal';
 import SuccessModal from '../message-modals/SuccessModal';
 
@@ -32,10 +29,14 @@ interface ReviewModalProps {
         name: string;
         file: object;
     } | null;
-    signatureImg?: string | null;
+    letterDoc?: {
+        name: string;
+        file: object;
+    } | null;
+    signatureImg: string | null;
 }
 
-function ReviewModal({ imgID, imgSelf, signatureImg }: ReviewModalProps) {
+function ReviewModal({ imgID, imgSelf, signatureImg, letterDoc }: ReviewModalProps) {
     const reviewContext = useContext(ReviewContext);
 
     const [successMsg, setSuccessMsg] = useState(false);
@@ -46,7 +47,7 @@ function ReviewModal({ imgID, imgSelf, signatureImg }: ReviewModalProps) {
             e.preventDefault();
             const date = new Date().toLocaleDateString();
             const username = JSON.parse(String(localStorage.getItem('currentUser')));
-            const id_img = new FormData();
+            const user_file_upload = new FormData();
 
             const DataToSend = {
                 username: username.username,
@@ -75,14 +76,15 @@ function ReviewModal({ imgID, imgSelf, signatureImg }: ReviewModalProps) {
                 .post(`${defaultApi}/api/requestData/submitRequest`, DataToSend)
                 .then(async (data) => {
                     const request_id_number = data.data;
-                    id_img.append('valid_id_image', imgID?.file as Blob);
-                    id_img.append('self_image', imgSelf?.file as Blob);
-                    id_img.append('id', request_id_number);
-                    id_img.append('signature_image', signatureImg!);
+                    user_file_upload.append('valid_id_image', imgID?.file as Blob);
+                    user_file_upload.append('self_image', imgSelf?.file as Blob);
+                    user_file_upload.append('letter_doc', letterDoc?.file as Blob);
+                    user_file_upload.append('id', request_id_number);
+                    user_file_upload.append('signature_image', signatureImg!);
 
                     const uploadImage = await axios.post(
                         `${defaultApi}/api/requestData/uploadIDtoCloud`,
-                        id_img
+                        user_file_upload
                     );
 
                     if (uploadImage.status === 200 && data.status === 200) {
@@ -104,7 +106,7 @@ function ReviewModal({ imgID, imgSelf, signatureImg }: ReviewModalProps) {
             e.preventDefault();
             const date = new Date().toLocaleDateString();
             const username = JSON.parse(String(localStorage.getItem('currentUser')));
-            const id_img = new FormData();
+            const user_file_upload = new FormData();
 
             const DataToSend = {
                 username: username.username,
@@ -154,18 +156,19 @@ function ReviewModal({ imgID, imgSelf, signatureImg }: ReviewModalProps) {
             };
 
             await axios
-                .post(`${defaultApi}/api/requestData/submitRequest`, DataToSend)
+                .post(`${defaultApi}/api/requestData/submitForSomeoneElseRequest`, DataToSend)
                 .then(async (data) => {
                     const request_id_number = data.data;
                     console.log(request_id_number);
-                    id_img.append('valid_id_image', imgID?.file as Blob);
-                    id_img.append('self_image', imgSelf?.file as Blob);
-                    id_img.append('id', request_id_number);
-                    id_img.append('signature_image', signatureImg!);
+                    user_file_upload.append('valid_id_image', imgID?.file as Blob);
+                    user_file_upload.append('self_image', imgSelf?.file as Blob);
+                    user_file_upload.append('letter_doc', letterDoc?.file as Blob);
+                    user_file_upload.append('id', request_id_number);
+                    user_file_upload.append('signature_image', signatureImg!);
 
                     const uploadImage = await axios.post(
                         `${defaultApi}/api/requestData/uploadIDtoCloud`,
-                        id_img
+                        user_file_upload
                     );
 
                     if (uploadImage.status === 200 && data.status === 200) {
@@ -186,7 +189,7 @@ function ReviewModal({ imgID, imgSelf, signatureImg }: ReviewModalProps) {
         try {
             e.preventDefault();
             const date = new Date().toLocaleDateString();
-            const id_img = new FormData();
+            const user_file_upload = new FormData();
 
             const DataToSend = {
                 //certificate request details
@@ -239,18 +242,19 @@ function ReviewModal({ imgID, imgSelf, signatureImg }: ReviewModalProps) {
             };
 
             await axios
-                .post(`${defaultApi}/api/requestData/submitRequest`, DataToSend)
+                .post(`${defaultApi}/api/requestData/unregisteredUserRequest`, DataToSend)
                 .then(async (data) => {
                     const request_id_number = data.data;
                     console.log(request_id_number);
-                    id_img.append('valid_id_image', imgID?.file as Blob);
-                    id_img.append('self_image', imgSelf?.file as Blob);
-                    id_img.append('id', request_id_number);
-                    id_img.append('signature_image', signatureImg!);
+                    user_file_upload.append('valid_id_image', imgID?.file as Blob);
+                    user_file_upload.append('self_image', imgSelf?.file as Blob);
+                    user_file_upload.append('letter_doc', letterDoc?.file as Blob);
+                    user_file_upload.append('id', request_id_number);
+                    user_file_upload.append('signature_image', signatureImg!);
 
                     const uploadImage = await axios.post(
                         `${defaultApi}/api/requestData/uploadIDtoCloud`,
-                        id_img
+                        user_file_upload
                     );
 
                     if (uploadImage.status === 200 && data.status === 200) {
