@@ -391,21 +391,21 @@ const Home = ({ className }: HomeProps) => {
                     <MenuCard
                         cardTitle="Profile"
                         cardSubText="View and edit your personal information."
-                        cardImg="https://storage.googleapis.com/brgysrbucket/id_sample_cl3weq.jpg"
+                        cardImg="https://storage.googleapis.com/barangay-san-roque-public/id_sample_cl3weq.jpg"
                     />
                 </Link>
                 <Link to={'/certificates'}>
                     <MenuCard
                         cardTitle="Certifications"
                         cardSubText="Request all of available certifications through our online services."
-                        cardImg="https://storage.googleapis.com/brgysrbucket/photo-1562240020-ce31ccb0fa7d_jlk0ds%20(1).jpg"
+                        cardImg="https://storage.googleapis.com/barangay-san-roque-public/photo-1562240020-ce31ccb0fa7d_jlk0ds%20(1).jpg"
                     />
                 </Link>
                 <Link to={`/faq`}>
                     <MenuCard
                         cardTitle="FAQ"
                         cardSubText="Explore Frequently Asked Questions"
-                        cardImg="https://storage.googleapis.com/brgysrbucket/photo-1531379410502-63bfe8cdaf6f_npnnrt.jpg"
+                        cardImg="https://storage.googleapis.com/barangay-san-roque-public/photo-1531379410502-63bfe8cdaf6f_npnnrt.jpg"
                     />
                 </Link>
                 <div className={styles.cardExplore} onClick={handleScrollAbout}>

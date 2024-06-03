@@ -76,7 +76,7 @@ const Header = ({ className }: HeaderProps) => {
         <div className={classNames(styles.root, className)}>
             <div className={styles.left}>
                 <img
-                    src="https://storage.googleapis.com/brgysrbucket/logo_sln6bp.png"
+                    src="https://storage.googleapis.com/barangay-san-roque-public/logo_sln6bp.png"
                     alt="brgy-logo"
                     className={styles.logo}
                 />

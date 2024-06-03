@@ -225,7 +225,7 @@ export const Identity_Proof = ({ className, onBack }: Identity_ProofProps) => {
                         />
                     ) : (
                         <img
-                            src="https://storage.googleapis.com/brgysrbucket/govt-id-guide.jpg"
+                            src="https://storage.googleapis.com/barangay-san-roque-public/govt-id-guide.jpg"
                             className={styles['img-container']}
                         />
                     )}
@@ -251,7 +251,7 @@ export const Identity_Proof = ({ className, onBack }: Identity_ProofProps) => {
                         />
                     ) : (
                         <img
-                            src="https://storage.googleapis.com/brgysrbucket/self-image.jpg"
+                            src="https://storage.googleapis.com/barangay-san-roque-public/self-image.jpg"
                             className={styles['img-container']}
                         />
                     )}

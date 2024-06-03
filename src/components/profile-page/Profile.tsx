@@ -18,6 +18,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import TablePaginationActions from './TablePaginationActions';
 import { useAxios } from '../utils/useAxios';
 import { AuthContext } from '../context/authContext';
+import EditProfile from './EditProfile';
 
 function Profile() {
     const [userDetails, setUserDetails] = useState({
@@ -113,23 +114,19 @@ function Profile() {
         }
     }, []);
 
-    const authContext = useContext(AuthContext);
-
-    let axiosJWT = useAxios();
-
-    const handleDelete = async () => {
-        try {
-            await axiosJWT.delete(`${defaultApi}/api/auth/delete`, {
-                headers: { authorization: 'Bearer ' + authContext?.accessToken },
-            });
-        } catch (error) {
-            console.log(error);
-        }
-    };
+    const [editModal, setEditmodal] = useState(false);
 
     return (
         <div className={styles['profile-main-body']}>
-            <div className={styles['header-image']}></div>
+            <div className={styles['header-image']} />
+            {editModal === true && (
+                <>
+                    {' '}
+                    <div className={styles['profile-edit-background']} />
+                    <EditProfile closeModal={setEditmodal} />
+                </>
+            )}
+
             <div className={styles['user-contents']}>
                 <div className={styles['user-details-box']}>
                     <img
@@ -138,7 +135,14 @@ function Profile() {
                     />
                     <span className={styles['user-name']}>{userDetails.name}</span>
 
-                    <button className={styles['edit-button']}>Edit Profile</button>
+                    <button
+                        className={styles['edit-button']}
+                        onClick={() => {
+                            setEditmodal(true);
+                        }}
+                    >
+                        Edit Profile
+                    </button>
 
                     <div className={styles['input-box']}>
                         <span className={styles['input-label']}>Username</span>
@@ -222,7 +226,7 @@ function Profile() {
                                             {row.request_status}
                                         </TableCell>
                                         <TableCell style={{ width: 'auto' }} align="center">
-                                            <button onClick={handleDelete}>View</button>
+                                            <button>View</button>
                                         </TableCell>
                                     </TableRow>
                                 ))}
