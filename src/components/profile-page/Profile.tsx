@@ -196,7 +196,6 @@ function Profile() {
                                     <TableCell align="center">Type of Request</TableCell>
                                     <TableCell align="center">Date of Request</TableCell>
                                     <TableCell align="center">Status</TableCell>
-                                    <TableCell align="center">Action</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
@@ -224,9 +223,6 @@ function Profile() {
                                         </TableCell>
                                         <TableCell style={{ width: 'auto' }} align="center">
                                             {row.request_status}
-                                        </TableCell>
-                                        <TableCell style={{ width: 'auto' }} align="center">
-                                            <button>View</button>
                                         </TableCell>
                                     </TableRow>
                                 ))}

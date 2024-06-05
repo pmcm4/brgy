@@ -68,6 +68,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    overflow: hidden;
 }
 
 .input-label{
@@ -278,4 +279,22 @@ hr {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    align-items: center;
+    column-gap: 20px;
+}
+
+// edit message result
+
+.sucess-msg{
+    color: green;
+    margin-bottom: 0 !important;
+    font-size: 14px !important;
+    margin-right: 10px;
+}
+
+.failed-msg{
+    color: red;
+    margin-bottom: 0 !important;
+    font-size: 14px !important;
+    margin-right: 10px;
 }

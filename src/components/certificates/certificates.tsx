@@ -25,6 +25,7 @@ import axios from 'axios';
 import { defaultApi } from '../../api';
 import { AuthContext } from '../context/authContext';
 import { Link } from 'react-router-dom';
+import TextField from '@mui/material/TextField';
 
 export interface CertificatesProps {
     className?: string;
@@ -67,8 +68,32 @@ export const Certificates = ({ className }: CertificatesProps) => {
         province: '',
     });
 
+    const [isAdmin, setIsAdmin] = useState<boolean | null>(null);
+
     const reviewContext = useContext(ReviewContext);
     const authContext = useContext(AuthContext);
+
+    useEffect(() => {
+        try {
+            const username = JSON.parse(String(localStorage.getItem('currentUser')));
+            const checkAdmin = async () => {
+                await axios
+                    .get(`${defaultApi}/api/auth/isAdminCheck/${username.username}`)
+                    .then((data) => {
+                        if (data.data[0].is_admin === true) {
+                            setIsAdmin(true);
+                        } else {
+                            setIsAdmin(false);
+                        }
+                    });
+            };
+            if (username !== null) {
+                checkAdmin();
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }, []);
 
     const getUserDetails = async () => {
         try {
@@ -246,6 +271,32 @@ export const Certificates = ({ className }: CertificatesProps) => {
         setSelectedCertificate({ selectedCert: e.target.value });
     };
 
+    const [searchResults, setSearchResults] = useState<any[]>([]);
+    const [searchTrigger, setSearchTrigger] = useState(false);
+
+    const handleSearchProfile = async (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => {
+        try {
+            const search = {
+                search: e.target.value,
+            };
+            if (search.search === '') {
+                setSearchResults([]);
+                setSearchTrigger(false);
+            } else {
+                await axios
+                    .post(`${defaultApi}/api/requestData/searchProfile`, search)
+                    .then((data) => {
+                        setSearchResults(data.data);
+                        setSearchTrigger(true);
+                    });
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     return (
         <div className={classNames(styles.root, className)}>
             <div className={styles['header-certs']}>
@@ -254,6 +305,70 @@ export const Certificates = ({ className }: CertificatesProps) => {
                     Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
                 </span>
             </div>
+
+            {isAdmin === true && (
+                <div className={renderRequestor === true ? styles['admin-search'] : styles['hide']}>
+                    <span
+                        className={styles['admin-search-span']}
+                        style={{ fontSize: '24px', fontWeight: '500' }}
+                    >
+                        Choose a profile:
+                        <TextField
+                            id="outlined-search"
+                            label="Enter Name"
+                            type="search"
+                            size="small"
+                            onChange={handleSearchProfile}
+                        />
+                    </span>
+
+                    <div className={styles['search-results']}>
+                        {searchTrigger === true ? (
+                            <>
+                                {searchResults.length > 0 ? (
+                                    searchResults.map((row, key) => {
+                                        return (
+                                            <div
+                                                className={styles['search-results-indiv']}
+                                                key={key}
+                                            >
+                                                <span>{row.full_name}</span>
+                                                <span>
+                                                    {row.block +
+                                                        ' ' +
+                                                        row.street +
+                                                        ' ' +
+                                                        row.barangay +
+                                                        ' ' +
+                                                        row.city +
+                                                        ' ' +
+                                                        row.province}
+                                                </span>
+                                                <button>Use Profile</button>{' '}
+                                            </div>
+                                        );
+                                    })
+                                ) : (
+                                    <span className={styles['search-results-init']}>
+                                        No Results
+                                    </span>
+                                )}
+                            </>
+                        ) : (
+                            <span className={styles['search-results-init']}>Search Results</span>
+                        )}
+                    </div>
+                    <span style={{ fontSize: '24px', fontWeight: '400', margin: '20px 0 20px 0' }}>
+                        OR
+                    </span>
+                    <button
+                        style={{ fontSize: '18px', fontWeight: '600', width: '200px' }}
+                        onClick={unregisteredRequestSelected}
+                    >
+                        Continue without registration
+                    </button>
+                </div>
+            )}
 
             {authContext?.currentUser === null ? (
                 <div className={renderRequestor === true ? styles['unhide'] : styles['hide']}>
@@ -288,7 +403,13 @@ export const Certificates = ({ className }: CertificatesProps) => {
                     </div>
                 </div>
             ) : (
-                <div className={renderRequestor === true ? styles['unhide'] : styles['hide']}>
+                <div
+                    className={
+                        renderRequestor === true && isAdmin === false
+                            ? styles['unhide']
+                            : styles['hide']
+                    }
+                >
                     <div className={styles['choose-requestor']}>
                         <span style={{ fontSize: '30px', fontWeight: '600' }}>
                             Who is requesting?
