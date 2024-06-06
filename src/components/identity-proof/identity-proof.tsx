@@ -9,6 +9,7 @@ import { ReviewContext } from '../context/ReviewContext';
 export interface Identity_ProofProps {
     className?: string;
     onBack: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+    adminCheck: boolean | null;
 }
 
 const styleSketchCanvas = {
@@ -20,7 +21,7 @@ const styleSketchCanvas = {
  * This component was created using Codux's Default new component template.
  * To create custom component templates, see https://help.codux.com/kb/en/article/kb16522
  */
-export const Identity_Proof = ({ className, onBack }: Identity_ProofProps) => {
+export const Identity_Proof = ({ className, onBack, adminCheck }: Identity_ProofProps) => {
     const canvasRef = useRef<ReactSketchCanvasRef>(null);
     const reviewContext = useContext(ReviewContext);
     const [showReviewModal, setShowReviewModal] = useState(false);
@@ -58,12 +59,15 @@ export const Identity_Proof = ({ className, onBack }: Identity_ProofProps) => {
 
     const handleReview = () => {
         if (
-            displayValidID === null ||
-            displaySelfImage === null ||
-            sketchImg === null ||
-            sketchImg === ''
+            (displayValidID === null ||
+                displaySelfImage === null ||
+                sketchImg === null ||
+                sketchImg === '') &&
+            (adminCheck === false || adminCheck === null)
         ) {
             setMissingUpload(true);
+        } else if (adminCheck === true) {
+            setShowReviewModal(!showReviewModal);
         } else {
             setShowReviewModal(!showReviewModal);
         }
@@ -265,37 +269,44 @@ export const Identity_Proof = ({ className, onBack }: Identity_ProofProps) => {
                     Review
                 </button>
             </div>
-            {missingUplaod === true && (
-                <div className={styles['error-modal-background']}>
-                    <div
-                        className={styles['error-modal-container']}
-                        style={{ color: 'red', fontSize: '18px', fontWeight: '450' }}
-                    >
-                        <br />
-                        {(sketchImg === null || sketchImg === '') && (
-                            <span>
-                                *Please provide a signature then select "Save Signature" <br />
-                            </span>
-                        )}
-                        {residencyType === 'Tenant' &&
-                            (displayLetterFileName === null || displayLetterFileName === '') && (
-                                <span>
-                                    *Please provide a letter from your landlord <br />
-                                </span>
-                            )}
-                        {displayValidID === null && (
-                            <span>
-                                *Please upload a Valid ID. <br />
-                            </span>
-                        )}
-                        {displaySelfImage === null && (
-                            <span>
-                                *Please upload your 2x2 picture. <br />
-                            </span>
-                        )}
-                    </div>
-                </div>
+            {(adminCheck === false || adminCheck === null) && (
+                <>
+                    {missingUplaod === true && (
+                        <div className={styles['error-modal-background']}>
+                            <div
+                                className={styles['error-modal-container']}
+                                style={{ color: 'red', fontSize: '18px', fontWeight: '450' }}
+                            >
+                                <br />
+                                {(sketchImg === null || sketchImg === '') && (
+                                    <span>
+                                        *Please provide a signature then select "Save Signature"{' '}
+                                        <br />
+                                    </span>
+                                )}
+                                {residencyType === 'Tenant' &&
+                                    (displayLetterFileName === null ||
+                                        displayLetterFileName === '') && (
+                                        <span>
+                                            *Please provide a letter from your landlord <br />
+                                        </span>
+                                    )}
+                                {displayValidID === null && (
+                                    <span>
+                                        *Please upload a Valid ID. <br />
+                                    </span>
+                                )}
+                                {displaySelfImage === null && (
+                                    <span>
+                                        *Please upload your 2x2 picture. <br />
+                                    </span>
+                                )}
+                            </div>
+                        </div>
+                    )}
+                </>
             )}
+
             {showReviewModal === true && (
                 <>
                     <div className={styles['modal-background']} onClick={handleReview}></div>

@@ -64,8 +64,17 @@ type ReviewContextType = {
     certificateForm: CertificateReviewTypes | null;
     setCertificateForm: React.Dispatch<React.SetStateAction<CertificateReviewTypes | null>>;
 
+    selectedUserIDByAdmin: number | null;
+    setSelectedUserIDByAdmin: React.Dispatch<React.SetStateAction<number | null>>;
+
     selfRequest: boolean;
     setSelfRequest: React.Dispatch<React.SetStateAction<boolean>>;
+
+    adminSelected: boolean;
+    setAdminSelected: React.Dispatch<React.SetStateAction<boolean>>;
+
+    adminNonExistingProfileSelected: boolean;
+    setAdminNonExistingProfileSelected: React.Dispatch<React.SetStateAction<boolean>>;
 
     forSomeoneElseRequest: boolean;
     setForSomeoneElseRequest: React.Dispatch<React.SetStateAction<boolean>>;
@@ -80,8 +89,11 @@ export const ReviewContextProvider = ({ children }: ReviewContextProviderProps) 
     const [personalForm, setPersonalFormReview] = useState<PersonalReviewTypes | null>(null);
     const [addressForm, setAddressForm] = useState<AddressReviewTypes | null>(null);
     const [certificateForm, setCertificateForm] = useState<CertificateReviewTypes | null>(null);
+    const [selectedUserIDByAdmin, setSelectedUserIDByAdmin] = useState<number | null>(null);
 
     const [selfRequest, setSelfRequest] = useState(false);
+    const [adminSelected, setAdminSelected] = useState(false);
+    const [adminNonExistingProfileSelected, setAdminNonExistingProfileSelected] = useState(false);
     const [forSomeoneElseRequest, setForSomeoneElseRequest] = useState(false);
     const [unregisteredAccountRequest, setUregisteredAccountRequest] = useState(false);
 
@@ -94,8 +106,14 @@ export const ReviewContextProvider = ({ children }: ReviewContextProviderProps) 
                 setAddressForm,
                 certificateForm,
                 setCertificateForm,
+                selectedUserIDByAdmin,
+                setSelectedUserIDByAdmin,
                 selfRequest,
                 setSelfRequest,
+                adminSelected,
+                setAdminSelected,
+                adminNonExistingProfileSelected,
+                setAdminNonExistingProfileSelected,
                 forSomeoneElseRequest,
                 setForSomeoneElseRequest,
                 unregisteredAccountRequest,

@@ -31,10 +31,39 @@ export interface CertificatesProps {
     className?: string;
 }
 
+interface AdminSelectedUserType {
+    user_id: number;
+    first_name: string;
+    middle_name: string;
+    last_name: string;
+    name_ext: string;
+    gender: string;
+    email_address: string;
+    contact_num: string;
+    birth_date: string;
+    religion: string;
+    civil_status: string;
+    sector: string;
+    emerg_name: string;
+    emerg_rel: string;
+    emer_contact: string;
+    emer_address: string;
+    registered: string;
+    residency: string;
+    years_in_san_roque: string;
+    block: string;
+    street: string;
+    barangay: string;
+    city: string;
+    province: string;
+}
+
 export const Certificates = ({ className }: CertificatesProps) => {
     const [renderRequestor, setRenderRequestor] = useState(true);
+
     const [renderPF, setRenderPF] = useState(false); //initial render state
     const [renderAdd, setRenderAdd] = useState(false);
+
     const [renderChoose, setRenderChoose] = useState(false);
     const [renderVerify, setRenderVerify] = useState(false);
     const [forMyselfSelected, setForMyselfSelected] = useState(false);
@@ -172,10 +201,88 @@ export const Certificates = ({ className }: CertificatesProps) => {
         }
     };
 
+    const getSelectedUserDetails = async (data: AdminSelectedUserType) => {
+        try {
+            setUserDetails({
+                firstName: data.first_name,
+                middleName: data.middle_name,
+                lastName: data.last_name,
+                nameExt: data.name_ext,
+                gender: data.gender,
+                emailAddress: data.email_address,
+                contactNum: data.contact_num,
+                birthDate: data.birth_date,
+                religion: data.religion,
+                status: data.civil_status,
+                sector: data.sector,
+                emergName: data.emerg_name,
+                emergRel: data.emerg_rel,
+                emerContact: data.emer_contact,
+                emerAddress: data.emer_address,
+                registered: data.registered,
+            });
+            setuserAddress({
+                residency: data.residency,
+                yearsInSanRoque: data.years_in_san_roque,
+                block: data.block,
+                street: data.street,
+                barangay: data.barangay,
+                city: data.city,
+                province: data.province,
+            });
+            reviewContext?.setSelectedUserIDByAdmin(data.user_id);
+
+            reviewContext?.setPersonalFormReview({
+                firstName: data.first_name,
+                middleName: data.middle_name,
+                lastName: data.last_name,
+                nameExt: data.name_ext,
+                gender: data.gender,
+                emailAddress: data.email_address,
+                contactNum: data.contact_num,
+                birthDate: data.birth_date,
+                religion: data.religion,
+                status: data.civil_status,
+                sector: data.sector,
+                emergName: data.emerg_name,
+                emergRel: data.emerg_rel,
+                emerContact: data.emer_contact,
+                emerAddress: data.emer_address,
+            });
+            reviewContext?.setAddressForm({
+                residency: data.residency,
+                yearsInSanRoque: data.years_in_san_roque,
+                block: data.block,
+                street: data.street,
+                barangay: data.barangay,
+                city: data.city,
+                province: data.province,
+            });
+            reviewContext?.setAdminSelected(true);
+            reviewContext?.setSelfRequest(false);
+            reviewContext?.setForSomeoneElseRequest(false);
+            reviewContext?.setUregisteredAccountRequest(false);
+            setRenderRequestor(false);
+            setRenderChoose(true);
+            setForMyselfSelected(true);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     const ForSomeoneElseSelected = () => {
         reviewContext?.setSelfRequest(false);
         reviewContext?.setForSomeoneElseRequest(true);
         reviewContext?.setUregisteredAccountRequest(false);
+        setRenderRequestor(false);
+        setRenderPF(true);
+    };
+
+    const AdminNonExistingProfileSelected = () => {
+        reviewContext?.setSelfRequest(false);
+        reviewContext?.setForSomeoneElseRequest(false);
+        reviewContext?.setUregisteredAccountRequest(false);
+        reviewContext?.setAdminNonExistingProfileSelected(true);
         setRenderRequestor(false);
         setRenderPF(true);
     };
@@ -344,7 +451,13 @@ export const Certificates = ({ className }: CertificatesProps) => {
                                                         ' ' +
                                                         row.province}
                                                 </span>
-                                                <button>Use Profile</button>{' '}
+                                                <button
+                                                    onClick={() => {
+                                                        getSelectedUserDetails(row);
+                                                    }}
+                                                >
+                                                    Use Profile
+                                                </button>{' '}
                                             </div>
                                         );
                                     })
@@ -363,9 +476,9 @@ export const Certificates = ({ className }: CertificatesProps) => {
                     </span>
                     <button
                         style={{ fontSize: '18px', fontWeight: '600', width: '200px' }}
-                        onClick={unregisteredRequestSelected}
+                        onClick={AdminNonExistingProfileSelected}
                     >
-                        Continue without registration
+                        Continue without existing profile
                     </button>
                 </div>
             )}
@@ -570,7 +683,7 @@ export const Certificates = ({ className }: CertificatesProps) => {
             </div>
 
             <div className={renderVerify === true ? styles['unhide'] : styles['hide']}>
-                <Identity_Proof onBack={handleBackVerify} />
+                <Identity_Proof onBack={handleBackVerify} adminCheck={isAdmin} />
             </div>
         </div>
     );
