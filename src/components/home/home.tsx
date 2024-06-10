@@ -352,9 +352,11 @@ const Home = ({ className }: HomeProps) => {
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAP_API_KEY,
     });
-    const [username, setUsername] = useState('');
 
     const authContext = useContext(AuthContext);
+
+    const username = authContext?.currentUser;
+
     const scrollEffectContext = useContext(ScrollEffectContext);
 
     const [checkExistUser, setCheckExistUser] = useState(false);
@@ -362,11 +364,6 @@ const Home = ({ className }: HomeProps) => {
     useEffect(() => {
         if (authContext?.currentUser) {
             setCheckExistUser(true);
-        }
-
-        if (authContext?.currentUser !== null) {
-            const getUsername = JSON.parse(String(localStorage.getItem('currentUser')));
-            setUsername(getUsername?.username);
         }
     }, [authContext?.currentUser]);
 

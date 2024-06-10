@@ -40,10 +40,10 @@ function Login() {
     };
 
     useEffect(() => {
-        if (authContext?.currentUser) {
+        if (authContext?.accessToken) {
             navigate('/home');
         }
-    }, [authContext?.currentUser]);
+    }, [authContext?.accessToken]);
 
     const handleFailedModal = () => {
         setFailModal(false);

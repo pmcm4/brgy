@@ -20,19 +20,8 @@ export const useAxios = () => {
             if (decodedToken.exp! * 1000 < currentDate.getTime()) {
                 const data = await handleRefreshToken();
                 config.headers['authorization'] = 'Bearer ' + data.accessToken;
-                const currentUserStorage = JSON.parse(String(localStorage.getItem('currentUser')));
-
-                localStorage.setItem(
-                    'currentUser',
-                    JSON.stringify({
-                        username: currentUserStorage?.username,
-                        accessToken: data.accessToken,
-                        refreshToken: data.refreshToken,
-                    })
-                );
 
                 authContext?.setAccessToken(data.accessToken);
-                authContext?.setRefreshToken(data.refreshToken);
             }
 
             return config;
@@ -44,12 +33,14 @@ export const useAxios = () => {
 
     const handleRefreshToken = async () => {
         try {
-            const token = {
-                token: authContext?.refreshToken,
-            };
-
-            const res = await axios.post(`${defaultApi}/api/auth/refreshToken`, token);
-
+            const res = await axios.post(
+                `${defaultApi}/api/auth/refreshToken`,
+                {},
+                {
+                    withCredentials: true,
+                }
+            );
+            console.log(res.data);
             return res.data;
         } catch (error) {
             console.log(error);
@@ -75,19 +66,8 @@ export const useLogoutAxios = () => {
             if (decodedToken.exp! * 1000 < currentDate.getTime()) {
                 const data = await handleLogoutRefresh();
                 config.headers['authorization'] = 'Bearer ' + data.accessToken;
-                const username = JSON.parse(String(localStorage.getItem('currentUser')));
-
-                localStorage.setItem(
-                    'currentUser',
-                    JSON.stringify({
-                        username: username?.username,
-                        accessToken: data.accessToken,
-                        refreshToken: data.refreshToken,
-                    })
-                );
 
                 authContext?.setAccessToken(data.accessToken);
-                authContext?.setRefreshToken(data.refreshToken);
             }
             return config;
         },
@@ -98,11 +78,13 @@ export const useLogoutAxios = () => {
 
     const handleLogoutRefresh = async () => {
         try {
-            const token = {
-                token: authContext?.refreshToken,
-            };
-
-            const res = await axios.post(`${defaultApi}/api/auth/handleLogoutToken`, token);
+            const res = await axios.post(
+                `${defaultApi}/api/auth/handleLogoutToken`,
+                {},
+                {
+                    withCredentials: true,
+                }
+            );
 
             return res.data;
         } catch (error) {

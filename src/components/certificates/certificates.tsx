@@ -104,10 +104,9 @@ export const Certificates = ({ className }: CertificatesProps) => {
 
     useEffect(() => {
         try {
-            const username = JSON.parse(String(localStorage.getItem('currentUser')));
             const checkAdmin = async () => {
                 await axios
-                    .get(`${defaultApi}/api/auth/isAdminCheck/${username.username}`)
+                    .get(`${defaultApi}/api/auth/isAdminCheck/${authContext?.currentUser}`)
                     .then((data) => {
                         if (data.data[0].is_admin === true) {
                             setIsAdmin(true);
@@ -116,7 +115,7 @@ export const Certificates = ({ className }: CertificatesProps) => {
                         }
                     });
             };
-            if (username !== null) {
+            if (authContext?.currentUser !== null) {
                 checkAdmin();
             }
         } catch (error) {
@@ -126,9 +125,8 @@ export const Certificates = ({ className }: CertificatesProps) => {
 
     const getUserDetails = async () => {
         try {
-            const username = JSON.parse(String(localStorage.getItem('currentUser')));
             const sendRequest = await axios.get(
-                `${defaultApi}/api/requestData/getSingleUserDetails/${username.username}`
+                `${defaultApi}/api/requestData/getSingleUserDetails/${authContext?.currentUser}`
             );
 
             if (sendRequest.status === 200) {

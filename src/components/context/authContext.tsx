@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { createContext } from 'react';
 import axios from 'axios';
 import { defaultApi } from '../../api';
+import { jwtDecode } from 'jwt-decode';
 
 type AuthContextProps = {
     children: React.ReactNode;
@@ -10,7 +11,7 @@ type AuthContextProps = {
 type AuthContextProviderType = {
     login: (loginInput: object) => Promise<void>;
     logout: (token: object) => Promise<void>;
-    currentUser: object | null;
+    currentUser: string | null;
     setCurrentUser: React.Dispatch<React.SetStateAction<string | null>>;
     accessToken: string | null;
     setAccessToken: React.Dispatch<any>;
@@ -20,36 +21,46 @@ type AuthContextProviderType = {
     setLogoutSignal: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
+type LoginCredentialType = {
+    accessToken: string;
+};
+type DecodedTokenType = {
+    username: string;
+};
+
 export const AuthContext = createContext<AuthContextProviderType | null>(null);
 
 export const AuthContextProvider = ({ children }: AuthContextProps) => {
-    const currentUserString = JSON.parse(String(localStorage.getItem('currentUser')));
-    const [currentUser, setCurrentUser] = useState(currentUserString || null);
-    const [accessToken, setAccessToken] = useState(currentUserString?.accessToken || null);
-    const [refreshToken, setRefreshToken] = useState(currentUserString?.refreshToken || null);
+    const [currentUser, setCurrentUser] = useState<string | null>(null);
+
+    const [accessToken, setAccessToken] = useState<string | null>(null);
+
     const [logoutSignal, setLogoutSignal] = useState(false);
 
     const login = async (loginInput: object) => {
-        const res = await axios.post(`${defaultApi}/api/auth/loginUser`, loginInput);
-        setCurrentUser(res.data);
+        await axios
+            .post<LoginCredentialType>(`${defaultApi}/api/auth/loginUser`, loginInput, {
+                withCredentials: true,
+            }) // assign type in an axios response
+            .then((response) => {
+                const decodedToken = jwtDecode<DecodedTokenType>(String(response.data.accessToken));
+                setCurrentUser(decodedToken.username);
+                setAccessToken(response.data.accessToken);
+            });
     };
 
-    const logout = async (token: object) => {
+    const logout = async () => {
         const parse = JSON.parse(currentUser!);
-        await axios.post(`${defaultApi}/api/auth/logout`, token, {
-            headers: { authorization: 'Bearer ' + parse.accessToken },
-        });
+        await axios.post(
+            `${defaultApi}/api/auth/logout`,
+            {},
+            {
+                headers: { authorization: 'Bearer ' + parse.accessToken },
+                withCredentials: true,
+            }
+        );
         setCurrentUser(null);
     };
-
-    useEffect(() => {
-        if (currentUserString === null && currentUser !== null) {
-            localStorage.setItem('currentUser', JSON.stringify(currentUser));
-
-            setAccessToken(currentUser.accessToken);
-            setRefreshToken(currentUser.refreshToken);
-        }
-    }, [currentUserString, currentUser]);
 
     return (
         <AuthContext.Provider
@@ -57,11 +68,11 @@ export const AuthContextProvider = ({ children }: AuthContextProps) => {
                 currentUser,
                 login,
                 logout,
-                setCurrentUser,
+                //setCurrentUser,
                 accessToken,
                 setAccessToken,
-                refreshToken,
-                setRefreshToken,
+                //refreshToken,
+                //setRefreshToken,
                 logoutSignal,
                 setLogoutSignal,
             }}

@@ -47,15 +47,13 @@ function EditProfile({ closeModal }: EditProfileProps) {
 
     const usernameFromURL = location.pathname.split('/')[2];
 
-    const usernameFromStorage = JSON.parse(String(localStorage.getItem('currentUser')));
-
     useEffect(() => {
         try {
-            if (usernameFromStorage === null) {
+            if (authContext?.currentUser === null) {
                 navigate('/home');
             }
 
-            if (usernameFromURL !== usernameFromStorage.username) {
+            if (usernameFromURL !== authContext?.currentUser) {
                 navigate('/error');
             }
 

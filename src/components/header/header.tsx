@@ -40,24 +40,26 @@ const Header = ({ className }: HeaderProps) => {
     useEffect(() => {
         if (authContext?.currentUser) {
             setCheckExistUser(true);
-            const username = JSON.parse(String(localStorage.getItem('currentUser')));
+            const username = authContext.currentUser;
 
-            setUsername(username?.username);
+            setUsername(username);
         }
     }, [authContext?.currentUser]);
 
     const handleLogout = async () => {
         try {
-            const token = {
-                token: authContext?.refreshToken,
-            };
-
-            await useJWTAxios.post(`${defaultApi}/api/auth/logout`, token, {
-                headers: { authorization: 'Bearer ' + authContext?.accessToken },
-            });
-
-            localStorage.clear();
-            window.location.reload();
+            await useJWTAxios
+                .post(
+                    `${defaultApi}/api/auth/logout`,
+                    {},
+                    {
+                        headers: { authorization: 'Bearer ' + authContext?.accessToken },
+                        withCredentials: true,
+                    }
+                )
+                .then(() => {
+                    window.location.reload();
+                });
         } catch (error: any) {
             console.log(error);
         }

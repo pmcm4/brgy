@@ -19,6 +19,7 @@ import axios from 'axios';
 import { defaultApi } from '../../api';
 import FailedModal from '../message-modals/FailedModal';
 import SuccessModal from '../message-modals/SuccessModal';
+import { AuthContext } from '../context/authContext';
 
 interface ReviewModalProps {
     imgID: {
@@ -42,6 +43,8 @@ function ReviewModal({ imgID, imgSelf, signatureImg, letterDoc }: ReviewModalPro
     const [successMsg, setSuccessMsg] = useState(false);
     const [failedMsg, setFailedMsg] = useState(false);
 
+    const authContext = useContext(AuthContext);
+
     const handleSubmitForMyself = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         try {
             e.preventDefault();
@@ -49,11 +52,10 @@ function ReviewModal({ imgID, imgSelf, signatureImg, letterDoc }: ReviewModalPro
 
             const dateNow = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 
-            const username = JSON.parse(String(localStorage.getItem('currentUser')));
             const user_file_upload = new FormData();
 
             const DataToSend = {
-                username: username.username,
+                username: authContext?.currentUser,
                 selected_cert_type: reviewContext?.certificateForm?.selectedCert,
                 request_date: dateNow,
                 purpose: reviewContext?.certificateForm?.purpose,
@@ -108,10 +110,9 @@ function ReviewModal({ imgID, imgSelf, signatureImg, letterDoc }: ReviewModalPro
             const date = new Date();
 
             const dateNow = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
-            const username = JSON.parse(String(localStorage.getItem('currentUser')));
 
             const DataToSend = {
-                username: username.username,
+                username: authContext?.currentUser,
                 user_id: reviewContext?.selectedUserIDByAdmin,
 
                 selected_cert_type: reviewContext?.certificateForm?.selectedCert,
@@ -159,10 +160,8 @@ function ReviewModal({ imgID, imgSelf, signatureImg, letterDoc }: ReviewModalPro
 
             const dateNow = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 
-            const username = JSON.parse(String(localStorage.getItem('currentUser')));
-
             const DataToSend = {
-                username: username.username,
+                username: authContext?.currentUser,
                 selected_cert_type: reviewContext?.certificateForm?.selectedCert,
                 request_date: dateNow,
                 first_name: reviewContext?.personalForm?.firstName,
@@ -232,11 +231,10 @@ function ReviewModal({ imgID, imgSelf, signatureImg, letterDoc }: ReviewModalPro
 
             const dateNow = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 
-            const username = JSON.parse(String(localStorage.getItem('currentUser')));
             const user_file_upload = new FormData();
 
             const DataToSend = {
-                username: username.username,
+                username: authContext?.currentUser,
                 selected_cert_type: reviewContext?.certificateForm?.selectedCert,
                 request_date: dateNow,
                 first_name: reviewContext?.personalForm?.firstName,
