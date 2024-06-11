@@ -14,24 +14,28 @@ export const useOnReload = async (
     setAccessToken: React.Dispatch<React.SetStateAction<string | null>>,
     currentUser: string | null
 ) => {
-    if (logoutSignal === false) {
-        const handleRefresh = async () => {
-            try {
-                const response = await axios.post<{ accessToken: string }>(
-                    `${defaultApi}/api/auth/preventLogout`,
-                    {},
-                    { withCredentials: true }
-                );
+    const handleRefresh = async () => {
+        try {
+            const response = await axios.post<{ accessToken: string }>(
+                `${defaultApi}/api/auth/preventLogout`,
+                {},
+                { withCredentials: true }
+            );
 
-                const decodedToken = jwtDecode<DecodedTokenType>(String(response.data.accessToken));
-                setCurrentUser(decodedToken.username);
-                setAccessToken(response.data.accessToken);
-            } catch (error) {
-                console.log('No recent login');
-            }
-        };
-        handleRefresh();
-    }
+            console.log(response);
 
-    return currentUser;
+            const decodedToken = jwtDecode<DecodedTokenType>(String(response.data.accessToken));
+            setCurrentUser(decodedToken.username);
+            setAccessToken(response.data.accessToken);
+
+            return 'withlogin';
+        } catch (error) {
+            console.log('No recent login');
+
+            return 'withoutlogin';
+        }
+    };
+    const value = await handleRefresh();
+
+    return value;
 };

@@ -65,7 +65,7 @@ function App() {
         try {
             const reload = async () => {
                 if (authContext?.logoutSignal === false) {
-                    const returnaa = await useOnReload(
+                    const loginCheck = await useOnReload(
                         // REMEMBER: DO NOT DO USECONTEXT INSIDE A CUSTOM HOOK
                         authContext.logoutSignal,
                         authContext.setCurrentUser,
@@ -73,18 +73,16 @@ function App() {
                         authContext.currentUser
                     );
 
-                    if (returnaa !== null) {
+                    if (loginCheck) {
                         setLoading(false);
                     }
-                } else {
-                    setLoading(false);
                 }
             };
             reload();
         } catch (error) {
             console.log(error);
         }
-    }, [authContext?.currentUser]);
+    }, []);
 
     return (
         <>
