@@ -15,8 +15,6 @@ type AuthContextProviderType = {
     setCurrentUser: React.Dispatch<React.SetStateAction<string | null>>;
     accessToken: string | null;
     setAccessToken: React.Dispatch<any>;
-    refreshToken: string | null;
-    setRefreshToken: React.Dispatch<any>;
     logoutSignal: boolean;
     setLogoutSignal: React.Dispatch<React.SetStateAction<boolean>>;
 };
@@ -68,7 +66,7 @@ export const AuthContextProvider = ({ children }: AuthContextProps) => {
                 currentUser,
                 login,
                 logout,
-                //setCurrentUser,
+                setCurrentUser,
                 accessToken,
                 setAccessToken,
                 //refreshToken,

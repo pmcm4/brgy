@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom';
 import { forwardRef, useContext, useEffect, useRef, useState } from 'react';
 import { AuthContext } from '../context/authContext';
 import { ScrollEffectContext } from '../context/scrollEffectContext';
+import Loader from '../loader/Loader';
 
 export interface HomeProps {
     className?: string;

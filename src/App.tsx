@@ -6,6 +6,10 @@ import Login from './components/login/Login';
 import Layout from './components/layout/Layout';
 import Register from './components/register/Register';
 import Profile from './components/profile-page/Profile';
+import { useOnReload } from './components/custom-hooks/onReload';
+import { useContext, useEffect, useState } from 'react';
+import { AuthContext } from './components/context/authContext';
+import Loader from './components/loader/Loader';
 
 const questions: { faqid: number; faqTitle: string; answer: string }[] = [
     {
@@ -52,7 +56,42 @@ function App() {
         { path: '/register', element: <Register /> },
     ]);
 
-    return <RouterProvider router={router} />;
+    const authContext = useContext(AuthContext);
+
+    const [loading, setLoading] = useState(true);
+    const [num, setNum] = useState(0);
+
+    useEffect(() => {
+        try {
+            const reload = async () => {
+                if (authContext?.logoutSignal === false) {
+                    const returnaa = await useOnReload(
+                        // REMEMBER: DO NOT DO USECONTEXT INSIDE A CUSTOM HOOK
+                        authContext.logoutSignal,
+                        authContext.setCurrentUser,
+                        authContext.setAccessToken,
+                        authContext.currentUser
+                    );
+
+                    if (returnaa !== null) {
+                        setLoading(false);
+                    }
+                } else {
+                    setLoading(false);
+                }
+            };
+            reload();
+        } catch (error) {
+            console.log(error);
+        }
+    }, [authContext?.currentUser]);
+
+    return (
+        <>
+            <Loader offSignal={loading} />
+            {!loading && <RouterProvider router={router} />}
+        </>
+    );
 }
 
 export default App;

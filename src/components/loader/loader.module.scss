@@ -1,0 +1,33 @@
+.loader-container{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: white;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    opacity: 1;
+    transition: opacity 0.5s;
+    
+}
+
+.opacity-off{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: white;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.5s;
+    pointer-events: none; 
+}

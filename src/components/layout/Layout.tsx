@@ -4,6 +4,8 @@ import Header from '../header/header';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { Footer } from '../footer/footer';
 import { AuthContext } from '../context/authContext';
+import { defaultApi } from '../../api';
+import axios from 'axios';
 
 function Layout() {
     const authContext = useContext(AuthContext);
@@ -14,7 +16,7 @@ function Layout() {
         if (location.pathname === '/') {
             navigate('/home');
         }
-    });
+    }, []);
 
     return (
         <div className={styles['App']}>

@@ -74,10 +74,6 @@ function Profile() {
                 navigate('/home');
             }
 
-            if (usernameFromURL !== authContext?.currentUser) {
-                navigate('/error');
-            }
-
             const getUserData = async () => {
                 const userData = await axios.get(
                     `${defaultApi}/api/requestData/getSingleUserDetails/${usernameFromURL}`

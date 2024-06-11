@@ -58,6 +58,7 @@ const Header = ({ className }: HeaderProps) => {
                     }
                 )
                 .then(() => {
+                    authContext?.setLogoutSignal(true);
                     window.location.reload();
                 });
         } catch (error: any) {
