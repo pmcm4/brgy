@@ -59,7 +59,6 @@ function App() {
     const authContext = useContext(AuthContext);
 
     const [loading, setLoading] = useState(true);
-    const [num, setNum] = useState(0);
 
     useEffect(() => {
         try {
@@ -67,6 +66,7 @@ function App() {
                 if (authContext?.logoutSignal === false) {
                     const loginCheck = await useOnReload(
                         // REMEMBER: DO NOT DO USECONTEXT INSIDE A CUSTOM HOOK
+                        // DO NOT DEPEND ON A VARIABLE THAT IS INITIALLY NULL, ALWAYS DEPEND ON THE RESULT OF THE API CALL
                         authContext.logoutSignal,
                         authContext.setCurrentUser,
                         authContext.setAccessToken,
