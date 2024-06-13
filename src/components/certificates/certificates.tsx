@@ -106,7 +106,9 @@ export const Certificates = ({ className }: CertificatesProps) => {
         try {
             const checkAdmin = async () => {
                 await axios
-                    .get(`${defaultApi}/api/auth/isAdminCheck/${authContext?.currentUser}`)
+                    .get(
+                        `${process.env.API_DOMAIN}/api/auth/isAdminCheck/${authContext?.currentUser}`
+                    )
                     .then((data) => {
                         if (data.data[0].is_admin === true) {
                             setIsAdmin(true);
@@ -126,7 +128,7 @@ export const Certificates = ({ className }: CertificatesProps) => {
     const getUserDetails = async () => {
         try {
             const sendRequest = await axios.get(
-                `${defaultApi}/api/requestData/getSingleUserDetails/${authContext?.currentUser}`
+                `${process.env.API_DOMAIN}/api/requestData/getSingleUserDetails/${authContext?.currentUser}`
             );
 
             if (sendRequest.status === 200) {
@@ -391,7 +393,7 @@ export const Certificates = ({ className }: CertificatesProps) => {
                 setSearchTrigger(false);
             } else {
                 await axios
-                    .post(`${defaultApi}/api/requestData/searchProfile`, search)
+                    .post(`${process.env.API_DOMAIN}/api/requestData/searchProfile`, search)
                     .then((data) => {
                         setSearchResults(data.data);
                         setSearchTrigger(true);

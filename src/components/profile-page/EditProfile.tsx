@@ -59,7 +59,7 @@ function EditProfile({ closeModal }: EditProfileProps) {
 
             const getUserData = async () => {
                 const userData = await axios.get(
-                    `${defaultApi}/api/requestData/getSingleUserDetails/${usernameFromURL}`
+                    `${process.env.API_DOMAIN}/api/requestData/getSingleUserDetails/${usernameFromURL}`
                 );
 
                 setUserDetails({
@@ -105,7 +105,7 @@ function EditProfile({ closeModal }: EditProfileProps) {
     const saveBtn = async () => {
         try {
             const sendUpdate = await useJWTAxios.put(
-                `${defaultApi}/api/requestData/updateUserInfoClient`,
+                `${process.env.API_DOMAIN}/api/requestData/updateUserInfoClient`,
                 editData,
                 {
                     headers: { authorization: 'Bearer ' + authContext?.accessToken },

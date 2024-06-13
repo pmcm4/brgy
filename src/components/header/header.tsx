@@ -50,7 +50,7 @@ const Header = ({ className }: HeaderProps) => {
         try {
             await useJWTAxios
                 .post(
-                    `${defaultApi}/api/auth/logout`,
+                    `${process.env.API_DOMAIN}/api/auth/logout`,
                     {},
                     {
                         headers: { authorization: 'Bearer ' + authContext?.accessToken },

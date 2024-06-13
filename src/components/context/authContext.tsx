@@ -37,7 +37,7 @@ export const AuthContextProvider = ({ children }: AuthContextProps) => {
 
     const login = async (loginInput: object) => {
         await axios
-            .post<LoginCredentialType>(`${defaultApi}/api/auth/loginUser`, loginInput, {
+            .post<LoginCredentialType>(`${process.env.API_DOMAIN}/api/auth/loginUser`, loginInput, {
                 withCredentials: true,
             }) // assign type in an axios response
             .then((response) => {
@@ -50,7 +50,7 @@ export const AuthContextProvider = ({ children }: AuthContextProps) => {
     const logout = async () => {
         const parse = JSON.parse(currentUser!);
         await axios.post(
-            `${defaultApi}/api/auth/logout`,
+            `${process.env.API_DOMAIN}/api/auth/logout`,
             {},
             {
                 headers: { authorization: 'Bearer ' + parse.accessToken },

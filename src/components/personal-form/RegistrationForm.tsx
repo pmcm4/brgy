@@ -71,7 +71,10 @@ function RegistrationForm({ className }: RegistrationFormProps) {
                     username: e.target.value,
                 };
 
-                await axios.post(`${defaultApi}/api/requestData/duplicateCheck`, usernameObj);
+                await axios.post(
+                    `${process.env.API_DOMAIN}/api/requestData/duplicateCheck`,
+                    usernameObj
+                );
                 setusernameTaken(false);
                 setusernameAvail(true);
             }
@@ -86,7 +89,10 @@ function RegistrationForm({ className }: RegistrationFormProps) {
     ) => {
         try {
             e.preventDefault();
-            const request = await axios.post(`${defaultApi}/api/requestData/register`, inputs);
+            const request = await axios.post(
+                `${process.env.API_DOMAIN}/api/requestData/register`,
+                inputs
+            );
 
             if (request.status === 200) {
                 setSuccessMsg(true);

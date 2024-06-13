@@ -34,7 +34,7 @@ export const useAxios = () => {
     const handleRefreshToken = async () => {
         try {
             const res = await axios.post(
-                `${defaultApi}/api/auth/refreshToken`,
+                `${process.env.API_DOMAIN}/api/auth/refreshToken`,
                 {},
                 {
                     withCredentials: true,
@@ -79,7 +79,7 @@ export const useLogoutAxios = () => {
     const handleLogoutRefresh = async () => {
         try {
             const res = await axios.post(
-                `${defaultApi}/api/auth/handleLogoutToken`,
+                `${process.env.API_DOMAIN}/api/auth/handleLogoutToken`,
                 {},
                 {
                     withCredentials: true,

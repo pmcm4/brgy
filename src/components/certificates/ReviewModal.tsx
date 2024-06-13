@@ -78,7 +78,7 @@ function ReviewModal({ imgID, imgSelf, signatureImg, letterDoc }: ReviewModalPro
             };
 
             await axios
-                .post(`${defaultApi}/api/requestData/submitRequest`, DataToSend)
+                .post(`${process.env.API_DOMAIN}/api/requestData/submitRequest`, DataToSend)
                 .then(async (data) => {
                     const request_id_number = data.data;
                     user_file_upload.append('valid_id_image', imgID?.file as Blob);
@@ -88,7 +88,7 @@ function ReviewModal({ imgID, imgSelf, signatureImg, letterDoc }: ReviewModalPro
                     user_file_upload.append('signature_image', signatureImg!);
 
                     const uploadImage = await axios.post(
-                        `${defaultApi}/api/requestData/uploadIDtoCloud`,
+                        `${process.env.API_DOMAIN}/api/requestData/uploadIDtoCloud`,
                         user_file_upload
                     );
 
@@ -137,7 +137,7 @@ function ReviewModal({ imgID, imgSelf, signatureImg, letterDoc }: ReviewModalPro
             };
 
             await axios
-                .post(`${defaultApi}/api/requestData/submitAdminSelected`, DataToSend)
+                .post(`${process.env.API_DOMAIN}/api/requestData/submitAdminSelected`, DataToSend)
                 .then(async (data) => {
                     if (data.status === 200) {
                         setSuccessMsg(true);
@@ -208,7 +208,10 @@ function ReviewModal({ imgID, imgSelf, signatureImg, letterDoc }: ReviewModalPro
             };
 
             await axios
-                .post(`${defaultApi}/api/requestData/submitAdminNonExistProfile`, DataToSend)
+                .post(
+                    `${process.env.API_DOMAIN}/api/requestData/submitAdminNonExistProfile`,
+                    DataToSend
+                )
                 .then(async (data) => {
                     if (data.status === 200) {
                         setSuccessMsg(true);
@@ -281,7 +284,10 @@ function ReviewModal({ imgID, imgSelf, signatureImg, letterDoc }: ReviewModalPro
             };
 
             await axios
-                .post(`${defaultApi}/api/requestData/submitForSomeoneElseRequest`, DataToSend)
+                .post(
+                    `${process.env.API_DOMAIN}/api/requestData/submitForSomeoneElseRequest`,
+                    DataToSend
+                )
                 .then(async (data) => {
                     const request_id_number = data.data;
                     console.log(request_id_number);
@@ -292,7 +298,7 @@ function ReviewModal({ imgID, imgSelf, signatureImg, letterDoc }: ReviewModalPro
                     user_file_upload.append('signature_image', signatureImg!);
 
                     const uploadImage = await axios.post(
-                        `${defaultApi}/api/requestData/uploadIDtoCloud`,
+                        `${process.env.API_DOMAIN}/api/requestData/uploadIDtoCloud`,
                         user_file_upload
                     );
 
@@ -370,7 +376,10 @@ function ReviewModal({ imgID, imgSelf, signatureImg, letterDoc }: ReviewModalPro
             };
 
             await axios
-                .post(`${defaultApi}/api/requestData/unregisteredUserRequest`, DataToSend)
+                .post(
+                    `${process.env.API_DOMAIN}/api/requestData/unregisteredUserRequest`,
+                    DataToSend
+                )
                 .then(async (data) => {
                     const request_id_number = data.data;
                     console.log(request_id_number);
@@ -381,7 +390,7 @@ function ReviewModal({ imgID, imgSelf, signatureImg, letterDoc }: ReviewModalPro
                     user_file_upload.append('signature_image', signatureImg!);
 
                     const uploadImage = await axios.post(
-                        `${defaultApi}/api/requestData/uploadIDtoCloud`,
+                        `${process.env.API_DOMAIN}/api/requestData/uploadIDtoCloud`,
                         user_file_upload
                     );
 

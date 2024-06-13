@@ -76,7 +76,7 @@ function Profile() {
 
             const getUserData = async () => {
                 const userData = await axios.get(
-                    `${defaultApi}/api/requestData/getSingleUserDetails/${usernameFromURL}`
+                    `${process.env.API_DOMAIN}/api/requestData/getSingleUserDetails/${usernameFromURL}`
                 );
 
                 setUserDetails({
@@ -96,7 +96,7 @@ function Profile() {
 
             const getUserRequests = async () => {
                 const userRequests = await axios.get(
-                    `${defaultApi}/api/requestData/getSingleUserRequests/${usernameFromURL}`
+                    `${process.env.API_DOMAIN}/api/requestData/getSingleUserRequests/${usernameFromURL}`
                 );
 
                 setRequestDetails(userRequests.data);

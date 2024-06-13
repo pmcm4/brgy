@@ -17,7 +17,7 @@ export const useOnReload = async (
     const handleRefresh = async () => {
         try {
             const response = await axios.post<{ accessToken: string }>(
-                `${defaultApi}/api/auth/preventLogout`,
+                `${process.env.API_DOMAIN}/api/auth/preventLogout`,
                 {},
                 { withCredentials: true }
             );
