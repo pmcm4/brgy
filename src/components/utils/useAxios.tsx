@@ -33,9 +33,13 @@ export const useAxios = () => {
 
     const handleRefreshToken = async () => {
         try {
-            const res = await axios.post(`${process.env.API_DOMAIN}/api/auth/refreshToken`, {
-                withCredentials: true,
-            });
+            const res = await axios.post(
+                `${process.env.API_DOMAIN}/api/auth/refreshToken`,
+                {},
+                {
+                    withCredentials: true,
+                }
+            );
             console.log(res.data);
             return res.data;
         } catch (error) {
@@ -74,9 +78,13 @@ export const useLogoutAxios = () => {
 
     const handleLogoutRefresh = async () => {
         try {
-            const res = await axios.post(`${process.env.API_DOMAIN}/api/auth/handleLogoutToken`, {
-                withCredentials: true,
-            });
+            const res = await axios.post(
+                `${process.env.API_DOMAIN}/api/auth/handleLogoutToken`,
+                {},
+                {
+                    withCredentials: true,
+                }
+            );
 
             return res.data;
         } catch (error) {

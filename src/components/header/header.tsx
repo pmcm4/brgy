@@ -49,10 +49,14 @@ const Header = ({ className }: HeaderProps) => {
     const handleLogout = async () => {
         try {
             await useJWTAxios
-                .post(`${process.env.API_DOMAIN}/api/auth/logout`, {
-                    headers: { authorization: 'Bearer ' + authContext?.accessToken },
-                    withCredentials: true,
-                })
+                .post(
+                    `${process.env.API_DOMAIN}/api/auth/logout`,
+                    {},
+                    {
+                        headers: { authorization: 'Bearer ' + authContext?.accessToken },
+                        withCredentials: true,
+                    }
+                )
                 .then(() => {
                     console.log('called');
                     authContext?.setLogoutSignal(true);
