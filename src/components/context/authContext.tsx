@@ -44,9 +44,8 @@ export const AuthContextProvider = ({ children }: AuthContextProps) => {
                 const decodedToken = jwtDecode<DecodedTokenType>(String(response.data.accessToken));
                 setCurrentUser(decodedToken.username);
                 setAccessToken(response.data.accessToken);
-            })
-            .then(() => {
-                console.log(accessToken);
+
+                console.log(response.data.accessToken);
             });
     };
 
