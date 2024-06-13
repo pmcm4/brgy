@@ -18,7 +18,6 @@ export const useOnReload = async (
         try {
             const response = await axios.post<{ accessToken: string }>(
                 `${process.env.API_DOMAIN}/api/auth/preventLogout`,
-                {},
                 { withCredentials: true }
             );
 

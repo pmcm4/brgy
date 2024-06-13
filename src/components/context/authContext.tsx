@@ -49,14 +49,10 @@ export const AuthContextProvider = ({ children }: AuthContextProps) => {
 
     const logout = async () => {
         const parse = JSON.parse(currentUser!);
-        await axios.post(
-            `${process.env.API_DOMAIN}/api/auth/logout`,
-            {},
-            {
-                headers: { authorization: 'Bearer ' + parse.accessToken },
-                withCredentials: true,
-            }
-        );
+        await axios.post(`${process.env.API_DOMAIN}/api/auth/logout`, {
+            headers: { authorization: 'Bearer ' + parse.accessToken },
+            withCredentials: true,
+        });
         setCurrentUser(null);
     };
 
