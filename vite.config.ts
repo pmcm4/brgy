@@ -16,6 +16,10 @@ export default defineConfig(({ mode }) => {
     define: {
       'process.env': processEnv
     },
+    server: {
+        host: '0.0.0.0', // This allows Vite to be accessible from all network interfaces
+        port: 5173, // Adjust the port number as needed
+    },
     plugins: [react()],
   }
 })
