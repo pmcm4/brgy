@@ -8,7 +8,9 @@ export const useAxios = () => {
     //this INTERCEPTOR is used for all api request that needs revalidation (refreshes the tokens)
     const authContext = useContext(AuthContext);
 
-    const axiosJWT = axios.create();
+    const axiosJWT = axios.create({
+        withCredentials: true,
+    });
 
     axiosJWT.interceptors.request.use(
         async (config) => {
@@ -54,7 +56,9 @@ export const useLogoutAxios = () => {
     //this INTERCEPTOR is used for validating the logout function THEN using the logoutRefresh Route that doesnt regenerate a new refresh token in the database but DELETES them
     const authContext = useContext(AuthContext);
 
-    const axiosJWT = axios.create();
+    const axiosJWT = axios.create({
+        withCredentials: true,
+    });
 
     axiosJWT.interceptors.request.use(
         async (config) => {
