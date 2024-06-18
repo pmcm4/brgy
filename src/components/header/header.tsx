@@ -236,8 +236,10 @@ const Header = ({ className }: HeaderProps) => {
                     <span className={styles['menu-items']}>Get in Touch →</span>
                 </div>
             )}
-            {showHamburger && (
+            {showHamburger === true ? (
                 <div className={styles['hamburger-background']} onClick={handleCloseHamburger} />
+            ) : (
+                <></>
             )}
         </div>
     );
