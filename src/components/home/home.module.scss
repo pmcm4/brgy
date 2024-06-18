@@ -1,5 +1,6 @@
 .root {
-    width: 1920px;
+    display: flex;
+    flex-direction: column;
 }
 
 .image-bg {
@@ -42,7 +43,7 @@
 }
 
 .cards-container {
-    width: 1920px;
+    width: 100%;
     height: 525px;
     position: absolute;
     top: 650px;
@@ -59,9 +60,8 @@
 
 
 
-
 .card {
-    height: 525px;
+    height: 100%;
     width: 394px;
     border-radius: 20px;
     background-color: transparent;
@@ -108,8 +108,7 @@
 .gradient-card-explore {
     position: absolute;
     width: 394px;
-    height: 525px;
-    bottom: 1px;
+    height: 100%;
     background-repeat: repeat;
     background-image: linear-gradient(180deg, rgba(255, 0, 0, 0.0) 0%, rgba(29, 179, 107, 0.8) 100%);
     background-position: 0% 0%;
@@ -133,8 +132,8 @@
 .gradient-card {
     position: absolute;
     width: 394px;
-    height: 525px;
-    bottom: 1px;
+    height: 100%;
+    
     background-repeat: repeat;
     background-image: linear-gradient(180deg, rgba(255, 0, 0, 0.0) 0%, rgba(29, 179, 107, 0.8) 100%);
     background-position: 0% 0%;
@@ -154,9 +153,10 @@
 
 .card-image {
     width: 100%;
-    height: 100%;
+    height: 523px;
     border-radius: 20px;
     transition: transform 1s;
+    object-fit: cover;
 }
 
 
@@ -202,7 +202,7 @@
 
 .left-image {
     height: 500px;
-    width: 828px;
+    width: 70%;
     background-color: rgba(121, 28, 28, 0);
     display: flex;
     flex-direction: column;
@@ -238,6 +238,7 @@
     line-height: NORMAL;
     font-weight: 800;
     text-align: center;
+   
 }
 
 .subhead-home-about {
@@ -245,6 +246,7 @@
     font-weight: 500;
     line-height: normal;
     text-align: center;
+  
 }
 
 .about-btn {
@@ -262,7 +264,7 @@
 
 .brgy-info-mem {
     margin-top: 50px;
-    height: 1500px;
+
 }
 
 .top {
@@ -324,7 +326,13 @@
     color: white;
 }
 
-
+.card-text-div{
+    padding: 0 0 20px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .card-text {
     font-weight: 700;
@@ -334,21 +342,20 @@
     bottom: 80px;
     display: flex;
     direction: ltr;
-    margin-left: 20px;
+    width: 95%;
+
 }
 
 .card-subtext {
-    bottom: 25px;
     color: white;
     font-weight: 600;
-    text-align: start;
-    margin-left: 20px;
-    width: 300px;
     line-height: normal;
     font-size: 18px;
-    margin-bottom: 20px;
-    height: 48px;
-
+    margin: 0 0 10px 0;
+    text-align: start;
+    width: 95%;
+    height: 59px;
+    
 }
 
 .card-info-brgy {
@@ -382,10 +389,11 @@
     line-height: normal;
     font-weight: 700;
     margin-bottom: 50px;
+    text-align: center;
 }
 
 .brgy-cpt {
-    width: 1000px;
+    width: 100%;
     height: 650px;
     background-color: rgba(255, 255, 255, 0);
     display: flex;
@@ -440,7 +448,7 @@
     justify-items: start;
     align-content: start;
     justify-content: start;
-    width: 450px;
+  
     height: 400px;
 }
 
@@ -548,7 +556,7 @@
 }
 
 .contact {
-    height: 800px;
+    padding: 20px;
     background-color: transparent;
     display: flex;
     background-repeat: no-repeat;
@@ -568,7 +576,7 @@
 }
 
 .contact-form {
-    height: 80%;
+    padding: 20px;
     background-color: white;
     border-radius: 20px;
     width: 450px;
@@ -580,7 +588,7 @@
 }
 
 .logos {
-    height: 640px;
+    height: 95%;
     width: 45%;
     display: flex;
     flex-direction: column;
@@ -735,7 +743,8 @@
     justify-items: center;
     align-content: center;
     justify-content: space-around;
-    width: 800px;
+    width: 100%;
+    
 }
 
 .contact-deets {
@@ -745,7 +754,7 @@
 
 .map-container {
 
-    width: 800px;
+    width: 100%;
     height: 450px;
     margin-top: 30px;
 }
@@ -772,4 +781,2388 @@
 .carouselBtn:hover{
     background-color: white;
     color: #1db36b;
+}
+
+
+@media screen and (max-width: 1720px) {
+    .cards-container {
+        width: 100%;
+        height: 500px;
+        position: absolute;
+        top: 650px;
+        background-color: rgba(227, 15, 15, 0);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-items: center;
+        align-content: center;
+        padding-right: 0%;
+        justify-content: center;
+        gap: 30px;
+    }
+    
+    .card-image {
+        width: 100%;
+        height: 500px;
+        border-radius: 20px;
+        transition: transform 1s;
+        object-fit: cover;
+    }
+
+        .about-sec-home {
+            width: 100%;
+            height: 1400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-items: center;
+            align-content: center;
+            justify-content: end;
+            gap: 50px;
+            background-repeat: no-repeat;
+            background-position: 20% 29%;
+            background-size: 30%;
+            background-attachment: scroll;
+            background-origin: padding-box;
+            background-clip: border-box;
+            background-color: transparent;
+        }
+    
+    
+    .card {
+        height: 100%;
+        width: 369px;
+        border-radius: 20px;
+        background-color: transparent;
+        background-image: linear-gradient(180deg, #90c052 0%, #1db36b 100%);
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    
+    .cardExplore{
+        height: 100%;
+        width: 369px;
+        border-radius: 20px;
+        background-color: #90c052;
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    
+    .gradient-card-explore {
+        position: absolute;
+        width: 369px;
+        height: 100%;
+        
+        background-repeat: repeat;
+        background-image: linear-gradient(180deg, rgba(255, 0, 0, 0.0) 0%, rgba(29, 179, 107, 0.8) 100%);
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: transparent;
+        border-radius: 20px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    
+    .gradient-card {
+        position: absolute;
+        width: 369px;
+        height: 100%;
+        
+        background-repeat: repeat;
+        background-image: linear-gradient(180deg, rgba(255, 0, 0, 0.0) 0%, rgba(29, 179, 107, 0.8) 100%);
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: transparent;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        justify-items: start;
+        align-items: start;
+        align-content: start;
+    }
+    
+    
+}
+
+
+@media screen and (max-width: 1620px) {
+
+    .about-sec-home {
+            width: 100%;
+            height: 1350px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-items: center;
+            align-content: center;
+            justify-content: end;
+            gap: 50px;
+            background-repeat: no-repeat;
+            background-position: 20% 29%;
+            background-size: 30%;
+            background-attachment: scroll;
+            background-origin: padding-box;
+            background-clip: border-box;
+            background-color: transparent;
+        }
+    .cards-container {
+        width: 100%;
+        height: 475px;
+        position: absolute;
+        top: 650px;
+        background-color: rgba(227, 15, 15, 0);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-items: center;
+        align-content: center;
+        padding-right: 0%;
+        justify-content: center;
+        gap: 25px;
+    }
+    
+    .card-image {
+        width: 100%;
+        height: 473px;
+        border-radius: 20px;
+        transition: transform 1s;
+        object-fit: cover;
+    }
+    
+    
+    .card {
+        height: 100%;
+        width: 344px;
+        border-radius: 20px;
+        background-color: transparent;
+        background-image: linear-gradient(180deg, #90c052 0%, #1db36b 100%);
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    
+    .cardExplore{
+        height: 100%;
+        width: 344px;
+        border-radius: 20px;
+        background-color: #90c052;
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    
+    .gradient-card-explore {
+        position: absolute;
+        width: 344px;
+        height: 100%;
+        
+        background-repeat: repeat;
+        background-image: linear-gradient(180deg, rgba(255, 0, 0, 0.0) 0%, rgba(29, 179, 107, 0.8) 100%);
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: transparent;
+        border-radius: 20px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    
+    .gradient-card {
+        position: absolute;
+        width: 344px;
+        height: 100%;
+        
+        background-repeat: repeat;
+        background-image: linear-gradient(180deg, rgba(255, 0, 0, 0.0) 0%, rgba(29, 179, 107, 0.8) 100%);
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: transparent;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        justify-items: start;
+        align-items: start;
+        align-content: start;
+    }
+
+    .card-text {
+        font-weight: 700;
+        color: white;
+        text-align: start;
+        font-size: 30px;
+        bottom: 80px;
+        display: flex;
+        direction: ltr;
+        width: 95%;
+    
+    }
+    
+    .card-subtext {
+        color: white;
+        font-weight: 600;
+        line-height: normal;
+        font-size: 14px;
+        margin: 0;
+        text-align: start;
+        width: 95%;
+        height: 39px;
+    }
+    .explore-more {
+        font-size: 30px;
+        font-weight: 700;
+        color: white;
+    }
+    .cardExplore:hover .explore-more{
+        transition: font-size 0.3s;
+        font-size: 35px;
+    }
+}
+
+
+@media screen and (max-width: 1480px) {
+    .cards-container {
+        width: 100%;
+        height: 450px;
+        position: absolute;
+        top: 650px;
+        background-color: rgba(227, 15, 15, 0);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-items: center;
+        align-content: center;
+        padding-right: 0%;
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    .card-image {
+        width: 100%;
+        height: 448px;
+        border-radius: 20px;
+        transition: transform 1s;
+        object-fit: cover;
+    }
+    
+    
+    .card {
+        height: 100%;
+        width: 319px;
+        border-radius: 20px;
+        background-color: transparent;
+        background-image: linear-gradient(180deg, #90c052 0%, #1db36b 100%);
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    
+    .cardExplore{
+        height: 100%;
+        width: 319px;
+        border-radius: 20px;
+        background-color: #90c052;
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    
+    .gradient-card-explore {
+        position: absolute;
+        width: 319px;
+        height: 100%;
+        
+        background-repeat: repeat;
+        background-image: linear-gradient(180deg, rgba(255, 0, 0, 0.0) 0%, rgba(29, 179, 107, 0.8) 100%);
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: transparent;
+        border-radius: 20px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    
+    .gradient-card {
+        position: absolute;
+        width: 319px;
+        height: 100%;
+        
+        background-repeat: repeat;
+        background-image: linear-gradient(180deg, rgba(255, 0, 0, 0.0) 0%, rgba(29, 179, 107, 0.8) 100%);
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: transparent;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        justify-items: start;
+        align-items: start;
+        align-content: start;
+    }
+
+    .card-text {
+        font-weight: 700;
+        color: white;
+        text-align: start;
+        font-size: 30px;
+        bottom: 80px;
+        display: flex;
+        direction: ltr;
+        width: 95%;
+    
+    }
+    
+    .card-subtext {
+        color: white;
+        font-weight: 600;
+        line-height: normal;
+        font-size: 14px;
+        margin: 0;
+        text-align: start;
+        width: 95%;
+        height: 39px;
+    }
+    .explore-more {
+        font-size: 30px;
+        font-weight: 700;
+        color: white;
+    }
+    .cardExplore:hover .explore-more{
+        transition: font-size 0.3s;
+        font-size: 35px;
+    }
+
+    .officials{
+            background-image: url(https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706070751/logo_sln6bp.png);
+                background-position: 20% 18%;
+                background-size: 20%;
+    }
+
+}
+
+
+@media screen and (max-width: 1350px) {
+    .officials {
+            background-image: url(https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706070751/logo_sln6bp.png);
+            background-position: 18% 18%;
+            background-size: 20%;
+        }
+
+    .about-sec-home {
+            width: 100%;
+            height: 1300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-items: center;
+            align-content: center;
+            justify-content: end;
+            gap: 50px;
+            background-repeat: no-repeat;
+            background-position: 20% 29%;
+            background-size: 30%;
+            background-attachment: scroll;
+            background-origin: padding-box;
+            background-clip: border-box;
+            background-color: transparent;
+        }
+
+
+    .cards-container {
+        width: 100%;
+        height: 425px;
+        position: absolute;
+        top: 650px;
+        background-color: rgba(227, 15, 15, 0);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-items: center;
+        align-content: center;
+        padding-right: 0%;
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    .card-image {
+        width: 100%;
+        height: 423px;
+        border-radius: 20px;
+        transition: transform 1s;
+        object-fit: cover;
+    }
+    
+    
+    .card {
+        height: 100%;
+        width: 294px;
+        border-radius: 20px;
+        background-color: transparent;
+        background-image: linear-gradient(180deg, #90c052 0%, #1db36b 100%);
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    
+    .cardExplore{
+        height: 100%;
+        width: 294px;
+        border-radius: 20px;
+        background-color: #90c052;
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    
+    .gradient-card-explore {
+        position: absolute;
+        width: 294px;
+        height: 100%;
+        
+        background-repeat: repeat;
+        background-image: linear-gradient(180deg, rgba(255, 0, 0, 0.0) 0%, rgba(29, 179, 107, 0.8) 100%);
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: transparent;
+        border-radius: 20px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    
+    .gradient-card {
+        position: absolute;
+        width: 294px;
+        height: 100%;
+        
+        background-repeat: repeat;
+        background-image: linear-gradient(180deg, rgba(255, 0, 0, 0.0) 0%, rgba(29, 179, 107, 0.8) 100%);
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: transparent;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        justify-items: start;
+        align-items: start;
+        align-content: start;
+    }
+
+    .card-text {
+        font-weight: 700;
+        color: white;
+        text-align: start;
+        font-size: 30px;
+        bottom: 80px;
+        display: flex;
+        direction: ltr;
+        width: 95%;
+    
+    }
+    
+    .card-subtext {
+        color: white;
+        font-weight: 600;
+        line-height: normal;
+        font-size: 14px;
+        margin: 0;
+        text-align: start;
+        width: 95%;
+        height: 39px;
+    }
+    .explore-more {
+        font-size: 30px;
+        font-weight: 700;
+        color: white;
+    }
+    .cardExplore:hover .explore-more{
+        transition: font-size 0.3s;
+        font-size: 35px;
+    }
+}
+
+
+
+@media screen and (max-width: 1230px) {
+        .officials {
+            background-image: url(https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706070751/logo_sln6bp.png);
+            background-position: 15% 18%;
+            background-size: 20%;
+        }
+    .cards-container {
+        width: 100%;
+        height: 380px;
+        position: absolute;
+        top: 650px;
+        background-color: rgba(227, 15, 15, 0);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-items: center;
+        align-content: center;
+        padding-right: 0%;
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    .card-image {
+        width: 100%;
+        height: 378px;
+        border-radius: 20px;
+        transition: transform 1s;
+        object-fit: cover;
+    }
+    
+    
+    .card {
+        height: 100%;
+        width: 264px;
+        border-radius: 20px;
+        background-color: transparent;
+        background-image: linear-gradient(180deg, #90c052 0%, #1db36b 100%);
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    
+    .cardExplore{
+        height: 100%;
+        width: 264px;
+        border-radius: 20px;
+        background-color: #90c052;
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    
+    .gradient-card-explore {
+        position: absolute;
+        width: 264px;
+        height: 100%;
+        
+        background-repeat: repeat;
+        background-image: linear-gradient(180deg, rgba(255, 0, 0, 0.0) 0%, rgba(29, 179, 107, 0.8) 100%);
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: transparent;
+        border-radius: 20px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    
+    .gradient-card {
+        position: absolute;
+        width: 264px;
+        height: 100%;
+        
+        background-repeat: repeat;
+        background-image: linear-gradient(180deg, rgba(255, 0, 0, 0.0) 0%, rgba(29, 179, 107, 0.8) 100%);
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: transparent;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        justify-items: start;
+        align-items: start;
+        align-content: start;
+    }
+
+    .card-text {
+        font-weight: 700;
+        color: white;
+        text-align: start;
+        font-size: 30px;
+        bottom: 80px;
+        display: flex;
+        direction: ltr;
+        width: 95%;
+    
+    }
+    
+    .card-subtext {
+        color: white;
+        font-weight: 600;
+        line-height: normal;
+        font-size: 14px;
+        margin: 0;
+        text-align: start;
+        width: 95%;
+        height: 39px;
+    }
+    .explore-more {
+        font-size: 30px;
+        font-weight: 700;
+        color: white;
+    }
+    .cardExplore:hover .explore-more{
+        transition: font-size 0.3s;
+        font-size: 35px;
+    }
+    .head1-info {
+        font-size: 50px;
+    }
+
+    .subhead1-info {
+        font-size: 25px;
+    }
+
+
+}
+
+
+
+
+@media screen and (max-width: 1110px) {
+        .officials {
+                background-image: url(https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706070751/logo_sln6bp.png);
+                background-position: 12% 18%;
+                background-size: 20%;
+            }
+
+    .cards-container {
+        width: 100%;
+        height: 330px;
+        position: absolute;
+        top: 650px;
+        background-color: rgba(227, 15, 15, 0);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-items: center;
+        align-content: center;
+        padding-right: 0%;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .card-image {
+        width: 100%;
+        height: 328px;
+        border-radius: 20px;
+        transition: transform 1s;
+        object-fit: cover;
+    }
+
+
+    .card {
+        height: 100%;
+        width: 234px;
+        border-radius: 20px;
+        background-color: transparent;
+        background-image: linear-gradient(180deg, #90c052 0%, #1db36b 100%);
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .cardExplore {
+        height: 100%;
+        width: 234px;
+        border-radius: 20px;
+        background-color: #90c052;
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .gradient-card-explore {
+        position: absolute;
+        width: 234px;
+        height: 100%;
+        
+        background-repeat: repeat;
+        background-image: linear-gradient(180deg, rgba(255, 0, 0, 0.0) 0%, rgba(29, 179, 107, 0.8) 100%);
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: transparent;
+        border-radius: 20px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .gradient-card {
+        position: absolute;
+        width: 234px;
+        height: 100%;
+        
+        background-repeat: repeat;
+        background-image: linear-gradient(180deg, rgba(255, 0, 0, 0.0) 0%, rgba(29, 179, 107, 0.8) 100%);
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: transparent;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        justify-items: start;
+        align-items: start;
+        align-content: start;
+    }
+
+    .card-text {
+        font-weight: 700;
+        color: white;
+        text-align: start;
+        font-size: 20px;
+        bottom: 80px;
+        display: flex;
+        direction: ltr;
+        width: 95%;
+
+    }
+
+    .card-subtext {
+        color: white;
+        font-weight: 600;
+        line-height: normal;
+        font-size: 12px;
+        margin: 0;
+        text-align: start;
+        width: 95%;
+        height: 29px;
+    }
+
+    .explore-more {
+        font-size: 20px;
+        font-weight: 700;
+        color: white;
+    }
+
+    .cardExplore:hover .explore-more {
+        transition: font-size 0.3s;
+        font-size: 25px;
+    }
+
+    .about-sec-home {
+        width: 100%;
+        height: 1300px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+        align-content: center;
+        justify-content: end;
+        gap: 50px;
+        background-repeat: no-repeat;
+        background-position: 20% 29%;
+        background-size: 30%;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: transparent;
+    }
+}
+
+@media screen and (max-width: 1005px) {
+        .officials {
+                background-image: url(https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706070751/logo_sln6bp.png);
+                background-position: 4% 18%;
+                background-size: 24%;
+            }
+    .about-sec-home {
+            width: 100%;
+            height: 1150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-items: center;
+            align-content: center;
+            justify-content: end;
+            gap: 50px;
+            background-repeat: no-repeat;
+            background-position: 20% 29%;
+            background-size: 30%;
+            background-attachment: scroll;
+            background-origin: padding-box;
+            background-clip: border-box;
+            background-color: transparent;
+        }
+
+    .cards-container {
+        width: 100%;
+        height: 280px;
+        position: absolute;
+        top: 650px;
+        background-color: rgba(227, 15, 15, 0);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-items: center;
+        align-content: center;
+        padding-right: 0%;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .card-image {
+        width: 100%;
+        height: 278px;
+        border-radius: 20px;
+        transition: transform 1s;
+        object-fit: cover;
+    }
+
+
+    .card {
+        height: 100%;
+        width: 200px;
+        border-radius: 20px;
+        background-color: transparent;
+        background-image: linear-gradient(180deg, #90c052 0%, #1db36b 100%);
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .cardExplore {
+        height: 100%;
+        width: 200px;
+        border-radius: 20px;
+        background-color: #90c052;
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .gradient-card-explore {
+        position: absolute;
+        width: 200px;
+        height: 100%;
+        
+        background-repeat: repeat;
+        background-image: linear-gradient(180deg, rgba(255, 0, 0, 0.0) 0%, rgba(29, 179, 107, 0.8) 100%);
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: transparent;
+        border-radius: 20px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .gradient-card {
+        position: absolute;
+        width: 200px;
+        height: 100%;
+        
+        background-repeat: repeat;
+        background-image: linear-gradient(180deg, rgba(255, 0, 0, 0.0) 0%, rgba(29, 179, 107, 0.8) 100%);
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: transparent;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        justify-items: start;
+        align-items: start;
+        align-content: start;
+    }
+
+    .card-text {
+        font-weight: 700;
+        color: white;
+        text-align: start;
+        font-size: 18px;
+        bottom: 80px;
+        display: flex;
+        direction: ltr;
+        width: 95%;
+
+    }
+
+    .card-subtext {
+        color: white;
+        font-weight: 600;
+        line-height: normal;
+        font-size: 12px;
+        margin: 0 0 10px 0;
+        text-align: start;
+        width: 95%;
+    }
+
+    .explore-more {
+        font-size: 20px;
+        font-weight: 700;
+        color: white;
+    }
+
+    .cardExplore:hover .explore-more {
+        transition: font-size 0.3s;
+        font-size: 25px;
+    }
+
+    .head1-info {
+        font-size: 40px;
+    }
+
+    .subhead1-info {
+        font-size: 20px;
+    }
+    .logos{
+        width: 80%;
+    }
+    .contact-form {
+        display: none;
+    }
+}
+
+
+@media screen and (max-width: 865px) {
+
+
+    .cards-container {
+        width: 100%;
+        height: 250px;
+        position: absolute;
+        top: 650px;
+        background-color: rgba(227, 15, 15, 0);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-items: center;
+        align-content: center;
+        padding-right: 0%;
+        justify-content: center;
+        gap: 15px;
+    }
+    .right-about-info{
+        width: 700px;
+    }
+
+    .card-image {
+        width: 100%;
+        height: 248px;
+        border-radius: 20px;
+        transition: transform 1s;
+        object-fit: cover;
+    }
+
+
+    .card {
+        height: 100%;
+        width: 184px;
+        border-radius: 20px;
+        background-color: transparent;
+        background-image: linear-gradient(180deg, #90c052 0%, #1db36b 100%);
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .cardExplore {
+        height: 100%;
+        width: 184px;
+        border-radius: 20px;
+        background-color: #90c052;
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .gradient-card-explore {
+        position: absolute;
+        width: 184px;
+        height: 100%;
+        
+        background-repeat: repeat;
+        background-image: linear-gradient(180deg, rgba(255, 0, 0, 0.0) 0%, rgba(29, 179, 107, 0.8) 100%);
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: transparent;
+        border-radius: 20px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .gradient-card {
+        position: absolute;
+        width: 184px;
+        height: 100%;
+        
+        background-repeat: repeat;
+        background-image: linear-gradient(180deg, rgba(255, 0, 0, 0.0) 0%, rgba(29, 179, 107, 0.8) 100%);
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: transparent;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        justify-items: start;
+        align-items: start;
+        align-content: start;
+    }
+
+    .card-text {
+        font-weight: 700;
+        color: white;
+        text-align: start;
+        font-size: 18px;
+        bottom: 80px;
+        display: flex;
+        direction: ltr;
+        width: 95%;
+
+    }
+
+    .card-subtext {
+        color: white;
+        font-weight: 600;
+        line-height: normal;
+        font-size: 12px;
+        margin: 0 0 10px 0;
+        text-align: start;
+        width: 95%;
+    }
+
+    .explore-more {
+        font-size: 20px;
+        font-weight: 700;
+        color: white;
+    }
+
+    .cardExplore:hover .explore-more {
+        transition: font-size 0.3s;
+        font-size: 25px;
+    }
+    .about-sec-home {
+        width: 100%;
+        height: 1130px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+        align-content: center;
+        justify-content: end;
+        gap: 50px;
+        background-repeat: no-repeat;
+        background-position: 20% 29%;
+        background-size: 30%;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: transparent;
+    }
+     
+
+
+    
+    
+}
+
+
+@media screen and (max-width: 810px) {
+
+    .officials {
+            background-image: url(https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706070751/logo_sln6bp.png);
+            background-position: 35% 10%;
+            background-size: 24%;
+        }
+    .officials-header {
+            font-size: 30px;
+            line-height: normal;
+            font-weight: 700;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+    
+        .brgy-cpt {
+         
+            height: 750px;
+            background-color: rgba(255, 255, 255, 0);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-items: center;
+        }
+    
+        .cpt-img {
+            height: 50%;
+        }
+    
+        .cpt-title {
+            font-size: 15px;
+            line-height: normal;
+            width: 140px;
+            height: 20px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+            justify-items: center;
+            border-radius: 10px;
+            border: 2px solid #2fad6e;
+            font-weight: bold;
+            padding: 10px;
+        }
+    
+        .cpt-name {
+            font-size: 30px;
+            line-height: normal;
+            font-weight: 900;
+            margin-bottom: 20px;
+            margin-top: 10px;
+        }
+    
+        .cpt-desc {
+            width: 450px;
+            font-size: 16px;
+            font-weight: 400;
+            text-align: justify;
+            margin-bottom: 30px;
+        }
+    
+        .cpt-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: start;
+        align-content: start;
+        justify-content: start;
+      
+        height: 400px;
+        }
+    
+        .cntc-us-boff {
+            background-color: #2fad6e;
+            color: white;
+            width: 150px;
+            height: 60px;
+            float: right;
+        }
+    
+        .cntc-us-boff:hover {
+            background-color: white;
+            color: #2fad6e;
+        }
+    
+        .ctncus-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+    .cards-container {
+    width: 100%;
+        height: 2215px;
+        position: absolute;
+        top: 650px;
+        background-color: rgba(227, 15, 15, 0);
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        padding-right: 0%;
+        gap: 40px;
+        align-items: center;
+        }
+
+
+
+    .card {
+        height: 100%;
+        width: 394px;
+        border-radius: 20px;
+        background-color: transparent;
+        background-image: linear-gradient(180deg, #90c052 0%, #1db36b 100%);
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .cardExplore {
+        height: 525px;
+        width: 394px;
+        border-radius: 20px;
+        background-color: #90c052;
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .gradient-card-explore {
+        position: absolute;
+        width: 394px;
+        height: 525px;
+        
+        background-repeat: repeat;
+        background-image: linear-gradient(180deg, rgba(255, 0, 0, 0.0) 0%, rgba(29, 179, 107, 0.8) 100%);
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: transparent;
+        border-radius: 20px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .gradient-card {
+        position: absolute;
+        width: 394px;
+        height: 525px;
+        
+        background-repeat: repeat;
+        background-image: linear-gradient(180deg, rgba(255, 0, 0, 0.0) 0%, rgba(29, 179, 107, 0.8) 100%);
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: transparent;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        justify-items: start;
+        align-items: start;
+        align-content: start;
+    }
+
+    .card-image {
+        width: 100%;
+        height: 523px;
+        border-radius: 20px;
+        transition: transform 1s;
+        object-fit: cover;
+    }
+
+    .card-text {
+        font-weight: 700;
+        color: white;
+        text-align: start;
+        font-size: 40px;
+        bottom: 80px;
+        display: flex;
+        direction: ltr;
+        width: 95%;
+
+    }
+
+    .card-subtext {
+        color: white;
+        font-weight: 600;
+        line-height: normal;
+        font-size: 18px;
+        margin: 0 0 10px 0;
+        text-align: start;
+        width: 95%;
+      
+
+    }
+
+    .about-sec-home{
+        width: 100%;
+            height: 3100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-items: center;
+            align-content: center;
+            justify-content: end;
+            gap: 50px;
+            background-repeat: no-repeat;
+            background-position: 20% 29%;
+            background-size: 30%;
+            background-attachment: scroll;
+            background-origin: padding-box;
+            background-clip: border-box;
+            background-color: transparent;
+    }
+    .heading-text {
+        line-height: normal;
+        font-size: 70px;
+        font-weight: 700;
+        margin-left: 4.7%;
+        color: black;
+        text-align: start;
+        font-style: normal;
+    }
+
+    .subheading {
+        font-size: 24px;
+        line-height: normal;
+        margin-left: 5%;
+        width: 90%;
+        color: black;
+        font-weight: 500;
+        text-align: start;
+    }
+
+}
+
+
+@media screen and (max-width: 758px) {
+    .head1-info {
+        font-size: 30px;
+    }
+
+    .subhead1-info {
+        font-size: 15px;
+    }
+
+    .cards-container {
+        width: 100%;
+        height: 1915px;
+        position: absolute;
+        top: 495px;
+        background-color: rgba(227, 15, 15, 0);
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        padding-right: 0%;
+        gap: 40px;
+        align-items: center;
+    }
+
+        .right-about-info {
+            width: 600px;
+            height: 350px;
+        }
+
+    .card {
+        height: 100%;
+        width: 300px;
+        border-radius: 20px;
+        background-color: transparent;
+        background-image: linear-gradient(180deg, #90c052 0%, #1db36b 100%);
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .cardExplore {
+        height: 450px;
+        width: 300px;
+        border-radius: 20px;
+        background-color: #90c052;
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .gradient-card-explore {
+        position: absolute;
+        width: 300px;
+        height: 450px;
+
+        background-repeat: repeat;
+        background-image: linear-gradient(180deg, rgba(255, 0, 0, 0.0) 0%, rgba(29, 179, 107, 0.8) 100%);
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: transparent;
+        border-radius: 20px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .gradient-card {
+        position: absolute;
+        width: 300px;
+        height: 450px;
+
+        background-repeat: repeat;
+        background-image: linear-gradient(180deg, rgba(255, 0, 0, 0.0) 0%, rgba(29, 179, 107, 0.8) 100%);
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: transparent;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        justify-items: start;
+        align-items: start;
+        align-content: start;
+    }
+
+    .card-image {
+        width: 100%;
+        height: 448px;
+        border-radius: 20px;
+        transition: transform 1s;
+        object-fit: cover;
+    }
+
+    .card-text {
+        font-weight: 700;
+        color: white;
+        text-align: start;
+        font-size: 30px;
+        bottom: 80px;
+        display: flex;
+        direction: ltr;
+        width: 95%;
+
+    }
+
+    .card-subtext {
+        color: white;
+        font-weight: 600;
+        line-height: normal;
+        font-size: 14px;
+        margin: 0 0 10px 0;
+        text-align: start;
+        width: 95%;
+    }
+
+    .about-sec-home {
+        width: 100%;
+        height: 2800px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+        align-content: center;
+        justify-content: end;
+        gap: 50px;
+        background-repeat: no-repeat;
+        background-position: 20% 29%;
+        background-size: 30%;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: transparent;
+    }
+
+        .image-bg {
+            width: 100%;
+            height: 600px;
+            background-color: rgba(255, 255, 255, 0);
+            background-repeat: no-repeat;
+            background-image: url('https://storage.googleapis.com/barangay-san-roque-public/Marikina_-_San_Roque__view_from_Sta._Lucia___Marcos_Highway__Marikina_2017-08-22_copy1_3_nsqqds.jpg');
+            background-position: 50% 50%;
+            background-size: cover;
+            background-attachment: scroll;
+            background-origin: padding-box;
+            background-clip: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-items: start;
+            align-content: center;
+            justify-content: center;
+        }
+
+        .heading-text {
+            line-height: normal;
+            font-size: 50px;
+            font-weight: 700;
+            margin-left: 4.7%;
+            color: black;
+            text-align: start;
+            font-style: normal;
+        }
+
+        .subheading {
+            font-size: 18px;
+            line-height: normal;
+            margin-left: 5%;
+            width: 90%;
+            color: black;
+            font-weight: 500;
+            text-align: start;
+        }
+
+        .header-about-main {
+            font-size: 40px;
+            line-height: NORMAL;
+            font-weight: 800;
+            text-align: center;
+
+        }
+
+        .subhead-home-about {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: normal;
+            text-align: center;
+        }
+
+}
+
+@media screen and (max-width: 650px) {
+    .officials {
+            background-image: url(https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706070751/logo_sln6bp.png);
+            background-position: 35% 10%;
+            background-size: 30%;
+        }
+    .head1-info {
+        font-size: 25px;
+    }
+
+    .subhead1-info {
+        font-size: 14px;
+    }
+    .info-icon{
+        font-size: 60px !important;
+    }
+    .cards-container {
+        width: 100%;
+        height: 1915px;
+        position: absolute;
+        top: 495px;
+        background-color: rgba(227, 15, 15, 0);
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        padding-right: 0%;
+        gap: 40px;
+        align-items: center;
+    }
+
+            .right-about-info {
+            width: 500px;
+            height: 300px;
+        }
+
+
+    .card {
+        height: 100%;
+        width: 300px;
+        border-radius: 20px;
+        background-color: transparent;
+        background-image: linear-gradient(180deg, #90c052 0%, #1db36b 100%);
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .cardExplore {
+        height: 450px;
+        width: 300px;
+        border-radius: 20px;
+        background-color: #90c052;
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .gradient-card-explore {
+        position: absolute;
+        width: 300px;
+        height: 450px;
+
+        background-repeat: repeat;
+        background-image: linear-gradient(180deg, rgba(255, 0, 0, 0.0) 0%, rgba(29, 179, 107, 0.8) 100%);
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: transparent;
+        border-radius: 20px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .gradient-card {
+        position: absolute;
+        width: 300px;
+        height: 450px;
+
+        background-repeat: repeat;
+        background-image: linear-gradient(180deg, rgba(255, 0, 0, 0.0) 0%, rgba(29, 179, 107, 0.8) 100%);
+        background-position: 0% 0%;
+        background-size: auto auto;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: transparent;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        justify-items: start;
+        align-items: start;
+        align-content: start;
+    }
+
+    .card-image {
+        width: 100%;
+        height: 448px;
+        border-radius: 20px;
+        transition: transform 1s;
+        object-fit: cover;
+    }
+
+    .card-text {
+        font-weight: 700;
+        color: white;
+        text-align: start;
+        font-size: 30px;
+        bottom: 80px;
+        display: flex;
+        direction: ltr;
+        width: 95%;
+
+    }
+
+    .card-subtext {
+        color: white;
+        font-weight: 600;
+        line-height: normal;
+        font-size: 14px;
+        margin: 0 0 10px 0;
+        text-align: start;
+        width: 95%;
+    }
+
+    .about-sec-home {
+        width: 100%;
+        height: 2850px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+        align-content: center;
+        justify-content: end;
+        gap: 50px;
+        background-repeat: no-repeat;
+        background-position: 20% 29%;
+        background-size: 30%;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: transparent;
+    }
+
+    .image-bg {
+        width: 100%;
+        height: 600px;
+        background-color: rgba(255, 255, 255, 0);
+        background-repeat: no-repeat;
+        background-image: url('https://storage.googleapis.com/barangay-san-roque-public/Marikina_-_San_Roque__view_from_Sta._Lucia___Marcos_Highway__Marikina_2017-08-22_copy1_3_nsqqds.jpg');
+        background-position: 50% 50%;
+        background-size: cover;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-items: start;
+        align-content: center;
+        justify-content: center;
+    }
+
+    .heading-text {
+        line-height: normal;
+        font-size: 50px;
+        font-weight: 700;
+        margin-left: 4.7%;
+        color: black;
+        text-align: start;
+        font-style: normal;
+    }
+
+    .subheading {
+        font-size: 18px;
+        line-height: normal;
+        margin-left: 5%;
+        width: 90%;
+        color: black;
+        font-weight: 500;
+        text-align: start;
+    }
+
+    .header-about-main {
+        font-size: 30px;
+        line-height: NORMAL;
+        font-weight: 800;
+        text-align: center;
+
+    }
+
+    .subhead-home-about {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: normal;
+        text-align: center;
+    }
+
+        .about-btn {
+            background-color: #2fad6e;
+            color: white;
+            width: 100px;
+            height: 35px;
+            font-size: 12px;
+        }
+
+}
+
+@media screen and (max-width: 520px){
+    .logo-container{
+        display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-items: center;
+            align-content: center;
+            justify-content: space-around;
+            width: 100%;
+            row-gap: 20px;
+    }
+
+ 
+
+    .carousell-cards {
+            width: 300px;
+            height: 400px;
+            background-color: rgba(180, 45, 45, 0);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-items: center;
+            row-gap: 10px;
+            border-radius: 20px;
+            border: 1px solid rgb(172, 172, 172);
+            align-content: center;
+            justify-content: center;
+            transition: transform .5s;
+    
+        }
+    
+        .border-carousel-divider {
+            border: 20px solid transparent;
+        }
+    
+        .kgwd {
+            width: 100px;
+            height: 100px;
+        }
+    
+    
+        .kgwd-title {
+            font-size: 15px;
+            line-height: normal;
+            font-weight: 600;
+            width: 80px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+            justify-items: center;
+            border-radius: 10px;
+            border: 2px solid #2fad6e;
+            height: 30px;
+            font-weight: 900;
+            padding: 5px;
+        }
+    
+        .kgwd-name {
+            font-size: 24px;
+            line-height: normal;
+            font-weight: 900;
+        }
+    
+        .kgwd-desc {
+            font-size: 18px;
+            font-weight: 400;
+            text-align: center;
+            line-height: normal;
+            width: 350px;
+            font-weight: 600;
+        }
+    
+        .kgwd-info {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-items: start;
+            align-content: start;
+            justify-content: start;
+            width: 450px;
+            height: 400px;
+        }
+
+
+    .about-sec-home {
+        width: 100%;
+        height: 2650px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+        align-content: center;
+        justify-content: end;
+        gap: 50px;
+        background-repeat: no-repeat;
+        background-position: 20% 29%;
+        background-size: 30%;
+        background-attachment: scroll;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: transparent;
+    }
+
+
+
+
+    .right-about-info {
+        width: 300px;
+        height: 200px;
+    }
+
+    .head1-info {
+        font-size: 20px;
+    }
+
+    .subhead1-info {
+        font-size: 12px;
+    }
+    .info-icon{
+        font-size: 40px !important;
+    }
+        .officials-header {
+            font-size: 25px;
+            line-height: normal;
+            font-weight: 700;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+    
+        .brgy-cpt {
+            
+            height: 750px;
+            background-color: rgba(255, 255, 255, 0);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-items: center;
+        }
+    
+        .cpt-img {
+            height: 50%;
+        }
+    
+        .cpt-title {
+            font-size: 13px;
+            line-height: normal;
+            width: 140px;
+            height: 20px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+            justify-items: center;
+            border-radius: 10px;
+            border: 2px solid #2fad6e;
+            font-weight: bold;
+            padding: 10px;
+        }
+    
+        .cpt-name {
+            font-size: 25px;
+            line-height: normal;
+            font-weight: 900;
+            margin-bottom: 20px;
+            margin-top: 10px;
+        }
+    
+        .cpt-desc {
+            width: 80%;
+            font-size: 16px;
+            font-weight: 400;
+            text-align: justify;
+            margin-bottom: 30px;
+        }
+    
+        .cpt-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: start;
+        align-content: start;
+        justify-content: start;
+       
+        height: 400px;
+        }
+    
+    .cntc-us-boff {
+            background-color: #2fad6e;
+            color: white;
+            width: 120px;
+            height: 50px;
+            float: right;
+            font-size: 12px;
+        }
+        .cntc-us-boff:hover {
+            background-color: white;
+            color: #2fad6e;
+        }
+    
+        .ctncus-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .officials {
+            background-image: url(https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706070751/logo_sln6bp.png);
+            background-position: 28% 10%;
+            background-size: 35%;
+        }
+
+}
+
+@media screen and (max-width: 320px) {
+
+    .carousell-cards {
+            width: 250px;
+            height: 350px;
+            background-color: rgba(180, 45, 45, 0);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-items: center;
+            row-gap: 10px;
+            border-radius: 20px;
+            border: 1px solid rgb(172, 172, 172);
+            align-content: center;
+            justify-content: center;
+            transition: transform .5s;
+    
+        }
+
+    .cntc-us-boff {
+            background-color: #2fad6e;
+            color: white;
+            width: 120px;
+            height: 50px;
+            float: right;
+            font-size: 12px;
+        }
+
+    .right-about-info {
+        width: 300px;
+        height: 200px;
+    }
+
+    .head1-info {
+        font-size: 18px;
+    }
+
+    .subhead1-info {
+        font-size: 10px;
+    }
+
+    .info-icon {
+        font-size: 30px !important;
+    }
+
+    .cpt-desc {
+        width: 60%;
+        font-size: 14px;
+        font-weight: 400;
+        text-align: justify;
+        margin-bottom: 30px;
+    }
+    .officials {
+        background-image: url(https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706070751/logo_sln6bp.png);
+        background-position: 18% 10%;
+        background-size: 50%;
+    }
+
 }

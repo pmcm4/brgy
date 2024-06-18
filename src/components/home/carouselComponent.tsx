@@ -61,9 +61,14 @@ function carouselComponent() {
             }}
             responsiveProps={[
                 {
+                    itemsToShow: 2,
+                    itemsToScroll: 1,
+                    minWidth: 980,
+                },
+                {
                     itemsToShow: 3,
                     itemsToScroll: 2,
-                    minWidth: 768,
+                    minWidth: 1480,
                 },
             ]}
             speed={300}

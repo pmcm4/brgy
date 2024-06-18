@@ -9,6 +9,10 @@ import { paperClasses } from '@mui/material';
 import { jwtDecode } from 'jwt-decode';
 import { ScrollEffectContext } from '../context/scrollEffectContext';
 import { useAxios, useLogoutAxios } from '../utils/useAxios';
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 export interface HeaderProps {
     className?: string;
@@ -25,6 +29,9 @@ const Header = ({ className }: HeaderProps) => {
     const [userName, setUsername] = useState('');
 
     const [showDropDown, setShowDropDown] = useState(false);
+    const [showHamburger, setHamburger] = useState(false);
+    const [showHamburgerDropDown, setShowHamburgerDropDown] = useState(false);
+
     const navigate = useNavigate();
 
     const handleMouseOver = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
@@ -68,7 +75,7 @@ const Header = ({ className }: HeaderProps) => {
     };
 
     const handleScrollAbout = async () => {
-        await navigate('/home');
+        navigate('/home');
         scrollEffectContext?.aboutRef.current?.scrollIntoView({
             behavior: 'smooth',
             block: 'start',
@@ -76,6 +83,21 @@ const Header = ({ className }: HeaderProps) => {
         });
     };
 
+    const handleHamburger = () => {
+        setHamburger(true);
+    };
+
+    const handleCloseHamburger = () => {
+        setHamburger(false);
+    };
+
+    const handleHamburgerDropDown = () => {
+        if (showHamburgerDropDown === true) {
+            setShowHamburgerDropDown(false);
+        } else {
+            setShowHamburgerDropDown(true);
+        }
+    };
     return (
         <div className={classNames(styles.root, className)}>
             <div className={styles.left}>
@@ -136,6 +158,87 @@ const Header = ({ className }: HeaderProps) => {
 
                 <span className={styles['menu-items']}>Get in Touch →</span>
             </div>
+
+            <span className={styles['hamburger']} onClick={handleHamburger}>
+                <MenuIcon className={styles['hamburger-icon']} />
+            </span>
+            {showHamburger === false ? (
+                <div className={styles['hamburger-menu-hidden']}></div>
+            ) : (
+                <div className={styles['hamburger-menu']}>
+                    <span className={styles['hamburger-close-btn']} onClick={handleCloseHamburger}>
+                        <CloseIcon className={styles['hamburger-close-icon']} />
+                    </span>
+                    <Link to="/home" style={{ textDecoration: 'none', width: '100%' }}>
+                        <span className={styles['menu-items']} onClick={handleCloseHamburger}>
+                            Home
+                        </span>
+                    </Link>
+                    <span
+                        className={styles['menu-items']}
+                        onClick={() => {
+                            handleCloseHamburger();
+                            handleScrollAbout();
+                        }}
+                    >
+                        About
+                    </span>
+                    <Link to="/certificates" style={{ textDecoration: 'none', width: '100%' }}>
+                        <span className={styles['menu-items']} onClick={handleCloseHamburger}>
+                            Services
+                        </span>
+                    </Link>
+                    <Link to="/faq" style={{ textDecoration: 'none', width: '100%' }}>
+                        <span className={styles['menu-items']} onClick={handleCloseHamburger}>
+                            FAQ
+                        </span>
+                    </Link>
+                    {checkExistUser === false ? (
+                        <Link to="/login" style={{ textDecoration: 'none', width: '100%' }}>
+                            <span className={styles['menu-items']} onClick={handleCloseHamburger}>
+                                Login
+                            </span>
+                        </Link>
+                    ) : (
+                        <div className={styles['profile-drop-down']}>
+                            <span
+                                className={styles['menu-items']}
+                                onClick={handleHamburgerDropDown}
+                            >
+                                {userName}
+                                {showHamburgerDropDown === false ? (
+                                    <KeyboardArrowDownIcon />
+                                ) : (
+                                    <KeyboardArrowUpIcon />
+                                )}
+                            </span>
+                            {showHamburgerDropDown === false ? (
+                                <div className={styles['hamburger-drop-down-profile-hidden']}></div>
+                            ) : (
+                                <div className={styles['hamburger-drop-down-profile']}>
+                                    {' '}
+                                    <Link
+                                        to={`/profile/${userName}`}
+                                        style={{ textDecoration: 'none' }}
+                                    >
+                                        <span className={styles['drop-down-item']}>My profile</span>
+                                    </Link>
+                                    <span
+                                        className={styles['drop-down-item']}
+                                        onClick={handleLogout}
+                                    >
+                                        Logout
+                                    </span>
+                                </div>
+                            )}
+                        </div>
+                    )}
+                    <span className={styles['menu-items']}>Get in Touch →</span>
+                </div>
+            )}
+            {showHamburger && (
+                <div className={styles['hamburger-background']} onClick={handleCloseHamburger} />
+            )}
         </div>
     );
 };

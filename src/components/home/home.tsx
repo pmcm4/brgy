@@ -380,9 +380,9 @@ const Home = ({ className }: HomeProps) => {
         <div className={classNames(styles.root, className)}>
             <div className={styles['image-bg']}>
                 <span className={styles['heading-text']}>Barangay San Roque</span>
-                <span className={styles.subheading}>
-                    Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-                </span>
+                <p className={styles.subheading}>
+                    Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Ipsum Ipsum
+                </p>
             </div>
             <div className={styles['cards-container']}>
                 <Link to={checkExistUser === true ? `/profile/${username}` : `/login`}>
@@ -411,6 +411,7 @@ const Home = ({ className }: HomeProps) => {
                     <span className={styles['explore-more']}>Explore More ↓</span>
                 </div>
             </div>
+
             <div className={styles['about-sec-home']}>
                 <div className={styles['left-image']}>
                     <span
@@ -437,7 +438,10 @@ const Home = ({ className }: HomeProps) => {
                 <div className={styles.top}>
                     <div className={styles['top-card']}>
                         <span className={styles['icon-1']}>
-                            <PeopleIcon sx={{ fontSize: '100px', color: 'white' }} />
+                            <PeopleIcon
+                                sx={{ fontSize: '100px', color: 'white' }}
+                                className={styles['info-icon']}
+                            />
                         </span>
                         <div className={styles['card-info-brgy']}>
                             <span className={styles['head1-info']}>40k+</span>
@@ -446,7 +450,10 @@ const Home = ({ className }: HomeProps) => {
                     </div>
                     <div className={styles['top-card']}>
                         <span className={styles['icon-1']}>
-                            <LandscapeIcon sx={{ fontSize: '100px', color: 'white' }} />
+                            <LandscapeIcon
+                                sx={{ fontSize: '100px', color: 'white' }}
+                                className={styles['info-icon']}
+                            />
                         </span>
                         <div className={styles['card-info-brgy']}>
                             <span className={styles['head1-info']}>1.1 km²</span>
@@ -455,7 +462,10 @@ const Home = ({ className }: HomeProps) => {
                     </div>
                     <div className={styles['top-card']}>
                         <span className={styles['icon-1']}>
-                            <FoundationIcon sx={{ fontSize: '100px', color: 'white' }} />
+                            <FoundationIcon
+                                sx={{ fontSize: '100px', color: 'white' }}
+                                className={styles['info-icon']}
+                            />
                         </span>
                         <div className={styles['card-info-brgy']}>
                             <span className={styles['head1-info']}>30+</span>

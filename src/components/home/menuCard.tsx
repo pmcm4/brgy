@@ -12,8 +12,10 @@ function menuCard({ cardTitle, cardSubText, cardImg }: menuCardProps) {
         <div className={styles.card}>
             <img src={cardImg} alt="" className={styles['card-image']} />
             <div className={styles['gradient-card']}>
-                <span className={styles['card-text']}>{cardTitle}</span>
-                <span className={styles['card-subtext']}>{cardSubText}</span>
+                <div className={styles['card-text-div']}>
+                    <span className={styles['card-text']}>{cardTitle}</span>
+                    <p className={styles['card-subtext']}>{cardSubText}</p>
+                </div>
             </div>
         </div>
     );
