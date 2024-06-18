@@ -106,7 +106,7 @@
     
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 850px) {
    .footer-top{
     display: flex;
         flex-direction: column;
@@ -123,14 +123,7 @@
     .footer-desc {
         width: 80%;
     }
-    .footer-right {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-items: center;
-            gap: 50px;
-            height: 80%;
-        }
+
 
 }
 
