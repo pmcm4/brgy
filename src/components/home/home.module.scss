@@ -3106,6 +3106,14 @@
         }
 
 }
+@media screen and (max-width: 420px){
+    .top{
+        column-gap: 0;
+    }
+    .top-card{
+        column-gap: 5px;
+    }
+}
 
 @media screen and (max-width: 320px) {
 
@@ -3164,5 +3172,7 @@
         background-position: 18% 10%;
         background-size: 50%;
     }
+
+
 
 }
