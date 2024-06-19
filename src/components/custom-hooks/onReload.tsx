@@ -22,8 +22,6 @@ export const useOnReload = async (
                 { withCredentials: true }
             );
 
-            console.log(response);
-
             const decodedToken = jwtDecode<DecodedTokenType>(String(response.data.accessToken));
             setCurrentUser(decodedToken.username);
             setAccessToken(response.data.accessToken);
