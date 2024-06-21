@@ -415,8 +415,8 @@ export function BirthFactForm() {
 
             <TextField
                 id="outlined-basic"
-                label="first_name"
-                variant="Child's Gender"
+                label="Child's Gender"
+                variant="outlined"
                 className={styles['text-field-mui-override']}
                 disabled
                 value={reviewContext?.certificateForm?.childGender}
