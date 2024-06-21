@@ -166,7 +166,7 @@ export const Identity_Proof = ({ className, onBack, adminCheck }: Identity_Proof
                 </div>
             </div>
 
-            <hr style={{ width: '90%' }} />
+            <hr />
 
             {residencyType === 'Tenant' && (
                 <>
@@ -189,15 +189,7 @@ export const Identity_Proof = ({ className, onBack, adminCheck }: Identity_Proof
                             <span> Upload letter here</span>
                         )}
                     </label>
-                    <span
-                        style={{
-                            margin: '14px 0 14px 0',
-                            width: '350px',
-                            textAlign: 'center',
-                            color: 'rgb(97, 97, 97)',
-                            fontSize: '14px',
-                        }}
-                    >
+                    <span className={styles['tenant-letter-span']}>
                         Provide a letter from your landlord certifying that you are an active
                         resident of his/her property, the letter should posses a signature from the
                         landlord and the requestor.

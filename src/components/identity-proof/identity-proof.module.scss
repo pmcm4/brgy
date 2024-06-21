@@ -280,6 +280,12 @@ input[type="file"] {
     color: white;
     
 }
+.tenant-letter-span{
+    margin: 14px 0 14px 0;
+    text-align: center;
+    color: rgb(97, 97, 97);
+    font-size: 14px;
+}
 
 .display-letter-span{
     width: 100%;
@@ -446,10 +452,21 @@ input[type="file"] {
     .img-container {
         width: 240px;
     }
-        .sketchBtn button {
+    .sketchBtn button {
         font-size: 12px;
     }
     .file-btn {
-        font-size: 12px;
+        font-size: 14px;
+    }
+    .tenant-letter-span {
+
+        font-size: 14px;
+    }
+    .file-div-doc{
+        width: 250px;
+        font-size: 14px;
+    }
+    .file-btn-doc{
+        width: 70px;
     }
 }
