@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import styles from './certificates.module.scss';
 import { ReviewContext } from '../context/ReviewContext';
+import TextField from '@mui/material/TextField';
 
 export function BarangayClearanceForm() {
     const reviewContext = useContext(ReviewContext);
@@ -8,13 +9,15 @@ export function BarangayClearanceForm() {
         <>
             <div className={styles['row-review-input-data-type']}>
                 <span>Type of Request: </span>
-                <p>Barangay Clearance</p>
+                <span>Barangay Clearance</span>
             </div>
 
-            <div className={styles['row-review-input-data-type']}>
-                <span>Purpose: </span>
-                <textarea disabled value={reviewContext?.certificateForm?.purpose} />
-            </div>
+            <TextField
+                multiline
+                label="Purpose"
+                disabled
+                value={reviewContext?.certificateForm?.purpose}
+            />
         </>
     );
 }
@@ -25,13 +28,15 @@ export function IndigencyForm() {
         <>
             <div className={styles['row-review-input-data-type']}>
                 <span>Type of Request: </span>
-                <p>Indigency</p>
+                <span>Indigency</span>
             </div>
 
-            <div className={styles['row-review-input-data-type']}>
-                <span>Purpose: </span>
-                <textarea disabled value={reviewContext?.certificateForm?.purpose} />
-            </div>
+            <TextField
+                multiline
+                label="Purpose"
+                disabled
+                value={reviewContext?.certificateForm?.purpose}
+            />
         </>
     );
 }
@@ -42,13 +47,14 @@ export function BarangayIDForm() {
         <>
             <div className={styles['row-review-input-data-type']}>
                 <span>Type of Request: </span>
-                <p>Barangay ID</p>
+                <span>Barangay ID</span>
             </div>
-
-            <div className={styles['row-review-input-data-type']}>
-                <span>Purpose: </span>
-                <textarea disabled value={reviewContext?.certificateForm?.purpose} />
-            </div>
+            <TextField
+                multiline
+                label="Purpose"
+                disabled
+                value={reviewContext?.certificateForm?.purpose}
+            />
         </>
     );
 }
@@ -59,37 +65,63 @@ export function SoloParentForm() {
         <>
             <div className={styles['row-review-input-data-type']}>
                 <span>Type of Request: </span>
-                <p>Solo Parent</p>
+                <span>Solo Parent</span>
             </div>
 
-            <div className={styles['row-review-input-data-type']}>
-                <span>Purpose: </span>
-                <textarea disabled value={reviewContext?.certificateForm?.purpose} />
-            </div>
-            <div className={styles['row-review-input-data-type']}>
-                <span>Child Name: </span>
-                <input disabled value={reviewContext?.certificateForm?.childName} />
-            </div>
-            <div className={styles['row-review-input-data-type']}>
-                <span>Child Gender: </span>
-                <input disabled value={reviewContext?.certificateForm?.childGender} />
-            </div>
-            <div className={styles['row-review-input-data-type']}>
-                <span>Solo Parent Since: </span>
-                <input disabled value={reviewContext?.certificateForm?.soloParentSince} />
-            </div>
-            <div className={styles['row-review-input-data-type']}>
-                <span>Presented By: </span>
-                <input disabled value={reviewContext?.certificateForm?.presentedBy} />
-            </div>
-            <div className={styles['row-review-input-data-type']}>
-                <span>Registry Number: </span>
-                <input disabled value={reviewContext?.certificateForm?.registryNumber} />
-            </div>
-            <div className={styles['row-review-input-data-type']}>
-                <span>Request Of: </span>
-                <input disabled value={reviewContext?.certificateForm?.nameOfRequestor} />
-            </div>
+            <TextField
+                multiline
+                label="Purpose"
+                disabled
+                value={reviewContext?.certificateForm?.purpose}
+            />
+            <TextField
+                id="outlined-basic"
+                label="Child's Name"
+                variant="outlined"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.childName}
+            />
+            <TextField
+                id="outlined-basic"
+                label="Child's Gender"
+                variant="outlined"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.childGender}
+            />
+            <TextField
+                id="outlined-basic"
+                label="Solo Parent Since"
+                variant="outlined"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.soloParentSince}
+            />
+            <TextField
+                id="outlined-basic"
+                label="Presented By"
+                variant="outlined"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.presentedBy}
+            />
+            <TextField
+                id="outlined-basic"
+                label="Registry Number"
+                variant="outlined"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.registryNumber}
+            />
+            <TextField
+                id="outlined-basic"
+                label="Name of Requestor"
+                variant="outlined"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.nameOfRequestor}
+            />
         </>
     );
 }
@@ -100,29 +132,47 @@ export function CohabitationForm() {
         <>
             <div className={styles['row-review-input-data-type']}>
                 <span>Type of Request: </span>
-                <p>Cohabitation</p>
+                <span>Cohabitation</span>
             </div>
 
-            <div className={styles['row-review-input-data-type']}>
-                <span>Purpose: </span>
-                <textarea disabled value={reviewContext?.certificateForm?.purpose} />
-            </div>
-            <div className={styles['row-review-input-data-type']}>
-                <span>Birth Address: </span>
-                <input disabled value={reviewContext?.certificateForm?.birthAddress} />
-            </div>
-            <div className={styles['row-review-input-data-type']}>
-                <span>Spouse Name: </span>
-                <input disabled value={reviewContext?.certificateForm?.spouseName} />
-            </div>
-            <div className={styles['row-review-input-data-type']}>
-                <span>Date of Marriage: </span>
-                <input disabled value={reviewContext?.certificateForm?.DateOfMarriage} />
-            </div>
-            <div className={styles['row-review-input-data-type']}>
-                <span>Request Of: </span>
-                <input disabled value={reviewContext?.certificateForm?.nameOfRequestor} />
-            </div>
+            <TextField
+                multiline
+                label="Purpose"
+                disabled
+                value={reviewContext?.certificateForm?.purpose}
+            />
+            <TextField
+                id="outlined-basic"
+                label="Birth Address"
+                variant="outlined"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.birthAddress}
+            />
+            <TextField
+                id="outlined-basic"
+                label="Spouse Name"
+                variant="outlined"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.spouseName}
+            />
+            <TextField
+                id="outlined-basic"
+                label="Date of Marriage"
+                variant="outlined"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.DateOfMarriage}
+            />
+            <TextField
+                id="outlined-basic"
+                label="Name of Requestor"
+                variant="outlined"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.nameOfRequestor}
+            />
         </>
     );
 }
@@ -133,17 +183,24 @@ export function GoodMoralForm() {
         <>
             <div className={styles['row-review-input-data-type']}>
                 <span>Type of Request: </span>
-                <p>Good Moral</p>
+                <span>Good Moral</span>
             </div>
 
-            <div className={styles['row-review-input-data-type']}>
-                <span>Purpose: </span>
-                <textarea disabled value={reviewContext?.certificateForm?.purpose} />
-            </div>
-            <div className={styles['row-review-input-data-type']}>
-                <span>Request Of: </span>
-                <input disabled value={reviewContext?.certificateForm?.nameOfRequestor} />
-            </div>
+            <TextField
+                multiline
+                label="Purpose"
+                disabled
+                value={reviewContext?.certificateForm?.purpose}
+            />
+
+            <TextField
+                id="outlined-basic"
+                label="Name of Requestor"
+                variant="outlined"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.nameOfRequestor}
+            />
         </>
     );
 }
@@ -154,20 +211,30 @@ export function NoIncomeForm() {
         <>
             <div className={styles['row-review-input-data-type']}>
                 <span>Type of Request: </span>
-                <p>No Income Form</p>
+                <span>No Income Form</span>
             </div>
-            <div className={styles['row-review-input-data-type']}>
-                <span>Purpose: </span>
-                <textarea disabled value={reviewContext?.certificateForm?.purpose} />
-            </div>
-            <div className={styles['row-review-input-data-type']}>
-                <span>No Income Since: </span>
-                <input disabled value={reviewContext?.certificateForm?.noIncomeSince} />
-            </div>
-            <div className={styles['row-review-input-data-type']}>
-                <span>Request Of: </span>
-                <input disabled value={reviewContext?.certificateForm?.nameOfRequestor} />
-            </div>
+            <TextField
+                multiline
+                label="Purpose"
+                disabled
+                value={reviewContext?.certificateForm?.purpose}
+            />
+            <TextField
+                id="outlined-basic"
+                label="No Income Since"
+                variant="outlined"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.noIncomeSince}
+            />
+            <TextField
+                id="outlined-basic"
+                label="Name of Requestor"
+                variant="outlined"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.nameOfRequestor}
+            />
         </>
     );
 }
@@ -179,16 +246,22 @@ export function FirstTimeJobSeekerForm() {
             {' '}
             <div className={styles['row-review-input-data-type']}>
                 <span>Type of Request: </span>
-                <p>First Time Job Seeker</p>
+                <span>First Time Job Seeker</span>
             </div>
-            <div className={styles['row-review-input-data-type']}>
-                <span>Purpose: </span>
-                <textarea disabled value={reviewContext?.certificateForm?.purpose} />
-            </div>
-            <div className={styles['row-review-input-data-type']}>
-                <span>Date of Residency: </span>
-                <input disabled value={reviewContext?.certificateForm?.DateOfResidency} />
-            </div>
+            <TextField
+                multiline
+                label="Purpose"
+                disabled
+                value={reviewContext?.certificateForm?.purpose}
+            />
+            <TextField
+                id="outlined-basic"
+                label="Date of Residency"
+                variant="outlined"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.DateOfResidency}
+            />
         </>
     );
 }
@@ -199,24 +272,39 @@ export function ResidencyForm() {
         <>
             <div className={styles['row-review-input-data-type']}>
                 <span>Type of Request: </span>
-                <p>Residency</p>
+                <span>Residency</span>
             </div>
-            <div className={styles['row-review-input-data-type']}>
-                <span>Purpose: </span>
-                <textarea disabled value={reviewContext?.certificateForm?.purpose} />
-            </div>
-            <div className={styles['row-review-input-data-type']}>
-                <span>Birth Address: </span>
-                <input disabled value={reviewContext?.certificateForm?.birthAddress} />
-            </div>
-            <div className={styles['row-review-input-data-type']}>
-                <span>Date of Residency: </span>
-                <input disabled value={reviewContext?.certificateForm?.DateOfResidency} />
-            </div>
-            <div className={styles['row-review-input-data-type']}>
-                <span>Request Of: </span>
-                <input disabled value={reviewContext?.certificateForm?.nameOfRequestor} />
-            </div>
+            <TextField
+                multiline
+                label="Purpose"
+                disabled
+                value={reviewContext?.certificateForm?.purpose}
+            />
+
+            <TextField
+                id="outlined-basic"
+                label="Birth Address"
+                variant="outlined"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.birthAddress}
+            />
+            <TextField
+                id="outlined-basic"
+                label="Date of Residency"
+                variant="outlined"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.DateOfResidency}
+            />
+            <TextField
+                id="outlined-basic"
+                label="Name of Requestor"
+                variant="outlined"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.nameOfRequestor}
+            />
         </>
     );
 }
@@ -227,20 +315,31 @@ export function TransferOfResidencyForm() {
         <>
             <div className={styles['row-review-input-data-type']}>
                 <span>Type of Request: </span>
-                <p>Transfer of Residency</p>
+                <span>Transfer of Residency</span>
             </div>
-            <div className={styles['row-review-input-data-type']}>
-                <span>Purpose: </span>
-                <textarea disabled value={reviewContext?.certificateForm?.purpose} />
-            </div>
-            <div className={styles['row-review-input-data-type']}>
-                <span>New Address: </span>
-                <input disabled value={reviewContext?.certificateForm?.newAddress} />
-            </div>
-            <div className={styles['row-review-input-data-type']}>
-                <span>Request Of: </span>
-                <input disabled value={reviewContext?.certificateForm?.nameOfRequestor} />
-            </div>
+            <TextField
+                multiline
+                label="Purpose"
+                disabled
+                value={reviewContext?.certificateForm?.purpose}
+            />
+            <TextField
+                id="outlined-basic"
+                label="New Address"
+                variant="outlined"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.newAddress}
+            />
+
+            <TextField
+                id="outlined-basic"
+                label="Name of Requestor"
+                variant="outlined"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.nameOfRequestor}
+            />
         </>
     );
 }
@@ -252,20 +351,30 @@ export function LivingStillForm() {
             {' '}
             <div className={styles['row-review-input-data-type']}>
                 <span>Type of Request: </span>
-                <p>Living Still</p>
+                <span>Living Still</span>
             </div>
-            <div className={styles['row-review-input-data-type']}>
-                <span>Purpose: </span>
-                <textarea disabled value={reviewContext?.certificateForm?.purpose} />
-            </div>
-            <div className={styles['row-review-input-data-type']}>
-                <span>Date of Tabloid: </span>
-                <input disabled value={reviewContext?.certificateForm?.DateOfTabloid} />
-            </div>
-            <div className={styles['row-review-input-data-type']}>
-                <span>Request Of: </span>
-                <input disabled value={reviewContext?.certificateForm?.nameOfRequestor} />
-            </div>
+            <TextField
+                multiline
+                label="Purpose"
+                disabled
+                value={reviewContext?.certificateForm?.purpose}
+            />
+            <TextField
+                id="outlined-basic"
+                label="Date of Tabloid"
+                variant="outlined"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.DateOfTabloid}
+            />
+            <TextField
+                id="outlined-basic"
+                label="Name of Requestor"
+                variant="outlined"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.nameOfRequestor}
+            />
         </>
     );
 }
@@ -276,40 +385,78 @@ export function BirthFactForm() {
         <>
             <div className={styles['row-review-input-data-type']}>
                 <span>Type of Request: </span>
-                <p>Birth Fact</p>
+                <span>Birth Fact</span>
             </div>
-            <div className={styles['row-review-input-data-type']}>
-                <span>Purpose: </span>
-                <textarea disabled value={reviewContext?.certificateForm?.purpose} />
-            </div>
-            <div className={styles['row-review-input-data-type']}>
-                <span>Date Born: </span>
-                <input disabled value={reviewContext?.certificateForm?.DateBorn} />
-            </div>
-            <div className={styles['row-review-input-data-type']}>
-                <span>Child's Name: </span>
-                <input disabled value={reviewContext?.certificateForm?.childName} />
-            </div>
-            <div className={styles['row-review-input-data-type']}>
-                <span>Child's Gender: </span>
-                <input disabled value={reviewContext?.certificateForm?.childGender} />
-            </div>
-            <div className={styles['row-review-input-data-type']}>
-                <span>Birth Address: </span>
-                <input disabled value={reviewContext?.certificateForm?.birthAddress} />
-            </div>
-            <div className={styles['row-review-input-data-type']}>
-                <span>Witness Name: </span>
-                <input disabled value={reviewContext?.certificateForm?.witnessName} />
-            </div>
-            <div className={styles['row-review-input-data-type']}>
-                <span>Witness Type: </span>
-                <input disabled value={reviewContext?.certificateForm?.witnessType} />
-            </div>
-            <div className={styles['row-review-input-data-type']}>
-                <span>Request Of: </span>
-                <input disabled value={reviewContext?.certificateForm?.nameOfRequestor} />
-            </div>
+
+            <TextField
+                multiline
+                label="Purpose"
+                disabled
+                value={reviewContext?.certificateForm?.purpose}
+            />
+
+            <TextField
+                id="outlined-basic"
+                label="Date Born"
+                variant="outlined"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.DateBorn}
+            />
+
+            <TextField
+                id="outlined-basic"
+                label="Child's Name"
+                variant="outlined"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.childName}
+            />
+
+            <TextField
+                id="outlined-basic"
+                label="first_name"
+                variant="Child's Gender"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.childGender}
+            />
+
+            <TextField
+                id="outlined-basic"
+                label="Birth Address"
+                variant="outlined"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.birthAddress}
+            />
+
+            <TextField
+                id="outlined-basic"
+                label="Witness Name"
+                variant="outlined"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.witnessName}
+            />
+
+            <TextField
+                id="outlined-basic"
+                label="Witness Type"
+                variant="outlined"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.witnessType}
+            />
+
+            <TextField
+                id="outlined-basic"
+                label="Name of Requestor"
+                variant="outlined"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.nameOfRequestor}
+            />
         </>
     );
 }

@@ -20,6 +20,7 @@ import { defaultApi } from '../../api';
 import FailedModal from '../message-modals/FailedModal';
 import SuccessModal from '../message-modals/SuccessModal';
 import { AuthContext } from '../context/authContext';
+import TextField from '@mui/material/TextField';
 
 interface ReviewModalProps {
     imgID: {
@@ -422,94 +423,115 @@ function ReviewModal({ imgID, imgSelf, signatureImg, letterDoc }: ReviewModalPro
             </span>
             <hr />
             <div className={styles['request-text-details-inner']}>
-                <div className={styles['row-review-input-data']}>
-                    <span>First Name: </span>
-                    <input
-                        disabled
-                        value={reviewContext?.personalForm?.firstName || ''}
-                        name="first_name"
-                    />
-                </div>
-                <div className={styles['row-review-input-data']}>
-                    <span>Middle Name: </span>
-                    <input
-                        disabled
-                        value={reviewContext?.personalForm?.middleName || ''}
-                        name="middle_name"
-                    />
-                </div>
-                <div className={styles['row-review-input-data']}>
-                    <span>Last Name: </span>
-                    <input
-                        disabled
-                        value={reviewContext?.personalForm?.lastName || ''}
-                        name="last_name"
-                    />
-                </div>
-                <div className={styles['row-review-input-data']}>
-                    <span>Name Extension: </span>
-                    <input
-                        disabled
-                        value={reviewContext?.personalForm?.nameExt || ''}
-                        name="name_ext"
-                    />
-                </div>
-                <div className={styles['row-review-input-data']}>
-                    <span>Gender: </span>
-                    <input
-                        disabled
-                        value={reviewContext?.personalForm?.gender || ''}
-                        name="gender"
-                    />
-                </div>
-                <div className={styles['row-review-input-data']}>
-                    <span>Email Address: </span>
-                    <input
-                        disabled
-                        value={reviewContext?.personalForm?.emailAddress || ''}
-                        name="email_address"
-                    />
-                </div>
-                <div className={styles['row-review-input-data']}>
-                    <span>Contact Number: </span>
-                    <input
-                        disabled
-                        value={reviewContext?.personalForm?.contactNum || ''}
-                        name="contact_num"
-                    />
-                </div>
-                <div className={styles['row-review-input-data']}>
-                    <span>Birth Date: </span>
-                    <input
-                        disabled
-                        value={reviewContext?.personalForm?.birthDate || ''}
-                        name="birth_date"
-                    />
-                </div>
-                <div className={styles['row-review-input-data']}>
-                    <span>Religion: </span>
-                    <input
-                        disabled
-                        value={reviewContext?.personalForm?.religion || ''}
-                        name="religion"
-                    />
-                </div>
-                <div className={styles['row-review-input-data']}>
-                    <span>Status: </span>
-                    <input
-                        disabled
-                        value={reviewContext?.personalForm?.status || ''}
-                        name="civil_status"
-                    />
-                </div>
-                <div className={styles['row-review-input-data']}>
-                    <span>Sector: </span>
-                    <input
-                        disabled
-                        value={reviewContext?.personalForm?.sector || ''}
-                        name="sector"
-                    />
-                </div>
+                <TextField
+                    id="outlined-basic"
+                    label="First Name"
+                    variant="outlined"
+                    className={styles['text-field-mui-override']}
+                    disabled
+                    value={reviewContext?.personalForm?.firstName || ''}
+                    name="first_name"
+                />
+
+                <TextField
+                    id="outlined-basic"
+                    label="Middle Name"
+                    variant="outlined"
+                    className={styles['text-field-mui-override']}
+                    disabled
+                    value={reviewContext?.personalForm?.middleName || ''}
+                    name="middle_name"
+                />
+
+                <TextField
+                    id="outlined-basic"
+                    label="Last Name"
+                    variant="outlined"
+                    className={styles['text-field-mui-override']}
+                    disabled
+                    value={reviewContext?.personalForm?.lastName || ''}
+                    name="last_name"
+                />
+
+                <TextField
+                    id="outlined-basic"
+                    label="Name Ext."
+                    variant="outlined"
+                    className={styles['text-field-mui-override']}
+                    disabled
+                    value={reviewContext?.personalForm?.nameExt || ''}
+                    name="name_ext"
+                />
+
+                <TextField
+                    id="outlined-basic"
+                    label="Gender"
+                    variant="outlined"
+                    className={styles['text-field-mui-override']}
+                    disabled
+                    value={reviewContext?.personalForm?.gender || ''}
+                    name="gender"
+                />
+
+                <TextField
+                    id="outlined-basic"
+                    label="Email Address"
+                    variant="outlined"
+                    className={styles['text-field-mui-override']}
+                    disabled
+                    value={reviewContext?.personalForm?.emailAddress || ''}
+                    name="email_address"
+                />
+
+                <TextField
+                    id="outlined-basic"
+                    label="Contact Number"
+                    variant="outlined"
+                    className={styles['text-field-mui-override']}
+                    disabled
+                    value={reviewContext?.personalForm?.contactNum || ''}
+                    name="contact_num"
+                />
+
+                <TextField
+                    id="outlined-basic"
+                    label="Birth Date"
+                    variant="outlined"
+                    className={styles['text-field-mui-override']}
+                    disabled
+                    value={reviewContext?.personalForm?.birthDate || ''}
+                    name="birth_date"
+                />
+
+                <TextField
+                    id="outlined-basic"
+                    label="Religion"
+                    variant="outlined"
+                    className={styles['text-field-mui-override']}
+                    disabled
+                    value={reviewContext?.personalForm?.religion || ''}
+                    name="religion"
+                />
+
+                <TextField
+                    id="outlined-basic"
+                    label="Civil Status"
+                    variant="outlined"
+                    className={styles['text-field-mui-override']}
+                    disabled
+                    value={reviewContext?.personalForm?.status || ''}
+                    name="civil_status"
+                />
+
+                <TextField
+                    id="outlined-basic"
+                    label="Sector"
+                    variant="outlined"
+                    className={styles['text-field-mui-override']}
+                    disabled
+                    value={reviewContext?.personalForm?.sector || ''}
+                    name="sector"
+                />
             </div>
 
             <br />
@@ -519,71 +541,107 @@ function ReviewModal({ imgID, imgSelf, signatureImg, letterDoc }: ReviewModalPro
             </span>
             <hr />
             <div className={styles['request-text-details-inner']}>
-                <div className={styles['row-review-input-data']}>
-                    <span>Emergency Full Name: </span>
-                    <input
-                        disabled
-                        value={reviewContext?.personalForm?.emergName || ''}
-                        name="emerg_name"
-                    />
-                </div>
-                <div className={styles['row-review-input-data']}>
-                    <span>Emergency Relationship: </span>
-                    <input
-                        disabled
-                        value={reviewContext?.personalForm?.emergRel || ''}
-                        name="emerg_rel"
-                    />
-                </div>
-                <div className={styles['row-review-input-data']}>
-                    <span>Emergency Contact Number:</span>
-                    <input
-                        disabled
-                        value={reviewContext?.personalForm?.emerContact || ''}
-                        name="emer_contact"
-                    />
-                </div>
-                <div className={styles['row-review-input-data']}>
-                    <span>Emergency Address: </span>
-                    <textarea
-                        disabled
-                        value={reviewContext?.personalForm?.emerAddress || ''}
-                        name="emer_address"
-                    />
-                </div>
+                <TextField
+                    id="outlined-basic"
+                    label="Emergency Name"
+                    variant="outlined"
+                    className={styles['text-field-mui-override']}
+                    disabled
+                    value={reviewContext?.personalForm?.emergName || ''}
+                    name="emerg_name"
+                />
+                <TextField
+                    id="outlined-basic"
+                    label="Emergency Relationship"
+                    variant="outlined"
+                    className={styles['text-field-mui-override']}
+                    disabled
+                    value={reviewContext?.personalForm?.emergRel || ''}
+                    name="emerg_rel"
+                />
+                <TextField
+                    id="outlined-basic"
+                    label="Emergency Contact Number"
+                    variant="outlined"
+                    className={styles['text-field-mui-override']}
+                    disabled
+                    value={reviewContext?.personalForm?.emerContact || ''}
+                    name="emer_contact"
+                />
+                <TextField
+                    multiline
+                    label="Emergency Address"
+                    disabled
+                    value={reviewContext?.personalForm?.emerAddress || ''}
+                    name="emer_address"
+                />{' '}
             </div>
-
+            <br />
             <span className={styles['review-section-labels']}> Requestor's Address</span>
             <hr />
             <div className={styles['request-text-details-inner']}>
-                <div className={styles['row-review-input-data']}>
-                    <span>Residency: </span>
-                    <input disabled value={reviewContext?.addressForm?.residency || ''} />
-                </div>
-                <div className={styles['row-review-input-data']}>
-                    <span>Years in San Roque: </span>
-                    <input disabled value={reviewContext?.addressForm?.yearsInSanRoque || ''} />
-                </div>
-                <div className={styles['row-review-input-data']}>
-                    <span>Block/Lot: </span>
-                    <input disabled value={reviewContext?.addressForm?.block || ''} />
-                </div>
-                <div className={styles['row-review-input-data']}>
-                    <span>Street: </span>
-                    <input disabled value={reviewContext?.addressForm?.street || ''} />
-                </div>
-                <div className={styles['row-review-input-data']}>
-                    <span>Barangay: </span>
-                    <input disabled value={reviewContext?.addressForm?.barangay || ''} />
-                </div>
-                <div className={styles['row-review-input-data']}>
-                    <span>City: </span>
-                    <input disabled value={reviewContext?.addressForm?.city || ''} />
-                </div>
-                <div className={styles['row-review-input-data']}>
-                    <span>Province: </span>
-                    <input disabled value={reviewContext?.addressForm?.province || ''} />
-                </div>
+                <TextField
+                    id="outlined-basic"
+                    label="Resideny"
+                    variant="outlined"
+                    className={styles['text-field-mui-override']}
+                    disabled
+                    value={reviewContext?.addressForm?.residency || ''}
+                />
+
+                <TextField
+                    id="outlined-basic"
+                    label="Years in San Roque"
+                    variant="outlined"
+                    className={styles['text-field-mui-override']}
+                    disabled
+                    value={reviewContext?.addressForm?.yearsInSanRoque || ''}
+                />
+
+                <TextField
+                    id="outlined-basic"
+                    label="Block"
+                    variant="outlined"
+                    className={styles['text-field-mui-override']}
+                    disabled
+                    value={reviewContext?.addressForm?.block || ''}
+                />
+
+                <TextField
+                    id="outlined-basic"
+                    label="Street"
+                    variant="outlined"
+                    className={styles['text-field-mui-override']}
+                    disabled
+                    value={reviewContext?.addressForm?.street || ''}
+                />
+
+                <TextField
+                    id="outlined-basic"
+                    label="Barangay"
+                    variant="outlined"
+                    className={styles['text-field-mui-override']}
+                    disabled
+                    value={reviewContext?.addressForm?.barangay || ''}
+                />
+
+                <TextField
+                    id="outlined-basic"
+                    label="City"
+                    variant="outlined"
+                    className={styles['text-field-mui-override']}
+                    disabled
+                    value={reviewContext?.addressForm?.city || ''}
+                />
+
+                <TextField
+                    id="outlined-basic"
+                    label="Province"
+                    variant="outlined"
+                    className={styles['text-field-mui-override']}
+                    disabled
+                    value={reviewContext?.addressForm?.province || ''}
+                />
             </div>
 
             <br />

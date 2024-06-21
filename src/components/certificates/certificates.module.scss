@@ -444,12 +444,13 @@
 
 .review-modal-container {
     position: absolute;
-    width: 80%;
+    width: auto;
     height: auto;
     border-radius: 10px;
     background-color: white;
     box-shadow: 0px 2px 10px 0px rgba(58, 53, 65, 0.1);
     padding: 30px;
+    margin: 0 20px 0 20px;
 }
 
 .review-section-labels{
@@ -497,15 +498,12 @@
     
 }
 
-.request-text-details span, .request-image-details span {
-    font-size: 18px;
-}
 
 .request-text-details-inner{
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto auto auto;
     padding: 10px;
-    row-gap: 10px;
+    row-gap: 40px;
     width: 100%;
 }
 
@@ -513,19 +511,11 @@
     display: inline-grid;
 }
 
-.row-review-input-data span{
-    font-size: 24px;
-    margin-bottom: 10px;
-    font-weight: 500;
-}
 
-.row-review-input-data input {
-    width: 300px;
-    height: 30px;
-    border-radius: 8px;
-    border: 1px solid rgb(175, 175, 175);
-    text-indent: 5px;
-    font-size: 18px;
+.text-field-mui-override{
+    width: 250px;
+    height: 40px;
+    color: black;
 }
 
 .row-review-input-data textarea{
@@ -573,41 +563,22 @@
     display: grid;
     grid-template-columns: auto auto auto;
     padding: 10px;
+    row-gap: 40px;
+    width: 100%;
+    margin-bottom: 30px;
 }
-
 .row-review-input-data-type{
-    display: inline-grid;
-}
-
-.row-review-input-data-type span{
-    font-size: 24px;
-    margin-bottom: 10px;
-    font-weight: 500;
-}
-
-.row-review-input-data-type input {
-    width: 300px;
-    height: 30px;
-    border-radius: 8px;
-    border: 1px solid rgb(175, 175, 175);
-    text-indent: 5px;
-    font-size: 18px;
-}
-
-.row-review-input-data-type textarea{
-    width: 400px;
-    height: 30px;
-    border-radius: 8px;
-    border: 1px solid rgb(175, 175, 175);
-    text-indent: 5px;
-    font-size: 18px;
-    resize: none;
-}
-.row-review-input-data-type p {
-    font-size: 24px;
-    margin: 0 0 10px 0;
+    height: 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 
 }
+.row-review-input-data-type span:nth-child(1){
+    font-weight: bold;
+}
+
+
 @media screen and (max-width: 1500px){
         .unhide {
                 margin: 20px 15% 20px 15%;
@@ -637,8 +608,31 @@
         height: 39px;
     }
 }
-
+@media screen and (max-width: 868px) {
+.request-text-details-inner {
+        display: grid;
+        grid-template-columns: auto auto;
+        padding: 10px;
+        row-gap: 40px;
+        width: 100%;
+    }
+.request-text-details-inner-type {
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 10px;
+    row-gap: 40px;
+    width: 100%;
+}
+}
 @media screen and (max-width: 768px){
+
+    .request-text-details-inner {
+        display: grid;
+        grid-template-columns: auto auto;
+        padding: 10px;
+        row-gap: 40px;
+        width: 100%;
+    }
     .heading-text {
             line-height: normal;
             font-size: 50px;
@@ -656,9 +650,29 @@
         text-align: center;
         
     }
-
 }
+
+@media screen and (max-width: 650px){
+    .text-field-mui-override {
+            width: 200px;
+        }
+}
+
 @media screen and (max-width: 600px) {
+    .request-text-details-inner {
+            display: grid;
+            grid-template-columns: auto auto;
+            padding: 10px;
+            row-gap: 40px;
+            width: 100%;
+        }
+    .submit-button{
+            width: 150px;
+            height: 40px;
+             float: none; 
+            margin-top: 5px;
+            margin-left: 25%;
+        }
     .header-perso {
         font-size: 1.3em;
     }
@@ -686,6 +700,13 @@
 }
 
 @media screen and (max-width: 530px) {
+    .review-section-labels {
+            font-size: 18px;
+        }
+    .text-field-mui-override {
+            width: 150px;
+
+        }
     .header-certs{
         height: 300px;
     }
@@ -720,6 +741,30 @@
 }
 
 @media screen and (max-width: 400px) {
+    .review-section-labels{
+        font-size: 16px;
+    }
+    .text-field-mui-override {
+            width: 250px;
+          
+        }
+    .request-text-details-inner {
+            display: grid;
+            grid-template-columns: auto;
+            padding: 10px;
+            row-gap: 40px;
+                    width: auto;
+        }
+    .review-modal-container{
+        padding: 10px;
+    }
+    .request-text-details-inner-type {
+        display: grid;
+        grid-template-columns: auto;
+        padding: 10px;
+        row-gap: 40px;
+            width: auto;
+    }
     .header-certs {
             height: 280px;
         }
