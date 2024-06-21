@@ -38,7 +38,6 @@
 .logo {
     width: 130px;
     border-radius: 200px;
-    height: 130px;
 }
 
 .menu-items {
@@ -260,7 +259,9 @@
 
 @media screen and (max-width: 900px) {
  
-
+    .logo{
+        width: 100px;
+    }
     .right {
         display: none;
     }
@@ -353,6 +354,9 @@
 }
 
 @media screen and (max-width: 420px) {
+    .logo{
+        width: 80px;
+    }
     .hamburger-menu {
         width: 150px;
     }

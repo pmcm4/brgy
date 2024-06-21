@@ -80,8 +80,9 @@ export const PersonalForm = ({ className, handleSubmit, selfInput }: PersonalFor
                 Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
                 Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
             </span>
-
-            <button className={styles['existing-profile']}>Existing Profile</button>
+            <br />
+            <hr />
+            <br />
             <div className={styles['input-form']}>
                 <label className={styles['label-forms']}>First Name:</label>
                 <br />

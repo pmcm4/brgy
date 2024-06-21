@@ -116,6 +116,9 @@ export const Identity_Proof = ({ className, onBack, adminCheck }: Identity_Proof
                 <br /> Signature (use the sketch canvas below), Government ID, and latest 2x2
                 picture with white background
             </span>
+            <br />
+            <hr />
+            <br />
 
             <div className={styles['input-form-proof']}>
                 <div className={styles['left-sign']}>
@@ -204,6 +207,17 @@ export const Identity_Proof = ({ className, onBack, adminCheck }: Identity_Proof
 
             <div className={styles['upload-div']}>
                 <div className={styles['first-id']}>
+                    {displayValidID !== null ? (
+                        <img
+                            src={URL.createObjectURL(displayValidID)}
+                            className={styles['img-container']}
+                        />
+                    ) : (
+                        <img
+                            src="https://storage.googleapis.com/barangay-san-roque-public/govt-id-guide.jpg"
+                            className={styles['img-container']}
+                        />
+                    )}
                     <label className={styles['file-btn']}>
                         <input
                             type="file"
@@ -222,20 +236,20 @@ export const Identity_Proof = ({ className, onBack, adminCheck }: Identity_Proof
                             Accepted Government ID's: Driver's License, UMID, SSS, PhilSys etc.
                         </span>
                     )}
-                    {displayValidID !== null ? (
+                </div>
+
+                <div className={styles['second-id']}>
+                    {displaySelfImage !== null ? (
                         <img
-                            src={URL.createObjectURL(displayValidID)}
+                            src={URL.createObjectURL(displaySelfImage)}
                             className={styles['img-container']}
                         />
                     ) : (
                         <img
-                            src="https://storage.googleapis.com/barangay-san-roque-public/govt-id-guide.jpg"
+                            src="https://storage.googleapis.com/barangay-san-roque-public/self-image.jpg"
                             className={styles['img-container']}
                         />
                     )}
-                </div>
-
-                <div className={styles['second-id']}>
                     <label className={styles['file-btn']}>
                         <input
                             type="file"
@@ -248,17 +262,6 @@ export const Identity_Proof = ({ className, onBack, adminCheck }: Identity_Proof
                         2x2 ID Picture should have white background and no accessories (glasses,
                         mask, hat etc.)
                     </span>
-                    {displaySelfImage !== null ? (
-                        <img
-                            src={URL.createObjectURL(displaySelfImage)}
-                            className={styles['img-container']}
-                        />
-                    ) : (
-                        <img
-                            src="https://storage.googleapis.com/barangay-san-roque-public/self-image.jpg"
-                            className={styles['img-container']}
-                        />
-                    )}
                 </div>
             </div>
             <div className={styles['nav-buttons-container']}>

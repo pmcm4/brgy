@@ -63,7 +63,9 @@ export const PFAddress = ({ className, handleSubmit, onBack, selfInput }: PFAddr
                 Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
                 Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
             </span>
-            <button className={styles['existing-profile']}>Existing Profile</button>
+            <br />
+            <hr />
+            <br />
             <form className={styles['input-form']} onSubmit={handleSubmit}>
                 <label className={styles['label-forms']}>Residency:</label>
                 <br />

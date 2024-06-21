@@ -1,5 +1,5 @@
 .root {
-    width: 1000px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -34,12 +34,15 @@
 
 .input-names {
     width: 100%;
-    height: 50px;
+    height: 40px;
     border-radius: 10px;
     border: solid 1px;
     margin: 10px 0 10px 0;
     font-size: 18px;
     text-indent: 10px;
+}
+.input-form textarea{
+    height: 60px;
 }
 
 .label-forms {
@@ -85,4 +88,48 @@
     justify-content: center;
     column-gap: 100px;
     margin-top: 10px;
+}
+
+@media screen and (max-width: 1200px) {
+    .header-perso {
+        font-size: 1.5em;
+    }
+    .perso-subhead{
+        font-size: 18px;
+    }
+    .label-forms{
+        font-size: 18px;
+    }
+    .input-names{
+        font-size: 14px;
+        height: 35px;
+    }
+    .input-drop-down{
+        font-size: 14px;
+        height: 39px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .header-perso {
+        font-size: 1.3em;
+    }
+
+    .perso-subhead {
+        font-size: 16px;
+    }
+    .input-names{
+        font-size: 14px;
+        height: 30px;
+    }
+    .input-drop-down{
+        font-size: 14px;
+        height: 34px;
+    }
+    .nav-buttons-container button{
+        font-size: 14px;
+    }
+        .label-forms{
+        font-size: 14px;
+    }
 }

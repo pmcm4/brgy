@@ -15,7 +15,9 @@ export function BarangayClearanceForm({ onNext, onBack, disableBack }: DropDownF
         purpose: '',
     });
 
-    const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleOnChange = (
+        e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>
+    ) => {
         setBarangayClearanceRequestObj((prev) => {
             return { ...prev, [e.target.name]: e.target.value };
         });
@@ -49,7 +51,7 @@ export function BarangayClearanceForm({ onNext, onBack, disableBack }: DropDownF
             <br />
             <label className={styles['label-forms']}>Purpose:</label>
             <br />
-            <input
+            <textarea
                 onChange={handleOnChange}
                 className={styles['input-names']}
                 placeholder="state your purpose here in English or Tagalog."
@@ -78,7 +80,9 @@ export function Indigency({ onNext, onBack, disableBack }: DropDownFormProps) {
         purpose: '',
     });
 
-    const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleOnChange = (
+        e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>
+    ) => {
         setIndigencyRequestObj((prev) => {
             return { ...prev, [e.target.name]: e.target.value };
         });
@@ -112,7 +116,7 @@ export function Indigency({ onNext, onBack, disableBack }: DropDownFormProps) {
             <br />
             <label className={styles['label-forms']}>Purpose:</label>
             <br />
-            <input
+            <textarea
                 onChange={handleOnChange}
                 className={styles['input-names']}
                 placeholder="state your purpose here in English or Tagalog."
@@ -163,7 +167,9 @@ export function BarangayIDForm({ onNext, onBack, disableBack }: DropDownFormProp
         });
     };
 
-    const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleOnChange = (
+        e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>
+    ) => {
         setBarangayIDRequestObj((prev) => {
             return { ...prev, [e.target.name]: e.target.value };
         });
@@ -229,7 +235,10 @@ export function SoloParentForm({ onNext, onBack, disableBack }: DropDownFormProp
     };
 
     const handleOnChange = (
-        e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>
+        e:
+            | React.ChangeEvent<HTMLInputElement>
+            | React.ChangeEvent<HTMLTextAreaElement>
+            | React.ChangeEvent<HTMLSelectElement>
     ) => {
         setSoloParentRequestObj((prev) => {
             return { ...prev, [e.target.name]: e.target.value };
@@ -364,7 +373,9 @@ export function CohabitationForm({ onNext, onBack, disableBack }: DropDownFormPr
         });
     };
 
-    const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleOnChange = (
+        e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>
+    ) => {
         setCohabitationRequestObj((prev) => {
             return { ...prev, [e.target.name]: e.target.value };
         });
@@ -373,7 +384,7 @@ export function CohabitationForm({ onNext, onBack, disableBack }: DropDownFormPr
         <form onSubmit={onNext} className={styles['cohabitation']}>
             <label className={styles['label-forms']}>Purpose:</label>
             <br />
-            <input
+            <textarea
                 onChange={handleOnChange}
                 className={styles['input-names']}
                 placeholder="state your purpose here in English or Tagalog."
@@ -444,7 +455,9 @@ export function GoodMoralForm({ onNext, onBack, disableBack }: DropDownFormProps
         nameOfRequestor: '',
     });
 
-    const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleOnChange = (
+        e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>
+    ) => {
         setGoodMoralRequestObj((prev) => {
             return { ...prev, [e.target.name]: e.target.value };
         });
@@ -479,7 +492,7 @@ export function GoodMoralForm({ onNext, onBack, disableBack }: DropDownFormProps
         <form onSubmit={onNext} className={styles['good-moral']}>
             <label className={styles['label-forms']}>Purpose:</label>
             <br />
-            <input
+            <textarea
                 onChange={handleOnChange}
                 className={styles['input-names']}
                 placeholder="state your purpose here in English or Tagalog."
@@ -517,7 +530,9 @@ export function NoIncomeForm({ onNext, onBack, disableBack }: DropDownFormProps)
         nameOfRequestor: '',
     });
 
-    const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleOnChange = (
+        e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>
+    ) => {
         setNoIncomeRequestObj((prev) => {
             return { ...prev, [e.target.name]: e.target.value };
         });
@@ -551,7 +566,7 @@ export function NoIncomeForm({ onNext, onBack, disableBack }: DropDownFormProps)
         <form onSubmit={onNext} className={styles['no-income']}>
             <label className={styles['label-forms']}>Purpose:</label>
             <br />
-            <input
+            <textarea
                 onChange={handleOnChange}
                 className={styles['input-names']}
                 placeholder="state your purpose here in English or Tagalog."
@@ -600,7 +615,9 @@ export function FirstTimeJobSeekerForm({ onNext, onBack, disableBack }: DropDown
         DateOfResidency: '',
     });
 
-    const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleOnChange = (
+        e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>
+    ) => {
         setFirstTimeJobSeekerRequestObj((prev) => {
             return { ...prev, [e.target.name]: e.target.value };
         });
@@ -634,7 +651,7 @@ export function FirstTimeJobSeekerForm({ onNext, onBack, disableBack }: DropDown
         <form onSubmit={onNext} className={styles['first-time-job-seeker']}>
             <label className={styles['label-forms']}>Purpose:</label>
             <br />
-            <input
+            <textarea
                 onChange={handleOnChange}
                 className={styles['input-names']}
                 placeholder="state your purpose here in English or Tagalog."
@@ -674,7 +691,9 @@ export function ResidencyForm({ onNext, onBack, disableBack }: DropDownFormProps
         nameOfRequestor: '',
     });
 
-    const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleOnChange = (
+        e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>
+    ) => {
         setResidencyRequestObj((prev) => {
             return { ...prev, [e.target.name]: e.target.value };
         });
@@ -708,7 +727,7 @@ export function ResidencyForm({ onNext, onBack, disableBack }: DropDownFormProps
         <form onSubmit={onNext} className={styles['residency']}>
             <label className={styles['label-forms']}>Purpose:</label>
             <br />
-            <input
+            <textarea
                 onChange={handleOnChange}
                 className={styles['input-names']}
                 placeholder="state your purpose here in English or Tagalog."
@@ -768,7 +787,9 @@ export function TransferResidencyForm({ onNext, onBack, disableBack }: DropDownF
         nameOfRequestor: '',
     });
 
-    const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleOnChange = (
+        e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>
+    ) => {
         setTransferOfResidencyRequestObj((prev) => {
             return { ...prev, [e.target.name]: e.target.value };
         });
@@ -802,7 +823,7 @@ export function TransferResidencyForm({ onNext, onBack, disableBack }: DropDownF
         <form onSubmit={onNext} className={styles['transfer-of-residency']}>
             <label className={styles['label-forms']}>Purpose:</label>
             <br />
-            <input
+            <textarea
                 onChange={handleOnChange}
                 className={styles['input-names']}
                 placeholder="state your purpose here in English or Tagalog."
@@ -851,7 +872,9 @@ export function LivingStillForm({ onNext, onBack, disableBack }: DropDownFormPro
         nameOfRequestor: '',
     });
 
-    const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleOnChange = (
+        e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>
+    ) => {
         setLivingStillRequestObj((prev) => {
             return { ...prev, [e.target.name]: e.target.value };
         });
@@ -885,7 +908,7 @@ export function LivingStillForm({ onNext, onBack, disableBack }: DropDownFormPro
         <form onSubmit={onNext} className={styles['living-still']}>
             <label className={styles['label-forms']}>Purpose:</label>
             <br />
-            <input
+            <textarea
                 onChange={handleOnChange}
                 className={styles['input-names']}
                 placeholder="state your purpose here in English or Tagalog."
@@ -941,7 +964,10 @@ export function BirthFactForm({ onNext, onBack, disableBack }: DropDownFormProps
     });
 
     const handleOnChange = (
-        e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>
+        e:
+            | React.ChangeEvent<HTMLInputElement>
+            | React.ChangeEvent<HTMLTextAreaElement>
+            | React.ChangeEvent<HTMLSelectElement>
     ) => {
         setBirthFactRequestObj((prev) => {
             return { ...prev, [e.target.name]: e.target.value };
@@ -975,7 +1001,7 @@ export function BirthFactForm({ onNext, onBack, disableBack }: DropDownFormProps
         <form onSubmit={onNext} className={styles['birth-fact']}>
             <label className={styles['label-forms']}>Purpose:</label>
             <br />
-            <input
+            <textarea
                 onChange={handleOnChange}
                 className={styles['input-names']}
                 placeholder="state your purpose here in English or Tagalog."
