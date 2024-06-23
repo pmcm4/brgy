@@ -571,6 +571,7 @@ function ReviewModal({ imgID, imgSelf, signatureImg, letterDoc }: ReviewModalPro
                 <TextField
                     multiline
                     label="Emergency Address"
+                    className={styles['text-field-mui-override']}
                     disabled
                     value={reviewContext?.personalForm?.emerAddress || ''}
                     name="emer_address"

@@ -15,6 +15,7 @@ export function BarangayClearanceForm() {
             <TextField
                 multiline
                 label="Purpose"
+                className={styles['text-field-mui-override']}
                 disabled
                 value={reviewContext?.certificateForm?.purpose}
             />
@@ -34,6 +35,7 @@ export function IndigencyForm() {
             <TextField
                 multiline
                 label="Purpose"
+                className={styles['text-field-mui-override']}
                 disabled
                 value={reviewContext?.certificateForm?.purpose}
             />
@@ -52,6 +54,7 @@ export function BarangayIDForm() {
             <TextField
                 multiline
                 label="Purpose"
+                className={styles['text-field-mui-override']}
                 disabled
                 value={reviewContext?.certificateForm?.purpose}
             />
@@ -71,6 +74,7 @@ export function SoloParentForm() {
             <TextField
                 multiline
                 label="Purpose"
+                className={styles['text-field-mui-override']}
                 disabled
                 value={reviewContext?.certificateForm?.purpose}
             />
@@ -138,6 +142,7 @@ export function CohabitationForm() {
             <TextField
                 multiline
                 label="Purpose"
+                className={styles['text-field-mui-override']}
                 disabled
                 value={reviewContext?.certificateForm?.purpose}
             />
@@ -189,6 +194,7 @@ export function GoodMoralForm() {
             <TextField
                 multiline
                 label="Purpose"
+                className={styles['text-field-mui-override']}
                 disabled
                 value={reviewContext?.certificateForm?.purpose}
             />
@@ -216,6 +222,7 @@ export function NoIncomeForm() {
             <TextField
                 multiline
                 label="Purpose"
+                className={styles['text-field-mui-override']}
                 disabled
                 value={reviewContext?.certificateForm?.purpose}
             />
@@ -251,6 +258,7 @@ export function FirstTimeJobSeekerForm() {
             <TextField
                 multiline
                 label="Purpose"
+                className={styles['text-field-mui-override']}
                 disabled
                 value={reviewContext?.certificateForm?.purpose}
             />
@@ -277,6 +285,7 @@ export function ResidencyForm() {
             <TextField
                 multiline
                 label="Purpose"
+                className={styles['text-field-mui-override']}
                 disabled
                 value={reviewContext?.certificateForm?.purpose}
             />
@@ -320,6 +329,7 @@ export function TransferOfResidencyForm() {
             <TextField
                 multiline
                 label="Purpose"
+                className={styles['text-field-mui-override']}
                 disabled
                 value={reviewContext?.certificateForm?.purpose}
             />
@@ -356,6 +366,7 @@ export function LivingStillForm() {
             <TextField
                 multiline
                 label="Purpose"
+                className={styles['text-field-mui-override']}
                 disabled
                 value={reviewContext?.certificateForm?.purpose}
             />
@@ -391,6 +402,7 @@ export function BirthFactForm() {
             <TextField
                 multiline
                 label="Purpose"
+                className={styles['text-field-mui-override']}
                 disabled
                 value={reviewContext?.certificateForm?.purpose}
             />

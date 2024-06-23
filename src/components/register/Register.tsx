@@ -22,7 +22,7 @@ function Register() {
                     </span>
                 </div>
 
-                <span className={styles['reg-span']}>Register here!</span>
+                <h1 className={styles['reg-span']}>Register here!</h1>
                 <p className={styles['reg-p']}>
                     Join now to have access in certification and ID requests!
                 </p>
@@ -30,9 +30,11 @@ function Register() {
                 <RegistrationForm />
 
                 <hr className={styles['reg-divider-foot']} />
-                <Link to={'/login'} className={styles['reg-p-foot']}>
-                    <p>Already have an account? Login here!</p>
-                </Link>
+                <div style={{ width: '100%' }}>
+                    <Link to={'/login'} className={styles['reg-p-foot']}>
+                        <span style={{ float: 'right' }}>Already have an account? Login here!</span>
+                    </Link>
+                </div>
             </div>
         </div>
     );

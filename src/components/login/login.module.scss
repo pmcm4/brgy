@@ -1,5 +1,4 @@
 .login-main-container{
-    width: 1920px;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -11,8 +10,7 @@
 }
 
 .login-card-container{
-    width: 400px;
-    height: 500px;
+    height: fit-content;
     background-color: white;
     box-shadow: 0px 4px 8px -4px rgba(58, 53, 65, 0.42);
     border-radius: 10px;
@@ -20,12 +18,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 30px;
 }
 
 .login-logo{
     width: 90px;
 }
-
+.login-card-container a {
+    width: 100%;
+}
 .login-logo-container{
     width: 300px;
     display: flex;
@@ -33,6 +34,7 @@
     align-items: center;
     column-gap: 15px;
     margin-bottom: 20px;
+    justify-content: center;
 }
 .login-logo-text-container{
     display: flex;
@@ -94,7 +96,7 @@
 .login-btn{
     border-radius: 8px;
     border: 1px solid transparent;
-    padding: 0.6em 1.2em;
+    
     font-size: 1em;
     font-weight: 500;
     font-family: inherit;
@@ -109,13 +111,13 @@
 .reg-btn{
     border-radius: 8px;
     border: 1px solid transparent;
-    padding: 0.6em 1.2em;
+    
     font-size: 1em;
     font-weight: 500;
     font-family: inherit;
     cursor: pointer;
     transition: border-color 0.25s;
-    width: 400px;
+    width: inherit;
     height: 42.19px;
     background-color: #2fad6e;
     color: white;
@@ -196,3 +198,80 @@
     margin-top: 10px;
 }
 
+@media screen and (max-width: 1200px){
+    .login-main-container {
+        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-image: url('https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706070752/czM6Ly9tZWRpYS1wcml2YXRlLmNhbnZhLmNvbS9HWUVEVS9NQUYxMVVHWUVEVS8xL3AuanBn_copy_soaq8u.png');
+        background-repeat: no-repeat;
+        background-size: unset;
+    }
+}
+
+@media screen and (max-width: 490px) {
+    .login-main-container {
+            background-size: unset;
+        }
+    .login-card-container{
+        width: 70%;
+    }
+    .login-btn{
+        height: 40px;
+    }
+    .reg-btn{
+        height: 40px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .login-logo-text-container .login-span:nth-child(1){
+        font-size: 16px;
+    }
+    .login-logo-text-container .login-span:nth-child(2){
+        font-size: 24px;
+    }
+    .login-logo{
+        width: 70px;
+    }
+    .login-span{
+        font-size: 21px;
+    }
+    .login-p{
+        width: 100%;
+        font-size: 12px;
+        text-align: justify;
+    }
+    .login-card-container {
+        width: 70%;
+        height: auto;
+    }
+    .login-input{
+        height: 35px;
+        
+    }
+    .login-btn {
+        height: 30px;
+        padding: 0;
+        font-size: 14px;
+    }
+
+    .reg-btn {
+        height: 30px;
+        padding: 0;
+        font-size: 14px;
+    }
+    .login-p-foot{
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .login-input {
+        height: 30px;
+
+    }
+
+}

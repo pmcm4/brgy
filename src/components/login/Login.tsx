@@ -65,10 +65,11 @@ function Login() {
                 </div>
 
                 <span className={styles['login-span']}>Welcome ka-Barangay!</span>
-                <p className={styles['login-p']}>
-                    Do not share your login credetials to anyone. Your account contains sensitive
-                    personal information.
-                </p>
+                <span className={styles['login-p']}>
+                    Do not share your login credetials to anyone.
+                    <br />
+                    Your account contains sensitive personal information.
+                </span>
 
                 <input
                     className={styles['login-input']}

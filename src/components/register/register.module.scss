@@ -1,13 +1,12 @@
 .reg-main-container{
-    width: 1920px;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url('https://res-console.cloudinary.com/dgb2lnz2i/thumbnails/v1/image/upload/v1706070752/Y3pNNkx5OXRaV1JwWVMxd2NtbDJZWFJsTG1OaGJuWmhMbU52YlM5SFdVVkVWUzlOUVVZeE1WVkhXVVZFVlM4eEwzQXVhbkJuX2NvcHlfc29hcTh1/drilldown');
+    background-image: url('https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706070752/czM6Ly9tZWRpYS1wcml2YXRlLmNhbnZhLmNvbS9HWUVEVS9NQUYxMVVHWUVEVS8xL3AuanBn_copy_soaq8u.png');
     background-repeat: no-repeat;
     background-size: 100%;
-    height: 2516px;
 }
 
 .reg-card-container{
@@ -20,7 +19,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
 }
 
 .reg-logo{
@@ -55,9 +53,9 @@
 
 .reg-span{
     font-size: 36px;
-    font-weight: 600;
     color: black;
     width: 100%;
+    margin: 0;
 }
 
 .reg-p{
@@ -141,6 +139,70 @@
 .reg-divider-foot{
     width: 100%;
     color: gray;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
+@media screen and (max-width: 1200px){
+    .reg-main-container{
+        background-size: unset;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .reg-logo{
+        width: 70px;
+    }
+    .reg-logo-text-container .reg-span:nth-child(1) {
+        font-size: 16px;
+        font-weight: bold;
+        color: black;
+    }
+    .reg-span{
+        font-size: 28px;
+    }
+    .reg-p{
+        font-size: 14px;
+    }
+    .reg-logo-text-container .reg-span:nth-child(2) {
+        font-size: 24px;
+        font-weight: bold;
+        color: black;
+    }
+    .reg-card-container{
+        padding: 30px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .reg-logo {
+        width: 50px;
+    }
+
+    .reg-logo-text-container .reg-span:nth-child(1) {
+        font-size: 14px;
+        font-weight: bold;
+        color: black;
+    }
+
+    .reg-span {
+        font-size: 24px;
+    }
+
+    .reg-p {
+        font-size: 12px;
+    }
+
+    .reg-logo-text-container .reg-span:nth-child(2) {
+        font-size: 21px;
+        font-weight: bold;
+        color: black;
+    }
+
+    .reg-card-container {
+        padding: 20px;
+    }
+    .reg-p-foot{
+        font-size: 12px;
+    }
+
+}
