@@ -205,7 +205,9 @@ const Header = ({ className }: HeaderProps) => {
                                 className={styles['menu-items']}
                                 onClick={handleHamburgerDropDown}
                             >
-                                {userName}
+                                <span className={styles['hamburger-username-span']}>
+                                    {userName}{' '}
+                                </span>
                                 {showHamburgerDropDown === false ? (
                                     <KeyboardArrowDownIcon />
                                 ) : (

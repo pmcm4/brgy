@@ -277,7 +277,14 @@
         cursor: pointer;
         color: #2fad6e;
     }
-
+    .hamburger-username-span{
+        width: 75%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-align: left;
+        text-overflow: ellipsis;
+        
+    }
     .menu-items {
         font-size: 24px;
         color: white;
@@ -374,7 +381,7 @@
   }
 
   .hamburger-drop-down-profile {
-      height: 150px;
+      height: 100px;
   }
 }
 
