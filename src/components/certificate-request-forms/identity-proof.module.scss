@@ -305,6 +305,12 @@ input[type="file"] {
    
 }
 
+@media screen and (max-width: 1440px) {
+    .img-container{
+        width: 250px;
+    }
+}
+
 @media screen and (max-width: 1100px){
         .input-form-proof {
             width: 100%;

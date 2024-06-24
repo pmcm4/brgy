@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import styles from './register.module.scss';
 import RegistrationForm from '../personal-form/RegistrationForm';
-import { PFAddress } from '../pf-address/pf-address';
+import { PFAddress } from '../certificate-request-forms/pf-address';
 import axios from 'axios';
 import { defaultApi } from '../../api';
 import { Link } from 'react-router-dom';

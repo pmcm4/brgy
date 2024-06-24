@@ -61,8 +61,7 @@
 
 .subheading {
     font-size: 24px;
-    line-height: normal;
-    width: 500px;    
+    line-height: normal;   
     color: black;
     font-weight: 500;
     text-align: center;
@@ -72,18 +71,30 @@
 .header-perso {
     text-align: center;
     font-size: 2em;
+    padding: 0;
+    margin: 0;
 }
 
 .perso-subhead {
-    text-align: center;
-    font-size: 30px;
+    text-align: start;
+    font-size: 18px;
+    font-weight: 600;
     margin: 10px 0 0 0;
+    width: 100%;
+    color: rgb(74, 74, 74);
+    text-indent: 8px;
+}
+
+.perso-subhead:nth-child(2) {
+    text-align: center;
+    font-size: 16px;
+    margin: 10px 0 0 0;
+    color: rgb(159, 159, 159);
+    width: 100%;
+    font-weight: 450;
 }
 
 
-.existing-profile {
-    margin-top: 30px;
-}
 
 .nav-buttons-container{
     height: auto;
@@ -108,9 +119,45 @@
 .unhide{
     background-color: white;
     box-shadow: 0px 4px 8px -4px rgba(58, 53, 65, 0.42);
-    padding: 50px;
+    padding: 30px 50px 30px 50px;
     margin: 20px 25% 20px 25%;
     border-radius: 20px;
+}
+
+.unhide-PF{
+    background-color: white;
+    box-shadow: 0px 4px 8px -4px rgba(58, 53, 65, 0.42);
+    padding: 30px 50px 30px 50px;
+    margin: 20px 25% 20px 25%;
+    border-radius: 20px;
+}
+.unhide-Add {
+    background-color: white;
+    box-shadow: 0px 4px 8px -4px rgba(58, 53, 65, 0.42);
+    padding: 30px 40px 30px 40px;
+    margin: 20px 40% 20px 40%;
+    border-radius: 20px;
+}
+.unhide-Choose {
+    background-color: white;
+        box-shadow: 0px 4px 8px -4px rgba(58, 53, 65, 0.42);
+        padding: 30px 40px 30px 40px;
+        margin: 20px 35% 20px 35%;
+        border-radius: 20px;
+}
+.unhide-Verify {
+    background-color: white;
+    box-shadow: 0px 4px 8px -4px rgba(58, 53, 65, 0.42);
+    padding: 30px 50px 30px 50px;
+    margin: 20px 25% 20px 25%;
+    border-radius: 20px;
+}
+
+.input-div {
+    width: 100%;
+    min-height: 50px;
+    display: flex;
+    flex-direction: column;
 }
 
 //admin
@@ -198,18 +245,22 @@
 
 .input-form {
     width: 100%;
-    height: 100%;
+    display: grid;
+    grid-template-columns: auto;
+    column-gap: 30px;
+    align-items: center;
+    justify-items: center;
+    margin: 15px 0 0 0;
 }
 
 .input-names {
     width: 100%;
-    height: 50px;
     border-radius: 10px;
     border: solid 1px;
-    margin: 10px 0 10px 0;
     font-size: 18px;
     text-indent: 10px;
 }
+
 .label-forms {
     font-size: 20px;
     font-weight: 400;
@@ -227,53 +278,7 @@
     border: solid 1px;
 }
 
-.barangay-clearance{
-    width: 100%;
-}
 
-.solo-parent {
-    width: 100%;
-}
-
-
-.cohabitation {
-    width: 100%;
-}
-
-.good-moral {
-    width: 100%;
-    
-}
-
-.no-income {
-    width: 100%;
-    
-}
-
-.first-time-job-seeker {
-    width: 100%;
-    
-}
-
-.residency {
-    width: 100%;
-    
-}
-
-.transfer-of-residency{
-    width: 100%;
-    
-}
-
-.living-still{
-    width: 100%;
-    
-}
-
-.birth-fact{
-    width: 100%;
-    
-}
 
 .input-form-proof {
     width: 100%;
@@ -583,6 +588,7 @@
         .unhide {
                 margin: 20px 15% 20px 15%;
             }
+        
 }
 
 @media screen and (max-width: 1200px) {
@@ -607,6 +613,15 @@
         font-size: 14px;
         height: 39px;
     }
+
+    .unhide-PF{
+        padding: 30px 30px 30px 30px;
+        margin: 20px 30% 20px 30%;
+    }
+    .unhide-Choose {
+        padding: 30px 40px 30px 40px;
+        margin: 20px 30% 20px 30%;
+    }
 }
 @media screen and (max-width: 868px) {
 .request-text-details-inner {
@@ -625,7 +640,10 @@
 }
 }
 @media screen and (max-width: 768px){
-
+    .unhide-Choose {
+            padding: 30px 40px 30px 40px;
+            margin: 20px 20% 20px 20%;
+        }
     .request-text-details-inner {
         display: grid;
         grid-template-columns: auto auto;
@@ -656,9 +674,23 @@
     .text-field-mui-override {
             width: 200px;
         }
+    .unhide-Choose {
+        padding: 30px 30px 30px 30px;
+        margin: 20px 15% 20px 15%;
+    }
 }
 
 @media screen and (max-width: 600px) {
+
+    .unhide-PF{
+        padding: 30px 30px 30px 30px;
+        margin: 20px 10% 20px 10%;
+    }
+    .unhide-Add{
+        padding: 30px 30px 30px 30px;
+        margin: 20px 10% 20px 10%;
+    }
+
     .request-text-details-inner {
             display: grid;
             grid-template-columns: auto auto;
@@ -697,6 +729,19 @@
         .label-forms{
         font-size: 14px;
     }
+    .choose-requestor span:nth-child(1){
+        font-size: 21px !important;
+    }
+    .choose-requestor span:nth-child(2){
+        font-size: 12px !important;
+    }
+    .choose-requestor span:nth-child(5){
+        font-size: 12px !important;
+    }
+    .choose-requestor button{
+        font-size: 12px !important;
+        width: 175px !important;
+    }
 }
 
 @media screen and (max-width: 530px) {
@@ -734,13 +779,18 @@
     .unhide{
         padding: 45px;
     }
-        .choose-requestor-no-account button{
+    .choose-requestor-no-account button{
         font-size: 14px !important;
         width: 175px !important;
     }
+        .unhide-Choose {
+            padding: 30px 25px 30px 25px;
+            margin: 20px 10% 20px 10%;
+        }
 }
 
 @media screen and (max-width: 400px) {
+
     .review-section-labels{
         font-size: 16px;
     }
@@ -788,7 +838,7 @@
     }
 
     .choose-requestor-no-account{
-        width: 250px;
+        width: 200px;
     }
 
     .choose-requestor-no-account span:nth-child(1){
@@ -801,6 +851,24 @@
         font-size: 12px !important;
     }
     .choose-requestor-no-account button{
+        font-size: 12px !important;
+        width: 175px !important;
+    }
+
+    .choose-requestor{
+        width: 200px;
+    }
+
+    .choose-requestor span:nth-child(1){
+        font-size: 21px !important;
+    }
+    .choose-requestor span:nth-child(2){
+        font-size: 12px !important;
+    }
+    .choose-requestor span:nth-child(5){
+        font-size: 12px !important;
+    }
+    .choose-requestor button{
         font-size: 12px !important;
         width: 175px !important;
     }

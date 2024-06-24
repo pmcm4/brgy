@@ -2,8 +2,8 @@ import classNames from 'classnames';
 import styles from './certificates.module.scss';
 import { Footer } from '../footer/footer';
 import React, { ChangeEvent, useContext, useEffect, useState } from 'react';
-import { PersonalForm } from '../personal-form/personal-form';
-import { PFAddress } from '../pf-address/pf-address';
+import { PersonalForm } from '../certificate-request-forms/personal-form';
+import { PFAddress } from '../certificate-request-forms/pf-address';
 import {
     BarangayClearanceForm,
     BarangayIDForm,
@@ -17,15 +17,21 @@ import {
     ResidencyForm,
     SoloParentForm,
     TransferResidencyForm,
-} from './DropDownForms';
-import { Identity_Proof } from '../identity-proof/identity-proof';
+} from '../certificate-request-forms/DropDownForms';
+import { Identity_Proof } from '../certificate-request-forms/identity-proof';
 import { ReviewContext } from '../context/ReviewContext';
 
 import axios from 'axios';
 import { defaultApi } from '../../api';
 import { AuthContext } from '../context/authContext';
 import { Link } from 'react-router-dom';
-import TextField from '@mui/material/TextField';
+import dayjs, { Dayjs } from 'dayjs';
+import { Box, FormControl, MenuItem, Select, SelectChangeEvent, TextField } from '@mui/material';
+import SuccessModal from '../message-modals/SuccessModal';
+import FailedModal from '../message-modals/FailedModal';
+import InputLabel from '@mui/material/InputLabel';
+import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 export interface CertificatesProps {
     className?: string;
@@ -355,7 +361,9 @@ export const Certificates = ({ className }: CertificatesProps) => {
     });
 
     const handleOnChange = (
-        e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+        e:
+            | ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+            | SelectChangeEvent<string>
     ) => {
         setRenderForm(() => {
             return {
@@ -543,7 +551,7 @@ export const Certificates = ({ className }: CertificatesProps) => {
                 </div>
             )}
 
-            <div className={renderPF === true ? styles['unhide'] : styles['hide']}>
+            <div className={renderPF === true ? styles['unhide-PF'] : styles['hide']}>
                 {forMyselfSelected === true ? (
                     <PersonalForm handleSubmit={handlePersonalFormNext} selfInput={userDetails} />
                 ) : (
@@ -551,7 +559,7 @@ export const Certificates = ({ className }: CertificatesProps) => {
                 )}
             </div>
 
-            <div className={renderAdd === true ? styles['unhide'] : styles['hide']}>
+            <div className={renderAdd === true ? styles['unhide-Add'] : styles['hide']}>
                 {forMyselfSelected === true ? (
                     <PFAddress
                         handleSubmit={handleAddressFormNext}
@@ -563,38 +571,54 @@ export const Certificates = ({ className }: CertificatesProps) => {
                 )}
             </div>
 
-            <div className={renderChoose === true ? styles['unhide'] : styles['hide']}>
+            <div className={renderChoose === true ? styles['unhide-Choose'] : styles['hide']}>
                 <div className={styles['certs-container']}>
                     <h1 className={styles['header-perso']}>Certificates</h1>
                     <span className={styles['perso-subhead']}>
-                        Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-                        Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
+                        Please select a certificate or ID you need and fill out the form with
+                        accurate information. This will ensure efficient processing of your request.
+                        Your information will be kept confidential in accordance with our privacy
+                        policy.
                     </span>
                     <br />
                     <hr />
                     <br />
                     <div className={styles['input-form']}>
-                        <label className={styles['label-forms']}>Select Certificate Type:</label>
-                        <br />
-                        <select
-                            defaultValue={'Select Certificate'}
-                            className={styles['input-drop-down']}
-                            onChange={handleOnChange}
-                        >
-                            <option disabled>Select Certificate</option>
-                            <option value={'barangayClearance'}>Barangay Clearance</option>
-                            <option value={'indigency'}>Indigency</option>
-                            <option value={'barangayID'}>Barangay ID</option>
-                            <option value={'soloParent'}>Solo Parent</option>
-                            <option value={'cohabitation'}>Cohabitation</option>
-                            <option value={'goodMoral'}>Good Moral</option>
-                            <option value={'noIncome'}>No Income</option>
-                            <option value={'firstTimeJobSeeker'}>First Time Job Seeker</option>
-                            <option value={'residency'}>Residency</option>
-                            <option value={'transferResidency'}>Transfer of Residency</option>
-                            <option value={'livingStill'}>Living Still</option>
-                            <option value={'birthFact'}>Birth Fact</option>
-                        </select>
+                        <div className={styles['input-div']}>
+                            <Box>
+                                <FormControl size="small" fullWidth>
+                                    <InputLabel id="certificate-label-id">
+                                        Select Certificate
+                                    </InputLabel>
+                                    <Select
+                                        labelId="certificate-label-id"
+                                        label="Select Certificate"
+                                        defaultValue=""
+                                        onChange={handleOnChange}
+                                        required
+                                    >
+                                        <MenuItem value={'barangayClearance'}>
+                                            Barangay Clearance
+                                        </MenuItem>
+                                        <MenuItem value={'indigency'}>Indigency</MenuItem>
+                                        <MenuItem value={'barangayID'}>Barangay ID</MenuItem>
+                                        <MenuItem value={'soloParent'}>Solo Parent</MenuItem>
+                                        <MenuItem value={'cohabitation'}>Cohabitation</MenuItem>
+                                        <MenuItem value={'goodMoral'}>Good Moral</MenuItem>
+                                        <MenuItem value={'noIncome'}>No Income</MenuItem>
+                                        <MenuItem value={'firstTimeJobSeeker'}>
+                                            First Time Job Seeker
+                                        </MenuItem>
+                                        <MenuItem value={'residency'}>Residency</MenuItem>
+                                        <MenuItem value={'transferResidency'}>
+                                            Transfer of Residency
+                                        </MenuItem>
+                                        <MenuItem value={'livingStill'}>Living Still</MenuItem>
+                                        <MenuItem value={'birthFact'}>Birth Fact</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </Box>
+                        </div>
 
                         {renderForm.barangayClearance === true && (
                             <BarangayClearanceForm
@@ -684,7 +708,7 @@ export const Certificates = ({ className }: CertificatesProps) => {
                 </div>
             </div>
 
-            <div className={renderVerify === true ? styles['unhide'] : styles['hide']}>
+            <div className={renderVerify === true ? styles['unhide-Verify'] : styles['hide']}>
                 <Identity_Proof onBack={handleBackVerify} adminCheck={isAdmin} />
             </div>
         </div>
