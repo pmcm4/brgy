@@ -1,4 +1,4 @@
-.reg-main-container{
+.reg-main-container {
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -9,56 +9,58 @@
     background-size: 100%;
 }
 
-.reg-card-container{
+.reg-card-container {
     width: auto;
     background-color: white;
     box-shadow: 0px 4px 8px -4px rgba(58, 53, 65, 0.42);
     border-radius: 10px;
     padding: 50px;
-    margin: 40px 0 40px 0;
+    margin: 40px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.reg-logo{
+.reg-logo {
     width: 90px;
 }
 
-.reg-logo-container{
+.reg-logo-container {
     width: 300px;
     display: flex;
     flex-direction: row;
     align-items: center;
     column-gap: 15px;
     margin-bottom: 20px;
+    justify-content: center;
 }
-.reg-logo-text-container{
+
+.reg-logo-text-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
-.reg-logo-text-container .reg-span:nth-child(1){
+.reg-logo-text-container .reg-span:nth-child(1) {
     font-size: 18px;
     font-weight: bold;
     color: black;
 }
 
-.reg-logo-text-container .reg-span:nth-child(2){
+.reg-logo-text-container .reg-span:nth-child(2) {
     font-size: 28px;
     font-weight: bold;
     color: black;
 }
 
-.reg-span{
+.reg-span {
     font-size: 36px;
     color: black;
     width: 100%;
     margin: 0;
 }
 
-.reg-p{
+.reg-p {
     font-size: 18px;
     color: gray;
     width: 100%;
@@ -66,7 +68,7 @@
     margin-bottom: 30px;
 }
 
-.reg-p-foot{
+.reg-p-foot {
     font-size: 14px;
     color: gray;
     margin-top: 5px;
@@ -75,11 +77,11 @@
     cursor: pointer;
 }
 
-.reg-p-foot:hover{
+.reg-p-foot:hover {
     color: rgb(54, 54, 54);
 }
 
-.reg-input{
+.reg-input {
     width: 100%;
     height: 50px;
     border: 1px solid rgb(179, 179, 179);
@@ -87,89 +89,341 @@
     margin-bottom: 20px;
     text-indent: 20px;
     font-size: 14px;
-    
 }
 
-.reg-btn{
-    border-radius: 8px;
-    border: 1px solid transparent;
-    padding: 0.6em 1.2em;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    cursor: pointer;
-    transition: border-color 0.25s;
+// Register container
+.register-container-root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header-perso {
+    text-align: center;
+    font-size: 2em;
+}
+
+.perso-subhead:nth-child(1) {
+    margin: 0;
+}
+
+.perso-subhead {
+    text-align: start;
+    font-size: 24px;
+    margin: 40px 0 0 0;
     width: 100%;
-    height: 50px;
-    background-color: #2fad6e;
-    color: white;
 }
 
-.reg-btn{
-    border-radius: 8px;
-    border: 1px solid transparent;
-    padding: 0.6em 1.2em;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    cursor: pointer;
-    transition: border-color 0.25s;
-    width: 100%;
-    height: 50px;
-    background-color: #2fad6e;
-    color: white;
-    margin-top: 10px;
+.existing-profile {
+    margin-top: 30px;
 }
 
-.reg-btn:hover{
-    background-color: #299961;
+.existing-profile:hover {
+    background-color: #2fad6e;
     color: white;
     border: solid 1px #2fad6e;
 }
 
+.input-div {
+    width: 250px;
+    min-height: 50px;
+    display: flex;
+    flex-direction: column;
+}
 
+.personal-details-div {
+    display: flex;
+}
 
-.reg-btn:hover{
-    background-color: #299961;
+.input-form {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 30px;
+    align-items: center;
+    justify-items: center;
+    margin: 20px 0 30px 0;
+}
+
+.input-names {
+    width: 100%;
+    border-radius: 10px;
+    border: solid 1px;
+    font-size: 18px;
+    text-indent: 10px;
+}
+
+.label-forms {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.input-drop-down {
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    margin: 10px 0;
+    font-size: 18px;
+    text-indent: 10px;
+    border: solid 1px;
+}
+
+.nav-buttons {
+    height: auto;
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.next-btn:hover {
+    background-color: #2fad6e;
     color: white;
     border: solid 1px #2fad6e;
 }
 
+.notice {
+    font-size: 10px;
+    color: rgb(141, 16, 16);
+}
 
-.reg-divider-foot{
+.nav-buttons-container {
+    height: auto;
     width: 100%;
-    color: gray;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    column-gap: 100px;
     margin-top: 10px;
 }
 
-@media screen and (max-width: 1200px){
-    .reg-main-container{
+// Success modal
+.success-modal-container {
+    width: 100%;
+    height: 2475px;
+    position: absolute;
+    top: 0;
+    background-color: rgba(161, 161, 161, 0.39);
+}
+
+.success-modal-box {
+    width: 350px;
+    height: 300px;
+    position: fixed;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px -4px rgba(58, 53, 65, 0.42);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0 0 30px 0;
+}
+
+.success-message-inner-box {
+    width: 100%;
+    height: 60%;
+    border-radius: 10px 10px 0 0;
+    background-color: #2fad6e;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.mui-success-icon {
+    color: white;
+    font-size: 80px !important;
+}
+
+.inner-modal-message-with-btn {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 40%;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 10px;
+}
+
+// Failed modal
+.failed-modal-container {
+    width: 100%;
+    height: 2475px;
+    position: absolute;
+    top: 0;
+    background-color: rgba(161, 161, 161, 0.39);
+}
+
+.failed-modal-box {
+    width: 350px;
+    height: 300px;
+    position: fixed;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px -4px rgba(58, 53, 65, 0.42);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0 0 30px 0;
+}
+
+.failed-message-inner-box {
+    width: 100%;
+    height: 60%;
+    border-radius: 10px 10px 0 0;
+    background-color: #d64747;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.mui-failed-icon {
+    color: white;
+    font-size: 80px !important;
+}
+
+.inner-modal-message-with-btn {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 40%;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 10px;
+}
+
+// Username errors
+.username-error {
+    color: red;
+    font-size: 12px;
+    font-weight: 450;
+    text-align: left;
+    text-indent: 10px;
+    margin-bottom: 10px;
+}
+
+.username-success {
+    color: #2fad6e;
+    font-size: 12px;
+    font-weight: 450;
+    margin-bottom: 10px;
+}
+
+.hide {
+    display: none;
+}
+
+.unhide {
+    display: block;
+    width: 100%;
+}
+
+// Nav buttons
+.nav-btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 100px;
+}
+
+.reg-foot {
+    width: 100%;
+}
+
+@media screen and (min-height: 754px) {
+    .reg-main-container {
+        height: 100vh !important;
+    }
+}
+
+@media screen and (max-height: 754px) {
+    .reg-main-container {
+        height: unset !important;
+    }
+}
+
+@media screen and (max-width: 1600px) {
+    .reg-logo-container {
+        margin-bottom: 10px;
+    }
+
+    .reg-span {
+        font-size: 24px;
+    }
+
+    .reg-p {
+        margin-bottom: 15px;
+    }
+
+    .reg-card-container {
+        padding: 20px;
+    }
+
+    .perso-subhead {
+        font-size: 21px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .reg-main-container {
         background-size: unset;
     }
 }
 
 @media screen and (max-width: 768px) {
-    .reg-logo{
+    .reg-main-container {
+        height: 100vh;
+        background-size: unset;
+    }
+
+    .reg-logo {
         width: 70px;
     }
+
     .reg-logo-text-container .reg-span:nth-child(1) {
         font-size: 16px;
         font-weight: bold;
         color: black;
     }
-    .reg-span{
+
+    .reg-span {
         font-size: 28px;
     }
-    .reg-p{
+
+    .reg-p {
         font-size: 14px;
     }
+
     .reg-logo-text-container .reg-span:nth-child(2) {
         font-size: 24px;
         font-weight: bold;
         color: black;
     }
-    .reg-card-container{
+
+    .reg-card-container {
         padding: 30px;
+    }
+
+    .perso-subhead {
+        font-size: 21px;
+    }
+
+    .input-div {
+        width: 200px;
+    }
+
+    .input-form {
+        margin: 10px 0 20px 0;
     }
 }
 
@@ -201,8 +455,117 @@
     .reg-card-container {
         padding: 20px;
     }
-    .reg-p-foot{
+
+    .reg-p-foot {
         font-size: 12px;
     }
 
+    .input-form {
+        margin: 10px 0 5px 0;
+    }
+}
+
+.vh-js-controlled {
+    height: 100vh !important;
+}
+
+@media screen and (max-width: 450px) {
+    .reg-logo {
+        width: 50px;
+    }
+
+    .reg-logo-text-container .reg-span:nth-child(1) {
+        font-size: 14px;
+        font-weight: bold;
+        color: black;
+    }
+
+    .reg-span {
+        font-size: 24px;
+    }
+
+    .reg-p {
+        font-size: 12px;
+    }
+
+    .reg-logo-text-container .reg-span:nth-child(2) {
+        font-size: 21px;
+        font-weight: bold;
+        color: black;
+    }
+
+    .reg-card-container {
+        padding: 20px;
+    }
+
+    .reg-p-foot {
+        font-size: 12px;
+    }
+
+    .input-form {
+        margin: 10px 0 5px 0;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .input-div {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .reg-main-container {
+        height: 100vh;
+    }
+
+    .reg-span {
+        font-size: 18px;
+        width: 90%;
+    }
+
+    .reg-p {
+        font-size: 12px;
+        width: 90%;
+    }
+
+    .perso-subhead {
+        text-align: start;
+        font-size: 14px;
+    }
+
+    .reg-logo-container {
+        padding-top: 20px;
+        width: 168px;
+    }
+
+    .reg-logo-text-container {
+        width: 100%;
+    }
+
+    .reg-logo-text-container .reg-span:nth-child(1) {
+        font-size: 12px;
+    }
+
+    .reg-logo-text-container .reg-span:nth-child(2) {
+        font-size: 16px;
+    }
+
+    .reg-card-container {
+        padding: 0;
+        width: 300px;
+    }
+
+    .unhide {
+        width: 90%;
+    }
+
+    .reg-divider-foot {
+        width: 90%;
+    }
+
+    .reg-foot {
+        width: 90%;
+        padding-bottom: 20px;
+    }
 }

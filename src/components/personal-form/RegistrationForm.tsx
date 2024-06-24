@@ -187,7 +187,7 @@ function RegistrationForm({ className }: RegistrationFormProps) {
     };
 
     return (
-        <div className={classNames(styles.root, className)}>
+        <div className={classNames(styles.root)}>
             <div className={showPersonalDetails === true ? styles['unhide'] : styles['hide']}>
                 <form onSubmit={handleNext}>
                     <h1 className={styles['perso-subhead']}> Personal Details</h1>

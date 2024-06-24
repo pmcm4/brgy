@@ -11,7 +11,7 @@
 
 }
 .success-modal-box{
-    width: 350px;
+    width: 250px;
     height: auto;
     position: fixed;
     background-color: white;
@@ -67,7 +67,7 @@
 
 }
 .failed-modal-box{
-    width: 350px;
+    width: 250px;
     height: auto;
     position: fixed;
     background-color: white;
@@ -97,4 +97,26 @@
     color: white;
     font-size: 80px !important;
     
+}
+
+
+@media screen and (max-width: 375px){
+    .mui-failed-icon{
+        font-size: 60px !important;
+    }
+    .failed-message-inner-box span{
+        font-size: 18px;
+    }
+    .mui-success-icon{
+        font-size: 60px !important;
+    }
+    .success-message-inner-box span{
+        font-size: 18px;
+    }
+    .inner-modal-message-with-btn span{
+        font-size: 14px !important;
+    }
+    .inner-modal-message-with-btn button{
+        font-size: 12px !important;
+    }
 }

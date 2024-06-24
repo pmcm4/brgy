@@ -4,8 +4,6 @@
     align-items: center;
 }
 
-
-
 .header-perso {
     text-align: center;
     font-size: 2em;
@@ -39,7 +37,7 @@
     min-height:70px;
     display: flex;
     flex-direction: column;
-    margin-bottom: 10px;
+
   
 }
 .personal-details-div{
@@ -284,6 +282,21 @@
 }
 
 
+@media screen and (max-width: 1600px) {
+    .perso-subhead {
+        font-size: 21px;
+    }
+
+    .input-div {
+
+    }
+
+    .input-form {
+        margin: 10px 0 0 0;
+    }
+}
+
+
 @media screen and (max-width: 768px){
     .perso-subhead{
         font-size: 21px;
@@ -291,9 +304,6 @@
     .input-div{
         width: 200px;
         min-height: 30px;
-    }
-    .input-names{
-        min-height: 30px !important;
     }
     .input-form {
     margin: 10px 0 20px 0;
