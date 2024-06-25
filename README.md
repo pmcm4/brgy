@@ -18,6 +18,9 @@ The Barangay Request Management System is a web application developed using the 
   - **Backend and Database:** Deployed on Google Cloud Platform's VM Instance
   - **Frontend (Client and Admin Dashboard):** Deployed on Vercel
 
+## Demo
+https://www.pmcm-dev.xyz/home
+
 ## Installation and Setup
 To run this project locally, follow these steps:
 
