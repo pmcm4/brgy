@@ -14,7 +14,7 @@ The Barangay Request Management System is a web application developed using the 
 - **Frontend:** React.js
 - **Backend:** Node.js, Express.js
 - **Database:** PostgreSQL
-- **Deployment:** GCP VM Instance for Backend and Database and Vercel for Frontend. 
+- **Deployment:** Backend and Database deployed in Google Cloud Platform's VM Instance and Vercel for Client and Admin Dashboard Frontend.
 
 ## Installation and Setup
 To run this project locally, follow these steps:
