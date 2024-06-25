@@ -157,8 +157,11 @@
     margin-right: 50px;
     width: auto;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     width: 150px;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+    overflow: hidden;
 }
 
 .profile-drop-down .menu-items{
