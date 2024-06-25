@@ -159,7 +159,8 @@ function Profile() {
                                 <span>Requests</span>
                             </div>
                             <RequestPageOutlinedIcon
-                                sx={{ fontSize: '120px', color: 'rgb(17, 202, 17)' }}
+                                sx={{ color: 'rgb(17, 202, 17)' }}
+                                className={styles['profile-icons']}
                             />
                         </div>
                         <div className={styles['status-cards']}>
@@ -169,7 +170,8 @@ function Profile() {
                                 <span>Requests</span>
                             </div>
                             <QuizOutlinedIcon
-                                sx={{ fontSize: '120px', color: 'rgb(255, 153, 0)' }}
+                                className={styles['profile-icons']}
+                                sx={{ color: 'rgb(255, 153, 0)' }}
                             />
                         </div>
                         <div className={styles['status-cards']}>
@@ -179,7 +181,8 @@ function Profile() {
                                 <span>Resident</span>
                             </div>
                             <HomeWorkOutlinedIcon
-                                sx={{ fontSize: '120px', color: 'rgb(0, 132, 255)' }}
+                                className={styles['profile-icons']}
+                                sx={{ color: 'rgb(0, 132, 255)' }}
                             />
                         </div>
                     </div>

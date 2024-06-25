@@ -98,6 +98,7 @@ const Header = ({ className }: HeaderProps) => {
             setShowHamburgerDropDown(true);
         }
     };
+
     return (
         <div className={classNames(styles.root, className)}>
             <div className={styles.left}>
