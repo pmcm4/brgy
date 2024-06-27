@@ -90,7 +90,7 @@ const Header = ({ className }: HeaderProps) => {
             };
             getFirstName();
         }
-    });
+    }, []);
 
     const handleScrollAbout = async () => {
         navigate('/home');
