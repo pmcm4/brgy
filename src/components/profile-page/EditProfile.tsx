@@ -49,37 +49,45 @@ function EditProfile({ closeModal }: EditProfileProps) {
 
     const usernameFromURL = location.pathname.split('/')[3];
 
-    useQuery('fetch_user_data', async () => {
-        const userData = await useJWTAxios.get(
-            `${process.env.API_DOMAIN}/api/requestData/getSingleUserDetails/${usernameFromURL}`,
-            {
-                headers: { authorization: 'Bearer ' + authContext?.accessToken },
-            }
-        );
+    useQuery(
+        'fetch_user_data',
+        async () => {
+            const userData = await useJWTAxios.get(
+                `${process.env.API_DOMAIN}/api/requestData/getSingleUserDetails/${usernameFromURL}`,
+                {
+                    headers: { authorization: 'Bearer ' + authContext?.accessToken },
+                }
+            );
 
-        setUserDetails({
-            username: usernameFromURL,
-            first_name: userData.data[0].first_name,
-            middle_name: userData.data[0].middle_name,
-            last_name: userData.data[0].last_name,
-            name_ext: userData.data[0].name_ext,
-            gender: userData.data[0].gender,
-            email_address: userData.data[0].email_address,
-            contact_num: userData.data[0].contact_num,
-            birth_date: userData.data[0].birth_date,
-            religion: userData.data[0].religion,
-            civil_status: userData.data[0].civil_status,
-            sector: userData.data[0].sector,
-            residency: userData.data[0].residency,
-            years_in_san_roque: userData.data[0].years_in_san_roque,
-            block: userData.data[0].block,
-            street: userData.data[0].street,
-            emerg_name: userData.data[0].emerg_name,
-            emer_address: userData.data[0].emer_address,
-            emer_contact: userData.data[0].emer_contact,
-            emerg_rel: userData.data[0].emerg_rel,
-        });
-    });
+            setUserDetails({
+                username: usernameFromURL,
+                first_name: userData.data[0].first_name,
+                middle_name: userData.data[0].middle_name,
+                last_name: userData.data[0].last_name,
+                name_ext: userData.data[0].name_ext,
+                gender: userData.data[0].gender,
+                email_address: userData.data[0].email_address,
+                contact_num: userData.data[0].contact_num,
+                birth_date: userData.data[0].birth_date,
+                religion: userData.data[0].religion,
+                civil_status: userData.data[0].civil_status,
+                sector: userData.data[0].sector,
+                residency: userData.data[0].residency,
+                years_in_san_roque: userData.data[0].years_in_san_roque,
+                block: userData.data[0].block,
+                street: userData.data[0].street,
+                emerg_name: userData.data[0].emerg_name,
+                emer_address: userData.data[0].emer_address,
+                emer_contact: userData.data[0].emer_contact,
+                emerg_rel: userData.data[0].emerg_rel,
+            });
+        },
+        {
+            cacheTime: 10000,
+            staleTime: 30000,
+            refetchOnWindowFocus: true,
+        }
+    );
 
     useEffect(() => {
         try {

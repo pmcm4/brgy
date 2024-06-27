@@ -76,40 +76,48 @@ function Profile() {
         }
     });
     if (authContext?.accessToken) {
-        useQuery('fetch_username', async () => {
-            const userRequests = await JWTAxios.get(
-                `${process.env.API_DOMAIN}/api/requestData/getSingleUserRequests/${usernameFromURL}`,
-                {
-                    headers: {
-                        authorization: `Bearer ${authContext?.accessToken}`,
-                    },
-                }
-            );
-            setRequestDetails(userRequests.data);
-            setTotalRequests(userRequests.data.length);
+        useQuery(
+            'fetch_username',
+            async () => {
+                const userRequests = await JWTAxios.get(
+                    `${process.env.API_DOMAIN}/api/requestData/getSingleUserRequests/${usernameFromURL}`,
+                    {
+                        headers: {
+                            authorization: `Bearer ${authContext?.accessToken}`,
+                        },
+                    }
+                );
+                setRequestDetails(userRequests.data);
+                setTotalRequests(userRequests.data.length);
 
-            const userData = await JWTAxios.get(
-                `${process.env.API_DOMAIN}/api/requestData/getSingleUserDetails/${usernameFromURL}`,
-                {
-                    headers: {
-                        authorization: `Bearer ${authContext?.accessToken}`,
-                    },
-                }
-            );
+                const userData = await JWTAxios.get(
+                    `${process.env.API_DOMAIN}/api/requestData/getSingleUserDetails/${usernameFromURL}`,
+                    {
+                        headers: {
+                            authorization: `Bearer ${authContext?.accessToken}`,
+                        },
+                    }
+                );
 
-            setUserDetails({
-                name:
-                    userData.data[0].first_name +
-                    ' ' +
-                    userData.data[0].middle_name +
-                    ' ' +
-                    userData.data[0].last_name,
-                username: userData.data[0].username,
-                email: userData.data[0].email_address,
-            });
+                setUserDetails({
+                    name:
+                        userData.data[0].first_name +
+                        ' ' +
+                        userData.data[0].middle_name +
+                        ' ' +
+                        userData.data[0].last_name,
+                    username: userData.data[0].username,
+                    email: userData.data[0].email_address,
+                });
 
-            setYearsResident(userData.data[0].years_in_san_roque);
-        });
+                setYearsResident(userData.data[0].years_in_san_roque);
+            },
+            {
+                cacheTime: 10000,
+                staleTime: 30000,
+                refetchOnWindowFocus: true,
+            }
+        );
     }
 
     return (
