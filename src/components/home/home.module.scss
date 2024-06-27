@@ -21,12 +21,16 @@
     align-content: center;
     justify-content: center;
 }
+.home-header-div{
+    display: flex;
+    flex-direction: column;
+    margin-left: 75px;
+}
 
 .heading-text {
     line-height: normal;
     font-size: 100px;
     font-weight: 700;
-    margin-left: 4.7%;
     color: black;
     text-align: start;
     font-style: normal;
@@ -35,7 +39,6 @@
 .subheading {
     font-size: 36px;
     line-height: normal;
-    margin-left: 5%;
     width: 700px;
     color: black;
     font-weight: 500;
@@ -107,7 +110,7 @@
 
 .gradient-card-explore {
     position: absolute;
-    width: 394px;
+    width: inherit;
     height: 100%;
     background-repeat: repeat;
     background-image: linear-gradient(180deg, rgba(255, 0, 0, 0.0) 0%, rgba(29, 179, 107, 0.8) 100%);
@@ -131,7 +134,7 @@
 
 .gradient-card {
     position: absolute;
-    width: 394px;
+    width: inherit;
     height: 100%;
     
     background-repeat: repeat;
@@ -783,6 +786,19 @@
     color: #1db36b;
 }
 
+@media screen and (min-width: 2560px){
+    .card{
+        width: 530px;
+    }
+    .cardExplore{
+        width: 530px;
+    }
+    .home-header-div {
+        margin-left: 150px;
+    }
+
+}
+
 
 @media screen and (max-width: 1720px) {
     .cards-container {
@@ -876,7 +892,7 @@
     
     .gradient-card-explore {
         position: absolute;
-        width: 369px;
+        width: inherit;
         height: 100%;
         
         background-repeat: repeat;
@@ -901,7 +917,7 @@
     
     .gradient-card {
         position: absolute;
-        width: 369px;
+        width: inherit;
         height: 100%;
         
         background-repeat: repeat;
@@ -972,7 +988,7 @@
     
     .card {
         height: 100%;
-        width: 344px;
+        width: 320px;
         border-radius: 20px;
         background-color: transparent;
         background-image: linear-gradient(180deg, #90c052 0%, #1db36b 100%);
@@ -995,7 +1011,7 @@
     
     .cardExplore{
         height: 100%;
-        width: 344px;
+        width: 320px;
         border-radius: 20px;
         background-color: #90c052;
         background-position: 0% 0%;
@@ -1017,7 +1033,7 @@
     
     .gradient-card-explore {
         position: absolute;
-        width: 344px;
+        width: inherit;
         height: 100%;
         
         background-repeat: repeat;
@@ -1042,7 +1058,7 @@
     
     .gradient-card {
         position: absolute;
-        width: 344px;
+        width: inherit;
         height: 100%;
         
         background-repeat: repeat;
@@ -1096,7 +1112,8 @@
 }
 
 
-@media screen and (max-width: 1480px) {
+@media screen and (max-width: 1440px) {
+
     .cards-container {
         width: 100%;
         height: 450px;
@@ -1166,10 +1183,19 @@
         overflow: hidden;
         cursor: pointer;
     }
+    .home-header-div{
+        margin-left: 60px;
+    }
+    .heading-text{
+        font-size: 80px;
+    }
+    .subheading{
+        font-size: 30px;
+    }
     
     .gradient-card-explore {
         position: absolute;
-        width: 319px;
+        width: inherit;
         height: 100%;
         
         background-repeat: repeat;
@@ -1194,7 +1220,7 @@
     
     .gradient-card {
         position: absolute;
-        width: 319px;
+        width: inherit;
         height: 100%;
         
         background-repeat: repeat;
@@ -1255,7 +1281,18 @@
 }
 
 
-@media screen and (max-width: 1350px) {
+@media screen and (max-width: 1351px) {
+    .home-header-div {
+        margin-left: 70px;
+    }
+
+    .heading-text {
+        font-size: 60px;
+    }
+
+    .subheading {
+        font-size: 24px;
+    }
     .officials {
             background-image: url(https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706070751/logo_sln6bp.png);
             background-position: 18% 18%;
@@ -1354,7 +1391,7 @@
     
     .gradient-card-explore {
         position: absolute;
-        width: 294px;
+        width: inherit;
         height: 100%;
         
         background-repeat: repeat;
@@ -1379,7 +1416,7 @@
     
     .gradient-card {
         position: absolute;
-        width: 294px;
+        width: inherit;
         height: 100%;
         
         background-repeat: repeat;
@@ -1434,7 +1471,7 @@
 
 
 
-@media screen and (max-width: 1230px) {
+@media screen and (max-width: 1231px) {
         .officials {
             background-image: url(https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706070751/logo_sln6bp.png);
             background-position: 15% 18%;
@@ -1512,7 +1549,7 @@
     
     .gradient-card-explore {
         position: absolute;
-        width: 264px;
+        width: inherit;
         height: 100%;
         
         background-repeat: repeat;
@@ -1537,7 +1574,7 @@
     
     .gradient-card {
         position: absolute;
-        width: 264px;
+        width: inherit;
         height: 100%;
         
         background-repeat: repeat;
@@ -1596,13 +1633,25 @@
         font-size: 25px;
     }
 
+    .home-header-div {
+        margin-left: 70px;
+    }
+
+    .heading-text {
+        font-size: 60px;
+    }
+
+    .subheading {
+        font-size: 24px;
+    }
+
 
 }
 
 
 
 
-@media screen and (max-width: 1110px) {
+@media screen and (max-width: 1111px) {
         .officials {
                 background-image: url(https://res.cloudinary.com/dgb2lnz2i/image/upload/v1706070751/logo_sln6bp.png);
                 background-position: 12% 18%;
@@ -1681,7 +1730,7 @@
 
     .gradient-card-explore {
         position: absolute;
-        width: 234px;
+        width: inherit;
         height: 100%;
         
         background-repeat: repeat;
@@ -1706,7 +1755,7 @@
 
     .gradient-card {
         position: absolute;
-        width: 234px;
+        width: inherit;
         height: 100%;
         
         background-repeat: repeat;
@@ -1777,6 +1826,18 @@
         background-origin: padding-box;
         background-clip: border-box;
         background-color: transparent;
+    }
+
+    .home-header-div {
+        margin-left: 25px;
+    }
+
+    .heading-text {
+        font-size: 60px;
+    }
+
+    .subheading {
+        font-size: 24px;
     }
 }
 
@@ -1877,7 +1938,7 @@
 
     .gradient-card-explore {
         position: absolute;
-        width: 200px;
+        width: inherit;
         height: 100%;
         
         background-repeat: repeat;
@@ -1902,7 +1963,7 @@
 
     .gradient-card {
         position: absolute;
-        width: 200px;
+        width: inherit;
         height: 100%;
         
         background-repeat: repeat;
@@ -1967,6 +2028,17 @@
     }
     .contact-form {
         display: none;
+    }
+    .home-header-div {
+        margin-left: 35px;
+    }
+
+    .heading-text {
+        font-size: 60px;
+    }
+
+    .subheading {
+        font-size: 24px;
     }
 }
 
@@ -2049,7 +2121,7 @@
 
     .gradient-card-explore {
         position: absolute;
-        width: 184px;
+        width: inherit;
         height: 100%;
         
         background-repeat: repeat;
@@ -2074,7 +2146,7 @@
 
     .gradient-card {
         position: absolute;
-        width: 184px;
+        width: inherit;
         height: 100%;
         
         background-repeat: repeat;
@@ -2307,7 +2379,7 @@
 
     .gradient-card-explore {
         position: absolute;
-        width: 394px;
+        width: inherit;
         height: 525px;
         
         background-repeat: repeat;
@@ -2332,7 +2404,7 @@
 
     .gradient-card {
         position: absolute;
-        width: 394px;
+        width: inherit;
         height: 525px;
         
         background-repeat: repeat;
@@ -2406,7 +2478,6 @@
         line-height: normal;
         font-size: 70px;
         font-weight: 700;
-        margin-left: 4.7%;
         color: black;
         text-align: start;
         font-style: normal;
@@ -2415,7 +2486,6 @@
     .subheading {
         font-size: 24px;
         line-height: normal;
-        margin-left: 5%;
         width: 90%;
         color: black;
         font-weight: 500;
@@ -2425,7 +2495,7 @@
 }
 
 
-@media screen and (max-width: 758px) {
+@media screen and (max-width: 768px) {
     .head1-info {
         font-size: 30px;
     }
@@ -2500,7 +2570,7 @@
 
     .gradient-card-explore {
         position: absolute;
-        width: 300px;
+        width: inherit;
         height: 450px;
 
         background-repeat: repeat;
@@ -2525,7 +2595,7 @@
 
     .gradient-card {
         position: absolute;
-        width: 300px;
+        width: inherit;
         height: 450px;
 
         background-repeat: repeat;
@@ -2612,26 +2682,36 @@
             align-content: center;
             justify-content: center;
         }
+        .image-bg{
+            align-items: center;
+        }
+        .home-header-div {
+            margin-left: unset;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+        }
 
         .heading-text {
             line-height: normal;
             font-size: 50px;
             font-weight: 700;
-            margin-left: 4.7%;
             color: black;
-            text-align: start;
+            text-align: center;
             font-style: normal;
         }
 
         .subheading {
             font-size: 18px;
             line-height: normal;
-            margin-left: 5%;
-            width: 90%;
+            width: 89%;
             color: black;
             font-weight: 500;
-            text-align: start;
+            text-align: center;
         }
+
+
 
         .header-about-main {
             font-size: 40px;
@@ -2733,7 +2813,7 @@
 
     .gradient-card-explore {
         position: absolute;
-        width: 300px;
+        width: inherit;
         height: 450px;
 
         background-repeat: repeat;
@@ -2758,7 +2838,7 @@
 
     .gradient-card {
         position: absolute;
-        width: 300px;
+        width: inherit;
         height: 450px;
 
         background-repeat: repeat;
@@ -2804,7 +2884,7 @@
         line-height: normal;
         font-size: 14px;
         margin: 0 0 10px 0;
-        text-align: start;
+        text-align: center;
         width: 95%;
     }
 
@@ -2850,7 +2930,6 @@
         line-height: normal;
         font-size: 50px;
         font-weight: 700;
-        margin-left: 4.7%;
         color: black;
         text-align: start;
         font-style: normal;
@@ -2859,7 +2938,6 @@
     .subheading {
         font-size: 18px;
         line-height: normal;
-        margin-left: 5%;
         width: 90%;
         color: black;
         font-weight: 500;
@@ -2901,6 +2979,23 @@
             justify-content: space-around;
             width: 100%;
             row-gap: 20px;
+    }
+        .heading-text {
+        line-height: normal;
+        font-size: 40px;
+        font-weight: 700;
+        color: black;
+        text-align: start;
+        font-style: normal;
+    }
+
+    .subheading {
+        font-size: 14px;
+        line-height: normal;
+        width: 90%;
+        color: black;
+        font-weight: 500;
+        text-align: center;
     }
 
  
@@ -3113,9 +3208,44 @@
     .top-card{
         column-gap: 5px;
     }
+    .heading-text {
+        line-height: normal;
+        font-size: 35px;
+        font-weight: 700;
+        color: black;
+        text-align: start;
+        font-style: normal;
+    }
+
+    .subheading {
+        font-size: 12px;
+        line-height: normal;
+        width: 80%;
+        color: black;
+        font-weight: 500;
+        text-align: center;
+    }
+
 }
 
 @media screen and (max-width: 320px) {
+    .heading-text {
+        line-height: normal;
+        font-size: 30px;
+        font-weight: 700;
+        color: black;
+        text-align: start;
+        font-style: normal;
+    }
+
+    .subheading {
+        font-size: 12px;
+        line-height: normal;
+        width: 80%;
+        color: black;
+        font-weight: 500;
+        text-align: center;
+    }
 
     .carousell-cards {
             width: 250px;

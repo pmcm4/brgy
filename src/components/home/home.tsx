@@ -379,10 +379,12 @@ const Home = ({ className }: HomeProps) => {
     return (
         <div className={classNames(styles.root, className)}>
             <div className={styles['image-bg']}>
-                <span className={styles['heading-text']}>Barangay San Roque</span>
-                <p className={styles.subheading}>
-                    Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Ipsum Ipsum
-                </p>
+                <div className={styles['home-header-div']}>
+                    <span className={styles['heading-text']}>Barangay San Roque</span>
+                    <p className={styles.subheading}>
+                        Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Ipsum Ipsum
+                    </p>
+                </div>
             </div>
             <div className={styles['cards-container']}>
                 <Link to={checkExistUser === true ? `/profile/${username}` : `/login`}>

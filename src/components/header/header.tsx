@@ -13,6 +13,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import { useQuery } from 'react-query';
 
 export interface HeaderProps {
     className?: string;
@@ -22,6 +23,11 @@ export interface HeaderProps {
  * This component was created using Codux's Default new component template.
  * To create custom component templates, see https://help.codux.com/kb/en/article/kb16522
  */
+
+interface DecodedIDType {
+    username: string;
+}
+
 const Header = ({ className }: HeaderProps) => {
     const authContext = useContext(AuthContext);
     const scrollEffectContext = useContext(ScrollEffectContext);
@@ -42,16 +48,9 @@ const Header = ({ className }: HeaderProps) => {
         setShowDropDown(false);
     };
 
+    //const decodedJWT = jwtDecode<DecodedIDType>(String(authContext?.accessToken));
+
     let useJWTAxios = useLogoutAxios();
-
-    useEffect(() => {
-        if (authContext?.currentUser) {
-            setCheckExistUser(true);
-            const username = authContext.currentUser;
-
-            setUsername(username);
-        }
-    }, [authContext?.currentUser]);
 
     const handleLogout = async () => {
         try {
@@ -73,6 +72,25 @@ const Header = ({ className }: HeaderProps) => {
             console.log(error);
         }
     };
+
+    useEffect(() => {
+        if (authContext?.accessToken) {
+            setCheckExistUser(true);
+            const userNameDecoded = jwtDecode<DecodedIDType>(
+                String(authContext?.accessToken)
+            ).username;
+            const getFirstName = async () => {
+                await axios
+                    .get(
+                        `${process.env.API_DOMAIN}/api/requestData/getFirstName/${userNameDecoded}`
+                    )
+                    .then((data) => {
+                        setUsername(data.data);
+                    });
+            };
+            getFirstName();
+        }
+    });
 
     const handleScrollAbout = async () => {
         navigate('/home');
@@ -147,7 +165,10 @@ const Header = ({ className }: HeaderProps) => {
                             onMouseOver={handleMouseOver}
                             onMouseOut={handleMouseOut}
                         >
-                            <Link to={`/profile/${userName}`} style={{ textDecoration: 'none' }}>
+                            <Link
+                                to={`/profile/${authContext?.currentUser}`}
+                                style={{ textDecoration: 'none' }}
+                            >
                                 <span className={styles['drop-down-item']}>My profile</span>
                             </Link>
                             <span className={styles['drop-down-item']} onClick={handleLogout}>
@@ -207,7 +228,7 @@ const Header = ({ className }: HeaderProps) => {
                                 onClick={handleHamburgerDropDown}
                             >
                                 <span className={styles['hamburger-username-span']}>
-                                    {userName}{' '}
+                                    {userName}
                                 </span>
                                 {showHamburgerDropDown === false ? (
                                     <KeyboardArrowDownIcon />
@@ -221,7 +242,7 @@ const Header = ({ className }: HeaderProps) => {
                                 <div className={styles['hamburger-drop-down-profile']}>
                                     {' '}
                                     <Link
-                                        to={`/profile/${userName}`}
+                                        to={`/profile/${authContext?.currentUser}`}
                                         style={{ textDecoration: 'none' }}
                                     >
                                         <span className={styles['drop-down-item']}>My profile</span>

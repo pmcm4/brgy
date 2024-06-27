@@ -10,6 +10,7 @@ import { useOnReload } from './components/custom-hooks/onReload';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from './components/context/authContext';
 import Loader from './components/loader/Loader';
+import EditProfile from './components/profile-page/EditProfile';
 
 const questions: { faqid: number; faqTitle: string; answer: string }[] = [
     {
@@ -49,6 +50,10 @@ function App() {
                 {
                     path: '/profile/:username',
                     element: <Profile />,
+                },
+                {
+                    path: '/profile/edit/:username',
+                    element: <EditProfile closeModal={() => {}} />,
                 },
             ],
         },
