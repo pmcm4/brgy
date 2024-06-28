@@ -66,6 +66,7 @@ const Header = ({ className }: HeaderProps) => {
                 .then(() => {
                     console.log('called');
                     authContext?.setLogoutSignal(true);
+                    sessionStorage.clear();
                     window.location.reload();
                 });
         } catch (error: any) {
