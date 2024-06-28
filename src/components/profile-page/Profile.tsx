@@ -70,46 +70,51 @@ function Profile() {
     const authContext = useContext(AuthContext);
 
     let JWTAxios = useAxios();
+
+    const getProfileData = async () => {
+        const userRequests = await JWTAxios.get(
+            `${process.env.API_DOMAIN}/api/requestData/getSingleUserRequests/${usernameFromURL}`,
+            {
+                headers: {
+                    authorization: `Bearer ${authContext?.accessToken}`,
+                },
+            }
+        );
+        setRequestDetails(userRequests.data);
+        setTotalRequests(userRequests.data.length);
+
+        const userData = await JWTAxios.get(
+            `${process.env.API_DOMAIN}/api/requestData/getSingleUserDetails/${usernameFromURL}`,
+            {
+                headers: {
+                    authorization: `Bearer ${authContext?.accessToken}`,
+                },
+            }
+        );
+
+        setUserDetails({
+            name:
+                userData.data[0].first_name +
+                ' ' +
+                userData.data[0].middle_name +
+                ' ' +
+                userData.data[0].last_name,
+            username: userData.data[0].username,
+            email: userData.data[0].email_address,
+        });
+
+        setYearsResident(userData.data[0].years_in_san_roque);
+    };
+
     useEffect(() => {
         if (authContext?.currentUser === null) {
             navigate('/home');
+        } else {
+            getProfileData();
         }
-    });
+    }, []);
     if (authContext?.accessToken) {
-        useQuery('fetch_username', async () => {
-            const userRequests = await JWTAxios.get(
-                `${process.env.API_DOMAIN}/api/requestData/getSingleUserRequests/${usernameFromURL}`,
-                {
-                    headers: {
-                        authorization: `Bearer ${authContext?.accessToken}`,
-                    },
-                }
-            );
-            setRequestDetails(userRequests.data);
-            setTotalRequests(userRequests.data.length);
-
-            const userData = await JWTAxios.get(
-                `${process.env.API_DOMAIN}/api/requestData/getSingleUserDetails/${usernameFromURL}`,
-                {
-                    headers: {
-                        authorization: `Bearer ${authContext?.accessToken}`,
-                    },
-                }
-            );
-
-            setUserDetails({
-                name:
-                    userData.data[0].first_name +
-                    ' ' +
-                    userData.data[0].middle_name +
-                    ' ' +
-                    userData.data[0].last_name,
-                username: userData.data[0].username,
-                email: userData.data[0].email_address,
-            });
-
-            setYearsResident(userData.data[0].years_in_san_roque);
-        });
+        useQuery('fetch_username');
     }
 
     return (
