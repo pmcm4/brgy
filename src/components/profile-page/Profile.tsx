@@ -73,49 +73,38 @@ function Profile() {
 
     const getProfileData = async () => {
         const userRequests = await JWTAxios.get(
-            `${process.env.API_DOMAIN}/api/requestData/getSingleUserRequests/${usernameFromURL}`,
+            `${process.env.API_DOMAIN}/api/requestData/getProfilePageContent/${usernameFromURL}`,
             {
                 headers: {
                     authorization: `Bearer ${authContext?.accessToken}`,
                 },
             }
         );
-        setRequestDetails(userRequests.data);
-        setTotalRequests(userRequests.data.length);
 
-        const userData = await JWTAxios.get(
-            `${process.env.API_DOMAIN}/api/requestData/getSingleUserDetails/${usernameFromURL}`,
-            {
-                headers: {
-                    authorization: `Bearer ${authContext?.accessToken}`,
-                },
-            }
-        );
+        setRequestDetails(userRequests.data.userRequestsRows);
+        setTotalRequests(userRequests.data.userRequestsRows.length);
 
         setUserDetails({
             name:
-                userData.data[0].first_name +
+                userRequests.data.profileDetailsRows[0].first_name +
                 ' ' +
-                userData.data[0].middle_name +
+                userRequests.data.profileDetailsRows[0].middle_name +
                 ' ' +
-                userData.data[0].last_name,
-            username: userData.data[0].username,
-            email: userData.data[0].email_address,
+                userRequests.data.profileDetailsRows[0].last_name,
+            username: userRequests.data.profileDetailsRows[0].username,
+            email: userRequests.data.profileDetailsRows[0].email_address,
         });
 
-        setYearsResident(userData.data[0].years_in_san_roque);
+        setYearsResident(userRequests.data.profileDetailsRows[0].years_in_san_roque);
     };
+
+    useQuery('getProfileContent', getProfileData);
 
     useEffect(() => {
         if (authContext?.currentUser === null) {
             navigate('/home');
-        } else {
-            getProfileData();
         }
     }, []);
-    if (authContext?.accessToken) {
-        useQuery('fetch_username');
-    }
 
     return (
         <div className={styles['profile-main-body']}>
