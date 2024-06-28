@@ -98,11 +98,14 @@ function Profile() {
         setYearsResident(userRequests.data.profileDetailsRows[0].years_in_san_roque);
     };
 
-    useQuery('getProfileContent', getProfileData);
+    // useQuery('getProfileContent', getProfileData);
 
     useEffect(() => {
         if (authContext?.currentUser === null) {
             navigate('/home');
+        }
+        {
+            getProfileData();
         }
     }, []);
 
