@@ -32,6 +32,7 @@ import FailedModal from '../message-modals/FailedModal';
 import InputLabel from '@mui/material/InputLabel';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { useAxios } from '../utils/useAxios';
 
 export interface CertificatesProps {
     className?: string;
@@ -107,6 +108,7 @@ export const Certificates = ({ className }: CertificatesProps) => {
 
     const reviewContext = useContext(ReviewContext);
     const authContext = useContext(AuthContext);
+    let useJWTAxios = useAxios();
 
     useEffect(() => {
         try {
@@ -133,8 +135,11 @@ export const Certificates = ({ className }: CertificatesProps) => {
 
     const getUserDetails = async () => {
         try {
-            const sendRequest = await axios.get(
-                `${process.env.API_DOMAIN}/api/requestData/getSingleUserDetails/${authContext?.currentUser}`
+            const sendRequest = await useJWTAxios.get(
+                `${process.env.API_DOMAIN}/api/requestData/getSingleUserDetails/${authContext?.currentUser}`,
+                {
+                    headers: { authorization: 'Bearer ' + authContext?.accessToken },
+                }
             );
 
             if (sendRequest.status === 200) {
