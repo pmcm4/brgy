@@ -87,10 +87,6 @@ function EditProfile({ closeModal }: EditProfileProps) {
                 navigate('/home');
             }
 
-            if (usernameFromURL !== authContext?.currentUser) {
-                navigate('/error');
-            }
-
             setEditData(userDetails);
         } catch (error) {
             console.log(error);
@@ -115,15 +111,18 @@ function EditProfile({ closeModal }: EditProfileProps) {
 
             console.log(sendUpdate.status);
             setSucessMsg(true);
-
+            document.getElementById('save-btn')?.setAttribute('disabled', 'true');
+            document.getElementById('save-btn')?.setAttribute('style', 'cursor: wait');
             setTimeout(() => {
                 setSucessMsg(false);
-            }, 5000);
+                document.getElementById('save-btn')?.removeAttribute('disabled');
+                document.getElementById('save-btn')?.removeAttribute('style');
+            }, 3000);
         } catch (error) {
             setFailedMsg(true);
             setTimeout(() => {
                 setFailedMsg(false);
-            }, 5000);
+            }, 3000);
             console.log(error);
         }
     };
@@ -349,7 +348,7 @@ function EditProfile({ closeModal }: EditProfileProps) {
                         {failedMsg === true && (
                             <span className={styles['failed-msg']}>Something went wrong...</span>
                         )}
-                        <button className={styles['edit-btn']} onClick={saveBtn}>
+                        <button id="save-btn" className={styles['edit-btn']} onClick={saveBtn}>
                             Save
                         </button>
                     </div>

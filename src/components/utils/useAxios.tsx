@@ -4,6 +4,10 @@ import { AuthContext } from '../context/authContext';
 import { defaultApi } from '../../api';
 import { useContext } from 'react';
 
+type decodedTokenType = {
+    exp: number;
+};
+
 export const useAxios = () => {
     //this INTERCEPTOR is used for all api request that needs revalidation (refreshes the tokens)
     const authContext = useContext(AuthContext);
@@ -17,9 +21,9 @@ export const useAxios = () => {
             const parse = authContext?.accessToken;
             let currentDate = new Date();
 
-            const decodedToken = jwtDecode(String(parse));
+            const decodedToken = jwtDecode<decodedTokenType>(String(parse));
 
-            if (decodedToken.exp! * 1000 < currentDate.getTime()) {
+            if (decodedToken.exp * 1000 < currentDate.getTime()) {
                 const data = await handleRefreshToken();
                 config.headers['authorization'] = 'Bearer ' + data.accessToken;
 

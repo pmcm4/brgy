@@ -22,24 +22,25 @@ import EditProfile from './EditProfile';
 import { useQueries, useQuery } from 'react-query';
 
 function Profile() {
+    const parseUserRequests = JSON.parse(String(sessionStorage.getItem('user_requests')));
+
     const [userDetails, setUserDetails] = useState({
-        name: '',
-        username: '',
-        email: '',
+        name:
+            parseUserRequests.profileDetailsRows[0].first_name +
+                ' ' +
+                parseUserRequests.profileDetailsRows[0].middle_name +
+                ' ' +
+                parseUserRequests.profileDetailsRows[0].last_name || '',
+        username: parseUserRequests.profileDetailsRows[0].username || '',
+        email: parseUserRequests.profileDetailsRows[0].email_address || '',
     });
 
-    const [requestRows, setRequestDetails] = useState([
-        {
-            request_date: '',
-            request_id: '',
-            request_status: '',
-            selected_cert_type: '',
-            user_request_id: '',
-        },
-    ]);
+    const [requestRows, setRequestDetails] = useState<any[]>(parseUserRequests.userRequestsRows);
 
-    const [totalRequests, setTotalRequests] = useState(0);
-    const [yearsResident, setYearsResident] = useState(0);
+    const [totalRequests, setTotalRequests] = useState(parseUserRequests.userRequestsRows.length);
+    const [yearsResident, setYearsResident] = useState(
+        parseUserRequests.profileDetailsRows[0].years_in_san_roque
+    );
     const [unclaimedRequests, setUnclaimedRequests] = useState(0);
 
     const [page, setPage] = React.useState(0);
@@ -81,31 +82,35 @@ function Profile() {
             }
         );
 
-        setRequestDetails(userRequests.data.userRequestsRows);
-        setTotalRequests(userRequests.data.userRequestsRows.length);
+        sessionStorage.setItem('user_requests', JSON.stringify(userRequests.data));
+
+        setRequestDetails(parseUserRequests.userRequestsRows);
+        setTotalRequests(parseUserRequests.userRequestsRows.length);
 
         setUserDetails({
             name:
-                userRequests.data.profileDetailsRows[0].first_name +
+                parseUserRequests.profileDetailsRows[0].first_name +
                 ' ' +
-                userRequests.data.profileDetailsRows[0].middle_name +
+                parseUserRequests.profileDetailsRows[0].middle_name +
                 ' ' +
-                userRequests.data.profileDetailsRows[0].last_name,
-            username: userRequests.data.profileDetailsRows[0].username,
-            email: userRequests.data.profileDetailsRows[0].email_address,
+                parseUserRequests.profileDetailsRows[0].last_name,
+            username: parseUserRequests.profileDetailsRows[0].username,
+            email: parseUserRequests.profileDetailsRows[0].email_address,
         });
 
-        setYearsResident(userRequests.data.profileDetailsRows[0].years_in_san_roque);
+        setYearsResident(parseUserRequests.profileDetailsRows[0].years_in_san_roque);
     };
 
-    // useQuery('getProfileContent', getProfileData);
+    if (authContext?.currentUser) {
+        useQuery('getProfileContent', getProfileData, {
+            cacheTime: 1000 * 60 * 1, // Cache for 1 minute
+            staleTime: 1000 * 30, // Data considered fresh for 30 seconds
+        });
+    }
 
     useEffect(() => {
         if (authContext?.currentUser === null) {
             navigate('/home');
-        }
-        {
-            getProfileData();
         }
     }, []);
 
