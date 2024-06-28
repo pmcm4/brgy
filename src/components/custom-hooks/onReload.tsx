@@ -25,6 +25,7 @@ export const useOnReload = async (
             const decodedToken = jwtDecode<DecodedTokenType>(String(response.data.accessToken));
             setCurrentUser(decodedToken.username);
             setAccessToken(response.data.accessToken);
+            sessionStorage.clear();
 
             return 'withlogin';
         } catch (error) {
