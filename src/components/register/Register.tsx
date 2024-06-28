@@ -379,8 +379,9 @@ function Register() {
                                 <TextField
                                     label="Years in San Roque"
                                     className={styles['input-names']}
-                                    placeholder="1 year"
+                                    placeholder="1"
                                     required
+                                    type="number"
                                     name="yearsInSanRoque"
                                     onChange={handleOnChange}
                                     size="small"
