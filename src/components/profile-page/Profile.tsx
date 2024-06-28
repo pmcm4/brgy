@@ -22,25 +22,16 @@ import EditProfile from './EditProfile';
 import { useQueries, useQuery } from 'react-query';
 
 function Profile() {
-    const parseUserRequests = JSON.parse(String(sessionStorage.getItem('user_requests')));
-
     const [userDetails, setUserDetails] = useState({
-        name:
-            parseUserRequests.profileDetailsRows[0].first_name +
-                ' ' +
-                parseUserRequests.profileDetailsRows[0].middle_name +
-                ' ' +
-                parseUserRequests.profileDetailsRows[0].last_name || '',
-        username: parseUserRequests.profileDetailsRows[0].username || '',
-        email: parseUserRequests.profileDetailsRows[0].email_address || '',
+        name: '',
+        username: '',
+        email: '',
     });
 
-    const [requestRows, setRequestDetails] = useState<any[]>(parseUserRequests.userRequestsRows);
+    const [requestRows, setRequestDetails] = useState<any[]>([]);
 
-    const [totalRequests, setTotalRequests] = useState(parseUserRequests.userRequestsRows.length);
-    const [yearsResident, setYearsResident] = useState(
-        parseUserRequests.profileDetailsRows[0].years_in_san_roque
-    );
+    const [totalRequests, setTotalRequests] = useState(0);
+    const [yearsResident, setYearsResident] = useState(0);
     const [unclaimedRequests, setUnclaimedRequests] = useState(0);
 
     const [page, setPage] = React.useState(0);
@@ -84,6 +75,8 @@ function Profile() {
 
         sessionStorage.setItem('user_requests', JSON.stringify(userRequests.data));
 
+        const parseUserRequests = JSON.parse(String(sessionStorage.getItem('user_requests')));
+
         setRequestDetails(parseUserRequests.userRequestsRows);
         setTotalRequests(parseUserRequests.userRequestsRows.length);
 
@@ -101,7 +94,12 @@ function Profile() {
         setYearsResident(parseUserRequests.profileDetailsRows[0].years_in_san_roque);
     };
 
-    if (authContext?.currentUser) {
+    if (
+        authContext?.currentUser &&
+        JSON.parse(String(sessionStorage.getItem('user_requests'))) === null
+    ) {
+        useQuery('getProfileContent', getProfileData);
+    } else {
         useQuery('getProfileContent', getProfileData, {
             cacheTime: 1000 * 60 * 1, // Cache for 1 minute
             staleTime: 1000 * 30, // Data considered fresh for 30 seconds
@@ -111,6 +109,26 @@ function Profile() {
     useEffect(() => {
         if (authContext?.currentUser === null) {
             navigate('/home');
+        }
+
+        if (JSON.parse(String(sessionStorage.getItem('user_requests'))) !== null) {
+            const parseUserRequests = JSON.parse(String(sessionStorage.getItem('user_requests')));
+
+            setRequestDetails(parseUserRequests.userRequestsRows);
+            setTotalRequests(parseUserRequests.userRequestsRows.length);
+
+            setUserDetails({
+                name:
+                    parseUserRequests.profileDetailsRows[0].first_name +
+                    ' ' +
+                    parseUserRequests.profileDetailsRows[0].middle_name +
+                    ' ' +
+                    parseUserRequests.profileDetailsRows[0].last_name,
+                username: parseUserRequests.profileDetailsRows[0].username,
+                email: parseUserRequests.profileDetailsRows[0].email_address,
+            });
+
+            setYearsResident(parseUserRequests.profileDetailsRows[0].years_in_san_roque);
         }
     }, []);
 
