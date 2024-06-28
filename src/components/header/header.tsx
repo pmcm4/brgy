@@ -85,11 +85,13 @@ const Header = ({ className }: HeaderProps) => {
 
     const handleScrollAbout = async () => {
         navigate('/home');
-        scrollEffectContext?.aboutRef.current?.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
-            inline: 'nearest',
-        });
+        setTimeout(() => {
+            scrollEffectContext?.aboutRef.current?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+                inline: 'nearest',
+            });
+        }, 200);
     };
 
     const handleHamburger = () => {
