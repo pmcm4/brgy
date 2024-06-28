@@ -25,7 +25,7 @@ export interface HeaderProps {
  */
 
 interface DecodedIDType {
-    username: string;
+    firstName: string;
 }
 
 const Header = ({ className }: HeaderProps) => {
@@ -76,19 +76,9 @@ const Header = ({ className }: HeaderProps) => {
     useEffect(() => {
         if (authContext?.accessToken) {
             setCheckExistUser(true);
-            const userNameDecoded = jwtDecode<DecodedIDType>(
-                String(authContext?.accessToken)
-            ).username;
-            const getFirstName = async () => {
-                await axios
-                    .get(
-                        `${process.env.API_DOMAIN}/api/requestData/getFirstName/${userNameDecoded}`
-                    )
-                    .then((data) => {
-                        setUsername(data.data);
-                    });
-            };
-            getFirstName();
+            const firstName = jwtDecode<DecodedIDType>(String(authContext?.accessToken)).firstName;
+
+            setUsername(firstName);
         }
     }, []);
 
