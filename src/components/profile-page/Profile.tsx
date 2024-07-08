@@ -14,12 +14,13 @@ import {
 } from '@mui/material';
 import axios from 'axios';
 import { defaultApi } from '../../api';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import TablePaginationActions from './TablePaginationActions';
 import { useAxios } from '../utils/useAxios';
 import { AuthContext } from '../context/authContext';
 import EditProfile from './EditProfile';
 import { useQueries, useQuery } from 'react-query';
+import ReuploadModal from './ReuploadModal';
 
 function Profile() {
     const [userDetails, setUserDetails] = useState({
@@ -34,8 +35,10 @@ function Profile() {
     const [yearsResident, setYearsResident] = useState(0);
     const [unclaimedRequests, setUnclaimedRequests] = useState(0);
 
-    const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(10);
+    const [page, setPage] = useState(0);
+    const [rowsPerPage, setRowsPerPage] = useState(10);
+
+    const [reuploadModal, setReuploadModal] = useState(false);
 
     // Avoid a layout jump when reaching the last page with empty rows.
     const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - requestRows.length) : 0;
@@ -132,6 +135,14 @@ function Profile() {
         }
     }, []);
 
+    const handleReuploadModal = () => {
+        if (!reuploadModal) {
+            setReuploadModal(true);
+        } else {
+            setReuploadModal(false);
+        }
+    };
+
     return (
         <div className={styles['profile-main-body']}>
             <div className={styles['header-image']} />
@@ -208,6 +219,7 @@ function Profile() {
                                     <TableCell align="center">Type of Request</TableCell>
                                     <TableCell align="center">Date of Request</TableCell>
                                     <TableCell align="center">Status</TableCell>
+                                    <TableCell align="center">Action</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
@@ -235,6 +247,19 @@ function Profile() {
                                         </TableCell>
                                         <TableCell style={{ width: 'auto' }} align="center">
                                             {row.request_status}
+                                        </TableCell>
+                                        <TableCell style={{ width: 'auto' }} align="center">
+                                            <Link
+                                                to={`/profile/${usernameFromURL}/reupload/${row.request_id}`}
+                                            >
+                                                {row.reupload_access !== 0 ? (
+                                                    <button onClick={handleReuploadModal}>
+                                                        Reupload
+                                                    </button>
+                                                ) : (
+                                                    <button disabled>Reupload</button>
+                                                )}
+                                            </Link>
                                         </TableCell>
                                     </TableRow>
                                 ))}

@@ -859,3 +859,525 @@ hr {
     }
 }
 
+
+
+//reuplaod modal
+
+.reupload-background{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reupload-container{
+    background-color: white;
+    border-radius: 20px;
+    z-index: 999;
+    padding: 20px;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.header-perso {
+    text-align: center;
+    font-size: 2em;
+}
+
+.perso-subhead {
+    text-align: center;
+    width: auto;
+}
+
+.input-form {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.input-names {
+    width: 100%;
+    height: 30px;
+    border-radius: 10px;
+}
+
+.label-forms {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.gender-drop-down {
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+}
+
+.next-btn {}
+
+.left-sign {
+    width: 45%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+
+.upload-div {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    margin-top: 15px;
+    align-items: flex-start;
+    margin: 30px 0 30px 0
+}
+
+.first-id {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+
+}
+
+.second-id {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.first-id,
+.second-id {
+    row-gap: 15px;
+    color: rgb(97, 97, 97);
+    font-size: 14px;
+    font-weight: 450;
+    text-align: center;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.first-id span,
+.second-id span {
+    width: 80%;
+}
+
+.signatures-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.nav-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.input-form-proof {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: space-evenly;
+}
+
+.signatures-buttons {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.sketchCanvas {
+    width: 100%;
+    height: 100%;
+}
+
+.sketchBtn {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
+
+}
+
+.nav-btn:hover {
+    background-color: #2fad6e;
+    color: white;
+    border: solid 1px #2fad6e;
+}
+
+
+
+.right-sign {
+    width: 45%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+
+}
+
+.checkSignature {
+    width: 100%;
+    height: 80%;
+    border: solid 1px gray;
+    display: flex;
+}
+
+.sketchImgPreview {
+    width: 100%;
+}
+
+.checkSignatureMessage {
+    color: black;
+    height: 42px;
+}
+
+.nav-buttons-container {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    column-gap: 100px;
+    margin-top: 30px;
+}
+
+.modal-background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(88, 88, 88, 0.5);
+}
+
+
+// styling input type file 
+
+input[type="file"] {
+    display: none;
+}
+
+.file-btn {
+    background-color: rgb(245, 245, 245);
+    display: flex;
+    font-size: 18px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 7px;
+    color: black;
+    cursor: pointer;
+    padding: 10px 15px 10px 15px;
+
+}
+
+.file-btn:hover {
+    background-color: #2fad6e;
+    color: white;
+
+}
+
+.file-div-doc {
+    width: 300px;
+    height: 45px;
+    background-color: rgb(245, 245, 245);
+    border-radius: 10px;
+    border: 1px solid #e4e4e4;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    margin-top: 20px
+}
+
+.file-btn-doc {
+    width: 100px;
+    height: 45px;
+    background-color: rgb(245, 245, 245);
+    display: flex;
+    font-size: 18px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 7px;
+    color: black;
+    cursor: pointer;
+    border-right: 1px solid #e4e4e4;
+    ;
+}
+
+.file-div-doc:hover .file-btn-doc {
+    background-color: #2fad6e;
+    color: white;
+
+}
+
+.tenant-letter-span {
+    margin: 14px 0 14px 0;
+    text-align: center;
+    color: rgb(97, 97, 97);
+    font-size: 14px;
+}
+
+.display-letter-span {
+    width: 100%;
+    text-wrap: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+//iframe
+
+.img-container {
+    width: 340px;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0px 2px 10px 0px rgba(58, 53, 65, 0.6);
+
+}
+
+@media screen and (max-width: 1440px) {
+    .img-container {
+        width: 250px;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .input-form-proof {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+        align-content: center;
+        justify-content: space-evenly;
+    }
+
+    .first-id {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+        align-content: center;
+        justify-content: center;
+
+    }
+
+    .second-id {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+        align-content: center;
+        justify-content: center;
+
+    }
+
+    .left-sign {
+        width: 80%;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+        align-content: center;
+        justify-content: center;
+    }
+
+    .sketchBtn button {
+        font-size: 14px;
+    }
+
+    .signatures-buttons {
+        gap: 10px;
+    }
+
+    .right-sign {
+        width: 80%;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+        align-content: center;
+        justify-content: center;
+    }
+
+    .upload-div {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-items: center;
+        margin-top: 15px;
+        align-items: center;
+        flex-direction: column;
+        row-gap: 20px;
+    }
+}
+
+
+@media screen and (max-width: 800px) {
+    .input-form-proof {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+        align-content: center;
+        justify-content: space-evenly;
+    }
+
+    .left-sign {
+        width: 80%;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+        align-content: center;
+        justify-content: center;
+    }
+
+    .sketchBtn button {
+        font-size: 14px;
+    }
+
+    .signatures-buttons {
+        gap: 10px;
+    }
+
+    .right-sign {
+        width: 80%;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+        align-content: center;
+        justify-content: center;
+    }
+
+    .upload-div {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-items: center;
+        margin-top: 15px;
+        align-items: center;
+        flex-direction: column;
+        row-gap: 20px;
+    }
+
+    .upload-div span {
+        font-size: 12px;
+    }
+
+    .file-btn {
+        font-size: 14px;
+    }
+
+    .img-container {
+        width: 280px;
+    }
+
+    .nav-btn {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    .first-id span,
+    .second-id span {
+        width: 100%;
+    }
+
+    .img-container {
+        width: 240px;
+    }
+
+    .sketchBtn button {
+        font-size: 12px;
+    }
+
+    .file-btn {
+        font-size: 14px;
+    }
+
+    .tenant-letter-span {
+
+        font-size: 14px;
+    }
+
+    .file-div-doc {
+        width: 250px;
+        font-size: 14px;
+    }
+
+    .file-btn-doc {
+        width: 70px;
+    }
+}

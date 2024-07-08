@@ -11,6 +11,7 @@ import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from './components/context/authContext';
 import Loader from './components/loader/Loader';
 import EditProfile from './components/profile-page/EditProfile';
+import ReuploadModal from './components/profile-page/ReuploadModal';
 
 const questions: { faqid: number; faqTitle: string; answer: string }[] = [
     {
@@ -54,6 +55,10 @@ function App() {
                 {
                     path: '/profile/edit/:username',
                     element: <EditProfile closeModal={() => {}} />,
+                },
+                {
+                    path: '/profile/:username/reupload/:request_id',
+                    element: <ReuploadModal />,
                 },
             ],
         },

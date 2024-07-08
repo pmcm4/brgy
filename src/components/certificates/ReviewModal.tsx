@@ -102,6 +102,8 @@ function ReviewModal({ imgID, imgSelf, signatureImg, letterDoc }: ReviewModalPro
                 });
         } catch (error) {
             console.log(error);
+            setSuccessMsg(false);
+            setFailedMsg(true);
         }
     };
 
