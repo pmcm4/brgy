@@ -31,6 +31,7 @@ button {
   font-family: inherit;
   cursor: pointer;
   transition: border-color 0.25s;
+  color: black;
 }
 button:hover:not([disabled]){
   background-color: #2fad6e;
