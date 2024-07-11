@@ -39,12 +39,11 @@ export const FAQ = ({ questions, heading, subheading, className }: FAQProps) => 
                             aria-controls="panel1-content"
                             id="panel1-header"
                         >
-                            What is Lorem Ipsum?
+                            Ano ang mga serbisyo na maaring irequest online sa website ng barangay?
                         </AccordionSummary>
                         <AccordionDetails className={styles['accordion-details']}>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting
-                            industry. Lorem Ipsum has been the industry's standard dummy text ever
-                            since the 1500s,
+                            Maaari kang mag-request ng mga sumusunod na dokumento at serbisyo:
+                            Barangay ID, Clearance, Certificate of Residency, at iba pa.
                         </AccordionDetails>
                     </Accordion>
                     <Accordion className={styles['accordion']}>
@@ -53,18 +52,12 @@ export const FAQ = ({ questions, heading, subheading, className }: FAQProps) => 
                             aria-controls="panel1-content"
                             id="panel1-header"
                         >
-                            Where does it come from?
+                            Paano mag-request ng Barangay ID gamit ang website?
                         </AccordionSummary>
                         <AccordionDetails className={styles['accordion-details']}>
-                            Contrary to popular belief, Lorem Ipsum is not simply random text. It
-                            has roots in a piece of classical Latin literature from 45 BC, making it
-                            over 2000 years old. Richard McClintock, a Latin professor at
-                            Hampden-Sydney College in Virginia, looked up one of the more obscure
-                            Latin words, consectetur, from a Lorem Ipsum passage, and going through
-                            the cites of the word in classical literature, discovered the
-                            undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33
-                            of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by
-                            Cicero,{' '}
+                            Para mag-request ng Barangay ID, pumunta sa bahagi ng 'Services' at
+                            piliin ang Barangay ID. Sundan ang mga tagubilin para sa pagpapakita ng
+                            mga kinakailangang dokumento at impormasyon.
                         </AccordionDetails>
                     </Accordion>
                     <Accordion className={styles['accordion']}>
@@ -73,18 +66,12 @@ export const FAQ = ({ questions, heading, subheading, className }: FAQProps) => 
                             aria-controls="panel1-content"
                             id="panel1-header"
                         >
-                            Why do we use it?
+                            Magkano ang bayad sa pag-request ng mga dokumento online?
                         </AccordionSummary>
                         <AccordionDetails className={styles['accordion-details']}>
-                            It is a long established fact that a reader will be distracted by the
-                            readable content of a page when looking at its layout. The point of
-                            using Lorem Ipsum is that it has a more-or-less normal distribution of
-                            letters, as opposed to using 'Content here, content here', making it
-                            look like readable English. Many desktop publishing packages and web
-                            page editors now use Lorem Ipsum as their default model text, and a
-                            search for 'lorem ipsum' will uncover many web sites still in their
-                            infancy. Various versions have evolved over the years, sometimes by
-                            accident, sometimes on purpose (injected humour and the like).
+                            Ang pag-request ng mga basic na dokumento gaya ng Barangay ID at
+                            Certificate of Residency ay libre. Gayunpaman, maaaring may bayad para
+                            sa mga espesyal na serbisyo o rush requests.
                         </AccordionDetails>
                     </Accordion>
                     <Accordion className={styles['accordion']}>
@@ -93,12 +80,13 @@ export const FAQ = ({ questions, heading, subheading, className }: FAQProps) => 
                             aria-controls="panel1-content"
                             id="panel1-header"
                         >
-                            Where can I get some?
+                            Paano malalaman ang status ng aking request?
                         </AccordionSummary>
                         <AccordionDetails className={styles['accordion-details']}>
-                            There are many variations of passages of Lorem Ipsum available, but the
-                            majority have suffered alteration in some form, by injected humour, or
-                            randomised words which don't look even slightly believable.
+                            Maaari mong ma-track ang status ng iyong request sa pamamagitan ng
+                            pag-login sa iyong account sa website at pagpunta sa bahagi ng
+                            'Profile'. Makikita mo ang impormasyon ng iyong mga reques sa loob ng
+                            iyong Profile page.
                         </AccordionDetails>
                     </Accordion>
                 </div>
@@ -109,12 +97,17 @@ export const FAQ = ({ questions, heading, subheading, className }: FAQProps) => 
                             aria-controls="panel1-content"
                             id="panel1-header"
                         >
-                            What is Lorem Ipsum?
+                            Ano ang mga kinakailangang dokumento para sa pag-request ng Barangay
+                            Certifcates?
                         </AccordionSummary>
                         <AccordionDetails className={styles['accordion-details']}>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting
-                            industry. Lorem Ipsum has been the industry's standard dummy text ever
-                            since the 1500s,
+                            Para sa mga may-ari ng bahay (homeowner), karaniwang kailangan ang valid
+                            ID (tulad ng Voter's ID, Passport, o Driver's License) na may address sa
+                            Barangay San Roque. Depende sa uri ng clearance na kailangan, maaaring
+                            hingin din ng opisyal ng barangay ang iba pang dokumento. Kung ikaw ay
+                            tenant o nangungupahan, maaari kang magbigay ng valid ID at isang sulat
+                            mula sa iyong landlord o may-ari ng bahay na nagpapatunay na ikaw ay
+                            aktibong nangungupahan sa nasabing address.
                         </AccordionDetails>
                     </Accordion>
                     <Accordion className={styles['accordion']}>
@@ -123,18 +116,14 @@ export const FAQ = ({ questions, heading, subheading, className }: FAQProps) => 
                             aria-controls="panel1-content"
                             id="panel1-header"
                         >
-                            Where does it come from?
+                            Paano magbigay ng feedback o reklamo tungkol sa serbisyo ng barangay?
                         </AccordionSummary>
                         <AccordionDetails className={styles['accordion-details']}>
-                            Contrary to popular belief, Lorem Ipsum is not simply random text. It
-                            has roots in a piece of classical Latin literature from 45 BC, making it
-                            over 2000 years old. Richard McClintock, a Latin professor at
-                            Hampden-Sydney College in Virginia, looked up one of the more obscure
-                            Latin words, consectetur, from a Lorem Ipsum passage, and going through
-                            the cites of the word in classical literature, discovered the
-                            undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33
-                            of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by
-                            Cicero,{' '}
+                            Maaari kang magbigay ng feedback o reklamo sa pamamagitan ng 'Contact
+                            Us' section ng aming website. Ilahad ang mga detalye ng iyong karanasan
+                            o mga katanungan, at ang aming team ay sasagutin ka sa lalong madaling
+                            panahon. Maaari mo rin kaming i-message sa aming Facebook page ng
+                            Barangay para sa karagdagang katanungan o pagbibigay ng feedback.
                         </AccordionDetails>
                     </Accordion>
                     <Accordion className={styles['accordion']}>
@@ -143,32 +132,14 @@ export const FAQ = ({ questions, heading, subheading, className }: FAQProps) => 
                             aria-controls="panel1-content"
                             id="panel1-header"
                         >
-                            Why do we use it?
+                            Ano ang mga oras ng operasyon ng opisina ng barangay para sa pagproseso
+                            ng online requests?
                         </AccordionSummary>
                         <AccordionDetails className={styles['accordion-details']}>
-                            It is a long established fact that a reader will be distracted by the
-                            readable content of a page when looking at its layout. The point of
-                            using Lorem Ipsum is that it has a more-or-less normal distribution of
-                            letters, as opposed to using 'Content here, content here', making it
-                            look like readable English. Many desktop publishing packages and web
-                            page editors now use Lorem Ipsum as their default model text, and a
-                            search for 'lorem ipsum' will uncover many web sites still in their
-                            infancy. Various versions have evolved over the years, sometimes by
-                            accident, sometimes on purpose (injected humour and the like).
-                        </AccordionDetails>
-                    </Accordion>
-                    <Accordion className={styles['accordion']}>
-                        <AccordionSummary
-                            expandIcon={<ExpandMoreIcon />}
-                            aria-controls="panel1-content"
-                            id="panel1-header"
-                        >
-                            Where can I get some?
-                        </AccordionSummary>
-                        <AccordionDetails className={styles['accordion-details']}>
-                            There are many variations of passages of Lorem Ipsum available, but the
-                            majority have suffered alteration in some form, by injected humour, or
-                            randomised words which don't look even slightly believable.
+                            Ang opisina ng barangay ay bukas mula Lunes hanggang Biyernes, mula 7:00
+                            AM hanggang 5:00 PM. Ang mga request na natanggap pagkatapos ng oras na
+                            ito ay maaaring asikasuhin sa susunod na araw na opisyal na pagbubukas
+                            ng opisina.
                         </AccordionDetails>
                     </Accordion>
                 </div>

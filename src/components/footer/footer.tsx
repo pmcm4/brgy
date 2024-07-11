@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import styles from './footer.module.scss';
+import { Link } from 'react-router-dom';
 
 export interface FooterProps {
     className?: string;
@@ -20,36 +21,52 @@ export const Footer = ({ className }: FooterProps) => {
                         className={styles['footer-logo']}
                     />
                     <span className={styles['footer-desc']}>
-                        Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-                        Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum{' '}
+                        Isang aktibong komunidad na may epektibong pamahalaan at serbisyong
+                        pang-komunidad.
                     </span>
                 </div>
                 <div className={styles['footer-right']}>
                     <div className={styles['footer-functions']}>
                         <ul className={styles['contact-list']}>
                             <li className={styles['contact-title']}>Contact</li>
-                            <li>Info@mysite.com</li>
-                            <li>Tel: 123-456-7890</li>
-                            <li>500 Terry Francine St</li>
-                            <li>San Francisco, CA 94158</li>
+                            <li>barangaysanroque.marikinacity@gmail.com</li>
+                            <li>Tel: 646-84-79</li>
+                            <li>210 Shoe Avenue, Barangay San Roque</li>
+                            <li>Marikina City, Marikina City, Philippines, 1801</li>
                         </ul>
                     </div>
                     <div className={styles['footer-functions']}>
                         <ul className={styles['contact-list']}>
                             <li className={styles['contact-title']}>Navigation</li>
-                            <li>Info@mysite.com</li>
-                            <li>Tel: 123-456-7890</li>
-                            <li>500 Terry Francine St</li>
-                            <li>San Francisco, CA 94158</li>
+                            <Link to="/home">
+                                <li>Home</li>
+                            </Link>
+                            <Link to="/home">
+                                <li>About</li>
+                            </Link>
+                            <Link to="/certificates">
+                                <li>Services</li>
+                            </Link>
+                            <Link to="/login">
+                                <li>Login</li>
+                            </Link>
                         </ul>
                     </div>
                     <div className={styles['footer-functions']}>
                         <ul className={styles['contact-list']}>
                             <li className={styles['contact-title']}>Social Media</li>
-                            <li>Info@mysite.com</li>
-                            <li>Tel: 123-456-7890</li>
-                            <li>500 Terry Francine St</li>
-                            <li>San Francisco, CA 94158</li>
+                            <Link
+                                to="https://www.facebook.com/BarangaySanRoqueMarikinaCity"
+                                target="blank__"
+                            >
+                                <li>Facebook</li>
+                            </Link>
+                            <Link
+                                to="https://www.instagram.com/barangaysanroque.marikinacity/"
+                                target="blank__"
+                            >
+                                <li>Instagram</li>
+                            </Link>
                         </ul>
                     </div>
                 </div>
