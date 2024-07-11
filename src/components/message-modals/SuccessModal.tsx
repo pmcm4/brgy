@@ -25,7 +25,6 @@ function SuccessModal({ title, message, buttonLink, buttonTitle, resetStates }: 
                 <div className={styles['inner-modal-message-with-btn']}>
                     <span
                         style={{
-                            width: '280px',
                             textAlign: 'center',
                             fontWeight: '500',
                             fontSize: '18px',
