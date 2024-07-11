@@ -113,11 +113,13 @@ const Header = ({ className }: HeaderProps) => {
     return (
         <div className={classNames(styles.root, className)}>
             <div className={styles.left}>
-                <img
-                    src="https://storage.googleapis.com/barangay-san-roque-public/logo_sln6bp.png"
-                    alt="brgy-logo"
-                    className={styles.logo}
-                />
+                <Link to={'/home'}>
+                    <img
+                        src="https://storage.googleapis.com/barangay-san-roque-public/logo_sln6bp.png"
+                        alt="brgy-logo"
+                        className={styles.logo}
+                    />
+                </Link>
             </div>
 
             <div className={styles.right}>
@@ -171,7 +173,13 @@ const Header = ({ className }: HeaderProps) => {
                     </div>
                 )}
 
-                <span className={styles['menu-items']}>Get in Touch →</span>
+                <Link
+                    to={'https://www.facebook.com/BarangaySanRoqueMarikinaCity'}
+                    target="blank__"
+                    id={styles['get-in-touch']}
+                >
+                    <span className={styles['menu-items']}>Get in Touch →</span>
+                </Link>
             </div>
 
             <span className={styles['hamburger']} onClick={handleHamburger}>
@@ -250,7 +258,13 @@ const Header = ({ className }: HeaderProps) => {
                             )}
                         </div>
                     )}
-                    <span className={styles['menu-items']}>Get in Touch →</span>
+                    <Link
+                        to={'https://www.facebook.com/BarangaySanRoqueMarikinaCity'}
+                        target="blank__"
+                        id={styles['get-in-touch-hamburger']}
+                    >
+                        <span className={styles['menu-items']}>Get in Touch →</span>
+                    </Link>
                 </div>
             )}
             {showHamburger === true ? (

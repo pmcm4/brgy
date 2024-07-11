@@ -340,13 +340,13 @@
     width: 100%;
 }
 
-@media screen and (min-height: 754px) {
+@media screen and (min-height: 768px)  {
     .reg-main-container {
         height: 100vh !important;
     }
 }
 
-@media screen and (max-height: 754px) {
+@media screen and (max-height: 768px) and (max-width: 1024px) {
     .reg-main-container {
         height: unset !important;
     }

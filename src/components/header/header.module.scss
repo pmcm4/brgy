@@ -38,6 +38,7 @@
 .logo {
     width: 130px;
     border-radius: 200px;
+    cursor: pointer;
 }
 
 .menu-items {
@@ -60,14 +61,17 @@
     color: #2fad6e;
 }
 
-
-.right .menu-items:nth-child(6) {
+#get-in-touch{
     border: 2px solid #2fad6e;
+    text-decoration: none;
 }
 
-.right .menu-items:nth-child(6):hover {
+#get-in-touch:nth-child(6) span:hover {
     color: white;
     background-color: #2fad6e;
+}
+#get-in-touch-hamburger{
+    text-decoration: none;
 }
 
 .hamburger {

@@ -382,7 +382,8 @@ const Home = ({ className }: HomeProps) => {
                 <div className={styles['home-header-div']}>
                     <span className={styles['heading-text']}>Barangay San Roque</span>
                     <p className={styles.subheading}>
-                        Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Ipsum Ipsum
+                        Isang aktibong komunidad na may epektibong pamahalaan at serbisyong
+                        pang-komunidad.
                     </p>
                 </div>
             </div>
@@ -422,18 +423,25 @@ const Home = ({ className }: HomeProps) => {
                     >
                         ABOUT US
                     </span>
-                    <span className={styles['header-about-main']}>
-                        LOREM IPSUM LOREM IPSUMLOREM IPSUM
-                    </span>
+                    <span className={styles['header-about-main']}>BARANGAY SAN ROQUE</span>
                     <span className={styles['subhead-home-about']}>
-                        LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUMLOREM IPSUM LOREM IPSUM LOREM
-                        IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM
-                        IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUM
+                        Ang Barangay San Roque ay isang masiglang komunidad na matatagpuan sa
+                        District 1 ng Lungsod ng Marikina. Kilala sa aktibong pamahalaang lokal at
+                        magkakalapit na kapitbahayan, ang San Roque ay nakatuon sa kapakanan at
+                        kaligtasan ng mga residente nito. Nagbibigay ang barangay ng mahahalagang
+                        serbisyo, kabilang ang online na mga plataporma para sa paghingi ng barangay
+                        certificates at IDs, na nagtataguyod ng episyente at madaling pamamahala ng
+                        komunidad.
                     </span>
                     <button className={styles['about-btn']}>Learn More</button>
                 </div>
                 <div className={styles['right-about-info']}>
-                    <span>VIDEO</span>
+                    <video className={styles['video-container']} controls>
+                        <source
+                            src="https://storage.googleapis.com/barangay-san-roque-public/BARANGAY_SAN_ROQUE.mp4"
+                            type="video/mp4"
+                        />
+                    </video>
                 </div>
             </div>
             <div className={styles['brgy-info-mem']}>
@@ -487,8 +495,9 @@ const Home = ({ className }: HomeProps) => {
                             <span className={styles['cpt-title']}>Punong Barangay</span>
                             <span className={styles['cpt-name']}>Tadeo Allan M. Aramil</span>
                             <span className={styles['cpt-desc']}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                A dedicated Punong Barangay of Barangay San Roque, Marikina City.
+                                Born on October 28, 1968, he has served the community since 1996,
+                                contributing significantly to local welfare and safety.
                             </span>
 
                             <div className={styles['ctncus-container']}>

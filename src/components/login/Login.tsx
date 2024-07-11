@@ -58,6 +58,7 @@ function Login() {
                         alt=""
                         className={styles['login-logo']}
                     />
+
                     <span className={styles['login-logo-text-container']}>
                         <span className={styles['login-span']}>BARANGAY</span>
                         <span className={styles['login-span']}>SAN ROQUE</span>
@@ -99,7 +100,12 @@ function Login() {
                 </Link>
 
                 <hr className={styles['login-divider-foot']} />
-                <p className={styles['login-p-foot']}>Forgot password?</p>
+                <div className={styles['login-p-foot']}>
+                    <Link to={'/home'} style={{ width: 'unset', color: 'gray' }}>
+                        <p id={styles['back-home']}>Back to home</p>
+                    </Link>
+                    <p>Forgot password?</p>
+                </div>
             </form>
             {failModal === true && (
                 <FailedModal

@@ -69,17 +69,23 @@
     margin-bottom: 30px;
 }
 
-.login-p-foot{
-    font-size: 14px;
-    color: gray;
-    margin-top: 5px;
-    width: 100%;
-    text-align: end;
-    cursor: pointer;
+#back-home{
+    float: right;
 }
 
-.login-p-foot:hover{
+.login-p-foot{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 14px;
+    color: gray;
+    width: 100%;
+    text-align: end;
+}
+
+.login-p-foot p:hover{
     color: rgb(54, 54, 54);
+    cursor: pointer;
 }
 
 .login-input{
