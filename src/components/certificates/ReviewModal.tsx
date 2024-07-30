@@ -21,6 +21,7 @@ import FailedModal from '../message-modals/FailedModal';
 import SuccessModal from '../message-modals/SuccessModal';
 import { AuthContext } from '../context/authContext';
 import TextField from '@mui/material/TextField';
+import { LanguageContext } from '../context/languageContext';
 
 interface ReviewModalProps {
     imgID: {
@@ -40,6 +41,7 @@ interface ReviewModalProps {
 
 function ReviewModal({ imgID, imgSelf, signatureImg, letterDoc }: ReviewModalProps) {
     const reviewContext = useContext(ReviewContext);
+    const languageContext = useContext(LanguageContext);
 
     const [successMsg, setSuccessMsg] = useState(false);
     const [failedMsg, setFailedMsg] = useState(false);
@@ -419,10 +421,15 @@ function ReviewModal({ imgID, imgSelf, signatureImg, letterDoc }: ReviewModalPro
     };
     return (
         <div className={styles['review-modal-container']}>
-            <span className={styles['review-section-labels']}>
-                {' '}
-                Requestor's Personal Information
-            </span>
+            {languageContext?.selectEnglish ? (
+                <span className={styles['review-section-labels']}>
+                    Requestor's Personal Information
+                </span>
+            ) : (
+                <span className={styles['review-section-labels']}>
+                    Personal na Impormasyon ng Humihiling
+                </span>
+            )}
             <hr />
             <div className={styles['request-text-details-inner']}>
                 <TextField
@@ -537,10 +544,15 @@ function ReviewModal({ imgID, imgSelf, signatureImg, letterDoc }: ReviewModalPro
             </div>
 
             <br />
-            <span className={styles['review-section-labels']}>
-                {' '}
-                Requestor's Emergency Information
-            </span>
+            {languageContext?.selectEnglish ? (
+                <span className={styles['review-section-labels']}>
+                    Requestor's Emergency Information
+                </span>
+            ) : (
+                <span className={styles['review-section-labels']}>
+                    Emerhensiyang Impormasyon ng Humihiling
+                </span>
+            )}
             <hr />
             <div className={styles['request-text-details-inner']}>
                 <TextField
@@ -580,7 +592,11 @@ function ReviewModal({ imgID, imgSelf, signatureImg, letterDoc }: ReviewModalPro
                 />{' '}
             </div>
             <br />
-            <span className={styles['review-section-labels']}> Requestor's Address</span>
+            {languageContext?.selectEnglish ? (
+                <span className={styles['review-section-labels']}> Requestor's Address</span>
+            ) : (
+                <span className={styles['review-section-labels']}> Address ng Humihiling</span>
+            )}
             <hr />
             <div className={styles['request-text-details-inner']}>
                 <TextField
@@ -649,7 +665,13 @@ function ReviewModal({ imgID, imgSelf, signatureImg, letterDoc }: ReviewModalPro
 
             <br />
 
-            <span className={styles['review-section-labels']}> Requestor's Request Type</span>
+            {languageContext?.selectEnglish ? (
+                <span className={styles['review-section-labels']}> Requestor's Request Type</span>
+            ) : (
+                <span className={styles['review-section-labels']}>
+                    Uri ng Kahilingan ng Humihiling
+                </span>
+            )}
             <hr />
             <div className={styles['request-text-details-inner-type']}>
                 {reviewContext?.certificateForm?.selectedCert === 'barangayClearance' && (

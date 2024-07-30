@@ -8,6 +8,7 @@ import FailedModal from '../message-modals/FailedModal';
 import InputLabel from '@mui/material/InputLabel';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LanguageContext } from '../context/languageContext';
 
 interface DropDownFormProps {
     onNext: (e: React.FormEvent<HTMLFormElement | HTMLButtonElement>) => void;
@@ -21,6 +22,7 @@ const formatDate = (date: dayjs.Dayjs | null) => {
 
 export function BarangayClearanceForm({ onNext, onBack, disableBack }: DropDownFormProps) {
     const reviewContext = useContext(ReviewContext);
+    const languageContext = useContext(LanguageContext);
 
     const [barangayClearanceRequestObj, setBarangayClearanceRequestObj] = useState({
         purpose: '',
@@ -72,23 +74,38 @@ export function BarangayClearanceForm({ onNext, onBack, disableBack }: DropDownF
                     />
                 </div>
             </div>
-            <div className={styles['nav-buttons-container']}>
-                {disableBack === false && (
-                    <button className={styles['nav-btn']} onClick={onBack}>
-                        Back
-                    </button>
-                )}
+            {languageContext?.selectEnglish ? (
+                <div className={styles['nav-buttons-container']}>
+                    {disableBack === false && (
+                        <button className={styles['nav-btn']} onClick={onBack}>
+                            Back
+                        </button>
+                    )}
 
-                <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
-                    Next
-                </button>
-            </div>
+                    <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
+                        Next
+                    </button>
+                </div>
+            ) : (
+                <div className={styles['nav-buttons-container']}>
+                    {disableBack === false && (
+                        <button className={styles['nav-btn']} onClick={onBack}>
+                            Bumalik
+                        </button>
+                    )}
+
+                    <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
+                        Susunod
+                    </button>
+                </div>
+            )}
         </form>
     );
 }
 
 export function Indigency({ onNext, onBack, disableBack }: DropDownFormProps) {
     const reviewContext = useContext(ReviewContext);
+    const languageContext = useContext(LanguageContext);
 
     const [indigencyRequestObj, setIndigencyRequestObj] = useState({
         purpose: '',
@@ -141,23 +158,38 @@ export function Indigency({ onNext, onBack, disableBack }: DropDownFormProps) {
                     />
                 </div>
             </div>
-            <div className={styles['nav-buttons-container']}>
-                {disableBack === false && (
-                    <button className={styles['nav-btn']} onClick={onBack}>
-                        Back
-                    </button>
-                )}
+            {languageContext?.selectEnglish ? (
+                <div className={styles['nav-buttons-container']}>
+                    {disableBack === false && (
+                        <button className={styles['nav-btn']} onClick={onBack}>
+                            Back
+                        </button>
+                    )}
 
-                <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
-                    Next
-                </button>
-            </div>
+                    <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
+                        Next
+                    </button>
+                </div>
+            ) : (
+                <div className={styles['nav-buttons-container']}>
+                    {disableBack === false && (
+                        <button className={styles['nav-btn']} onClick={onBack}>
+                            Bumalik
+                        </button>
+                    )}
+
+                    <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
+                        Susunod
+                    </button>
+                </div>
+            )}
         </form>
     );
 }
 
 export function BarangayIDForm({ onNext, onBack, disableBack }: DropDownFormProps) {
     const reviewContext = useContext(ReviewContext);
+    const languageContext = useContext(LanguageContext);
     const [barangayIDRequestObj, setBarangayIDRequestObj] = useState({
         purpose: '',
     });
@@ -206,22 +238,38 @@ export function BarangayIDForm({ onNext, onBack, disableBack }: DropDownFormProp
                     />
                 </div>
             </div>
-            <div className={styles['nav-buttons-container']}>
-                {disableBack === false && (
-                    <button className={styles['nav-btn']} onClick={onBack}>
-                        Back
+            {languageContext?.selectEnglish ? (
+                <div className={styles['nav-buttons-container']}>
+                    {disableBack === false && (
+                        <button className={styles['nav-btn']} onClick={onBack}>
+                            Back
+                        </button>
+                    )}
+
+                    <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
+                        Next
                     </button>
-                )}
-                <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
-                    Next
-                </button>
-            </div>
+                </div>
+            ) : (
+                <div className={styles['nav-buttons-container']}>
+                    {disableBack === false && (
+                        <button className={styles['nav-btn']} onClick={onBack}>
+                            Bumalik
+                        </button>
+                    )}
+
+                    <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
+                        Susunod
+                    </button>
+                </div>
+            )}
         </form>
     );
 }
 
 export function SoloParentForm({ onNext, onBack, disableBack }: DropDownFormProps) {
     const reviewContext = useContext(ReviewContext);
+    const languageContext = useContext(LanguageContext);
     const [soloParentRequestObj, setSoloParentRequestObj] = useState({
         purpose: '',
         childName: '',
@@ -369,22 +417,38 @@ export function SoloParentForm({ onNext, onBack, disableBack }: DropDownFormProp
                     />
                 </div>
             </div>
-            <div className={styles['nav-buttons-container']}>
-                {disableBack === false && (
-                    <button className={styles['nav-btn']} onClick={onBack}>
-                        Back
+            {languageContext?.selectEnglish ? (
+                <div className={styles['nav-buttons-container']}>
+                    {disableBack === false && (
+                        <button className={styles['nav-btn']} onClick={onBack}>
+                            Back
+                        </button>
+                    )}
+
+                    <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
+                        Next
                     </button>
-                )}
-                <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
-                    Next
-                </button>
-            </div>
+                </div>
+            ) : (
+                <div className={styles['nav-buttons-container']}>
+                    {disableBack === false && (
+                        <button className={styles['nav-btn']} onClick={onBack}>
+                            Bumalik
+                        </button>
+                    )}
+
+                    <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
+                        Susunod
+                    </button>
+                </div>
+            )}
         </form>
     );
 }
 
 export function CohabitationForm({ onNext, onBack, disableBack }: DropDownFormProps) {
     const reviewContext = useContext(ReviewContext);
+    const languageContext = useContext(LanguageContext);
     const [cohabitationRequestObj, setCohabitationRequestObj] = useState({
         purpose: '',
         birthAddress: '',
@@ -501,16 +565,31 @@ export function CohabitationForm({ onNext, onBack, disableBack }: DropDownFormPr
                     />
                 </div>
             </div>
-            <div className={styles['nav-buttons-container']}>
-                {disableBack === false && (
-                    <button className={styles['nav-btn']} onClick={onBack}>
-                        Back
+            {languageContext?.selectEnglish ? (
+                <div className={styles['nav-buttons-container']}>
+                    {disableBack === false && (
+                        <button className={styles['nav-btn']} onClick={onBack}>
+                            Back
+                        </button>
+                    )}
+
+                    <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
+                        Next
                     </button>
-                )}
-                <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
-                    Next
-                </button>
-            </div>
+                </div>
+            ) : (
+                <div className={styles['nav-buttons-container']}>
+                    {disableBack === false && (
+                        <button className={styles['nav-btn']} onClick={onBack}>
+                            Bumalik
+                        </button>
+                    )}
+
+                    <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
+                        Susunod
+                    </button>
+                </div>
+            )}
         </form>
     );
 }
@@ -531,6 +610,7 @@ export function GoodMoralForm({ onNext, onBack, disableBack }: DropDownFormProps
     };
 
     const reviewContext = useContext(ReviewContext);
+    const languageContext = useContext(LanguageContext);
     const handleOnClick = () => {
         reviewContext?.setCertificateForm({
             selectedCert: 'goodMoral',
@@ -582,16 +662,31 @@ export function GoodMoralForm({ onNext, onBack, disableBack }: DropDownFormProps
                     />
                 </div>
             </div>
-            <div className={styles['nav-buttons-container']}>
-                {disableBack === false && (
-                    <button className={styles['nav-btn']} onClick={onBack}>
-                        Back
+            {languageContext?.selectEnglish ? (
+                <div className={styles['nav-buttons-container']}>
+                    {disableBack === false && (
+                        <button className={styles['nav-btn']} onClick={onBack}>
+                            Back
+                        </button>
+                    )}
+
+                    <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
+                        Next
                     </button>
-                )}
-                <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
-                    Next
-                </button>
-            </div>
+                </div>
+            ) : (
+                <div className={styles['nav-buttons-container']}>
+                    {disableBack === false && (
+                        <button className={styles['nav-btn']} onClick={onBack}>
+                            Bumalik
+                        </button>
+                    )}
+
+                    <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
+                        Susunod
+                    </button>
+                </div>
+            )}
         </form>
     );
 }
@@ -614,6 +709,7 @@ export function NoIncomeForm({ onNext, onBack, disableBack }: DropDownFormProps)
     };
 
     const reviewContext = useContext(ReviewContext);
+    const languageContext = useContext(LanguageContext);
     const handleOnClick = () => {
         reviewContext?.setCertificateForm({
             selectedCert: 'noIncome',
@@ -687,16 +783,31 @@ export function NoIncomeForm({ onNext, onBack, disableBack }: DropDownFormProps)
                     />
                 </div>
             </div>
-            <div className={styles['nav-buttons-container']}>
-                {disableBack === false && (
-                    <button className={styles['nav-btn']} onClick={onBack}>
-                        Back
+            {languageContext?.selectEnglish ? (
+                <div className={styles['nav-buttons-container']}>
+                    {disableBack === false && (
+                        <button className={styles['nav-btn']} onClick={onBack}>
+                            Back
+                        </button>
+                    )}
+
+                    <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
+                        Next
                     </button>
-                )}
-                <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
-                    Next
-                </button>
-            </div>
+                </div>
+            ) : (
+                <div className={styles['nav-buttons-container']}>
+                    {disableBack === false && (
+                        <button className={styles['nav-btn']} onClick={onBack}>
+                            Bumalik
+                        </button>
+                    )}
+
+                    <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
+                        Susunod
+                    </button>
+                </div>
+            )}
         </form>
     );
 }
@@ -720,6 +831,7 @@ export function FirstTimeJobSeekerForm({ onNext, onBack, disableBack }: DropDown
     };
 
     const reviewContext = useContext(ReviewContext);
+    const languageContext = useContext(LanguageContext);
     const handleOnClick = () => {
         reviewContext?.setCertificateForm({
             selectedCert: 'firstTimeJobSeeker',
@@ -782,16 +894,31 @@ export function FirstTimeJobSeekerForm({ onNext, onBack, disableBack }: DropDown
                     </LocalizationProvider>
                 </div>
             </div>
-            <div className={styles['nav-buttons-container']}>
-                {disableBack === false && (
-                    <button className={styles['nav-btn']} onClick={onBack}>
-                        Back
+            {languageContext?.selectEnglish ? (
+                <div className={styles['nav-buttons-container']}>
+                    {disableBack === false && (
+                        <button className={styles['nav-btn']} onClick={onBack}>
+                            Back
+                        </button>
+                    )}
+
+                    <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
+                        Next
                     </button>
-                )}
-                <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
-                    Next
-                </button>
-            </div>
+                </div>
+            ) : (
+                <div className={styles['nav-buttons-container']}>
+                    {disableBack === false && (
+                        <button className={styles['nav-btn']} onClick={onBack}>
+                            Bumalik
+                        </button>
+                    )}
+
+                    <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
+                        Susunod
+                    </button>
+                </div>
+            )}
         </form>
     );
 }
@@ -813,6 +940,7 @@ export function ResidencyForm({ onNext, onBack, disableBack }: DropDownFormProps
     };
 
     const reviewContext = useContext(ReviewContext);
+    const languageContext = useContext(LanguageContext);
     const handleOnClick = () => {
         reviewContext?.setCertificateForm({
             selectedCert: 'residency',
@@ -888,16 +1016,31 @@ export function ResidencyForm({ onNext, onBack, disableBack }: DropDownFormProps
                     />
                 </div>
             </div>
-            <div className={styles['nav-buttons-container']}>
-                {disableBack === false && (
-                    <button className={styles['nav-btn']} onClick={onBack}>
-                        Back
+            {languageContext?.selectEnglish ? (
+                <div className={styles['nav-buttons-container']}>
+                    {disableBack === false && (
+                        <button className={styles['nav-btn']} onClick={onBack}>
+                            Back
+                        </button>
+                    )}
+
+                    <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
+                        Next
                     </button>
-                )}
-                <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
-                    Next
-                </button>
-            </div>
+                </div>
+            ) : (
+                <div className={styles['nav-buttons-container']}>
+                    {disableBack === false && (
+                        <button className={styles['nav-btn']} onClick={onBack}>
+                            Bumalik
+                        </button>
+                    )}
+
+                    <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
+                        Susunod
+                    </button>
+                </div>
+            )}
         </form>
     );
 }
@@ -918,6 +1061,7 @@ export function TransferResidencyForm({ onNext, onBack, disableBack }: DropDownF
     };
 
     const reviewContext = useContext(ReviewContext);
+    const languageContext = useContext(LanguageContext);
     const handleOnClick = () => {
         reviewContext?.setCertificateForm({
             selectedCert: 'transferOfResidency',
@@ -981,16 +1125,31 @@ export function TransferResidencyForm({ onNext, onBack, disableBack }: DropDownF
                     />
                 </div>
             </div>
-            <div className={styles['nav-buttons-container']}>
-                {disableBack === false && (
-                    <button className={styles['nav-btn']} onClick={onBack}>
-                        Back
+            {languageContext?.selectEnglish ? (
+                <div className={styles['nav-buttons-container']}>
+                    {disableBack === false && (
+                        <button className={styles['nav-btn']} onClick={onBack}>
+                            Back
+                        </button>
+                    )}
+
+                    <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
+                        Next
                     </button>
-                )}
-                <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
-                    Next
-                </button>
-            </div>
+                </div>
+            ) : (
+                <div className={styles['nav-buttons-container']}>
+                    {disableBack === false && (
+                        <button className={styles['nav-btn']} onClick={onBack}>
+                            Bumalik
+                        </button>
+                    )}
+
+                    <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
+                        Susunod
+                    </button>
+                </div>
+            )}
         </form>
     );
 }
@@ -1014,6 +1173,7 @@ export function LivingStillForm({ onNext, onBack, disableBack }: DropDownFormPro
     };
 
     const reviewContext = useContext(ReviewContext);
+    const languageContext = useContext(LanguageContext);
     const handleOnClick = () => {
         reviewContext?.setCertificateForm({
             selectedCert: 'livingStill',
@@ -1086,16 +1246,31 @@ export function LivingStillForm({ onNext, onBack, disableBack }: DropDownFormPro
                     />
                 </div>
             </div>
-            <div className={styles['nav-buttons-container']}>
-                {disableBack === false && (
-                    <button className={styles['nav-btn']} onClick={onBack}>
-                        Back
+            {languageContext?.selectEnglish ? (
+                <div className={styles['nav-buttons-container']}>
+                    {disableBack === false && (
+                        <button className={styles['nav-btn']} onClick={onBack}>
+                            Back
+                        </button>
+                    )}
+
+                    <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
+                        Next
                     </button>
-                )}
-                <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
-                    Next
-                </button>
-            </div>
+                </div>
+            ) : (
+                <div className={styles['nav-buttons-container']}>
+                    {disableBack === false && (
+                        <button className={styles['nav-btn']} onClick={onBack}>
+                            Bumalik
+                        </button>
+                    )}
+
+                    <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
+                        Susunod
+                    </button>
+                </div>
+            )}
         </form>
     );
 }
@@ -1126,6 +1301,7 @@ export function BirthFactForm({ onNext, onBack, disableBack }: DropDownFormProps
     };
 
     const reviewContext = useContext(ReviewContext);
+    const languageContext = useContext(LanguageContext);
     const handleOnClick = () => {
         reviewContext?.setCertificateForm({
             selectedCert: 'birthFact',
@@ -1264,16 +1440,31 @@ export function BirthFactForm({ onNext, onBack, disableBack }: DropDownFormProps
                     />
                 </div>
             </div>
-            <div className={styles['nav-buttons-container']}>
-                {disableBack === false && (
-                    <button className={styles['nav-btn']} onClick={onBack}>
-                        Back
+            {languageContext?.selectEnglish ? (
+                <div className={styles['nav-buttons-container']}>
+                    {disableBack === false && (
+                        <button className={styles['nav-btn']} onClick={onBack}>
+                            Back
+                        </button>
+                    )}
+
+                    <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
+                        Next
                     </button>
-                )}
-                <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
-                    Next
-                </button>
-            </div>
+                </div>
+            ) : (
+                <div className={styles['nav-buttons-container']}>
+                    {disableBack === false && (
+                        <button className={styles['nav-btn']} onClick={onBack}>
+                            Bumalik
+                        </button>
+                    )}
+
+                    <button className={styles['nav-btn']} onClick={handleOnClick} onSubmit={onNext}>
+                        Susunod
+                    </button>
+                </div>
+            )}
         </form>
     );
 }

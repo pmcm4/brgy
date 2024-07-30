@@ -33,6 +33,7 @@ import InputLabel from '@mui/material/InputLabel';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { useAxios } from '../utils/useAxios';
+import { LanguageContext } from '../context/languageContext';
 
 export interface CertificatesProps {
     className?: string;
@@ -108,6 +109,8 @@ export const Certificates = ({ className }: CertificatesProps) => {
 
     const reviewContext = useContext(ReviewContext);
     const authContext = useContext(AuthContext);
+    const languageContext = useContext(LanguageContext);
+
     let useJWTAxios = useAxios();
 
     useEffect(() => {
@@ -420,10 +423,22 @@ export const Certificates = ({ className }: CertificatesProps) => {
     return (
         <div className={classNames(styles.root, className)}>
             <div className={styles['header-certs']}>
-                <span className={styles['heading-text']}>Certificates</span>
-                <span className={styles.subheading}>
-                    Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-                </span>
+                {languageContext?.selectEnglish ? (
+                    <span className={styles['heading-text']}>Certificates</span>
+                ) : (
+                    <span className={styles['heading-text']}>Mga Sertipiko</span>
+                )}
+                {languageContext?.selectEnglish ? (
+                    <span className={styles.subheading}>
+                        Request barangay certificates easily by filling out the required form for
+                        your needs.
+                    </span>
+                ) : (
+                    <span className={styles.subheading}>
+                        Humiling ng mga sertipiko ng barangay nang madali sa pamamagitan ng pag-fill
+                        up ng form.
+                    </span>
+                )}
             </div>
 
             {isAdmin === true && (
@@ -499,32 +514,78 @@ export const Certificates = ({ className }: CertificatesProps) => {
             {authContext?.currentUser === null ? (
                 <div className={renderRequestor === true ? styles['unhide'] : styles['hide']}>
                     <div className={styles['choose-requestor-no-account']}>
-                        <span style={{ fontSize: '24px', fontWeight: '500' }}>
-                            Register an Account!
-                        </span>
-                        <span style={{ marginBottom: '20px' }}>
-                            We highly recommend you to register an account first before requesting
-                            for certificates. By doing so, your requests will be tracked and managed
-                            better by the Barangay administrators. Also, you won't need to re-enter
-                            your user information every time you request a certificate if you have a
-                            registered account.
-                        </span>
+                        {languageContext?.selectEnglish ? (
+                            <span style={{ fontSize: '24px', fontWeight: '500' }}>
+                                Register an account!
+                            </span>
+                        ) : (
+                            <span style={{ fontSize: '24px', fontWeight: '500' }}>
+                                Mag rehistro ng account!
+                            </span>
+                        )}
+                        {languageContext?.selectEnglish ? (
+                            <span style={{ marginBottom: '20px' }}>
+                                We highly recommend you to register an account first before
+                                requesting for certificates. By doing so, your requests will be
+                                tracked and managed better by the Barangay administrators. Also, you
+                                won't need to re-enter your user information every time you request
+                                a certificate if you have a registered account.
+                            </span>
+                        ) : (
+                            <span style={{ marginBottom: '20px' }}>
+                                Inirerekomenda naming magrehistro muna ng account bago humiling ng
+                                mga sertipiko. Sa ganitong paraan, mas mabuti mong matutunton at
+                                mamamahalaan ang iyong mga kahilingan ng mga administrador ng
+                                Barangay. Higit pa rito, hindi mo na kailangang ulit-ulitin ang
+                                iyong impormasyon sa tuwing humihingi ka ng sertipiko kung mayroon
+                                kang rehistradong account.
+                            </span>
+                        )}
                         <Link to={'/register'}>
-                            <button style={{ fontSize: '18px', fontWeight: '600', width: '200px' }}>
-                                Register
-                            </button>
+                            {languageContext?.selectEnglish ? (
+                                <button
+                                    style={{ fontSize: '18px', fontWeight: '600', width: '200px' }}
+                                >
+                                    Register
+                                </button>
+                            ) : (
+                                <button
+                                    style={{ fontSize: '18px', fontWeight: '600', width: '200px' }}
+                                >
+                                    Mag Rehistro
+                                </button>
+                            )}
                         </Link>
-                        <button
-                            style={{ fontSize: '18px', fontWeight: '600', width: '200px' }}
-                            onClick={unregisteredRequestSelected}
-                        >
-                            Continue without registration
-                        </button>
+                        {languageContext?.selectEnglish ? (
+                            <button
+                                style={{ fontSize: '18px', fontWeight: '600', width: '200px' }}
+                                onClick={unregisteredRequestSelected}
+                            >
+                                Continue without registration
+                            </button>
+                        ) : (
+                            <button
+                                style={{ fontSize: '18px', fontWeight: '600', width: '200px' }}
+                                onClick={unregisteredRequestSelected}
+                            >
+                                Mag-patuloy kahit hindi naka-rehistro
+                            </button>
+                        )}
                         <span>OR</span>
                         <Link to={'/login'}>
-                            <button style={{ fontSize: '18px', fontWeight: '600', width: '200px' }}>
-                                Login
-                            </button>
+                            {languageContext?.selectEnglish ? (
+                                <button
+                                    style={{ fontSize: '18px', fontWeight: '600', width: '200px' }}
+                                >
+                                    Login
+                                </button>
+                            ) : (
+                                <button
+                                    style={{ fontSize: '18px', fontWeight: '600', width: '200px' }}
+                                >
+                                    Mag login
+                                </button>
+                            )}
                         </Link>
                     </div>
                 </div>
@@ -578,13 +639,27 @@ export const Certificates = ({ className }: CertificatesProps) => {
 
             <div className={renderChoose === true ? styles['unhide-Choose'] : styles['hide']}>
                 <div className={styles['certs-container']}>
-                    <h1 className={styles['header-perso']}>Certificates</h1>
-                    <span className={styles['perso-subhead']}>
-                        Please select a certificate or ID you need and fill out the form with
-                        accurate information. This will ensure efficient processing of your request.
-                        Your information will be kept confidential in accordance with our privacy
-                        policy.
-                    </span>
+                    {languageContext?.selectEnglish ? (
+                        <>
+                            <h1 className={styles['header-perso']}>Choose a Certificate</h1>
+                            <span className={styles['perso-subhead']}>
+                                Please select a certificate or ID you need and fill out the form
+                                with accurate information. This will ensure efficient processing of
+                                your request. Your information will be kept confidential in
+                                accordance with our privacy policy.
+                            </span>
+                        </>
+                    ) : (
+                        <>
+                            <h1 className={styles['header-perso']}>Pumili ng Sertipiko</h1>
+                            <span className={styles['perso-subhead']}>
+                                Pumili ng sertipiko o ID na kailangan mo at punan ang form ng tamang
+                                impormasyon. Makakatulong ito para sa mahusay na pagproseso ng iyong
+                                kahilingan. Ang iyong impormasyon ay itatago ng kumpidensyal ayon sa
+                                aming patakaran sa privacy.
+                            </span>
+                        </>
+                    )}
                     <br />
                     <hr />
                     <br />
