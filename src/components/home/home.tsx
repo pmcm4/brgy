@@ -14,6 +14,7 @@ import { forwardRef, useContext, useEffect, useRef, useState } from 'react';
 import { AuthContext } from '../context/authContext';
 import { ScrollEffectContext } from '../context/scrollEffectContext';
 import Loader from '../loader/Loader';
+import { LanguageContext } from '../context/languageContext';
 
 export interface HomeProps {
     className?: string;
@@ -355,6 +356,7 @@ const Home = ({ className }: HomeProps) => {
     });
 
     const authContext = useContext(AuthContext);
+    const languageContext = useContext(LanguageContext);
 
     const username = authContext?.currentUser;
 
@@ -381,59 +383,100 @@ const Home = ({ className }: HomeProps) => {
             <div className={styles['image-bg']}>
                 <div className={styles['home-header-div']}>
                     <span className={styles['heading-text']}>Barangay San Roque</span>
-                    <p className={styles.subheading}>
-                        Isang aktibong komunidad na may epektibong pamahalaan at serbisyong
-                        pang-komunidad.
-                    </p>
+                    {languageContext?.selectEnglish ? (
+                        <p className={styles.subheading}>
+                            An active community with an effective government and community services.
+                        </p>
+                    ) : (
+                        <p className={styles.subheading}>
+                            Isang aktibong komunidad na may epektibong pamahalaan at serbisyong
+                            pang-komunidad.
+                        </p>
+                    )}
                 </div>
             </div>
             <div className={styles['cards-container']}>
                 <Link to={checkExistUser === true ? `/profile/${username}` : `/login`}>
                     <MenuCard
                         cardTitle="Profile"
-                        cardSubText="View and edit your personal information."
+                        cardSubText={
+                            languageContext?.selectEnglish
+                                ? 'View and edit your personal information.'
+                                : 'Tingnan at baguhin ang iyong personal na impormasyon.'
+                        }
                         cardImg="https://storage.googleapis.com/barangay-san-roque-public/id_sample_cl3weq.jpg"
                     />
                 </Link>
                 <Link to={'/certificates'}>
                     <MenuCard
-                        cardTitle="Certifications"
-                        cardSubText="Request all of available certifications through our online services."
+                        cardTitle={
+                            languageContext?.selectEnglish ? 'Certifications' : 'Sertipikasyon'
+                        }
+                        cardSubText={
+                            languageContext?.selectEnglish
+                                ? 'Request all of available certifications through our online services.'
+                                : 'Mag-request ng mga sertipikasyon online.'
+                        }
                         cardImg="https://storage.googleapis.com/barangay-san-roque-public/photo-1562240020-ce31ccb0fa7d_jlk0ds%20(1).jpg"
                     />
                 </Link>
                 <Link to={`/faq`}>
                     <MenuCard
                         cardTitle="FAQ"
-                        cardSubText="Explore Frequently Asked Questions"
+                        cardSubText={
+                            languageContext?.selectEnglish
+                                ? 'Explore Frequently Asked Questions'
+                                : 'Tignan ang mga karaniwang tanong at sagot sa serbisyo ng Barangay San Roque'
+                        }
                         cardImg="https://storage.googleapis.com/barangay-san-roque-public/photo-1531379410502-63bfe8cdaf6f_npnnrt.jpg"
                     />
                 </Link>
                 <div className={styles.cardExplore} onClick={handleScrollAbout}>
                     <div className={styles['gradient-card-explore']}></div>
-                    <span className={styles['explore-more']}>Explore More ↓</span>
+                    {languageContext?.selectEnglish ? (
+                        <span className={styles['explore-more']}>Explore More ↓</span>
+                    ) : (
+                        <span className={styles['explore-more']}>I-explore Pa ↓</span>
+                    )}
                 </div>
             </div>
 
             <div className={styles['about-sec-home']}>
                 <div className={styles['left-image']}>
-                    <span
-                        ref={scrollEffectContext?.aboutRef}
-                        className={styles['header-home-about']}
-                    >
-                        ABOUT US
-                    </span>
+                    {
+                        <span
+                            ref={scrollEffectContext?.aboutRef}
+                            className={styles['header-home-about']}
+                        >
+                            ABOUT US
+                        </span>
+                    }
                     <span className={styles['header-about-main']}>BARANGAY SAN ROQUE</span>
-                    <span className={styles['subhead-home-about']}>
-                        Ang Barangay San Roque ay isang masiglang komunidad na matatagpuan sa
-                        District 1 ng Lungsod ng Marikina. Kilala sa aktibong pamahalaang lokal at
-                        magkakalapit na kapitbahayan, ang San Roque ay nakatuon sa kapakanan at
-                        kaligtasan ng mga residente nito. Nagbibigay ang barangay ng mahahalagang
-                        serbisyo, kabilang ang online na mga plataporma para sa paghingi ng barangay
-                        certificates at IDs, na nagtataguyod ng episyente at madaling pamamahala ng
-                        komunidad.
-                    </span>
-                    <button className={styles['about-btn']}>Learn More</button>
+                    {languageContext?.selectEnglish ? (
+                        <span className={styles['subhead-home-about']}>
+                            Barangay San Roque is a vibrant community located in District 1 of
+                            Marikina City. Known for its active local government and close-knit
+                            neighborhoods, San Roque is dedicated to the welfare and safety of its
+                            residents. The barangay provides essential services, including online
+                            platforms for requesting barangay certificates and IDs, promoting
+                            efficient and convenient community management.
+                        </span>
+                    ) : (
+                        <span className={styles['subhead-home-about']}>
+                            Ang Barangay San Roque ay isang masiglang komunidad na matatagpuan sa
+                            District 1 ng Lungsod ng Marikina. Kilala sa aktibong pamahalaang lokal
+                            at magkakalapit na kapitbahayan, ang San Roque ay nakatuon sa kapakanan
+                            at kaligtasan ng mga residente nito. Nagbibigay ang barangay ng
+                            mahahalagang serbisyo, kabilang ang online na mga plataporma para sa
+                            paghingi ng barangay certificates at IDs, na nagtataguyod ng episyente
+                            at madaling pamamahala ng komunidad.
+                        </span>
+                    )}
+                    {languageContext?.selectEnglish ? (
+                        <button className={styles['about-btn']}>Learn More</button>
+                    ) : (
+                        <button className={styles['about-btn']}>Alamin Pa</button>
+                    )}
                 </div>
                 <div className={styles['right-about-info']}>
                     <video className={styles['video-container']} controls>
@@ -492,13 +535,27 @@ const Home = ({ className }: HomeProps) => {
                             className={styles['cpt-img']}
                         />
                         <div className={styles['cpt-info']}>
-                            <span className={styles['cpt-title']}>Punong Barangay</span>
+                            {languageContext?.selectEnglish ? (
+                                <span className={styles['cpt-title']}>Barangay Captain</span>
+                            ) : (
+                                <span className={styles['cpt-title']}>Punong Barangay</span>
+                            )}
                             <span className={styles['cpt-name']}>Tadeo Allan M. Aramil</span>
-                            <span className={styles['cpt-desc']}>
-                                A dedicated Punong Barangay of Barangay San Roque, Marikina City.
-                                Born on October 28, 1968, he has served the community since 1996,
-                                contributing significantly to local welfare and safety.
-                            </span>
+                            {languageContext?.selectEnglish ? (
+                                <span className={styles['cpt-desc']}>
+                                    A dedicated Punong Barangay of Barangay San Roque, Marikina
+                                    City. Born on October 28, 1968, he has served the community
+                                    since 1996, contributing significantly to local welfare and
+                                    safety.
+                                </span>
+                            ) : (
+                                <span className={styles['cpt-desc']}>
+                                    Isang dedikadong Punong Barangay ng Barangay San Roque, Lungsod
+                                    ng Marikina. Ipinanganak noong Oktubre 28, 1968, nagsilbi siya
+                                    sa komunidad mula pa noong 1996, na nag-aambag nang malaki sa
+                                    lokal na kapakanan at kaligtasan.
+                                </span>
+                            )}
 
                             <div className={styles['ctncus-container']}>
                                 <button className={styles['cntc-us-boff']}>Contact Us →</button>

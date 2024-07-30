@@ -14,6 +14,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { useQuery } from 'react-query';
+import { LanguageContext } from '../context/languageContext';
 
 export interface HeaderProps {
     className?: string;
@@ -30,6 +31,7 @@ interface DecodedIDType {
 
 const Header = ({ className }: HeaderProps) => {
     const authContext = useContext(AuthContext);
+    const languageContext = useContext(LanguageContext);
     const scrollEffectContext = useContext(ScrollEffectContext);
     const [checkExistUser, setCheckExistUser] = useState(false);
     const [userName, setUsername] = useState('');
@@ -132,7 +134,15 @@ const Header = ({ className }: HeaderProps) => {
                 </span>
 
                 <Link to="/certificates" style={{ textDecoration: 'none' }}>
-                    <span className={styles['menu-items']}>Services</span>
+                    {languageContext?.selectEnglish ? (
+                        <span className={styles['menu-items']} onClick={handleCloseHamburger}>
+                            Services
+                        </span>
+                    ) : (
+                        <span className={styles['menu-items']} onClick={handleCloseHamburger}>
+                            Mga Serbisyo
+                        </span>
+                    )}
                 </Link>
                 <Link to="/faq" style={{ textDecoration: 'none' }}>
                     <span className={styles['menu-items']}>FAQ</span>
@@ -207,9 +217,15 @@ const Header = ({ className }: HeaderProps) => {
                         About
                     </span>
                     <Link to="/certificates" style={{ textDecoration: 'none', width: '100%' }}>
-                        <span className={styles['menu-items']} onClick={handleCloseHamburger}>
-                            Services
-                        </span>
+                        {languageContext?.selectEnglish ? (
+                            <span className={styles['menu-items']} onClick={handleCloseHamburger}>
+                                Services
+                            </span>
+                        ) : (
+                            <span className={styles['menu-items']} onClick={handleCloseHamburger}>
+                                Mga Serbisyo
+                            </span>
+                        )}
                     </Link>
                     <Link to="/faq" style={{ textDecoration: 'none', width: '100%' }}>
                         <span className={styles['menu-items']} onClick={handleCloseHamburger}>

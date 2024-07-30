@@ -1,6 +1,8 @@
 import classNames from 'classnames';
 import styles from './footer.module.scss';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { LanguageContext } from '../context/languageContext';
 
 export interface FooterProps {
     className?: string;
@@ -11,6 +13,8 @@ export interface FooterProps {
  * To create custom component templates, see https://help.codux.com/kb/en/article/kb16522
  */
 export const Footer = ({ className }: FooterProps) => {
+    const languageContext = useContext(LanguageContext);
+
     return (
         <div className={classNames(styles.root, className)}>
             <div className={styles['footer-top']}>
@@ -20,10 +24,16 @@ export const Footer = ({ className }: FooterProps) => {
                         alt=""
                         className={styles['footer-logo']}
                     />
-                    <span className={styles['footer-desc']}>
-                        Isang aktibong komunidad na may epektibong pamahalaan at serbisyong
-                        pang-komunidad.
-                    </span>
+                    {languageContext?.selectEnglish ? (
+                        <span className={styles['footer-desc']}>
+                            An active community with an effective government and community services.
+                        </span>
+                    ) : (
+                        <span className={styles['footer-desc']}>
+                            Isang aktibong komunidad na may epektibong pamahalaan at serbisyong
+                            pang-komunidad.
+                        </span>
+                    )}
                 </div>
                 <div className={styles['footer-right']}>
                     <div className={styles['footer-functions']}>
@@ -37,7 +47,11 @@ export const Footer = ({ className }: FooterProps) => {
                     </div>
                     <div className={styles['footer-functions']}>
                         <ul className={styles['contact-list']}>
-                            <li className={styles['contact-title']}>Navigation</li>
+                            {languageContext?.selectEnglish ? (
+                                <li className={styles['contact-title']}>Navigation</li>
+                            ) : (
+                                <li className={styles['contact-title']}>Nabigasyon</li>
+                            )}
                             <Link to="/home">
                                 <li>Home</li>
                             </Link>
@@ -45,7 +59,11 @@ export const Footer = ({ className }: FooterProps) => {
                                 <li>About</li>
                             </Link>
                             <Link to="/certificates">
-                                <li>Services</li>
+                                {languageContext?.selectEnglish ? (
+                                    <li>Services</li>
+                                ) : (
+                                    <li>Mga Serbisyo</li>
+                                )}
                             </Link>
                             <Link to="/login">
                                 <li>Login</li>
@@ -54,7 +72,11 @@ export const Footer = ({ className }: FooterProps) => {
                     </div>
                     <div className={styles['footer-functions']}>
                         <ul className={styles['contact-list']}>
-                            <li className={styles['contact-title']}>Social Media</li>
+                            {languageContext?.selectEnglish ? (
+                                <li className={styles['contact-title']}>Social Media</li>
+                            ) : (
+                                <li className={styles['contact-title']}>Mga Social Media</li>
+                            )}
                             <Link
                                 to="https://www.facebook.com/BarangaySanRoqueMarikinaCity"
                                 target="blank__"
