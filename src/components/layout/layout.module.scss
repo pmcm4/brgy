@@ -15,7 +15,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
-    column-gap: 30px;
+    column-gap: 20px;
 }
 
 #header-banner span {
@@ -76,5 +76,8 @@
 @media screen and ( max-width: 580px) {
     #header-banner span {
           display: none;
+    }
+    #lang-icon{
+        margin-right: 2%;
     }
 }

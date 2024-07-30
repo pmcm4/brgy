@@ -45,6 +45,7 @@ function Layout() {
         <div className={styles['App']}>
             <div id={styles['header-banner']}>
                 <span>Tel: 646-84-79</span>
+                <span> | </span>
                 <span>barangaysanroque.marikinacity@gmail.com</span>
                 <div id={styles['lang-icon']} onMouseOver={MOverLang} onMouseOut={MOutLang}>
                     <LanguageIcon /> <ArrowDropDownIcon />
