@@ -734,7 +734,7 @@ function ReviewModal({ imgID, imgSelf, signatureImg, letterDoc }: ReviewModalPro
             {successMsg === true && (
                 <SuccessModal
                     title="Request Sumbission"
-                    message="Your request is now submitted! Check your profile and email for updates"
+                    message="Your request is now submitted and Under review, please check your email and profile page for updates."
                     buttonTitle="Request Another Certificate"
                     resetStates={handleResetStates}
                 />

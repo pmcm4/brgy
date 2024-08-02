@@ -9,6 +9,7 @@ import InputLabel from '@mui/material/InputLabel';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LanguageContext } from '../context/languageContext';
+import FeeModal from '../message-modals/FeeModal';
 
 interface DropDownFormProps {
     onNext: (e: React.FormEvent<HTMLFormElement | HTMLButtonElement>) => void;
@@ -24,16 +25,64 @@ export function BarangayClearanceForm({ onNext, onBack, disableBack }: DropDownF
     const reviewContext = useContext(ReviewContext);
     const languageContext = useContext(LanguageContext);
 
+    const [showModal, setShowModal] = useState(false);
+    const [showFeeMsg, setShowFeeMsg] = useState(false);
+    const [showFreeFeeMsg, setShowFreeFeeMsg] = useState(false);
+    const [showFreeFeeMsgStudent, setShowFreeFeeMsgStudent] = useState(false);
+    const [showFreePWD, setShowFreePWD] = useState(false);
+    const [showFreeSenior, setShowFreeSenior] = useState(false);
+
     const [barangayClearanceRequestObj, setBarangayClearanceRequestObj] = useState({
         purpose: '',
     });
 
-    const handleOnChange = (
-        e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>
-    ) => {
+    const handleOnChange = (e: SelectChangeEvent<string>) => {
         setBarangayClearanceRequestObj((prev) => {
             return { ...prev, [e.target.name]: e.target.value };
         });
+
+        console.log(reviewContext?.personalForm?.sector);
+
+        if (e.target.value === 'First Time Job Seeker') {
+            setShowModal(false);
+            setShowFeeMsg(false);
+            setShowFreeFeeMsg(true);
+            setShowFreeFeeMsgStudent(false);
+            setShowFreePWD(false);
+            setShowFreeSenior(false);
+        } else if (e.target.value === 'School Requirement') {
+            setShowModal(false);
+            setShowFeeMsg(false);
+            setShowFreeFeeMsg(false);
+            setShowFreeFeeMsgStudent(true);
+            setShowFreePWD(false);
+            setShowFreeSenior(false);
+        } else if (reviewContext?.personalForm?.sector === 'PWD') {
+            setShowModal(false);
+            setShowFeeMsg(false);
+            setShowFreeFeeMsg(false);
+            setShowFreeFeeMsgStudent(false);
+            setShowFreePWD(true);
+            setShowFreeSenior(false);
+        } else if (reviewContext?.personalForm?.sector === 'Senior Citizen') {
+            setShowModal(false);
+            setShowFeeMsg(false);
+            setShowFreeFeeMsg(false);
+            setShowFreeFeeMsgStudent(false);
+            setShowFreePWD(false);
+            setShowFreeSenior(true);
+        } else {
+            setShowModal(true);
+            setShowFeeMsg(true);
+            setShowFreeFeeMsg(false);
+            setShowFreeFeeMsgStudent(false);
+            setShowFreePWD(false);
+            setShowFreeSenior(false);
+        }
+    };
+
+    const handleModal = () => {
+        setShowModal(!showModal);
     };
 
     const handleOnClick = () => {
@@ -61,7 +110,100 @@ export function BarangayClearanceForm({ onNext, onBack, disableBack }: DropDownF
 
     return (
         <form onSubmit={onNext} className={styles['certificate-container-form']}>
-            <div className={styles['input-form-certificates']}>
+            <div className={styles['input-div-certificates']}>
+                <Box>
+                    <FormControl size="small" fullWidth>
+                        <InputLabel id="purpose-label-id">Purpose</InputLabel>
+                        <Select
+                            labelId="purpose-label-id"
+                            label="Purpose"
+                            defaultValue=""
+                            name="purpose"
+                            onChange={handleOnChange}
+                            required
+                        >
+                            <MenuItem value={'Proof of Residency'}>Proof of Residency</MenuItem>
+                            <MenuItem value={'Legal Purpose'}>Legal Purpose</MenuItem>
+                            <MenuItem value={'Local Employment'}>Local Employment</MenuItem>
+                            <MenuItem value={'Loan Purpose'}>Loan Purpose</MenuItem>
+                            <MenuItem value={'School Requirement'}>School Requirement</MenuItem>
+                            <MenuItem value={'Bank Purpose'}>Bank Purpose</MenuItem>
+                            <MenuItem value={'First Time Job Seeker'}>
+                                First Time Job Seeker
+                            </MenuItem>
+                            <MenuItem value={'Police Clearance'}>Police Clearance</MenuItem>
+                            <MenuItem value={'Senior Citizen'}>Senior Citizen</MenuItem>
+                        </Select>
+                    </FormControl>
+                </Box>
+            </div>
+            {languageContext?.selectEnglish ? (
+                <>
+                    {' '}
+                    {showFeeMsg && (
+                        <span style={{ color: 'orange', fontWeight: '600', fontSize: '14px' }}>
+                            *Processing Fee: PHP 50.00
+                        </span>
+                    )}
+                    {showFreeFeeMsg && (
+                        <span style={{ color: 'green', fontWeight: '600', fontSize: '14px' }}>
+                            *Processing Fee: FREE
+                        </span>
+                    )}
+                    {showFreeFeeMsgStudent && (
+                        <span style={{ color: 'green', fontWeight: '600', fontSize: '14px' }}>
+                            *Processing Fee: FREE (Please present your Student ID on
+                            pickup/delivery)
+                        </span>
+                    )}
+                    {showFreePWD && (
+                        <span style={{ color: 'green', fontWeight: '600', fontSize: '14px' }}>
+                            *Processing Fee: FREE (Please present your PWD ID on pickup/delivery)
+                        </span>
+                    )}
+                    {showFreeSenior && (
+                        <span style={{ color: 'green', fontWeight: '600', fontSize: '14px' }}>
+                            *Processing Fee: FREE (Please present your Senior Citizen ID on
+                            pickup/delivery)
+                        </span>
+                    )}
+                    {showModal && <FeeModal handleModalFunc={handleModal} />}{' '}
+                </>
+            ) : (
+                <>
+                    {' '}
+                    {showFeeMsg && (
+                        <span style={{ color: 'orange', fontWeight: '600', fontSize: '14px' }}>
+                            *Processing Fee: PHP 50.00
+                        </span>
+                    )}
+                    {showFreeFeeMsg && (
+                        <span style={{ color: 'green', fontWeight: '600', fontSize: '14px' }}>
+                            *Processing Fee: FREE
+                        </span>
+                    )}
+                    {showFreeFeeMsgStudent && (
+                        <span style={{ color: 'green', fontWeight: '600', fontSize: '14px' }}>
+                            *Processing Fee: FREE (I-present ang Student ID sa oras ng pag pickup o
+                            delivery)
+                        </span>
+                    )}
+                    {showFreePWD && (
+                        <span style={{ color: 'green', fontWeight: '600', fontSize: '14px' }}>
+                            *Processing Fee: FREE (I-present ang PWD ID sa oras ng pag pickup o
+                            delivery)
+                        </span>
+                    )}
+                    {showFreeSenior && (
+                        <span style={{ color: 'green', fontWeight: '600', fontSize: '14px' }}>
+                            *Processing Fee: FREE (I-present ang Senior Citizen ID sa oras ng pag
+                            pickup o delivery)
+                        </span>
+                    )}
+                    {showModal && <FeeModal handleModalFunc={handleModal} />}{' '}
+                </>
+            )}
+            {/* <div className={styles['input-form-certificates']}>
                 <div className={styles['input-div-certificates']}>
                     <TextField
                         label="Purpose"
@@ -73,7 +215,7 @@ export function BarangayClearanceForm({ onNext, onBack, disableBack }: DropDownF
                         required
                     />
                 </div>
-            </div>
+            </div> */}
             {languageContext?.selectEnglish ? (
                 <div className={styles['nav-buttons-container']}>
                     {disableBack === false && (
@@ -111,9 +253,7 @@ export function Indigency({ onNext, onBack, disableBack }: DropDownFormProps) {
         purpose: '',
     });
 
-    const handleOnChange = (
-        e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>
-    ) => {
+    const handleOnChange = (e: SelectChangeEvent<string>) => {
         setIndigencyRequestObj((prev) => {
             return { ...prev, [e.target.name]: e.target.value };
         });
@@ -147,6 +287,33 @@ export function Indigency({ onNext, onBack, disableBack }: DropDownFormProps) {
             {' '}
             <div className={styles['input-form-certificates']}>
                 <div className={styles['input-div-certificates']}>
+                    <Box>
+                        <FormControl size="small" fullWidth>
+                            <InputLabel id="purpose-label-id">Purpose</InputLabel>
+                            <Select
+                                labelId="purpose-label-id"
+                                label="Purpose"
+                                defaultValue=""
+                                name="purpose"
+                                onChange={handleOnChange}
+                                required
+                            >
+                                <MenuItem value={'medical'}>Medical</MenuItem>
+                                <MenuItem value={'financial'}>Financial</MenuItem>
+                                <MenuItem value={'educational'}>Educational</MenuItem>
+                                <MenuItem value={'internship'}>Internship</MenuItem>
+                                <MenuItem value={'legal'}>Legal</MenuItem>
+                                <MenuItem value={'livelihood'}>Livelihood</MenuItem>
+                                <MenuItem value={'pao'}>PAO</MenuItem>
+                            </Select>
+                        </FormControl>
+                    </Box>
+                    <span style={{ color: 'green', fontWeight: '600', fontSize: '14px' }}>
+                        *Processing Fee: FREE
+                    </span>
+                </div>
+
+                {/* <div className={styles['input-div-certificates']}>
                     <TextField
                         label="Purpose"
                         size="small"
@@ -156,7 +323,7 @@ export function Indigency({ onNext, onBack, disableBack }: DropDownFormProps) {
                         name="purpose"
                         required
                     />
-                </div>
+                </div> */}
             </div>
             {languageContext?.selectEnglish ? (
                 <div className={styles['nav-buttons-container']}>

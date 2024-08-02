@@ -34,6 +34,7 @@ import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { useAxios } from '../utils/useAxios';
 import { LanguageContext } from '../context/languageContext';
+import FeeModal from '../message-modals/FeeModal';
 
 export interface CertificatesProps {
     className?: string;
@@ -667,6 +668,23 @@ export const Certificates = ({ className }: CertificatesProps) => {
                         <div className={styles['input-div']}>
                             <Box>
                                 <FormControl size="small" fullWidth>
+                                    <InputLabel id="delivery-label-id">Type of delivery</InputLabel>
+                                    <Select
+                                        labelId="delivery-label-id"
+                                        label="Type of delivery"
+                                        defaultValue=""
+                                        onChange={handleOnChange}
+                                        required
+                                    >
+                                        <MenuItem value={'pickup'}>Pick-up</MenuItem>
+                                        <MenuItem value={'delivery'}>Delivery</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </Box>
+                        </div>
+                        <div className={styles['input-div']}>
+                            <Box>
+                                <FormControl size="small" fullWidth>
                                     <InputLabel id="certificate-label-id">
                                         Select Certificate
                                     </InputLabel>
@@ -699,6 +717,7 @@ export const Certificates = ({ className }: CertificatesProps) => {
                                 </FormControl>
                             </Box>
                         </div>
+                        
 
                         {renderForm.barangayClearance === true && (
                             <BarangayClearanceForm
