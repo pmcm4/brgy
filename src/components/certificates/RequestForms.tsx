@@ -19,6 +19,13 @@ export function BarangayClearanceForm() {
                 disabled
                 value={reviewContext?.certificateForm?.purpose}
             />
+
+            <TextField
+                label="Delivery Type"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.deliveryType}
+            />
         </>
     );
 }
@@ -39,6 +46,13 @@ export function IndigencyForm() {
                 disabled
                 value={reviewContext?.certificateForm?.purpose}
             />
+
+            <TextField
+                label="Delivery Type"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.deliveryType}
+            />
         </>
     );
 }
@@ -57,6 +71,13 @@ export function BarangayIDForm() {
                 className={styles['text-field-mui-override']}
                 disabled
                 value={reviewContext?.certificateForm?.purpose}
+            />
+
+            <TextField
+                label="Delivery Type"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.deliveryType}
             />
         </>
     );
@@ -77,6 +98,13 @@ export function SoloParentForm() {
                 className={styles['text-field-mui-override']}
                 disabled
                 value={reviewContext?.certificateForm?.purpose}
+            />
+
+            <TextField
+                label="Delivery Type"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.deliveryType}
             />
             <TextField
                 id="outlined-basic"
@@ -146,6 +174,13 @@ export function CohabitationForm() {
                 disabled
                 value={reviewContext?.certificateForm?.purpose}
             />
+
+            <TextField
+                label="Delivery Type"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.deliveryType}
+            />
             <TextField
                 id="outlined-basic"
                 label="Birth Address"
@@ -200,6 +235,13 @@ export function GoodMoralForm() {
             />
 
             <TextField
+                label="Delivery Type"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.deliveryType}
+            />
+
+            <TextField
                 id="outlined-basic"
                 label="Name of Requestor"
                 variant="outlined"
@@ -225,6 +267,13 @@ export function NoIncomeForm() {
                 className={styles['text-field-mui-override']}
                 disabled
                 value={reviewContext?.certificateForm?.purpose}
+            />
+
+            <TextField
+                label="Delivery Type"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.deliveryType}
             />
             <TextField
                 id="outlined-basic"
@@ -263,6 +312,12 @@ export function FirstTimeJobSeekerForm() {
                 value={reviewContext?.certificateForm?.purpose}
             />
             <TextField
+                label="Delivery Type"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.deliveryType}
+            />
+            <TextField
                 id="outlined-basic"
                 label="Date of Residency"
                 variant="outlined"
@@ -288,6 +343,13 @@ export function ResidencyForm() {
                 className={styles['text-field-mui-override']}
                 disabled
                 value={reviewContext?.certificateForm?.purpose}
+            />
+
+            <TextField
+                label="Delivery Type"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.deliveryType}
             />
 
             <TextField
@@ -333,6 +395,13 @@ export function TransferOfResidencyForm() {
                 disabled
                 value={reviewContext?.certificateForm?.purpose}
             />
+
+            <TextField
+                label="Delivery Type"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.deliveryType}
+            />
             <TextField
                 id="outlined-basic"
                 label="New Address"
@@ -371,6 +440,12 @@ export function LivingStillForm() {
                 value={reviewContext?.certificateForm?.purpose}
             />
             <TextField
+                label="Delivery Type"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.deliveryType}
+            />
+            <TextField
                 id="outlined-basic"
                 label="Date of Tabloid"
                 variant="outlined"
@@ -405,6 +480,13 @@ export function BirthFactForm() {
                 className={styles['text-field-mui-override']}
                 disabled
                 value={reviewContext?.certificateForm?.purpose}
+            />
+
+            <TextField
+                label="Delivery Type"
+                className={styles['text-field-mui-override']}
+                disabled
+                value={reviewContext?.certificateForm?.deliveryType}
             />
 
             <TextField

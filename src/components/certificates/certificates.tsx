@@ -2,8 +2,8 @@ import classNames from 'classnames';
 import styles from './certificates.module.scss';
 import { Footer } from '../footer/footer';
 import React, { ChangeEvent, useContext, useEffect, useState } from 'react';
-import { PersonalForm } from '../certificate-request-forms/personal-form';
-import { PFAddress } from '../certificate-request-forms/pf-address';
+import { PersonalForm, PersonalFormUncontrolled } from '../certificate-request-forms/personal-form';
+import { PFAddress, PFAddressUncontrolled } from '../certificate-request-forms/pf-address';
 import {
     BarangayClearanceForm,
     BarangayIDForm,
@@ -313,14 +313,14 @@ export const Certificates = ({ className }: CertificatesProps) => {
     //next button
     const handlePersonalFormNext = (e: React.FormEvent<HTMLFormElement | HTMLButtonElement>) => {
         e.preventDefault();
-        console.log(reviewContext?.personalForm);
+
         setRenderPF(false);
         setRenderAdd(true);
     };
 
     const handleAddressFormNext = (e: React.FormEvent<HTMLFormElement | HTMLButtonElement>) => {
         e.preventDefault();
-        console.log(reviewContext?.addressForm);
+
         setRenderAdd(false);
         setRenderChoose(true);
     };
@@ -369,6 +369,8 @@ export const Certificates = ({ className }: CertificatesProps) => {
         selectedCert: '',
     });
 
+    const [deliveryType, setDeliveryType] = useState('');
+
     const handleOnChange = (
         e:
             | ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -393,6 +395,10 @@ export const Certificates = ({ className }: CertificatesProps) => {
         });
 
         setSelectedCertificate({ selectedCert: e.target.value });
+    };
+
+    const handleDeliveryType = (e: SelectChangeEvent<string>) => {
+        setDeliveryType(e.target.value);
     };
 
     const [searchResults, setSearchResults] = useState<any[]>([]);
@@ -598,23 +604,43 @@ export const Certificates = ({ className }: CertificatesProps) => {
                             : styles['hide']
                     }
                 >
-                    <div className={styles['choose-requestor']}>
-                        <span style={{ fontSize: '30px', fontWeight: '600' }}>
-                            Who is requesting?
-                        </span>
-                        <button
-                            style={{ fontSize: '18px', fontWeight: '600', width: '200px' }}
-                            onClick={getUserDetails}
-                        >
-                            For myself
-                        </button>
-                        <button
-                            style={{ fontSize: '18px', fontWeight: '600', width: '200px' }}
-                            onClick={ForSomeoneElseSelected}
-                        >
-                            For someone else
-                        </button>
-                    </div>
+                    {languageContext?.selectEnglish ? (
+                        <div className={styles['choose-requestor']}>
+                            <span style={{ fontSize: '30px', fontWeight: '600' }}>
+                                Who is requesting?
+                            </span>
+                            <button
+                                style={{ fontSize: '18px', fontWeight: '600', width: '200px' }}
+                                onClick={getUserDetails}
+                            >
+                                For myself
+                            </button>
+                            <button
+                                style={{ fontSize: '18px', fontWeight: '600', width: '200px' }}
+                                onClick={ForSomeoneElseSelected}
+                            >
+                                For someone else
+                            </button>
+                        </div>
+                    ) : (
+                        <div className={styles['choose-requestor']}>
+                            <span style={{ fontSize: '30px', fontWeight: '600' }}>
+                                Sino ang mag rerequest?
+                            </span>
+                            <button
+                                style={{ fontSize: '18px', fontWeight: '600', width: '200px' }}
+                                onClick={getUserDetails}
+                            >
+                                Para sa aking sarili
+                            </button>
+                            <button
+                                style={{ fontSize: '18px', fontWeight: '600', width: '200px' }}
+                                onClick={ForSomeoneElseSelected}
+                            >
+                                Para sa ibang tao
+                            </button>
+                        </div>
+                    )}
                 </div>
             )}
 
@@ -622,7 +648,7 @@ export const Certificates = ({ className }: CertificatesProps) => {
                 {forMyselfSelected === true ? (
                     <PersonalForm handleSubmit={handlePersonalFormNext} selfInput={userDetails} />
                 ) : (
-                    <PersonalForm handleSubmit={handlePersonalFormNext} />
+                    <PersonalFormUncontrolled handleSubmit={handlePersonalFormNext} />
                 )}
             </div>
 
@@ -634,7 +660,10 @@ export const Certificates = ({ className }: CertificatesProps) => {
                         selfInput={userAddress}
                     />
                 ) : (
-                    <PFAddress handleSubmit={handleAddressFormNext} onBack={handleBackAddress} />
+                    <PFAddressUncontrolled
+                        handleSubmit={handleAddressFormNext}
+                        onBack={handleBackAddress}
+                    />
                 )}
             </div>
 
@@ -673,7 +702,7 @@ export const Certificates = ({ className }: CertificatesProps) => {
                                         labelId="delivery-label-id"
                                         label="Type of delivery"
                                         defaultValue=""
-                                        onChange={handleOnChange}
+                                        onChange={handleDeliveryType}
                                         required
                                     >
                                         <MenuItem value={'pickup'}>Pick-up</MenuItem>
@@ -717,13 +746,13 @@ export const Certificates = ({ className }: CertificatesProps) => {
                                 </FormControl>
                             </Box>
                         </div>
-                        
 
                         {renderForm.barangayClearance === true && (
                             <BarangayClearanceForm
                                 disableBack={forMyselfSelected === true && true}
                                 onNext={handleCertFormNext}
                                 onBack={handleBackCertChoose}
+                                deliveryType={deliveryType}
                             />
                         )}
                         {renderForm.barangayID === true && (
@@ -731,6 +760,7 @@ export const Certificates = ({ className }: CertificatesProps) => {
                                 disableBack={forMyselfSelected === true && true}
                                 onNext={handleCertFormNext}
                                 onBack={handleBackCertChoose}
+                                deliveryType={deliveryType}
                             />
                         )}
                         {renderForm.soloParent === true && (
@@ -738,6 +768,7 @@ export const Certificates = ({ className }: CertificatesProps) => {
                                 disableBack={forMyselfSelected === true && true}
                                 onNext={handleCertFormNext}
                                 onBack={handleBackCertChoose}
+                                deliveryType={deliveryType}
                             />
                         )}
                         {renderForm.cohabitation === true && (
@@ -745,6 +776,7 @@ export const Certificates = ({ className }: CertificatesProps) => {
                                 disableBack={forMyselfSelected === true && true}
                                 onNext={handleCertFormNext}
                                 onBack={handleBackCertChoose}
+                                deliveryType={deliveryType}
                             />
                         )}
                         {renderForm.goodMoral === true && (
@@ -752,6 +784,7 @@ export const Certificates = ({ className }: CertificatesProps) => {
                                 disableBack={forMyselfSelected === true && true}
                                 onNext={handleCertFormNext}
                                 onBack={handleBackCertChoose}
+                                deliveryType={deliveryType}
                             />
                         )}
                         {renderForm.noIncome === true && (
@@ -759,6 +792,7 @@ export const Certificates = ({ className }: CertificatesProps) => {
                                 disableBack={forMyselfSelected === true && true}
                                 onNext={handleCertFormNext}
                                 onBack={handleBackCertChoose}
+                                deliveryType={deliveryType}
                             />
                         )}
                         {renderForm.firstTimeJobSeeker === true && (
@@ -766,6 +800,7 @@ export const Certificates = ({ className }: CertificatesProps) => {
                                 disableBack={forMyselfSelected === true && true}
                                 onNext={handleCertFormNext}
                                 onBack={handleBackCertChoose}
+                                deliveryType={deliveryType}
                             />
                         )}
                         {renderForm.residency === true && (
@@ -773,6 +808,7 @@ export const Certificates = ({ className }: CertificatesProps) => {
                                 disableBack={forMyselfSelected === true && true}
                                 onNext={handleCertFormNext}
                                 onBack={handleBackCertChoose}
+                                deliveryType={deliveryType}
                             />
                         )}
                         {renderForm.transferResidency === true && (
@@ -780,6 +816,7 @@ export const Certificates = ({ className }: CertificatesProps) => {
                                 disableBack={forMyselfSelected === true && true}
                                 onNext={handleCertFormNext}
                                 onBack={handleBackCertChoose}
+                                deliveryType={deliveryType}
                             />
                         )}
                         {renderForm.livingStill === true && (
@@ -787,6 +824,7 @@ export const Certificates = ({ className }: CertificatesProps) => {
                                 disableBack={forMyselfSelected === true && true}
                                 onNext={handleCertFormNext}
                                 onBack={handleBackCertChoose}
+                                deliveryType={deliveryType}
                             />
                         )}
                         {renderForm.birthFact === true && (
@@ -794,6 +832,7 @@ export const Certificates = ({ className }: CertificatesProps) => {
                                 disableBack={forMyselfSelected === true && true}
                                 onNext={handleCertFormNext}
                                 onBack={handleBackCertChoose}
+                                deliveryType={deliveryType}
                             />
                         )}
                         {renderForm.indigency === true && (
@@ -801,6 +840,7 @@ export const Certificates = ({ className }: CertificatesProps) => {
                                 disableBack={forMyselfSelected === true && true}
                                 onNext={handleCertFormNext}
                                 onBack={handleBackCertChoose}
+                                deliveryType={deliveryType}
                             />
                         )}
                     </div>

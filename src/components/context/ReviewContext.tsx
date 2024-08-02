@@ -32,6 +32,7 @@ export type AddressReviewTypes = {
 export type CertificateReviewTypes = {
     selectedCert: string;
     purpose: string;
+    deliveryType: string;
     childName: string;
     childGender: string;
     soloParentSince: string;

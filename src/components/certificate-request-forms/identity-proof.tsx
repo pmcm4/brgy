@@ -52,7 +52,7 @@ export const Identity_Proof = ({ className, onBack, adminCheck }: Identity_Proof
             ?.exportImage('png')
             .then((data) => {
                 setSketchImg(data);
-                console.log(data);
+                
             })
             .catch((err) => {
                 console.log(err);

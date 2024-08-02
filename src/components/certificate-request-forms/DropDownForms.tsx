@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styles from './certificate-request-forms.module.scss';
 import { ReviewContext } from '../context/ReviewContext';
 import dayjs, { Dayjs } from 'dayjs';
@@ -15,13 +15,19 @@ interface DropDownFormProps {
     onNext: (e: React.FormEvent<HTMLFormElement | HTMLButtonElement>) => void;
     onBack: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
     disableBack: boolean;
+    deliveryType: string;
 }
 
 const formatDate = (date: dayjs.Dayjs | null) => {
     return `${date?.year()}-${date?.month()! + 1}-${date?.date()}`;
 };
 
-export function BarangayClearanceForm({ onNext, onBack, disableBack }: DropDownFormProps) {
+export function BarangayClearanceForm({
+    onNext,
+    onBack,
+    disableBack,
+    deliveryType,
+}: DropDownFormProps) {
     const reviewContext = useContext(ReviewContext);
     const languageContext = useContext(LanguageContext);
 
@@ -40,8 +46,6 @@ export function BarangayClearanceForm({ onNext, onBack, disableBack }: DropDownF
         setBarangayClearanceRequestObj((prev) => {
             return { ...prev, [e.target.name]: e.target.value };
         });
-
-        console.log(reviewContext?.personalForm?.sector);
 
         if (e.target.value === 'First Time Job Seeker') {
             setShowModal(false);
@@ -89,6 +93,7 @@ export function BarangayClearanceForm({ onNext, onBack, disableBack }: DropDownF
         reviewContext?.setCertificateForm({
             selectedCert: 'barangayClearance',
             purpose: barangayClearanceRequestObj.purpose,
+            deliveryType: deliveryType,
             childName: '',
             childGender: '',
             soloParentSince: '',
@@ -245,7 +250,7 @@ export function BarangayClearanceForm({ onNext, onBack, disableBack }: DropDownF
     );
 }
 
-export function Indigency({ onNext, onBack, disableBack }: DropDownFormProps) {
+export function Indigency({ onNext, onBack, disableBack, deliveryType }: DropDownFormProps) {
     const reviewContext = useContext(ReviewContext);
     const languageContext = useContext(LanguageContext);
 
@@ -263,6 +268,7 @@ export function Indigency({ onNext, onBack, disableBack }: DropDownFormProps) {
         reviewContext?.setCertificateForm({
             selectedCert: 'indigency',
             purpose: indigencyRequestObj.purpose,
+            deliveryType: deliveryType,
             childName: '',
             childGender: '',
             soloParentSince: '',
@@ -354,17 +360,20 @@ export function Indigency({ onNext, onBack, disableBack }: DropDownFormProps) {
     );
 }
 
-export function BarangayIDForm({ onNext, onBack, disableBack }: DropDownFormProps) {
+export function BarangayIDForm({ onNext, onBack, disableBack, deliveryType }: DropDownFormProps) {
     const reviewContext = useContext(ReviewContext);
     const languageContext = useContext(LanguageContext);
     const [barangayIDRequestObj, setBarangayIDRequestObj] = useState({
         purpose: '',
     });
 
+    const [feeMsg, showFeeMsg] = useState(true);
+
     const handleOnClick = () => {
         reviewContext?.setCertificateForm({
             selectedCert: 'barangayID',
             purpose: barangayIDRequestObj.purpose,
+            deliveryType: deliveryType,
             childName: '',
             childGender: '',
             soloParentSince: '',
@@ -391,6 +400,17 @@ export function BarangayIDForm({ onNext, onBack, disableBack }: DropDownFormProp
             return { ...prev, [e.target.name]: e.target.value };
         });
     };
+
+    useEffect(() => {
+        if (
+            reviewContext?.personalForm?.sector === 'Student' ||
+            reviewContext?.personalForm?.sector === 'PWD' ||
+            reviewContext?.personalForm?.sector === 'Senior Citizen'
+        ) {
+            showFeeMsg(false);
+        }
+    }, [reviewContext?.personalForm?.sector]);
+
     return (
         <form onSubmit={onNext} className={styles['certificate-container-form']}>
             {' '}
@@ -405,6 +425,58 @@ export function BarangayIDForm({ onNext, onBack, disableBack }: DropDownFormProp
                     />
                 </div>
             </div>
+            {languageContext?.selectEnglish ? (
+                <>
+                    {feeMsg && (
+                        <span style={{ color: 'orange', fontWeight: '600', fontSize: '14px' }}>
+                            *Processing Fee: PHP 50.00
+                        </span>
+                    )}
+                    {reviewContext?.personalForm?.sector === 'Student' && (
+                        <span style={{ color: 'green', fontWeight: '600', fontSize: '14px' }}>
+                            *Processing Fee: FREE (Please present your Student ID on
+                            pickup/delivery)
+                        </span>
+                    )}
+                    {reviewContext?.personalForm?.sector === 'PWD' && (
+                        <span style={{ color: 'green', fontWeight: '600', fontSize: '14px' }}>
+                            *Processing Fee: FREE (Please present your PWD ID on pickup/delivery)
+                        </span>
+                    )}
+                    {reviewContext?.personalForm?.sector === 'Senior Citizen' && (
+                        <span style={{ color: 'green', fontWeight: '600', fontSize: '14px' }}>
+                            *Processing Fee: FREE (Please present your Senior Citizen ID on
+                            pickup/delivery)
+                        </span>
+                    )}
+                </>
+            ) : (
+                <>
+                    {feeMsg && (
+                        <span style={{ color: 'orange', fontWeight: '600', fontSize: '14px' }}>
+                            *Processing Fee: PHP 50.00
+                        </span>
+                    )}
+                    {reviewContext?.personalForm?.sector === 'Student' && (
+                        <span style={{ color: 'green', fontWeight: '600', fontSize: '14px' }}>
+                            *Processing Fee: FREE (I-present ang Student ID sa oras ng pag pickup o
+                            delivery)
+                        </span>
+                    )}
+                    {reviewContext?.personalForm?.sector === 'PWD' && (
+                        <span style={{ color: 'green', fontWeight: '600', fontSize: '14px' }}>
+                            *Processing Fee: FREE (I-present ang PWD ID sa oras ng pag pickup o
+                            delivery)
+                        </span>
+                    )}
+                    {reviewContext?.personalForm?.sector === 'Senior Citizen' && (
+                        <span style={{ color: 'green', fontWeight: '600', fontSize: '14px' }}>
+                            *Processing Fee: FREE (I-present ang Senior Citizen ID sa oras ng pag
+                            pickup o delivery)
+                        </span>
+                    )}
+                </>
+            )}
             {languageContext?.selectEnglish ? (
                 <div className={styles['nav-buttons-container']}>
                     {disableBack === false && (
@@ -434,7 +506,7 @@ export function BarangayIDForm({ onNext, onBack, disableBack }: DropDownFormProp
     );
 }
 
-export function SoloParentForm({ onNext, onBack, disableBack }: DropDownFormProps) {
+export function SoloParentForm({ onNext, onBack, disableBack, deliveryType }: DropDownFormProps) {
     const reviewContext = useContext(ReviewContext);
     const languageContext = useContext(LanguageContext);
     const [soloParentRequestObj, setSoloParentRequestObj] = useState({
@@ -453,6 +525,7 @@ export function SoloParentForm({ onNext, onBack, disableBack }: DropDownFormProp
         reviewContext?.setCertificateForm({
             selectedCert: 'soloParent',
             purpose: soloParentRequestObj.purpose,
+            deliveryType: deliveryType,
             childName: soloParentRequestObj.childName,
             childGender: soloParentRequestObj.childGender,
             soloParentSince: soloParentRequestObj.soloParentSince,
@@ -613,7 +686,7 @@ export function SoloParentForm({ onNext, onBack, disableBack }: DropDownFormProp
     );
 }
 
-export function CohabitationForm({ onNext, onBack, disableBack }: DropDownFormProps) {
+export function CohabitationForm({ onNext, onBack, disableBack, deliveryType }: DropDownFormProps) {
     const reviewContext = useContext(ReviewContext);
     const languageContext = useContext(LanguageContext);
     const [cohabitationRequestObj, setCohabitationRequestObj] = useState({
@@ -630,6 +703,7 @@ export function CohabitationForm({ onNext, onBack, disableBack }: DropDownFormPr
         reviewContext?.setCertificateForm({
             selectedCert: 'cohabitation',
             purpose: cohabitationRequestObj.purpose,
+            deliveryType: deliveryType,
             childName: '',
             childGender: '',
             soloParentSince: '',
@@ -761,7 +835,7 @@ export function CohabitationForm({ onNext, onBack, disableBack }: DropDownFormPr
     );
 }
 
-export function GoodMoralForm({ onNext, onBack, disableBack }: DropDownFormProps) {
+export function GoodMoralForm({ onNext, onBack, disableBack, deliveryType }: DropDownFormProps) {
     const [goodMoralRequestObj, setGoodMoralRequestObj] = useState({
         purpose: '',
         nameOfRequestor: '',
@@ -773,7 +847,6 @@ export function GoodMoralForm({ onNext, onBack, disableBack }: DropDownFormProps
         setGoodMoralRequestObj((prev) => {
             return { ...prev, [e.target.name]: e.target.value };
         });
-        console.log(goodMoralRequestObj);
     };
 
     const reviewContext = useContext(ReviewContext);
@@ -782,6 +855,7 @@ export function GoodMoralForm({ onNext, onBack, disableBack }: DropDownFormProps
         reviewContext?.setCertificateForm({
             selectedCert: 'goodMoral',
             purpose: goodMoralRequestObj.purpose,
+            deliveryType: deliveryType,
             childName: '',
             childGender: '',
             soloParentSince: '',
@@ -858,7 +932,7 @@ export function GoodMoralForm({ onNext, onBack, disableBack }: DropDownFormProps
     );
 }
 
-export function NoIncomeForm({ onNext, onBack, disableBack }: DropDownFormProps) {
+export function NoIncomeForm({ onNext, onBack, disableBack, deliveryType }: DropDownFormProps) {
     const [noIncomeSince, setNoIncomeSince] = useState<Dayjs | null>(null);
 
     const [noIncomeRequestObj, setNoIncomeRequestObj] = useState({
@@ -881,6 +955,7 @@ export function NoIncomeForm({ onNext, onBack, disableBack }: DropDownFormProps)
         reviewContext?.setCertificateForm({
             selectedCert: 'noIncome',
             purpose: noIncomeRequestObj.purpose,
+            deliveryType: deliveryType,
             childName: '',
             childGender: '',
             soloParentSince: '',
@@ -979,7 +1054,12 @@ export function NoIncomeForm({ onNext, onBack, disableBack }: DropDownFormProps)
     );
 }
 
-export function FirstTimeJobSeekerForm({ onNext, onBack, disableBack }: DropDownFormProps) {
+export function FirstTimeJobSeekerForm({
+    onNext,
+    onBack,
+    disableBack,
+    deliveryType,
+}: DropDownFormProps) {
     const [dateOfResidency, setDateOfResidency] = useState<Dayjs | null>(null);
 
     const [firstTimeJobSeekerRequestObj, setFirstTimeJobSeekerRequestObj] = useState({
@@ -1003,6 +1083,7 @@ export function FirstTimeJobSeekerForm({ onNext, onBack, disableBack }: DropDown
         reviewContext?.setCertificateForm({
             selectedCert: 'firstTimeJobSeeker',
             purpose: firstTimeJobSeekerRequestObj.purpose,
+            deliveryType: deliveryType,
             childName: '',
             childGender: '',
             soloParentSince: '',
@@ -1090,7 +1171,7 @@ export function FirstTimeJobSeekerForm({ onNext, onBack, disableBack }: DropDown
     );
 }
 
-export function ResidencyForm({ onNext, onBack, disableBack }: DropDownFormProps) {
+export function ResidencyForm({ onNext, onBack, disableBack, deliveryType }: DropDownFormProps) {
     const [residencyRequestObj, setResidencyRequestObj] = useState({
         purpose: '',
         birthAddress: '',
@@ -1112,6 +1193,7 @@ export function ResidencyForm({ onNext, onBack, disableBack }: DropDownFormProps
         reviewContext?.setCertificateForm({
             selectedCert: 'residency',
             purpose: residencyRequestObj.purpose,
+            deliveryType: deliveryType,
             childName: '',
             childGender: '',
             soloParentSince: '',
@@ -1212,7 +1294,12 @@ export function ResidencyForm({ onNext, onBack, disableBack }: DropDownFormProps
     );
 }
 
-export function TransferResidencyForm({ onNext, onBack, disableBack }: DropDownFormProps) {
+export function TransferResidencyForm({
+    onNext,
+    onBack,
+    disableBack,
+    deliveryType,
+}: DropDownFormProps) {
     const [transferOfResidencyRequestObj, setTransferOfResidencyRequestObj] = useState({
         purpose: '',
         newAddress: '',
@@ -1233,6 +1320,7 @@ export function TransferResidencyForm({ onNext, onBack, disableBack }: DropDownF
         reviewContext?.setCertificateForm({
             selectedCert: 'transferOfResidency',
             purpose: transferOfResidencyRequestObj.purpose,
+            deliveryType: deliveryType,
             childName: '',
             childGender: '',
             soloParentSince: '',
@@ -1321,7 +1409,7 @@ export function TransferResidencyForm({ onNext, onBack, disableBack }: DropDownF
     );
 }
 
-export function LivingStillForm({ onNext, onBack, disableBack }: DropDownFormProps) {
+export function LivingStillForm({ onNext, onBack, disableBack, deliveryType }: DropDownFormProps) {
     const [dateOfTabloid, setDateOfTabloid] = useState<Dayjs | null>(null);
 
     const [livingStillRequestObj, setLivingStillRequestObj] = useState({
@@ -1345,6 +1433,7 @@ export function LivingStillForm({ onNext, onBack, disableBack }: DropDownFormPro
         reviewContext?.setCertificateForm({
             selectedCert: 'livingStill',
             purpose: livingStillRequestObj.purpose,
+            deliveryType: deliveryType,
             childName: '',
             childGender: '',
             soloParentSince: '',
@@ -1442,7 +1531,7 @@ export function LivingStillForm({ onNext, onBack, disableBack }: DropDownFormPro
     );
 }
 
-export function BirthFactForm({ onNext, onBack, disableBack }: DropDownFormProps) {
+export function BirthFactForm({ onNext, onBack, disableBack, deliveryType }: DropDownFormProps) {
     const [dateBorn, setDateBorn] = useState<Dayjs | null>(null);
 
     const [birthFactRequestObj, setBirthFactRequestObj] = useState({
@@ -1473,6 +1562,7 @@ export function BirthFactForm({ onNext, onBack, disableBack }: DropDownFormProps
         reviewContext?.setCertificateForm({
             selectedCert: 'birthFact',
             purpose: birthFactRequestObj.purpose,
+            deliveryType: deliveryType,
             childName: birthFactRequestObj.childName,
             childGender: birthFactRequestObj.childGender,
             soloParentSince: '',
