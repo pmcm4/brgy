@@ -304,7 +304,7 @@ export function Indigency({ onNext, onBack, disableBack }: DropDownFormProps) {
                                 <MenuItem value={'internship'}>Internship</MenuItem>
                                 <MenuItem value={'legal'}>Legal</MenuItem>
                                 <MenuItem value={'livelihood'}>Livelihood</MenuItem>
-                                <MenuItem value={'pao'}>PAO</MenuItem>
+                                <MenuItem value={'pao'}>Public Attorney's Office</MenuItem>
                             </Select>
                         </FormControl>
                     </Box>
