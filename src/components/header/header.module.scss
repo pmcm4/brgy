@@ -8,7 +8,7 @@
     width: 100%;
     background-color: rgba(255, 255, 255, 0);
     position: absolute;
-    z-index: 97;
+    margin-top: 30px;
 }
 
 
@@ -69,7 +69,7 @@
     text-decoration: none;
 }
 
-#get-in-touch:nth-child(6) span:hover {
+#get-in-touch:nth-child(7) span:hover {
     color: white;
     background-color: #2fad6e;
 }
@@ -90,7 +90,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 998;
+    z-index: 98;
     background-color: #00000069;
 }
 .hamburger-menu {
@@ -100,7 +100,7 @@
     box-shadow: -14px 0px 27px -20px rgba(0, 0, 0, 0.64);
     right: 0;
     top: 0;
-    z-index: 999;
+    z-index: 99;
     width: 270px;
     background-color: #525252;
     height: 100%;
@@ -109,6 +109,7 @@
     flex-direction: column;
     align-items: start;
     padding: 30px;
+    margin-top: 20px;
 }
 
 .hamburger-menu-hidden {
@@ -118,7 +119,7 @@
     box-shadow: -14px 0px 27px -20px rgba(0, 0, 0, 0.64);
     right: 0;
     top: 0;
-    z-index: 999;
+    z-index: 99;
     width: 0;
     background-color: #bebebe;
     height: 100%;
@@ -144,6 +145,8 @@
     color: red;
 }
 
+//profile hamburger drop down
+
 .hamburger-drop-down-profile{
     width: 100%;
     height: 120px;
@@ -152,6 +155,21 @@
 }
 
 .hamburger-drop-down-profile-hidden {
+    width: 100%;
+    height: 0px;
+    transition: height 0.2s;
+}
+
+//services hamburger dropdown
+
+.hamburger-drop-down-services {
+    width: 100%;
+    height: 120px;
+    transition: height 0.2s;
+
+}
+
+.hamburger-drop-down-services-hidden {
     width: 100%;
     height: 0px;
     transition: height 0.2s;
@@ -186,7 +204,7 @@
     
 }
 
-.hide-drop-down{
+.hide-drop-down-profile{
     height: 0;
     position: absolute;
     background-color: white;
@@ -196,9 +214,6 @@
     box-shadow: 0px 4px 8px -4px rgba(58, 53, 65, 0.42);
     margin-top: 60px;
 }
-
-
-
 
 .drop-down-item{
     font-size: 18px;
@@ -219,6 +234,67 @@
  .drop-down-item:hover {
     color: #2fad6e;
 }
+
+
+//services dropdown
+
+
+.services-drop-down {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+    overflow: hidden;
+}
+
+.services-drop-down .menu-items {
+    justify-content: center;
+}
+
+.services-drop-down-items {
+    position: absolute;
+    background-color: white;
+    border-radius: 10px;
+    height: 120px;
+    overflow: hidden;
+    transition: height 0.3s;
+    box-shadow: 0px 4px 8px -4px rgba(58, 53, 65, 0.42);
+    margin-top: 60px;
+
+}
+
+.hide-drop-down-services {
+    height: 0;
+    position: absolute;
+    background-color: white;
+    border-radius: 10px;
+    transition: height 0.3s;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px -4px rgba(58, 53, 65, 0.42);
+    margin-top: 60px;
+}
+
+.drop-down-item-services {
+    font-size: 18px;
+    color: black;
+    height: 60px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    width: 150px;
+    font-weight: 600;
+    line-height: normal;
+    cursor: pointer;
+}
+
+.drop-down-item-services:hover {
+    color: #2fad6e;
+}
+
 
 
 @media screen and (max-width: 1200px){
@@ -273,6 +349,14 @@
         text-overflow: ellipsis;
         
     }
+        .hamburger-services-span {
+            width: 75%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-align: left;
+            text-overflow: ellipsis;
+    
+        }
     .menu-items {
         font-size: 24px;
         color: white;
@@ -313,6 +397,23 @@
     }
 
     .profile-drop-down .menu-items{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .services-drop-down {
+        margin-right: 50px;
+        width: auto;
+        display: flex;
+        justify-content: start;
+        margin-left: 0;
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .services-drop-down .menu-items {
         width: 100%;
         display: flex;
         flex-direction: row;

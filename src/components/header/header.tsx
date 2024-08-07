@@ -37,8 +37,10 @@ const Header = ({ className }: HeaderProps) => {
     const [userName, setUsername] = useState('');
 
     const [showDropDown, setShowDropDown] = useState(false);
+    const [showDropDownServices, setShowDropDownServices] = useState(false);
     const [showHamburger, setHamburger] = useState(false);
     const [showHamburgerDropDown, setShowHamburgerDropDown] = useState(false);
+    const [showHamburgerDropDownServices, setShowHamburgerDropDownServices] = useState(false);
 
     const navigate = useNavigate();
 
@@ -48,6 +50,14 @@ const Header = ({ className }: HeaderProps) => {
 
     const handleMouseOut = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
         setShowDropDown(false);
+    };
+
+    const handleMouseOverServices = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+        setShowDropDownServices(true);
+    };
+
+    const handleMouseOutServices = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+        setShowDropDownServices(false);
     };
 
     //const decodedJWT = jwtDecode<DecodedIDType>(String(authContext?.accessToken));
@@ -111,6 +121,13 @@ const Header = ({ className }: HeaderProps) => {
             setShowHamburgerDropDown(true);
         }
     };
+    const handleHamburgerDropDownServices = () => {
+        if (showHamburgerDropDownServices === true) {
+            setShowHamburgerDropDownServices(false);
+        } else {
+            setShowHamburgerDropDownServices(true);
+        }
+    };
 
     return (
         <div className={classNames(styles.root, className)}>
@@ -133,17 +150,38 @@ const Header = ({ className }: HeaderProps) => {
                     About
                 </span>
 
-                <Link to="/certificates" style={{ textDecoration: 'none' }}>
+                <div className={styles['services-drop-down']}>
                     {languageContext?.selectEnglish ? (
-                        <span className={styles['menu-items']} onClick={handleCloseHamburger}>
+                        <span
+                            className={styles['menu-items']}
+                            onMouseOver={handleMouseOverServices}
+                            onMouseOut={handleMouseOutServices}
+                        >
                             Services
                         </span>
                     ) : (
-                        <span className={styles['menu-items']} onClick={handleCloseHamburger}>
-                            Mga Serbisyo
-                        </span>
+                        <span className={styles['menu-items']}>Mga Serbisyo</span>
                     )}
-                </Link>
+                    <div
+                        className={
+                            showDropDownServices === true
+                                ? styles['services-drop-down-items']
+                                : styles['hide-drop-down-services']
+                        }
+                        onMouseOver={handleMouseOverServices}
+                        onMouseOut={handleMouseOutServices}
+                    >
+                        <Link to={`/certificates`} style={{ textDecoration: 'none' }}>
+                            <span className={styles['drop-down-item-services']}>
+                                Certificates/ID
+                            </span>
+                        </Link>
+                        <Link to={`/medicine`} style={{ textDecoration: 'none' }}>
+                            <span className={styles['drop-down-item-services']}>Medicine</span>
+                        </Link>
+                    </div>
+                </div>
+
                 <Link to="/faq" style={{ textDecoration: 'none' }}>
                     <span className={styles['menu-items']}>FAQ</span>
                 </Link>
@@ -165,7 +203,7 @@ const Header = ({ className }: HeaderProps) => {
                             className={
                                 showDropDown === true
                                     ? styles['profile-drop-down-items']
-                                    : styles['hide-drop-down']
+                                    : styles['hide-drop-down-profile']
                             }
                             onMouseOver={handleMouseOver}
                             onMouseOut={handleMouseOut}
@@ -216,17 +254,42 @@ const Header = ({ className }: HeaderProps) => {
                     >
                         About
                     </span>
-                    <Link to="/certificates" style={{ textDecoration: 'none', width: '100%' }}>
-                        {languageContext?.selectEnglish ? (
-                            <span className={styles['menu-items']} onClick={handleCloseHamburger}>
-                                Services
-                            </span>
+                    <div className={styles['services-drop-down']}>
+                        <span
+                            className={styles['menu-items']}
+                            onClick={handleHamburgerDropDownServices}
+                        >
+                            <span className={styles['hamburger-services-span']}>Services</span>
+                            {showHamburgerDropDownServices === false ? (
+                                <KeyboardArrowDownIcon />
+                            ) : (
+                                <KeyboardArrowUpIcon />
+                            )}
+                        </span>
+                        {showHamburgerDropDownServices === false ? (
+                            <div className={styles['hamburger-drop-down-services-hidden']}></div>
                         ) : (
-                            <span className={styles['menu-items']} onClick={handleCloseHamburger}>
-                                Mga Serbisyo
-                            </span>
+                            <div className={styles['hamburger-drop-down-services']}>
+                                {' '}
+                                <Link to={`/certificates`} style={{ textDecoration: 'none' }}>
+                                    <span
+                                        className={styles['drop-down-item']}
+                                        onClick={handleCloseHamburger}
+                                    >
+                                        Certificates/ID
+                                    </span>
+                                </Link>
+                                <Link to={`/medicine`} style={{ textDecoration: 'none' }}>
+                                    <span
+                                        className={styles['drop-down-item']}
+                                        onClick={handleCloseHamburger}
+                                    >
+                                        Medicine
+                                    </span>
+                                </Link>
+                            </div>
                         )}
-                    </Link>
+                    </div>
                     <Link to="/faq" style={{ textDecoration: 'none', width: '100%' }}>
                         <span className={styles['menu-items']} onClick={handleCloseHamburger}>
                             FAQ
