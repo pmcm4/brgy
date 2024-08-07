@@ -43,13 +43,16 @@ function Layout() {
             | React.MouseEvent<HTMLButtonElement, MouseEvent>
     ) => {
         const val = e.currentTarget.value;
-        if (val === 1) {
+
+        if (val == 1) {
             authContext?.setSelectEnglish(true);
             authContext?.setSelectFilipino(false);
+
             MOutLang();
         } else {
             authContext?.setSelectEnglish(false);
             authContext?.setSelectFilipino(true);
+
             MOutLang();
         }
     };

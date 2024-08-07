@@ -16,6 +16,8 @@
     align-items: center;
     justify-content: flex-end;
     column-gap: 20px;
+    position: relative;
+    z-index: 98;
 }
 
 #header-banner span {

@@ -12,6 +12,7 @@ import { AuthContext } from './components/context/authContext';
 import Loader from './components/loader/Loader';
 import EditProfile from './components/profile-page/EditProfile';
 import ReuploadModal from './components/profile-page/ReuploadModal';
+import Medicine from './components/medicine/Medicine';
 
 const questions: { faqid: number; faqTitle: string; answer: string }[] = [
     {
@@ -38,6 +39,7 @@ function App() {
             children: [
                 { path: '/home', element: <Home /> },
                 { path: '/certificates', element: <Certificates /> },
+                { path: '/medicine', element: <Medicine /> },
                 {
                     path: '/faq',
                     element: (
