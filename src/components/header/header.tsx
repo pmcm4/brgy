@@ -160,7 +160,8 @@ const Header = ({ className }: HeaderProps) => {
                             Services
                         </span>
                     ) : (
-                        <span className={styles['menu-items']}>Mga Serbisyo</span>
+                        <span className={styles['menu-items']} onMouseOver={handleMouseOverServices}
+                            onMouseOut={handleMouseOutServices}>Mga Serbisyo</span>
                     )}
                     <div
                         className={
