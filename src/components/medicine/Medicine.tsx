@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { ReviewContext } from '../context/ReviewContext';
 import { useAxios } from '../utils/useAxios';
 import axios from 'axios';
+import MedicineForm from './MedicineForm';
 
 function Medicine() {
     const languageContext = useContext(LanguageContext);
@@ -327,6 +328,8 @@ function Medicine() {
                     )}
                 </div>
             )}
+
+            {forMyselfSelected && <MedicineForm />}
         </div>
     );
 }

@@ -591,6 +591,63 @@
 }
 
 
+
+// medicine form
+
+#main-card{
+    background-color: white;
+    box-shadow: 0px 4px 8px -4px rgba(58, 53, 65, 0.42);
+    padding: 30px 40px 30px 40px;
+    margin: 20px 35% 20px 35%;
+    border-radius: 20px;
+}
+
+#main-card h1{
+    font-size: 2em;
+}
+#main-card p {
+    text-align: center;
+    font-size: 16px;
+    margin: 10px 0 0 0;
+    color: rgb(159, 159, 159);
+    width: 100%;
+    font-weight: 450;
+}
+
+#medicine-cards-container {
+   display: flex;
+   flex-direction: column;
+   height: 250px;
+   justify-content: space-around;
+}
+
+.medicine-cards{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    position: relative;
+    background-color: rgb(245, 245, 245);
+    border-radius: 10px;
+    padding: 2px 10px 2px 10px
+}
+.medicine-cards input:nth-child(1) {
+    margin-right: 20px;
+}
+
+.medicine-cards input:nth-child(3){
+   position: absolute;
+   right: 0;
+   margin-right: 10px;
+   width: 100px;
+   height: 50%;
+}
+
+
+
+//responsiveness
+
+
 @media screen and (max-width: 1500px) {
     .unhide {
         margin: 20px 15% 20px 15%;
@@ -795,7 +852,7 @@
         color: black;
         font-weight: 500;
         text-align: center;
-        margin-bottom: 70px;
+        margin-bottom: 50px;
     }
 
     .choose-requestor-no-account {
