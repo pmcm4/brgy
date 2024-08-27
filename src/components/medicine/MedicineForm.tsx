@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './medicine.module.scss';
+import MedItem from './MedItem';
 
 function MedicineForm() {
     return (
@@ -14,21 +15,12 @@ function MedicineForm() {
             <hr />
 
             <div id={styles['medicine-cards-container']}>
-                <div className={styles['medicine-cards']}>
-                    <input type="checkbox" />
-                    <h3>AMLODIPINE</h3>
-                    <input type="number" defaultValue={0} />
-                </div>
-                <div className={styles['medicine-cards']}>
-                    <input type="checkbox" />
-                    <h3>ASPIRIN</h3>
-                    <input type="number" defaultValue={0} />
-                </div>
-                <div className={styles['medicine-cards']}>
-                    <input type="checkbox" />
-                    <h3>ATORVASTATIN</h3>
-                    <input type="number" defaultValue={0} />
-                </div>
+                <MedItem medName="Medicine 1" />
+                <MedItem medName="Medicine 2" />
+                <MedItem medName="Medicine 3" />
+                <MedItem medName="Medicine 4" />
+                <MedItem medName="Medicine 4" />
+                <MedItem medName="Medicine 4" />
             </div>
         </div>
     );
